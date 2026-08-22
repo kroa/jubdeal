@@ -1,0 +1,172 @@
+name: 혜택 수집
+
+on:
+  schedule:
+    # 매일 KST 06:00 (UTC 21:00) — 아침에 볼 수 있도록
+    - cron: '0 21 * * *'
+  workflow_dispatch:
+    inputs:
+      max-items:
+        description: 'LLM 호출 상한 (비용 통제, 최대 50)'
+        required: false
+        default: '20'
+      dry-run:
+        description: 'true 면 파일을 쓰지 않고 결과만 확인'
+        type: boolean
+        required: false
+        default: false
+
+# 수집이 겹쳐 돌면 같은 소스를 중복 요청하게 됩니다.
+concurrency:
+  group: collect
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+env:
+  TZ: Asia/Seoul
+
+jobs:
+  collect:
+    name: 수집 · 정규화 · PR 생성
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    # PR 을 열기 위해 필요한 최소 권한
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: 소스 체크아웃
+        uses: actions/checkout@v4
+
+      - name: Node.js 설치
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: 의존성 설치
+        run: npm ci
+
+      - name: 입력값 검증
+        id: params
+        env:
+          RAW_MAX_ITEMS: ${{ inputs.max-items || '20' }}
+          KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -z "$KEY" ]; then
+            echo "::error::ANTHROPIC_API_KEY 시크릿이 없습니다. 저장소 Settings → Secrets 에 등록하세요."
+            exit 1
+          fi
+
+          # 비용 폭주 방지: 수동 실행에서 큰 값을 넣어도 상한을 넘지 않습니다.
+          case "$RAW_MAX_ITEMS" in
+            ''|*[!0-9]*)
+              echo "::error::max-items 는 숫자여야 합니다: $RAW_MAX_ITEMS"; exit 1;;
+          esac
+          if [ "$RAW_MAX_ITEMS" -lt 1 ] || [ "$RAW_MAX_ITEMS" -gt 50 ]; then
+            echo "::error::max-items 는 1~50 이어야 합니다: $RAW_MAX_ITEMS"; exit 1
+          fi
+
+          echo "max-items=$RAW_MAX_ITEMS" >> "$GITHUB_OUTPUT"
+
+      - name: 파이프라인 실행
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          MAX_ITEMS: ${{ steps.params.outputs.max-items }}
+          # schedule 트리거에서는 inputs 가 비어 있으므로 기본은 실제 실행입니다.
+          DRY_RUN: ${{ inputs.dry-run || 'false' }}
+        run: |
+          set -o pipefail
+          MODE="--write"
+          [ "$DRY_RUN" = "true" ] && MODE="--dry-run"
+
+          npm run pipeline -- "$MODE" --max-items "$MAX_ITEMS" 2>&1 | tee run.log
+
+      - name: 실행 요약 작성
+        if: always()
+        run: |
+          # run.log 원문을 그대로 노출하지 않습니다.
+          # 로그에는 URL·오류 메시지가 섞여 있고, Actions 의 시크릿 마스킹은
+          # 파일 내용에는 적용되지 않습니다. 필요한 요약 구간만 잘라 씁니다.
+          {
+            echo '## 수집 결과'
+            echo '```'
+            sed -n '/파이프라인 실행 결과/,$p' run.log | head -40
+            echo '```'
+          } > summary.md
+          cat summary.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: 검수 큐 업로드
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: review-queue
+          path: scripts/pipeline/review/
+          retention-days: 14
+          if-no-files-found: ignore
+
+      - name: 변경 여부 확인
+        id: diff
+        run: |
+          if git diff --quiet -- src/data/deals.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "새로 추가되거나 바뀐 혜택이 없습니다."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # ----------------------------------------------------------------------
+      #  품질 게이트를 여기서 직접 돌립니다.
+      #
+      #  GITHUB_TOKEN 으로 만든 push/PR 은 다른 워크플로우를 트리거하지 않습니다.
+      #  그래서 ci.yml 이 이 PR 에서는 돌지 않고, 게이트를 통째로 우회하게 됩니다.
+      #  자동 생성 데이터야말로 검증이 필요하므로 같은 검사를 인라인으로 수행합니다.
+      # ----------------------------------------------------------------------
+      - name: 생성된 데이터 검증
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          # 파이프라인 출력이 저장소 포맷 규칙과 어긋나면 main 의 format:check 가 깨집니다.
+          npx prettier --write src/data/deals.json
+
+          npm run typecheck
+          npm run test
+          npm run build
+
+      - name: 변경 사항 PR 생성
+        if: steps.diff.outputs.changed == 'true' && inputs.dry-run != true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BRANCH="collect/$(date +%Y%m%d-%H%M%S)"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add src/data/deals.json
+
+          # 여러 줄 메시지를 -m 인라인으로 쓰면 YAML 블록 스칼라를 벗어납니다.
+          {
+            echo "chore(data): 자동 수집 결과 반영"
+            echo
+            sed -n '/파이프라인 실행 결과/,$p' run.log | head -40
+            echo
+            echo "자동 수집분은 meta.verified=false 입니다. 머지 전에 링크와 기간을 확인하세요."
+          } > commit-message.txt
+
+          git commit -F commit-message.txt
+          git push origin "$BRANCH"
+
+          # 라벨이 저장소에 없으면 --label 은 PR 생성을 실패시킵니다.
+          # 라벨 없이 먼저 만들고, 라벨은 있으면 붙이는 식으로 분리합니다.
+          gh pr create \
+            --title "chore(data): 자동 수집 결과 반영 ($(date +%Y-%m-%d))" \
+            --body-file summary.md \
+            --base main \
+            --head "$BRANCH"
+
+          gh pr edit "$BRANCH" --add-label automated \
+            || echo "::notice::'automated' 라벨이 없어 건너뜁니다."

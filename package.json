@@ -21,7 +21,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
-    "verify": "npm run lint && npm run format:check && npm run typecheck && npm run test && npm run build"
+    "verify": "npm run lint && npm run format:check && npm run typecheck && npm run test && npm run build",
+    "pipeline": "tsx scripts/pipeline/cli.ts"
   },
   "dependencies": {
     "@astrojs/react": "^6.0.4",
@@ -32,6 +33,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@anthropic-ai/sdk": "^0.120.0",
     "@astrojs/check": "^0.9.10",
     "@eslint/js": "^9.39.5",
     "@testing-library/jest-dom": "^7.0.1",
@@ -42,6 +44,7 @@
     "@vitejs/plugin-react": "^6.1.0",
     "@vitest/coverage-v8": "^4.1.11",
     "astro-eslint-parser": "^1.4.0",
+    "cheerio": "^1.2.0",
     "eslint": "^9.39.5",
     "eslint-plugin-astro": "^1.7.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
@@ -49,6 +52,7 @@
     "jsdom": "^29.1.1",
     "prettier": "^3.9.6",
     "prettier-plugin-astro": "^0.14.1",
+    "tsx": "^4.23.12",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.67.0",
     "vite": "^8.2.2",

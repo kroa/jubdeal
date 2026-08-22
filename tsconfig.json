@@ -5,7 +5,8 @@
     "jsxImportSource": "react",
     "types": ["vitest/globals", "@testing-library/jest-dom"],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@pipeline/*": ["./scripts/pipeline/*"]
     },
     "noUnusedLocals": true,
     "noUnusedParameters": true,

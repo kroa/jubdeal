@@ -1,0 +1,38 @@
+{
+  "userAgent": "JubDealBot/1.0 (+https://jubdeal.pages.dev/about)",
+  "requestIntervalMs": 3000,
+  "timeoutMs": 15000,
+  "sources": [
+    {
+      "id": "local-fixture",
+      "name": "로컬 픽스처",
+      "kind": "fixture",
+      "url": "scripts/pipeline/fixtures/sample.json",
+      "enabled": true,
+      "maxItems": 5
+    },
+    {
+      "id": "example-blog",
+      "name": "예시 블로그 (실제 소스로 교체하세요)",
+      "kind": "html",
+      "url": "https://example.com/events",
+      "enabled": false,
+      "maxItems": 10,
+      "selectors": {
+        "item": ".event-list li",
+        "link": "a",
+        "title": ".event-title",
+        "detail": "article.event-body"
+      },
+      "categoryHint": "food"
+    },
+    {
+      "id": "example-feed",
+      "name": "예시 RSS 피드 (실제 소스로 교체하세요)",
+      "kind": "rss",
+      "url": "https://example.com/events/feed.xml",
+      "enabled": false,
+      "maxItems": 10
+    }
+  ]
+}

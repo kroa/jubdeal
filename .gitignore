@@ -85,6 +85,12 @@ Thumbs.db
 desktop.ini
 $RECYCLE.BIN/
 
+# ---------- 파이프라인 산출물 ----------
+# 검수 큐는 실행마다 쌓이므로 저장소에 두지 않습니다.
+# CI 에서는 Actions 아티팩트로 업로드됩니다.
+scripts/pipeline/review/
+scripts/pipeline/*.log
+
 # ---------- 임시 파일 ----------
 tmp/
 temp/

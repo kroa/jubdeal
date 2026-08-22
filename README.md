@@ -60,7 +60,19 @@ Next.js `output: 'export'` 와 비교했을 때 Cloudflare Pages 환경에서 As
 
 ```
 jubdeal/
-├── .github/workflows/ci.yml     # CI 파이프라인 (품질 게이트 → 빌드 → 배포)
+├── .github/workflows/
+│   ├── ci.yml                   # 품질 게이트 → 빌드 → 배포
+│   └── collect.yml              # 매일 혜택 수집 → 검증 → PR 생성
+├── scripts/pipeline/            # 크롤러 + LLM 정규화 파이프라인
+│   ├── cli.ts                   #   CLI (기본 dry run)
+│   ├── run.ts                   #   오케스트레이터
+│   ├── sources.json             #   소스 레지스트리 (여기에 소스를 추가)
+│   ├── fetch/robots.ts          #   robots.txt 파서 (RFC 9309)
+│   ├── fetch/http.ts            #   예의 있는 수집기 (robots·레이트리밋·SSRF 차단)
+│   ├── adapters/index.ts        #   html / rss / fixture 어댑터
+│   ├── extract/                 #   LLM 추출 (스키마 강제 + 신뢰도)
+│   ├── assemble.ts              #   추출 결과 → Deal (안정적 id·slug)
+│   └── merge.ts                 #   기존 데이터와 병합 (검수분 보호)
 ├── public/
 │   ├── _headers                 # Cloudflare Pages 보안 헤더 (CSP, HSTS 등)
 │   └── favicon.svg
@@ -93,7 +105,7 @@ jubdeal/
 │   │   └── robots.txt.ts        # robots.txt (site URL 기준 동적 생성)
 │   ├── styles/                  # 디자인 토큰 + 컴포넌트 스타일
 │   └── types/deal.ts            # 핵심 도메인 타입 (Single Source of Truth)
-├── tests/                       # 유닛 테스트 (233개)
+├── tests/                       # 유닛 테스트 (405개)
 ├── .env.example                 # 환경변수 템플릿 (실제 값 없음)
 ├── .gitignore
 └── vitest.config.ts
@@ -435,6 +447,88 @@ npm run dev               # 화면에서 확인
 4. 통과분만 `deals.json` 에 병합하고 커밋 → CI가 다시 검증 → 배포.
 
 이때 교체가 필요한 것은 `src/lib/deals.ts` 하나뿐이고, UI 코드는 그대로 재사용됩니다.
+
+---
+
+## 10-1. 자동 수집 파이프라인
+
+`deals.json` 을 손으로 채우는 대신, 공개 소스를 수집해 LLM 이 스키마로 정규화합니다.
+
+```bash
+# 소스 설정 (여기에 수집 대상을 추가합니다)
+scripts/pipeline/sources.json
+
+# 실행 — 기본은 dry run 이라 파일을 건드리지 않습니다
+npm run pipeline -- --max-items 5
+
+# 실제 반영
+ANTHROPIC_API_KEY=... npm run pipeline -- --write --max-items 20
+```
+
+### 흐름
+
+```
+수집 → LLM 추출 → 조립 → 병합 → 검증 → PR
+  │        │         │        │       │
+  │        │         │        │       └ parseDealsFile 재검증 후에만 기록
+  │        │         │        └ 검수 완료 항목은 덮어쓰지 않음
+  │        │         └ id·slug·타임스탬프는 파이프라인이 생성 (모델이 아님)
+  │        └ isDeal / confidence 판정, 저신뢰는 검수 큐로
+  └ robots.txt 준수, 호스트별 레이트리밋, 같은 사이트 링크만
+```
+
+### 설계상 지키는 것
+
+| 항목 | 이유 |
+| --- | --- |
+| **id·slug 는 모델이 아니라 코드가 생성** | 모델에 맡기면 매 실행 값이 달라져 같은 혜택이 중복 등록됩니다 |
+| **검수 완료(`verified`) 항목은 덮어쓰지 않음** | 큐레이터가 고친 값을 크롤러가 매일 되돌리면 아무도 손대지 않게 됩니다 |
+| **모르는 값은 지어내지 않고 검수 큐로** | 가격·종료일을 추측해 넣으면 사용자가 헛걸음합니다 |
+| **`--max-items` 로 LLM 호출 상한** | 수집량이 그대로 과금으로 이어지지 않게 합니다 |
+| **기본이 dry run** | 실수로 `deals.json` 을 덮어쓰는 사고를 막습니다 |
+| **`main` 에 직접 쓰지 않고 PR 생성** | 자동 수집분은 `verified: false` — 사람이 확인 후 머지 |
+
+### 수집 예절 · 안전
+
+- `robots.txt` 를 RFC 9309 규칙(최장일치·Allow 우선·와일드카드·그룹 병합)대로 준수하고,
+  **리다이렉트 홉마다 다시 확인**합니다. `redirect: 'follow'` 로 두면 리다이렉트된 호스트의
+  robots 를 통째로 건너뛰게 됩니다.
+- 사설·루프백·링크로컬(`169.254.169.254` 등) 주소를 차단합니다 (SSRF 방어).
+- 목록의 링크는 **같은 사이트**만 따라갑니다. 소스별 요청 예산 상한도 함께 겁니다.
+- `User-Agent` 에 연락 가능한 URL 을 강제하며, ASCII 가 아니면 실행을 거부합니다
+  (HTTP 헤더는 ByteString 이라 한글이 들어가면 모든 요청이 실패합니다).
+- `Crawl-delay` 를 존중하되 `Retry-After` 에는 상한을 둬, 사이트 한 곳이 실행 전체를
+  붙잡지 못하게 합니다.
+
+### 비용
+
+`claude-opus-5` 기준 입력 $5/1M · 출력 $25/1M 입니다. 시스템 프롬프트가 요청마다 완전히
+동일해 **프롬프트 캐싱**이 걸리고(캐시 읽기는 약 1/10 비용), 실행 요약에 추정 비용이 출력됩니다.
+비용을 더 줄이려면 `DealExtractor` 의 `effort` 를 `medium` 으로 낮추세요.
+
+### 소스 추가하기
+
+`scripts/pipeline/sources.json` 에 항목을 추가하면 코드 수정 없이 동작합니다.
+
+```jsonc
+{
+  "id": "my-source",           // 영소문자·숫자·하이픈. id 생성에 쓰이므로 바꾸지 마세요
+  "name": "소스 표시명",
+  "kind": "html",              // html | rss | fixture
+  "url": "https://example.com/events",
+  "enabled": true,
+  "maxItems": 10,              // 1~100
+  "selectors": {
+    "item": ".event-list li",  // 목록의 각 항목
+    "link": "a",               // 항목 안의 상세 링크
+    "title": ".event-title",
+    "detail": "article"        // 상세 페이지의 본문 영역
+  }
+}
+```
+
+> 수집 대상의 이용약관과 `robots.txt` 를 먼저 확인하세요.
+> 파이프라인이 `robots.txt` 를 지키더라도, 약관상 수집이 금지된 사이트는 별개의 문제입니다.
 
 ---
 

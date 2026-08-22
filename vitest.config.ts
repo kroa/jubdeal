@@ -18,6 +18,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '@pipeline': fileURLToPath(new URL('./scripts/pipeline', import.meta.url)),
     },
   },
   test: {
@@ -38,6 +39,7 @@ export default defineConfig({
         'src/hooks/**/*.ts',
         'src/components/**/*.tsx',
         'src/pages/**/*.ts',
+        'scripts/pipeline/**/*.ts',
       ],
       // 품질 게이트: 커버리지가 아래로 떨어지면 `npm run test:coverage` 가 실패합니다.
       thresholds: {
