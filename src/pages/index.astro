@@ -1,0 +1,42 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import DealBoard from '@/components/DealBoard';
+import DealStats from '@/components/DealStats';
+import { getAllDeals, getGeneratedAt } from '@/lib/deals';
+import { toPulse } from '@/lib/deal-status';
+import { formatKstDateTime } from '@/lib/format';
+
+// 빌드 타임에 deals.json 을 zod 로 검증합니다.
+// 데이터가 스키마를 위반하면 여기서 빌드가 실패합니다.
+const deals = getAllDeals();
+const buildTime = new Date().toISOString();
+
+// 통계 아일랜드에는 계산에 필요한 최소 필드만 넘깁니다.
+// 혜택 전체를 넘기면 목록 아일랜드와 같은 JSON 이 두 번 직렬화됩니다.
+const pulses = deals.map(toPulse);
+---
+
+<BaseLayout>
+  <section class="container hero">
+    <p class="hero__eyebrow">
+      <span aria-hidden="true">🗓️</span>
+      {formatKstDateTime(getGeneratedAt())} 기준
+    </p>
+
+    <h1 class="hero__title">
+      정가로 사면 손해.<br />
+      길에 떨어진 <em>알짜 혜택</em>만 줍자.
+    </h1>
+
+    <p class="hero__desc">
+      무료 증정, 100원 딜, 쿠폰, 캐시백까지. 매일 새로 올라오는 혜택만 걸러서 한 곳에 모았습니다.
+    </p>
+
+    <DealStats pulses={pulses} buildTime={buildTime} client:load />
+  </section>
+
+  <section class="container" aria-labelledby="deal-list-heading">
+    <h2 id="deal-list-heading" class="sr-only">오늘의 혜택 목록</h2>
+    <DealBoard deals={deals} buildTime={buildTime} client:load />
+  </section>
+</BaseLayout>

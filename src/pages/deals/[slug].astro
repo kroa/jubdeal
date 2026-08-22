@@ -1,0 +1,173 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import {
+  DealDetailBadges,
+  DealDetailCta,
+  toBadgeInfo,
+  toCtaInfo,
+} from '@/components/DealDetailStatus';
+import { getAllDeals } from '@/lib/deals';
+import { getDiscountRate } from '@/lib/deal-status';
+import {
+  formatKstDateTime,
+  formatPrice,
+  formatDiscountRate,
+  hasMeaningfulPrice,
+} from '@/lib/format';
+import {
+  CATEGORY_EMOJI,
+  CATEGORY_LABELS,
+  DIFFICULTY_DESCRIPTIONS,
+  DIFFICULTY_LABELS,
+} from '@/types/deal';
+import type { Deal } from '@/types/deal';
+
+export function getStaticPaths() {
+  const buildTime = new Date().toISOString();
+
+  return getAllDeals().map((deal) => ({
+    params: { slug: deal.slug },
+    props: { deal, buildTime },
+  }));
+}
+
+interface Props {
+  deal: Deal;
+  buildTime: string;
+}
+
+const { deal, buildTime } = Astro.props;
+
+// 할인율은 가격만 보는 순수 계산이라 시간에 무관합니다.
+// (시간 의존 값은 전부 아래 아일랜드가 담당합니다.)
+const discount = formatDiscountRate(getDiscountRate(deal.price));
+const showPrice = hasMeaningfulPrice(deal);
+---
+
+<BaseLayout title={deal.title} description={deal.summary}>
+  <article class="container detail">
+    <a href="/" class="detail__back">← 전체 혜택 보기</a>
+
+    <DealDetailBadges info={toBadgeInfo(deal)} buildTime={buildTime} client:load />
+
+    <header>
+      <h1 class="detail__title">{deal.title}</h1>
+      <p class="detail__summary">{deal.summary}</p>
+    </header>
+
+    <div class="detail__panel">
+      <dl class="detail__facts">
+        {
+          showPrice && (
+            <div class="detail__fact">
+              <dt>가격</dt>
+              <dd>
+                {discount && <span style="color: var(--danger)">{discount} </span>}
+                {formatPrice(deal.price.final)}
+                {typeof deal.price.original === 'number' &&
+                  deal.price.original > deal.price.final && (
+                    <span style="color: var(--text-muted); text-decoration: line-through; font-weight: 400">
+                      {' '}
+                      {formatPrice(deal.price.original)}
+                    </span>
+                  )}
+              </dd>
+            </div>
+          )
+        }
+
+        <div class="detail__fact">
+          <dt>브랜드</dt>
+          <dd>{deal.brand.name}</dd>
+        </div>
+
+        <div class="detail__fact">
+          <dt>카테고리</dt>
+          <dd>
+            <span aria-hidden="true">{CATEGORY_EMOJI[deal.category]}</span>
+            {CATEGORY_LABELS[deal.category]}
+          </dd>
+        </div>
+
+        <div class="detail__fact">
+          <dt>참여 난이도</dt>
+          <dd>
+            {DIFFICULTY_LABELS[deal.difficulty]}
+            <span style="color: var(--text-muted); font-weight: 400">
+              · {DIFFICULTY_DESCRIPTIONS[deal.difficulty]}
+            </span>
+          </dd>
+        </div>
+
+        <div class="detail__fact">
+          <dt>진행 기간</dt>
+          <dd>
+            {formatKstDateTime(deal.period.startAt)}
+            {deal.period.endAt ? ` ~ ${formatKstDateTime(deal.period.endAt)}` : ' ~ 상시'}
+          </dd>
+        </div>
+
+        {
+          typeof deal.limit.remaining === 'number' && (
+            <div class="detail__fact">
+              <dt>남은 수량</dt>
+              <dd>
+                {deal.limit.remaining === 0
+                  ? '소진'
+                  : `${deal.limit.remaining.toLocaleString('ko-KR')}개`}
+              </dd>
+            </div>
+          )
+        }
+      </dl>
+    </div>
+
+    {deal.description && <p class="detail__summary">{deal.description}</p>}
+
+    {
+      deal.howTo && deal.howTo.length > 0 && (
+        <section class="detail__panel">
+          <h2 class="detail__section-title">참여 방법</h2>
+          <ol class="detail__steps">
+            {deal.howTo.map((step) => (
+              <li>{step}</li>
+            ))}
+          </ol>
+        </section>
+      )
+    }
+
+    {
+      deal.caution && deal.caution.length > 0 && (
+        <section class="detail__panel">
+          <h2 class="detail__section-title">확인하세요</h2>
+          <ul class="detail__cautions">
+            {deal.caution.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    <DealDetailCta info={toCtaInfo(deal)} buildTime={buildTime} client:load />
+
+    <p class="detail__source">
+      출처: {deal.source.name}
+      {
+        deal.source.url && (
+          <>
+            {' '}
+            ·{' '}
+            <a href={deal.source.url} rel="nofollow noopener">
+              원문 보기
+            </a>
+          </>
+        )
+      }
+      <br />
+      마지막 확인: {formatKstDateTime(deal.meta.updatedAt)}
+      {deal.meta.verified ? ' · 사람이 검수한 정보입니다' : ' · 자동 수집 정보입니다'}
+    </p>
+  </article>
+</BaseLayout>

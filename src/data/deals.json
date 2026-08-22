@@ -1,0 +1,513 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-22T06:00:00+09:00",
+  "deals": [
+    {
+      "id": "dl_2026_0820_onthecafe_free_americano",
+      "slug": "onthecafe-free-americano",
+      "title": "온더카페 아메리카노 1잔 무료 쿠폰",
+      "summary": "앱 신규 가입만 하면 아메리카노 톨 사이즈 1잔이 바로 쿠폰함에 들어옵니다.",
+      "description": "온더카페 앱을 처음 설치하고 회원가입을 완료하면 즉시 무료 음료 쿠폰이 지급됩니다. 별도의 결제수단 등록 없이 매장에서 바로 사용할 수 있습니다.",
+      "brand": {
+        "name": "온더카페"
+      },
+      "category": "cafe",
+      "dealType": "free",
+      "difficulty": "easy",
+      "price": {
+        "original": 4500,
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false,
+        "perPersonLimit": 1
+      },
+      "period": {
+        "startAt": "2026-08-01T00:00:00+09:00",
+        "endAt": "2026-09-30T23:59:59+09:00"
+      },
+      "link": {
+        "url": "https://example.com/deals/onthecafe-free-americano",
+        "label": "쿠폰 받으러 가기"
+      },
+      "howTo": [
+        "온더카페 앱 설치",
+        "휴대폰 번호로 회원가입",
+        "쿠폰함에서 무료 음료 쿠폰 확인",
+        "매장에서 바코드 제시"
+      ],
+      "caution": ["1인 1회 한정", "일부 매장 사용 불가"],
+      "tags": ["신규가입", "무료음료", "카페"],
+      "source": {
+        "name": "브랜드 공식 앱 공지",
+        "url": "https://example.com/source/onthecafe",
+        "collectedAt": "2026-08-22T05:30:00+09:00",
+        "method": "manual"
+      },
+      "meta": {
+        "featured": true,
+        "verified": true,
+        "updatedAt": "2026-08-22T05:30:00+09:00"
+      }
+    },
+    {
+      "id": "dl_2026_0820_freshtable_penny_mealkit",
+      "slug": "freshtable-penny-mealkit",
+      "title": "프레시테이블 첫 주문 밀키트 100원 딜",
+      "summary": "첫 주문 한정으로 인기 밀키트 2인분을 단돈 100원에. 배송비까지 무료입니다.",
+      "description": "신규 고객 대상 프로모션입니다. 장바구니에 대상 밀키트를 담고 프로모션 코드를 입력하면 100원에 결제됩니다.",
+      "brand": {
+        "name": "프레시테이블"
+      },
+      "category": "food",
+      "dealType": "penny",
+      "difficulty": "normal",
+      "price": {
+        "original": 18900,
+        "final": 100,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": true,
+        "quantity": 5000,
+        "remaining": 0,
+        "perPersonLimit": 1
+      },
+      "period": {
+        "startAt": "2026-08-14T10:00:00+09:00",
+        "endAt": "2026-08-20T23:59:59+09:00"
+      },
+      "link": {
+        "url": "https://example.com/deals/freshtable-penny-mealkit",
+        "label": "100원에 주문하기"
+      },
+      "howTo": ["앱 설치 후 신규 가입", "대상 밀키트 장바구니 담기", "결제 시 프로모션 코드 입력"],
+      "caution": ["신규 회원 전용", "수량 소진 시 조기 종료"],
+      "tags": ["100원딜", "밀키트", "첫주문", "무료배송"],
+      "source": {
+        "name": "공식 이벤트 페이지",
+        "url": "https://example.com/source/freshtable",
+        "collectedAt": "2026-08-21T05:30:00+09:00",
+        "method": "manual"
+      },
+      "meta": {
+        "featured": false,
+        "verified": true,
+        "updatedAt": "2026-08-21T05:30:00+09:00"
+      }
+    },
+    {
+      "id": "dl_2026_0820_livinghouse_summer_clearance",
+      "slug": "livinghouse-summer-clearance",
+      "title": "리빙하우스 여름 재고 정리 최대 70% 할인",
+      "summary": "시즌 오프 상품을 최대 70%까지. 3만원 이상 구매 시 배송비도 무료입니다.",
+      "brand": {
+        "name": "리빙하우스"
+      },
+      "category": "shopping",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "original": 49000,
+        "final": 14700,
+        "currency": "KRW",
+        "discountRate": 70
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-10T00:00:00+09:00",
+        "endAt": "2026-08-23T23:59:59+09:00"
+      },
+      "link": {
+        "url": "https://example.com/deals/livinghouse-summer-clearance",
+        "label": "할인가 보러 가기"
+      },
+      "howTo": ["기획전 페이지 접속", "대상 상품 담기", "자동 할인 적용 확인"],
+      "tags": ["시즌오프", "생활용품", "무료배송"],
+      "source": {
+        "name": "공식몰 기획전",
+        "collectedAt": "2026-08-22T05:30:00+09:00",
+        "method": "crawler",
+        "confidence": 0.94
+      },
+      "meta": {
+        "verified": true,
+        "updatedAt": "2026-08-22T05:30:00+09:00"
+      }
+    },
+    {
+      "id": "dl_2026_0820_dailymart_welcome_coupon",
+      "slug": "dailymart-welcome-coupon",
+      "title": "데일리마트 앱 상시 2,000원 할인 쿠폰",
+      "summary": "매주 월요일 자정에 리셋되는 상시 쿠폰. 1만원 이상 구매 시 바로 적용됩니다.",
+      "brand": {
+        "name": "데일리마트"
+      },
+      "category": "convenience",
+      "dealType": "coupon",
+      "difficulty": "easy",
+      "price": {
+        "original": 10000,
+        "final": 8000,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false,
+        "perPersonLimit": 1
+      },
+      "period": {
+        "startAt": "2026-01-01T00:00:00+09:00",
+        "endAt": null
+      },
+      "link": {
+        "url": "https://example.com/deals/dailymart-welcome-coupon",
+        "label": "쿠폰 다운로드"
+      },
+      "howTo": ["앱 내 쿠폰함 진입", "주간 쿠폰 다운로드", "결제 시 적용"],
+      "tags": ["상시", "편의점", "주간쿠폰"],
+      "source": {
+        "name": "브랜드 공식 앱",
+        "collectedAt": "2026-08-22T05:30:00+09:00",
+        "method": "manual"
+      },
+      "meta": {
+        "verified": true,
+        "updatedAt": "2026-08-18T09:00:00+09:00"
+      }
+    },
+    {
+      "id": "dl_2026_0820_stepwork_daily_point",
+      "slug": "stepwork-daily-point",
+      "title": "스텝워크 만보기 하루 최대 200포인트",
+      "summary": "걷기만 해도 쌓이는 포인트. 현금처럼 쓸 수 있고 출석 체크 보너스도 있습니다.",
+      "brand": {
+        "name": "스텝워크"
+      },
+      "category": "app",
+      "dealType": "point",
+      "difficulty": "easy",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-03-01T00:00:00+09:00",
+        "endAt": null
+      },
+      "link": {
+        "url": "https://example.com/deals/stepwork-daily-point",
+        "label": "앱 받으러 가기"
+      },
+      "howTo": ["앱 설치 및 걸음 수 권한 허용", "하루 1만보 달성", "포인트 적립 확인"],
+      "tags": ["앱테크", "상시", "포인트"],
+      "source": {
+        "name": "앱 스토어 설명",
+        "collectedAt": "2026-08-22T05:30:00+09:00",
+        "method": "crawler",
+        "confidence": 0.88
+      },
+      "meta": {
+        "verified": true,
+        "updatedAt": "2026-08-17T12:00:00+09:00"
+      }
+    },
+    {
+      "id": "dl_2026_0820_sweetbite_penny_dessert",
+      "slug": "sweetbite-penny-dessert",
+      "title": "스위트바이트 시그니처 디저트 100원",
+      "summary": "음료 주문 없이 디저트 단품만 100원. 하루 매장당 50개 선착순입니다.",
+      "brand": {
+        "name": "스위트바이트"
+      },
+      "category": "cafe",
+      "dealType": "penny",
+      "difficulty": "easy",
+      "price": {
+        "original": 5800,
+        "final": 100,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": true,
+        "quantity": 50,
+        "remaining": 12,
+        "perPersonLimit": 1
+      },
+      "period": {
+        "startAt": "2026-08-18T09:00:00+09:00",
+        "endAt": "2026-08-22T21:00:00+09:00"
+      },
+      "link": {
+        "url": "https://example.com/deals/sweetbite-penny-dessert",
+        "label": "매장 확인하기"
+      },
+      "howTo": ["앱에서 참여 매장 확인", "쿠폰 발급", "매장 방문 후 제시"],
+      "caution": ["매장당 일 50개 한정", "포장만 가능"],
+      "tags": ["100원딜", "디저트", "선착순"],
+      "source": {
+        "name": "공식 SNS 공지",
+        "collectedAt": "2026-08-22T05:30:00+09:00",
+        "method": "llm",
+        "confidence": 0.91
+      },
+      "meta": {
+        "verified": true,
+        "updatedAt": "2026-08-22T05:30:00+09:00"
+      }
+    },
+    {
+      "id": "dl_2026_0820_movieplus_ticket_giveaway",
+      "slug": "movieplus-ticket-giveaway",
+      "title": "무비플러스 영화 예매권 2매 응모 이벤트",
+      "summary": "댓글 응모만 하면 추첨으로 500명에게 예매권 2매를 증정합니다.",
+      "brand": {
+        "name": "무비플러스"
+      },
+      "category": "culture",
+      "dealType": "giveaway",
+      "difficulty": "normal",
+      "price": {
+        "original": 30000,
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false,
+        "quantity": 500,
+        "perPersonLimit": 1
+      },
+      "period": {
+        "startAt": "2026-08-15T00:00:00+09:00",
+        "endAt": "2026-09-15T23:59:59+09:00"
+      },
+      "link": {
+        "url": "https://example.com/deals/movieplus-ticket-giveaway",
+        "label": "응모하러 가기"
+      },
+      "howTo": ["이벤트 페이지 접속", "응모 폼 작성", "SNS 공유 시 당첨 확률 2배"],
+      "caution": ["당첨자 개별 통보", "중복 응모 불가"],
+      "tags": ["응모", "영화", "추첨"],
+      "source": {
+        "name": "공식 이벤트 페이지",
+        "collectedAt": "2026-08-22T05:30:00+09:00",
+        "method": "manual"
+      },
+      "meta": {
+        "verified": true,
+        "updatedAt": "2026-08-19T15:00:00+09:00"
+      }
+    },
+    {
+      "id": "dl_2026_0820_moneyplus_cashback",
+      "slug": "moneyplus-card-cashback",
+      "title": "머니플러스 카드 실적 달성 시 3만원 캐시백",
+      "summary": "신규 발급 후 2개월간 60만원 사용하면 현금성 캐시백 3만원을 지급합니다.",
+      "brand": {
+        "name": "머니플러스"
+      },
+      "category": "finance",
+      "dealType": "cashback",
+      "difficulty": "hard",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false,
+        "perPersonLimit": 1
+      },
+      "period": {
+        "startAt": "2026-07-01T00:00:00+09:00",
+        "endAt": "2026-10-31T23:59:59+09:00"
+      },
+      "link": {
+        "url": "https://example.com/deals/moneyplus-card-cashback",
+        "label": "조건 확인하기"
+      },
+      "howTo": ["제휴 링크로 카드 신규 발급", "2개월 내 60만원 이상 사용", "익월 말 캐시백 지급"],
+      "caution": ["최근 6개월 내 해당 카드사 이용 이력이 없어야 함", "연회비 별도"],
+      "tags": ["캐시백", "카드", "고수용"],
+      "source": {
+        "name": "카드사 공식 안내",
+        "collectedAt": "2026-08-22T05:30:00+09:00",
+        "method": "manual"
+      },
+      "meta": {
+        "verified": true,
+        "updatedAt": "2026-08-16T10:00:00+09:00"
+      }
+    },
+    {
+      "id": "dl_2026_0820_beautylab_sample_kit",
+      "slug": "beautylab-sample-kit",
+      "title": "뷰티랩 신제품 샘플 키트 무료 배송",
+      "summary": "신제품 체험단 대상 무료 샘플 키트. 배송비까지 브랜드 부담입니다.",
+      "brand": {
+        "name": "뷰티랩"
+      },
+      "category": "beauty",
+      "dealType": "free",
+      "difficulty": "normal",
+      "price": {
+        "original": 12000,
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": true,
+        "quantity": 2000,
+        "remaining": 0,
+        "perPersonLimit": 1
+      },
+      "period": {
+        "startAt": "2026-08-12T10:00:00+09:00",
+        "endAt": "2026-09-26T23:59:59+09:00"
+      },
+      "link": {
+        "url": "https://example.com/deals/beautylab-sample-kit",
+        "label": "이벤트 보기"
+      },
+      "howTo": ["체험단 신청 폼 작성", "배송지 입력", "선착순 마감 전 제출"],
+      "tags": ["무료", "샘플", "체험단"],
+      "source": {
+        "name": "브랜드 공식몰",
+        "collectedAt": "2026-08-22T05:30:00+09:00",
+        "method": "crawler",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": true,
+        "updatedAt": "2026-08-22T05:30:00+09:00"
+      }
+    },
+    {
+      "id": "dl_2026_0820_greenmart_app_install",
+      "slug": "greenmart-app-install-discount",
+      "title": "그린마트 앱 설치하고 첫 결제 5,000원 할인",
+      "summary": "앱 최초 설치 회원 대상 즉시 할인이 적용됩니다.",
+      "brand": {
+        "name": "그린마트"
+      },
+      "category": "app",
+      "dealType": "discount",
+      "difficulty": "normal",
+      "price": {
+        "original": 15000,
+        "final": 10000,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": true,
+        "quantity": 10000,
+        "remaining": 0,
+        "perPersonLimit": 1
+      },
+      "period": {
+        "startAt": "2026-08-11T00:00:00+09:00",
+        "endAt": "2026-08-21T23:59:59+09:00"
+      },
+      "link": {
+        "url": "https://example.com/deals/greenmart-app-install-discount",
+        "label": "앱 설치하기"
+      },
+      "howTo": ["앱 설치", "신규 회원가입", "첫 결제 시 자동 할인"],
+      "tags": ["앱설치", "첫결제"],
+      "source": {
+        "name": "공식 앱 배너",
+        "collectedAt": "2026-08-22T05:30:00+09:00",
+        "method": "llm",
+        "confidence": 0.86
+      },
+      "meta": {
+        "verified": true,
+        "updatedAt": "2026-08-22T05:30:00+09:00"
+      }
+    },
+    {
+      "id": "dl_2026_0820_bookflow_open_event",
+      "slug": "bookflow-open-event",
+      "title": "북플로우 오픈 기념 전자책 3권 무료",
+      "summary": "8월 25일 오픈과 동시에 선착순 1만명에게 전자책 3권 이용권을 드립니다.",
+      "brand": {
+        "name": "북플로우"
+      },
+      "category": "culture",
+      "dealType": "free",
+      "difficulty": "easy",
+      "price": {
+        "original": 27000,
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": true,
+        "quantity": 10000,
+        "perPersonLimit": 1
+      },
+      "period": {
+        "startAt": "2026-08-25T10:00:00+09:00",
+        "endAt": "2026-09-05T23:59:59+09:00"
+      },
+      "link": {
+        "url": "https://example.com/deals/bookflow-open-event",
+        "label": "오픈 알림 신청"
+      },
+      "howTo": ["사전 알림 신청", "오픈 당일 앱 접속", "이용권 받기"],
+      "tags": ["전자책", "선착순"],
+      "source": {
+        "name": "사전 오픈 페이지",
+        "collectedAt": "2026-08-22T05:30:00+09:00",
+        "method": "manual"
+      },
+      "meta": {
+        "verified": true,
+        "updatedAt": "2026-08-19T18:00:00+09:00"
+      }
+    },
+    {
+      "id": "dl_2026_0805_quickfood_summer_deal",
+      "slug": "quickfood-summer-deal",
+      "title": "퀵푸드 한여름 배달비 0원 이벤트",
+      "summary": "여름 시즌 한정으로 배달비를 받지 않는 프로모션입니다.",
+      "brand": {
+        "name": "퀵푸드"
+      },
+      "category": "food",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "original": 3000,
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-01T00:00:00+09:00",
+        "endAt": "2026-08-10T23:59:59+09:00"
+      },
+      "link": {
+        "url": "https://example.com/deals/quickfood-summer-deal",
+        "label": "이벤트 보기"
+      },
+      "tags": ["배달비무료"],
+      "source": {
+        "name": "공식 앱 공지",
+        "collectedAt": "2026-08-11T05:30:00+09:00",
+        "method": "crawler",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": true,
+        "updatedAt": "2026-08-11T05:30:00+09:00"
+      }
+    }
+  ]
+}

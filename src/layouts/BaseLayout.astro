@@ -1,0 +1,102 @@
+---
+import ThemeToggle from '@/components/ThemeToggle';
+import '@/styles/global.css';
+import '@/styles/components.css';
+
+interface Props {
+  /** 페이지 제목. 생략하면 사이트명만 씁니다(홈). */
+  title?: string;
+  description?: string;
+  /** 검색엔진 색인 제외 여부 (404 등) */
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description = '정가 주고 사지 마세요. 매일 새로 올라오는 무료·할인·쿠폰·100원딜 혜택만 모아 보는 줍딜.',
+  noindex = false,
+} = Astro.props;
+
+// CI가 미설정 저장소 변수를 빈 문자열로 주입할 수 있어, 빈 값·공백을 모두 폴백 처리합니다.
+const siteName = (import.meta.env.PUBLIC_SITE_NAME ?? '').trim() || '줍딜';
+
+// 홈은 사이트명만 씁니다. 페이지가 제목을 하드코딩해 두면
+// 사이트명을 바꿨을 때 "줍딜 | 줍딜라이프" 처럼 이름이 겹칩니다.
+const pageTitle = title && title !== siteName ? `${title} | ${siteName}` : siteName;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://jubdeal.pages.dev');
+const year = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical.href} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical.href} />
+    <meta property="og:locale" content="ko_KR" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <meta name="theme-color" content="#4f46e5" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0b0b0e" media="(prefers-color-scheme: dark)" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    {/* 화면 깜빡임(FOUC) 방지: 페인트 전에 저장된 테마를 적용합니다. */}
+    <script is:inline>
+      (function () {
+        try {
+          const stored = localStorage.getItem('jubdeal-theme');
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          document.documentElement.dataset.theme =
+            stored === 'light' || stored === 'dark' ? stored : prefersDark ? 'dark' : 'light';
+        } catch {
+          /* localStorage 접근 불가(프라이빗 모드 등) 시 시스템 설정을 그대로 사용 */
+        }
+      })();
+    </script>
+  </head>
+
+  <body>
+    <a href="#main" class="sr-only">본문으로 건너뛰기</a>
+
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <a href="/" class="logo" aria-label="줍딜 홈으로">
+          <span class="logo__mark" aria-hidden="true">줍</span>
+          <span>줍딜</span>
+        </a>
+
+        <nav class="site-nav" aria-label="주요 메뉴">
+          <a href="/">오늘의 혜택</a>
+          <a href="/about">줍딜이란</a>
+          <ThemeToggle client:load />
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <p class="site-footer__disclaimer">
+          줍딜은 공개된 혜택 정보를 모아 소개하는 서비스입니다. 실제 조건·수량·기간은 각 브랜드 공식
+          페이지 기준이며, 방문 시점에 따라 달라질 수 있습니다. 참여 전 원문을 꼭 확인해 주세요.
+        </p>
+        <p>&copy; {year} 줍딜</p>
+      </div>
+    </footer>
+  </body>
+</html>

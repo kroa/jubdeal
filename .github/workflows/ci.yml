@@ -1,0 +1,252 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+# 같은 브랜치에서 새 푸시가 들어오면 이전 실행을 취소합니다.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  # main 푸시는 배포까지 이어지므로 중간에 취소하면 Pages 업로드가 깨질 수 있습니다.
+  # 이전 실행 취소는 PR 에서만 합니다.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+# 기본 권한을 최소로 제한합니다.
+permissions:
+  contents: read
+
+env:
+  NODE_ENV: test
+  # 상태 계산이 KST 기준이므로 러너 타임존을 고정해 빌드 산출물을 결정적으로 만듭니다.
+  TZ: Asia/Seoul
+
+jobs:
+  # ==========================================================================
+  #  1) 품질 게이트 — Lint / Typecheck / Test
+  #     이 잡이 실패하면 build·deploy 잡은 아예 실행되지 않습니다.
+  # ==========================================================================
+  quality:
+    name: 품질 게이트 (Lint · Typecheck · Test)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: 소스 체크아웃
+        uses: actions/checkout@v4
+
+      - name: Node.js 설치
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: 의존성 설치 (lockfile 고정)
+        run: npm ci
+
+      - name: Astro 타입 생성
+        run: npx astro sync
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: 포맷 검사
+        run: npm run format:check
+
+      - name: 유닛 테스트 + 커버리지
+        run: npm run test:coverage
+
+      - name: 커버리지 리포트 업로드
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage/
+          retention-days: 7
+          if-no-files-found: ignore
+
+  # ==========================================================================
+  #  2) 보안 검사 — 민감정보 유출 / 취약점
+  # ==========================================================================
+  security:
+    name: 보안 검사
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: 소스 체크아웃
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Node.js 설치
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: 의존성 설치
+        run: npm ci
+
+      - name: 커밋된 환경변수 파일 차단
+        run: |
+          pattern='(^|/)\.env($|\.)|\.secrets?$|\.pem$|\.key$|\.p12$|\.pfx$|\.keystore$|\.jks$|\.token$'
+          pattern="$pattern"'|(^|/)\.dev\.vars($|\.)|(^|/)\.npmrc$|(^|/)credentials\.json$|(^|/)service-account.*\.json$'
+          pattern="$pattern"'|(^|/)id_rsa|(^|/)id_ed25519|(^|/)\.htpasswd$'
+          tracked=$(git ls-files | grep -E "$pattern" | grep -vE '\.example$' || true)
+          if [ -n "$tracked" ]; then
+            echo "::error::민감정보 파일이 저장소에 커밋되어 있습니다:"
+            echo "$tracked"
+            exit 1
+          fi
+          echo "✅ 커밋된 민감정보 파일 없음"
+
+      - name: 소스코드 내 하드코딩된 시크릿 스캔
+        run: |
+          # 흔한 API 키 / private key / 자격증명 포함 DB URL 패턴을 검사합니다.
+          # .env.example 은 "형식 안내" 문서라 제외하고, 바로 아래 스텝에서 따로 검사합니다.
+          patterns='sk-ant-api[0-9]{2}-[A-Za-z0-9_-]{20,}|AKIA[0-9A-Z]{16}|ghp_[A-Za-z0-9]{36}|-----BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY-----|postgres(ql)?://[^[:space:]:]+:[^[:space:]@]+@'
+          if grep -rInE "$patterns" \
+              --exclude-dir=node_modules --exclude-dir=.git \
+              --exclude-dir=dist --exclude-dir=coverage \
+              --exclude=package-lock.json --exclude=.env.example . ; then
+            echo "::error::소스코드에 시크릿으로 보이는 문자열이 있습니다. 환경변수로 옮기세요."
+            exit 1
+          fi
+          echo "✅ 하드코딩된 시크릿 없음"
+
+      - name: .env.example 에 실제 값이 없는지 검사
+        run: |
+          # 키 이름으로만 판단하면 이름이 다른 시크릿을 놓칩니다.
+          # PUBLIC_ (브라우저 노출용 공개 값)과 아래 화이트리스트를 제외한
+          # **모든** 항목이 빈 값이어야 합니다.
+          allowlist='^[0-9]+:(LLM_MODEL)='
+          filled=$(grep -nE '^[A-Z0-9_]+=.+' .env.example \
+                   | grep -vE '^[0-9]+:PUBLIC_' \
+                   | grep -vE "$allowlist" \
+                   | grep -vE '=(""|'"''"')[[:space:]]*$' || true)
+          if [ -n "$filled" ]; then
+            echo "::error::.env.example 에 실제 값으로 보이는 항목이 있습니다. 빈 값으로 바꾸세요:"
+            echo "$filled"
+            exit 1
+          fi
+          echo "✅ .env.example 은 placeholder만 포함"
+
+      - name: 의존성 취약점 점검
+        # 배포 산출물에 실제로 포함되는 런타임 의존성만 차단 기준으로 삼습니다.
+        run: npm audit --omit=dev --audit-level=high
+
+      - name: 개발 의존성 취약점 점검 (경고만)
+        continue-on-error: true
+        run: npm audit --audit-level=high
+
+  # ==========================================================================
+  #  3) 빌드 — 품질 게이트와 보안 검사를 모두 통과해야 실행됩니다.
+  # ==========================================================================
+  build:
+    name: 빌드
+    needs: [quality, security]
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: 소스 체크아웃
+        uses: actions/checkout@v4
+
+      - name: Node.js 설치
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: 의존성 설치
+        run: npm ci
+
+      - name: 정적 사이트 빌드
+        run: npm run build
+        env:
+          NODE_ENV: production
+          # 운영 값은 GitHub Secrets/Variables 에서 주입합니다.
+          # (PUBLIC_ 값은 번들에 포함되므로 비밀 값을 넣지 마세요.)
+          # 미설정 저장소 변수는 빈 문자열로 주입되어 <title>/og:site_name 을 깨뜨립니다.
+          PUBLIC_SITE_URL: ${{ vars.PUBLIC_SITE_URL || 'https://jubdeal.pages.dev' }}
+          PUBLIC_SITE_NAME: ${{ vars.PUBLIC_SITE_NAME || '줍딜' }}
+
+      - name: 빌드 산출물 검증
+        env:
+          # 빌드에 주입한 값과 **같은 소스·같은 폴백**으로 기대값을 만듭니다.
+          # 여기에 사이트명을 하드코딩하면 vars.PUBLIC_SITE_NAME 을 설정하는 순간
+          # 정상 빌드인데도 게이트가 막습니다.
+          EXPECTED_SITE_NAME: ${{ vars.PUBLIC_SITE_NAME || '줍딜' }}
+        run: |
+          test -f dist/index.html || { echo "::error::dist/index.html 이 없습니다"; exit 1; }
+          test -f dist/404.html   || { echo "::error::dist/404.html 이 없습니다"; exit 1; }
+          test -f dist/robots.txt || { echo "::error::dist/robots.txt 이 없습니다"; exit 1; }
+
+          # 이 결함은 CI 환경변수 주입에서만 재현되어 로컬 빌드로는 잡히지 않습니다.
+          grep -qF "<title>${EXPECTED_SITE_NAME}</title>" dist/index.html             || { echo "::error::홈 <title>이 '${EXPECTED_SITE_NAME}' 이 아닙니다 (사이트명 환경변수를 확인하세요)"; exit 1; }
+          grep -qF "og:site_name\" content=\"${EXPECTED_SITE_NAME}\"" dist/index.html             || { echo "::error::og:site_name 이 '${EXPECTED_SITE_NAME}' 이 아닙니다"; exit 1; }
+
+          echo "✅ 빌드 산출물 확인 ($(find dist -type f | wc -l) 개 파일)"
+
+      - name: 빌드 결과 업로드
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+          retention-days: 7
+
+  # ==========================================================================
+  #  4) 배포 — main 브랜치 푸시에서만, 빌드 성공 시에만 실행됩니다.
+  #
+  #  Cloudflare Pages "Git 연동" 방식을 쓰는 경우 이 잡은 자동으로 건너뜁니다
+  #  (시크릿 미설정 시 skip). Direct Upload 방식으로 테스트 통과분만
+  #  배포하려면 아래 시크릿을 등록하세요:
+  #    - CLOUDFLARE_API_TOKEN
+  #    - CLOUDFLARE_ACCOUNT_ID
+  #  자세한 내용은 README 의 "배포" 섹션을 참고하세요.
+  # ==========================================================================
+  deploy:
+    name: Cloudflare Pages 배포
+    needs: [build]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    permissions:
+      contents: read
+      deployments: write
+
+    steps:
+      - name: 배포 자격증명 확인
+        id: creds
+        env:
+          CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -n "$CF_API_TOKEN" ] && [ -n "$CF_ACCOUNT_ID" ]; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Cloudflare 시크릿이 없어 Direct Upload 배포를 건너뜁니다. (Git 연동 방식이라면 정상입니다)"
+          fi
+
+      - name: 빌드 결과 내려받기
+        if: steps.creds.outputs.configured == 'true'
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+
+      - name: Cloudflare Pages 로 배포
+        if: steps.creds.outputs.configured == 'true'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=jubdeal --branch=main

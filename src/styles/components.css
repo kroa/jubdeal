@@ -1,0 +1,778 @@
+/* ==========================================================================
+   줍딜(JubDeal) 컴포넌트 스타일
+   global.css 의 토큰만 사용합니다 (하드코딩 색상 금지).
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   헤더 / 푸터
+   -------------------------------------------------------------------------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  height: 62px;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.logo__mark {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: var(--brand-500);
+  color: var(--brand-contrast);
+  font-size: 0.95rem;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.site-nav a:hover {
+  color: var(--text);
+}
+
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  font-size: 1rem;
+  cursor: pointer;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
+}
+
+.theme-toggle:hover {
+  background: var(--surface-hover);
+  border-color: var(--border-strong);
+}
+
+/*
+  실제 테마는 <head> 인라인 스크립트가 페인트 전에 정합니다.
+  아이콘을 React state 로 그리면 JS 도착 전까지 어긋나므로,
+  두 상태를 모두 렌더해 두고 global.css 와 같은 판정 셀렉터로 하나만 노출합니다.
+*/
+.theme-toggle__face--dark {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .theme-toggle__face--light {
+    display: none;
+  }
+
+  :root:not([data-theme='light']) .theme-toggle__face--dark {
+    display: inline;
+  }
+
+  :root:not([data-theme='light']) .sr-only.theme-toggle__face--dark {
+    display: inline;
+    position: absolute;
+  }
+}
+
+:root[data-theme='dark'] .theme-toggle__face--light {
+  display: none;
+}
+
+:root[data-theme='dark'] .theme-toggle__face--dark {
+  display: inline;
+}
+
+:root[data-theme='dark'] .sr-only.theme-toggle__face--dark {
+  display: inline;
+  position: absolute;
+}
+
+.site-footer {
+  margin-top: var(--space-8);
+  padding-block: var(--space-6);
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-5);
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-footer__disclaimer {
+  max-width: 62ch;
+  line-height: 1.7;
+}
+
+/* --------------------------------------------------------------------------
+   히어로
+   -------------------------------------------------------------------------- */
+
+.hero {
+  padding-block: var(--space-8) var(--space-6);
+  text-align: center;
+}
+
+.hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  background: var(--brand-50);
+  color: var(--brand-700);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.hero__title {
+  margin-top: var(--space-4);
+  font-size: clamp(1.85rem, 5.5vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+}
+
+.hero__title em {
+  font-style: normal;
+  background: linear-gradient(105deg, var(--brand-500), var(--danger));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero__desc {
+  margin-top: var(--space-3);
+  margin-inline: auto;
+  max-width: 46ch;
+  color: var(--text-secondary);
+  font-size: clamp(0.95rem, 2.4vw, 1.075rem);
+  text-wrap: pretty;
+}
+
+.hero__stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.stat {
+  min-width: 104px;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.stat__value {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.stat__label {
+  color: var(--text-muted);
+  font-size: 0.775rem;
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   필터 바
+   -------------------------------------------------------------------------- */
+
+.filter-bar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.filter-bar__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.filter-bar__row--top {
+  justify-content: space-between;
+}
+
+.filter-bar__search {
+  position: relative;
+  flex: 1 1 260px;
+  display: flex;
+  align-items: center;
+}
+
+.filter-bar__search-icon {
+  position: absolute;
+  left: 12px;
+  font-size: 0.9rem;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.filter-bar__input {
+  width: 100%;
+  padding: 0.62rem 0.9rem 0.62rem 2.25rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface-sunken);
+  font-size: 0.92rem;
+  transition:
+    border-color var(--transition),
+    background-color var(--transition);
+}
+
+.filter-bar__input::placeholder {
+  color: var(--text-muted);
+}
+
+.filter-bar__input:focus {
+  background: var(--surface);
+  border-color: var(--brand-500);
+  outline: none;
+}
+
+.filter-bar__select {
+  padding: 0.62rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface-sunken);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/*
+  <legend> 은 fieldset 의 flex/grid 아이템이 되지 않아 width 지정이 무시됩니다.
+  라벨을 문서 흐름에서 띄우고 fieldset 에 좌측 패딩으로 컬럼을 확보합니다.
+*/
+.filter-group {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.filter-group__label {
+  padding: 0;
+  color: var(--text-muted);
+  font-size: 0.775rem;
+  font-weight: 700;
+  line-height: 1.9;
+}
+
+.filter-group__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+@media (min-width: 640px) {
+  .filter-group {
+    padding-left: 76px;
+  }
+
+  .filter-group__label {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 68px;
+  }
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.34rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: var(--surface);
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition),
+    color var(--transition);
+}
+
+.chip:hover:not(:disabled) {
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+
+/* aria-disabled 칩 — 포커스를 잃지 않도록 실제 disabled 를 쓰지 않습니다. */
+.chip[aria-disabled='true'] {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.chip[aria-disabled='true']:hover {
+  border-color: var(--border);
+  color: var(--text-secondary);
+}
+
+.chip--active {
+  background: var(--brand-500);
+  border-color: var(--brand-500);
+  color: var(--brand-contrast);
+}
+
+.chip--active:hover {
+  color: var(--brand-contrast);
+}
+
+.chip__count {
+  font-size: 0.7rem;
+  font-weight: 700;
+  opacity: 0.7;
+  font-variant-numeric: tabular-nums;
+}
+
+.filter-bar__row--bottom {
+  justify-content: space-between;
+  padding-top: var(--space-3);
+  border-top: 1px dashed var(--border);
+}
+
+.filter-bar__toggles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.filter-bar__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.filter-bar__toggle input {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--brand-500);
+  cursor: pointer;
+}
+
+.filter-bar__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.filter-bar__count {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.filter-bar__count strong {
+  color: var(--brand-500);
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --------------------------------------------------------------------------
+   혜택 그리드 / 카드
+   -------------------------------------------------------------------------- */
+
+.deal-board {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.deal-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  margin: 0;
+}
+
+@media (min-width: 600px) {
+  .deal-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 980px) {
+  .deal-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.deal-grid__item {
+  display: flex;
+}
+
+/* 필터 초기화 후 포커스를 받는 컨테이너 — 마우스 조작 시엔 테두리를 숨깁니다. */
+.deal-grid:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.deal-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    border-color var(--transition);
+}
+
+.deal-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-lg);
+}
+
+.deal-card--closed {
+  opacity: 0.6;
+}
+
+.deal-card--closed:hover {
+  transform: none;
+}
+
+.deal-card__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.deal-card__title {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.deal-card__link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.deal-card {
+  position: relative;
+}
+
+.deal-card__summary {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
+.deal-card__price {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.deal-card__discount {
+  color: var(--danger);
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.deal-card__final {
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.deal-card__original {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  text-decoration: line-through;
+}
+
+.deal-card__stock {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.deal-card__stock-bar {
+  flex: 1;
+  height: 5px;
+  border-radius: var(--radius-full);
+  background: var(--surface-sunken);
+  overflow: hidden;
+}
+
+.deal-card__stock-fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--danger), var(--warning));
+}
+
+.deal-card__stock-text {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.deal-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-3);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.deal-card__brand {
+  color: var(--text-secondary);
+}
+
+/* 가격 블록은 혜택 유형에 따라 없을 수 있으므로, 하단 정렬 기준은 푸터가 맡습니다. */
+.deal-card__footer {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border);
+}
+
+.deal-card__cta {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   빈 상태
+   -------------------------------------------------------------------------- */
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-8) var(--space-4);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+.empty-state__emoji {
+  font-size: 2.25rem;
+}
+
+.empty-state__title {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.empty-state__desc {
+  margin-bottom: var(--space-3);
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+/* --------------------------------------------------------------------------
+   상세 페이지
+   -------------------------------------------------------------------------- */
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  max-width: 760px;
+  margin-inline: auto;
+  padding-block: var(--space-6);
+}
+
+.detail__back {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.detail__back:hover {
+  color: var(--text);
+}
+
+.detail__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.detail__title {
+  font-size: clamp(1.5rem, 4.5vw, 2.1rem);
+}
+
+.detail__summary {
+  color: var(--text-secondary);
+  font-size: 1.02rem;
+  text-wrap: pretty;
+}
+
+.detail__panel {
+  padding: var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+
+.detail__facts {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+  margin: 0;
+}
+
+@media (min-width: 560px) {
+  .detail__facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.detail__fact dt {
+  color: var(--text-muted);
+  font-size: 0.775rem;
+  font-weight: 700;
+}
+
+.detail__fact dd {
+  margin: 2px 0 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.detail__section-title {
+  margin-bottom: var(--space-3);
+  font-size: 1.05rem;
+}
+
+.detail__steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  counter-reset: step;
+}
+
+.detail__steps li {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+}
+
+.detail__steps li::before {
+  counter-increment: step;
+  content: counter(step);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--brand-50);
+  color: var(--brand-700);
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.detail__cautions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.detail__cautions li::before {
+  content: '⚠️ ';
+}
+
+.detail__cta {
+  display: block;
+}
+
+.detail__source {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  line-height: 1.7;
+}
+
+/* --------------------------------------------------------------------------
+   404
+   -------------------------------------------------------------------------- */
+
+.notfound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding-block: var(--space-8);
+  text-align: center;
+}
+
+.notfound__code {
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  color: var(--brand-500);
+}

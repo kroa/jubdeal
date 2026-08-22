@@ -1,0 +1,406 @@
+/* ==========================================================================
+   줍딜(JubDeal) 디자인 시스템
+   - 라이트/다크 모드 모두 토큰 기반으로 정의합니다.
+   - :root 에 라이트 값을 먼저 정의하고, 시스템 다크(prefers-color-scheme)와
+     수동 토글([data-theme='dark'])에서 재정의합니다.
+   ========================================================================== */
+
+:root {
+  /* --- 브랜드 --- */
+  --brand-50: #eef2ff;
+  --brand-100: #e0e7ff;
+  --brand-300: #a5b4fc;
+  --brand-500: #4f46e5;
+  --brand-600: #4338ca;
+  --brand-700: #3730a3;
+  --brand-contrast: #ffffff;
+
+  /* --- 시맨틱 --- */
+  --danger: #e11d48;
+  --danger-soft: #ffe4e6;
+  --danger-text: #9f1239;
+  --success: #059669;
+  --success-soft: #d1fae5;
+  --success-text: #065f46;
+  --warning: #d97706;
+  --warning-soft: #fef3c7;
+  --warning-text: #92400e;
+  --info: #0284c7;
+  --info-soft: #e0f2fe;
+  --info-text: #075985;
+
+  /* --- 표면/텍스트 --- */
+  --bg: #f7f7f8;
+  --surface: #ffffff;
+  --surface-hover: #fafafa;
+  --surface-sunken: #f4f4f5;
+  --text: #18181b;
+  --text-secondary: #52525b;
+  --text-muted: #63636b;
+  --border: #e6e6e9;
+  --border-strong: #d4d4d8;
+  --badge-muted-text: #4b4b52;
+
+  --shadow-sm: 0 1px 2px rgb(24 24 27 / 0.05);
+  --shadow-md: 0 4px 14px -4px rgb(24 24 27 / 0.1);
+  --shadow-lg: 0 18px 40px -18px rgb(24 24 27 / 0.28);
+
+  /* --- 형태 --- */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-full: 999px;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 3rem;
+
+  --font-sans:
+    Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Segoe UI',
+    'Malgun Gothic', system-ui, 'Noto Sans KR', sans-serif;
+
+  --content-width: 1180px;
+  --transition: 160ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  color-scheme: light;
+}
+
+/* 시스템 다크모드 (사용자가 라이트를 명시하지 않은 경우에만 적용) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --brand-50: #1e1b4b;
+    --brand-100: #262163;
+    --brand-300: #6366f1;
+    --brand-500: #818cf8;
+    --brand-600: #a5b4fc;
+    --brand-700: #c7d2fe;
+    --brand-contrast: #101014;
+
+    --danger: #fb7185;
+    --danger-soft: #4c0519;
+    --danger-text: #fecdd3;
+    --success: #34d399;
+    --success-soft: #052e23;
+    --success-text: #a7f3d0;
+    --warning: #fbbf24;
+    --warning-soft: #422006;
+    --warning-text: #fde68a;
+    --info: #38bdf8;
+    --info-soft: #082f49;
+    --info-text: #bae6fd;
+
+    --bg: #0b0b0e;
+    --surface: #131317;
+    --surface-hover: #1a1a20;
+    --surface-sunken: #191920;
+    --text: #f4f4f5;
+    --text-secondary: #b4b4bd;
+    --text-muted: #9a9aa6;
+    --border: #26262e;
+    --border-strong: #35353f;
+    --badge-muted-text: #c2c2cc;
+
+    --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+    --shadow-md: 0 4px 14px -4px rgb(0 0 0 / 0.55);
+    --shadow-lg: 0 18px 40px -18px rgb(0 0 0 / 0.8);
+
+    color-scheme: dark;
+  }
+}
+
+/* 수동 다크모드 토글 (시스템 설정보다 우선) */
+:root[data-theme='dark'] {
+  --brand-50: #1e1b4b;
+  --brand-100: #262163;
+  --brand-300: #6366f1;
+  --brand-500: #818cf8;
+  --brand-600: #a5b4fc;
+  --brand-700: #c7d2fe;
+  --brand-contrast: #101014;
+
+  --danger: #fb7185;
+  --danger-soft: #4c0519;
+  --danger-text: #fecdd3;
+  --success: #34d399;
+  --success-soft: #052e23;
+  --success-text: #a7f3d0;
+  --warning: #fbbf24;
+  --warning-soft: #422006;
+  --warning-text: #fde68a;
+  --info: #38bdf8;
+  --info-soft: #082f49;
+  --info-text: #bae6fd;
+
+  --bg: #0b0b0e;
+  --surface: #131317;
+  --surface-hover: #1a1a20;
+  --surface-sunken: #191920;
+  --text: #f4f4f5;
+  --text-secondary: #b4b4bd;
+  --text-muted: #9a9aa6;
+  --border: #26262e;
+  --border-strong: #35353f;
+  --badge-muted-text: #c2c2cc;
+
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-md: 0 4px 14px -4px rgb(0 0 0 / 0.55);
+  --shadow-lg: 0 18px 40px -18px rgb(0 0 0 / 0.8);
+
+  color-scheme: dark;
+}
+
+/* --------------------------------------------------------------------------
+   Reset
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+  font-weight: 700;
+  text-wrap: balance;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+:where(a, button, input, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--brand-500);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   레이아웃 유틸리티
+   -------------------------------------------------------------------------- */
+
+.container {
+  width: 100%;
+  max-width: var(--content-width);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-inline: var(--space-5);
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --------------------------------------------------------------------------
+   뱃지
+   -------------------------------------------------------------------------- */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 9px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.badge--danger {
+  background: var(--danger-soft);
+  color: var(--danger-text);
+}
+
+.badge--success {
+  background: var(--success-soft);
+  color: var(--success-text);
+}
+
+.badge--warning {
+  background: var(--warning-soft);
+  color: var(--warning-text);
+}
+
+.badge--info {
+  background: var(--info-soft);
+  color: var(--info-text);
+}
+
+.badge--muted {
+  background: var(--surface-sunken);
+  /* --text-muted 는 이 배경 위에서 대비가 부족해 뱃지 전용 색을 씁니다. */
+  color: var(--badge-muted-text);
+}
+
+.badge--brand {
+  background: var(--brand-50);
+  color: var(--brand-700);
+}
+
+.badge--outline {
+  background: transparent;
+  border: 1px solid var(--border-strong);
+  color: var(--text-secondary);
+}
+
+.badge__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: jd-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes jd-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.7);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   버튼
+   -------------------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0.6rem 1.1rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  background: var(--surface-sunken);
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--surface-hover);
+  border-color: var(--border-strong);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn--primary {
+  background: var(--brand-500);
+  color: var(--brand-contrast);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn--primary:hover:not(:disabled) {
+  background: var(--brand-600);
+  border-color: transparent;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn--ghost {
+  background: transparent;
+  border-color: var(--border);
+}
+
+.btn--block {
+  width: 100%;
+}
+
+/*
+  aria-disabled 버튼용. `disabled` 속성을 쓰면 포커스가 날아가므로
+  시각적으로만 비활성처럼 보이게 하고 탭 순서에는 그대로 남깁니다.
+*/
+.btn--inactive {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.btn--inactive:hover {
+  background: transparent;
+  border-color: var(--border);
+}

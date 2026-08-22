@@ -1,0 +1,49 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { DEAL_SCHEMA_VERSION } from '@/types/deal';
+---
+
+<BaseLayout
+  title="줍딜이란"
+  description="줍딜은 무료·할인·쿠폰·100원딜 혜택만 골라 모아 보여주는 서비스입니다."
+>
+  <article class="container detail">
+    <a href="/" class="detail__back">← 전체 혜택 보기</a>
+
+    <header>
+      <h1 class="detail__title">정가 주고 사면 지는 겁니다</h1>
+      <p class="detail__summary">
+        줍딜은 인터넷 곳곳에 흩어진 무료 증정, 100원 딜, 쿠폰, 캐시백 정보를 한 곳에 모읍니다.
+        광고성 정보 대신 <strong>실제로 받을 수 있는 혜택</strong>만 남깁니다.
+      </p>
+    </header>
+
+    <section class="detail__panel">
+      <h2 class="detail__section-title">이렇게 고릅니다</h2>
+      <ol class="detail__steps">
+        <li>공식 채널에 공개된 혜택만 수집합니다.</li>
+        <li>참여 조건과 마감 시각을 확인해 구조화된 데이터로 정리합니다.</li>
+        <li>난이도를 매겨 "클릭 몇 번이면 끝"인지 "조건 달성이 필요한지" 알려 드립니다.</li>
+        <li>마감이 지난 혜택은 자동으로 목록 뒤로 내립니다.</li>
+      </ol>
+    </section>
+
+    <section class="detail__panel">
+      <h2 class="detail__section-title">난이도 기준</h2>
+      <ul class="detail__cautions">
+        <li><strong>쉬움</strong> — 링크 클릭, 쿠폰 다운로드 정도로 끝납니다.</li>
+        <li><strong>보통</strong> — 앱 설치나 간단한 회원가입이 필요합니다.</li>
+        <li><strong>고수용</strong> — 실적 달성처럼 여러 단계를 거쳐야 합니다.</li>
+      </ul>
+    </section>
+
+    <section class="detail__panel">
+      <h2 class="detail__section-title">데이터에 대해</h2>
+      <p class="detail__source">
+        현재 혜택 데이터는 스키마 버전 v{DEAL_SCHEMA_VERSION} 으로 관리되며, 빌드할 때마다 자동 검증을
+        거칩니다. 조건·수량·기간은 각 브랜드 공식 페이지가 기준이며 방문 시점에 따라 달라질 수 있으니,
+        참여 전에 원문을 꼭 확인해 주세요.
+      </p>
+    </section>
+  </article>
+</BaseLayout>
