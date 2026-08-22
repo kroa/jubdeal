@@ -173,6 +173,7 @@ html {
 
 body {
   min-height: 100dvh;
+  word-break: keep-all;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-sans);
@@ -209,6 +210,11 @@ h4 {
   letter-spacing: -0.025em;
   font-weight: 700;
   text-wrap: balance;
+  /*
+    한국어는 단어 사이에 공백이 있어도 브라우저가 어절 중간에서 줄을 끊습니다.
+    ("...만 줍 / 자." 처럼) keep-all 로 어절 단위 줄바꿈을 강제합니다.
+  */
+  word-break: keep-all;
 }
 
 ul,

@@ -66,10 +66,12 @@ const showPrice = hasMeaningfulPrice(deal);
                 {formatPrice(deal.price.final)}
                 {typeof deal.price.original === 'number' &&
                   deal.price.original > deal.price.final && (
-                    <span style="color: var(--text-muted); text-decoration: line-through; font-weight: 400">
-                      {' '}
-                      {formatPrice(deal.price.original)}
-                    </span>
+                    <>
+                      {/* 공백을 취소선 span 안에 두면 함께 그어져 숫자가 붙어 보입니다. */}{' '}
+                      <span style="color: var(--text-muted); text-decoration: line-through; font-weight: 400">
+                        {formatPrice(deal.price.original)}
+                      </span>
+                    </>
                   )}
               </dd>
             </div>
@@ -84,7 +86,7 @@ const showPrice = hasMeaningfulPrice(deal);
         <div class="detail__fact">
           <dt>카테고리</dt>
           <dd>
-            <span aria-hidden="true">{CATEGORY_EMOJI[deal.category]}</span>
+            <span aria-hidden="true">{CATEGORY_EMOJI[deal.category]}</span>{' '}
             {CATEGORY_LABELS[deal.category]}
           </dd>
         </div>
@@ -92,7 +94,7 @@ const showPrice = hasMeaningfulPrice(deal);
         <div class="detail__fact">
           <dt>참여 난이도</dt>
           <dd>
-            {DIFFICULTY_LABELS[deal.difficulty]}
+            {DIFFICULTY_LABELS[deal.difficulty]}{' '}
             <span style="color: var(--text-muted); font-weight: 400">
               · {DIFFICULTY_DESCRIPTIONS[deal.difficulty]}
             </span>
