@@ -80,7 +80,10 @@ jobs:
           # CI 에는 구독 인증이 없으므로 OpenRouter 로 고정합니다.
           LLM_PROVIDER: openrouter
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-          OPENROUTER_MODEL: ${{ vars.OPENROUTER_MODEL || 'anthropic/claude-sonnet-4.5' }}
+          # 비워 두면 무료 모델을 자동 탐색합니다.
+          # 특정 모델로 고정하려면 저장소 Variables 에 등록하세요.
+          OPENROUTER_FREE_MODELS: ${{ vars.OPENROUTER_FREE_MODELS }}
+          OPENROUTER_FALLBACK_MODELS: ${{ vars.OPENROUTER_FALLBACK_MODELS }}
           MAX_ITEMS: ${{ steps.params.outputs.max-items }}
           # schedule 트리거에서는 inputs 가 비어 있으므로 기본은 실제 실행입니다.
           DRY_RUN: ${{ inputs.dry-run || 'false' }}

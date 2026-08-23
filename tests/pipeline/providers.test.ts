@@ -254,11 +254,15 @@ describe('OpenRouterProvider', () => {
       return openRouterResponse({ value: 42 });
     }) as unknown as typeof fetch;
 
-    const provider = new OpenRouterProvider({ apiKey: 'sk-or-test', fetchImpl });
+    const provider = new OpenRouterProvider({
+      apiKey: 'sk-or-test',
+      freeModels: ['test:free'],
+      fetchImpl,
+    });
     const response = await provider.complete(REQUEST);
 
     expect(response.data).toEqual({ value: 42 });
-    expect(response.provider).toBe('openrouter');
+    expect(response.provider).toBe('openrouter:test:free');
 
     const format = body.response_format as { type: string; json_schema: { strict: boolean } };
     expect(format.type).toBe('json_schema');
@@ -272,7 +276,11 @@ describe('OpenRouterProvider', () => {
       return openRouterResponse({ value: 1 });
     }) as unknown as typeof fetch;
 
-    await new OpenRouterProvider({ apiKey: 'sk-or-secret', fetchImpl }).complete(REQUEST);
+    await new OpenRouterProvider({
+      apiKey: 'sk-or-secret',
+      freeModels: ['test:free'],
+      fetchImpl,
+    }).complete(REQUEST);
 
     expect(headers.Authorization).toBe('Bearer sk-or-secret');
   });
@@ -281,7 +289,11 @@ describe('OpenRouterProvider', () => {
     const fetchImpl = vi.fn(async () =>
       openRouterResponse({ value: 1 }),
     ) as unknown as typeof fetch;
-    const { usage } = await new OpenRouterProvider({ apiKey: 'k', fetchImpl }).complete(REQUEST);
+    const { usage } = await new OpenRouterProvider({
+      apiKey: 'k',
+      freeModels: ['test:free'],
+      fetchImpl,
+    }).complete(REQUEST);
 
     expect(usage.inputTokens).toBe(100);
     expect(usage.outputTokens).toBe(30);
@@ -295,7 +307,9 @@ describe('OpenRouterProvider', () => {
       ) as unknown as typeof fetch;
 
       await expect(
-        new OpenRouterProvider({ apiKey: 'k', fetchImpl }).complete(REQUEST),
+        new OpenRouterProvider({ apiKey: 'k', freeModels: ['test:free'], fetchImpl }).complete(
+          REQUEST,
+        ),
       ).rejects.toMatchObject({ reason: 'quota' });
     }
   });
@@ -306,7 +320,9 @@ describe('OpenRouterProvider', () => {
     ) as unknown as typeof fetch;
 
     await expect(
-      new OpenRouterProvider({ apiKey: 'k', fetchImpl }).complete(REQUEST),
+      new OpenRouterProvider({ apiKey: 'k', freeModels: ['test:free'], fetchImpl }).complete(
+        REQUEST,
+      ),
     ).rejects.toMatchObject({ reason: 'auth' });
   });
 
@@ -316,7 +332,9 @@ describe('OpenRouterProvider', () => {
     ) as unknown as typeof fetch;
 
     await expect(
-      new OpenRouterProvider({ apiKey: 'k', fetchImpl }).complete(REQUEST),
+      new OpenRouterProvider({ apiKey: 'k', freeModels: ['test:free'], fetchImpl }).complete(
+        REQUEST,
+      ),
     ).rejects.toMatchObject({ reason: 'quota' });
   });
 });
