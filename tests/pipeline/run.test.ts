@@ -52,7 +52,7 @@ function makeExtracted(overrides: Partial<ExtractedDeal> = {}): ExtractedDeal {
   };
 }
 
-const USAGE = { inputTokens: 100, outputTokens: 20, cachedInputTokens: 80 };
+const USAGE = { inputTokens: 100, outputTokens: 20, cachedInputTokens: 80, costUsd: 0.004 };
 
 /** 항목마다 결과를 지정할 수 있는 추출기 목 */
 function makeExtractor(

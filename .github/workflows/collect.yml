@@ -55,10 +55,12 @@ jobs:
         id: params
         env:
           RAW_MAX_ITEMS: ${{ inputs.max-items || '20' }}
-          KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          KEY: ${{ secrets.OPENROUTER_API_KEY }}
         run: |
+          # CI 러너에는 VSCode 도 Claude 구독 인증도 없습니다.
+          # 그래서 CI 는 항상 OpenRouter 를 씁니다. (로컬은 구독 인증이 1순위)
           if [ -z "$KEY" ]; then
-            echo "::error::ANTHROPIC_API_KEY 시크릿이 없습니다. 저장소 Settings → Secrets 에 등록하세요."
+            echo "::error::OPENROUTER_API_KEY 시크릿이 없습니다. 저장소 Settings → Secrets 에 등록하세요."
             exit 1
           fi
 
@@ -75,7 +77,10 @@ jobs:
 
       - name: 파이프라인 실행
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # CI 에는 구독 인증이 없으므로 OpenRouter 로 고정합니다.
+          LLM_PROVIDER: openrouter
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          OPENROUTER_MODEL: ${{ vars.OPENROUTER_MODEL || 'anthropic/claude-sonnet-4.5' }}
           MAX_ITEMS: ${{ steps.params.outputs.max-items }}
           # schedule 트리거에서는 inputs 가 비어 있으므로 기본은 실제 실행입니다.
           DRY_RUN: ${{ inputs.dry-run || 'false' }}

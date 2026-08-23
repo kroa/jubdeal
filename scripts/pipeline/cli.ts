@@ -1,6 +1,7 @@
 import { parseArgs } from 'node:util';
 import path from 'node:path';
 import { formatReport, runPipeline } from '@pipeline/run';
+import { createProvider } from '@pipeline/extract/providers/index';
 
 /**
  * 파이프라인 CLI
@@ -30,7 +31,13 @@ const USAGE = `
   --help                이 도움말
 
 환경변수:
-  ANTHROPIC_API_KEY     필수. 소스에 하드코딩하지 말고 .env 또는 CI 시크릿으로 주입하세요.
+  LLM_PROVIDER          auto(기본) | claude-cli | openrouter
+  CLAUDE_CLI_PATH       Claude Code 바이너리 경로 (비우면 자동 탐색)
+  OPENROUTER_API_KEY    Claude 가 요금제 한도로 막혔을 때 쓰는 폴백 키
+
+  기본 동작은 VSCode 에 연결된 Claude(구독 인증)를 먼저 쓰고,
+  한도 등으로 막히면 OpenRouter 로 자동 폴백합니다.
+  자세한 설정은 .env.example 을 참고하세요.
 `;
 
 export async function main(argv: string[] = process.argv.slice(2)): Promise<number> {
@@ -83,12 +90,18 @@ export async function main(argv: string[] = process.argv.slice(2)): Promise<numb
 
   const write = (values.write as boolean) && !(values['dry-run'] as boolean);
 
-  if (write && !process.env.ANTHROPIC_API_KEY) {
-    console.error(
-      'ANTHROPIC_API_KEY 가 설정되지 않았습니다.\n' +
-        '.env 파일에 넣거나 환경변수로 주입하세요. (.env.example 참고)',
-    );
-    return 1;
+  if (write) {
+    // 쓰기 전에 프로바이더가 하나라도 쓸 수 있는지 확인합니다.
+    // 여기서 막지 않으면 수집만 잔뜩 해 놓고 추출은 전부 실패합니다.
+    const provider = createProvider();
+    if (!(await provider.isConfigured())) {
+      console.error(
+        '사용 가능한 LLM 프로바이더가 없습니다.\n' +
+          '  - VSCode 에서 Claude 에 로그인했는지 확인하거나\n' +
+          '  - .env 에 OPENROUTER_API_KEY 를 설정하세요. (.env.example 참고)',
+      );
+      return 1;
+    }
   }
 
   const cwd = process.cwd();

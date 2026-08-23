@@ -223,7 +223,8 @@ cp .env.example .env
 | `PUBLIC_SITE_URL`    | canonical / sitemap / OG 태그 생성       | 권장 |
 | `PUBLIC_SITE_NAME`   | 사이트 표기명                            | 선택 |
 | `DEALS_API_KEY`      | 추후 크롤러 파이프라인 연동용            | 선택 |
-| `ANTHROPIC_API_KEY`  | 추후 LLM 정규화 파이프라인 연동용        | 선택 |
+| `LLM_PROVIDER`       | `auto`(기본) / `claude-cli` / `openrouter` | 선택 |
+| `OPENROUTER_API_KEY` | Claude 한도 초과 시 폴백용                | 폴백 사용 시 |
 | `DATABASE_URL`       | 추후 DB 연동용                           | 선택 |
 
 ### 운영 환경 (Cloudflare Pages)
@@ -461,8 +462,8 @@ scripts/pipeline/sources.json
 # 실행 — 기본은 dry run 이라 파일을 건드리지 않습니다
 npm run pipeline -- --max-items 5
 
-# 실제 반영
-ANTHROPIC_API_KEY=... npm run pipeline -- --write --max-items 20
+# 실제 반영 (VSCode 에 로그인된 Claude 를 그대로 사용 — API 키 불필요)
+npm run pipeline -- --write --max-items 20
 ```
 
 ### 흐름
@@ -500,11 +501,41 @@ ANTHROPIC_API_KEY=... npm run pipeline -- --write --max-items 20
 - `Crawl-delay` 를 존중하되 `Retry-After` 에는 상한을 둬, 사이트 한 곳이 실행 전체를
   붙잡지 못하게 합니다.
 
+### LLM 프로바이더
+
+**Anthropic API 를 직접 호출하지 않습니다.** 두 경로를 순서대로 시도합니다.
+
+| 순위 | 프로바이더 | 인증 | 쓰는 곳 |
+| --- | --- | --- | --- |
+| 1 | **Claude Code (VSCode 연결)** | 이미 로그인된 **구독 인증** — API 키 불필요 | 로컬 실행 |
+| 2 | **OpenRouter** | `OPENROUTER_API_KEY` | 1번이 요금제 한도로 막혔을 때, 그리고 CI |
+
+```bash
+LLM_PROVIDER=auto        # 기본. claude-cli 먼저, 막히면 openrouter
+LLM_PROVIDER=claude-cli  # 구독 인증만 (폴백 없음)
+LLM_PROVIDER=openrouter  # OpenRouter 만 (VSCode 가 없는 환경)
+```
+
+폴백은 **요금제 한도·인증·연결 문제일 때만** 일어납니다. 스키마 위반처럼 프로바이더를
+바꿔도 똑같이 실패할 오류는 폴백하지 않습니다 — 같은 실패를 두 번 하며 비용만 두 배가 됩니다.
+한 번 "쓸 수 없다"고 판정된 프로바이더는 그 실행 동안 다시 시도하지 않습니다.
+
+> **CI 는 항상 OpenRouter 를 씁니다.** GitHub 러너에는 VSCode 도 구독 인증도 없습니다.
+> 저장소 Secrets 에 `OPENROUTER_API_KEY` 를 등록하세요.
+
 ### 비용
 
-`claude-opus-5` 기준 입력 $5/1M · 출력 $25/1M 입니다. 시스템 프롬프트가 요청마다 완전히
-동일해 **프롬프트 캐싱**이 걸리고(캐시 읽기는 약 1/10 비용), 실행 요약에 추정 비용이 출력됩니다.
-비용을 더 줄이려면 `DealExtractor` 의 `effort` 를 `medium` 으로 낮추세요.
+**Claude Code 경로**: Claude Code 는 자체 시스템 프롬프트와 도구 정의를 함께 실어 보냅니다
+(약 22k 토큰). 첫 호출은 그 캐시 생성 비용을 내지만, 이후 동일한 호출은 캐시를 읽습니다.
+실측: 1회차 **$0.047** → 2회차 **$0.0043** (약 1/10). 한 번에 여러 건을 연속 처리할수록 유리합니다.
+`CLAUDE_CLI_MAX_BUDGET_USD` 로 호출당 상한을 겁니다.
+
+**OpenRouter 경로**: 선택한 모델의 단가를 따릅니다 (`OPENROUTER_MODEL`).
+저렴한 모델로 바꾸면 비용이 크게 내려가지만, 한국어 프로모션 문구에서 조건·기간을 읽어내는
+정확도가 떨어지면 잘못된 정보가 사용자에게 노출됩니다. 모델을 바꾼 뒤에는
+검수 큐에 쌓이는 양과 `confidence` 분포를 꼭 확인하세요.
+
+실행 요약에 추정 비용이 출력되고, 프로바이더가 실제 비용을 알려주면 그 값을 씁니다.
 
 ### 소스 추가하기
 

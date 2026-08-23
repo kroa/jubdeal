@@ -4,7 +4,7 @@ import type { Deal, DealsFile } from '@/types/deal';
 import { parseDealsFile } from '@/lib/deal-schema';
 import { getAdapter } from '@pipeline/adapters/index';
 import { assembleDeal, canonicalizeUrl, makeStableId } from '@pipeline/assemble';
-import { DealExtractor, describeApiError } from '@pipeline/extract/extract';
+import { DealExtractor } from '@pipeline/extract/extract';
 import { PoliteFetcher, isValidHeaderValue } from '@pipeline/fetch/http';
 import { mergeDeals } from '@pipeline/merge';
 import type {
@@ -305,5 +305,3 @@ export function formatReport(report: PipelineReport): string {
   lines.push('');
   return lines.join('\n');
 }
-
-export { describeApiError };
