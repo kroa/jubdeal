@@ -1,5 +1,6 @@
 import { parseArgs } from 'node:util';
 import path from 'node:path';
+import { loadEnvFile } from '@pipeline/env';
 import { formatReport, runPipeline } from '@pipeline/run';
 import { createProvider } from '@pipeline/extract/providers/index';
 
@@ -41,6 +42,10 @@ const USAGE = `
 `;
 
 export async function main(argv: string[] = process.argv.slice(2)): Promise<number> {
+  // CLI 는 tsx 로 직접 실행되어 Astro 의 env 로딩을 타지 않습니다.
+  // .env 를 직접 읽되, 이미 설정된 환경변수는 덮어쓰지 않습니다.
+  loadEnvFile();
+
   let parsed;
   try {
     parsed = parseArgs({

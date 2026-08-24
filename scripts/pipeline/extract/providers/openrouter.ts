@@ -4,6 +4,7 @@ import {
   ProviderUnavailableError,
   looksLikeAuthError,
   looksLikeQuotaError,
+  looksLikeTransientError,
   type LlmProvider,
   type LlmRequest,
   type LlmResponse,
@@ -36,6 +37,10 @@ const DEFAULT_BASE_URL = 'https://openrouter.ai/api/v1';
 const DEFAULT_TIMEOUT_MS = 120_000;
 /** 자동 탐색으로 가져올 최대 모델 수 */
 const MAX_DISCOVERED = 8;
+/** 일시적 붐빔일 때 같은 모델을 다시 시도하는 횟수 */
+const TRANSIENT_RETRIES = 2;
+/** 일시적 붐빔 후 그 모델을 쉬게 하는 시간(ms) */
+const TRANSIENT_COOLDOWN_MS = 20_000;
 
 export interface OpenRouterOptions {
   apiKey?: string;
@@ -73,8 +78,12 @@ export class OpenRouterProvider implements LlmProvider {
   private readonly fetchImpl: typeof fetch;
   private readonly log: (message: string) => void;
 
-  /** 이번 실행에서 한도를 넘긴 모델 (다시 시도하지 않음) */
+  /** 이번 실행에서 확정적으로 못 쓰게 된 모델 (다시 시도하지 않음) */
   private readonly exhausted = new Set<string>();
+  /** 일시적으로 붐벼서 잠깐 쉬는 모델 → 재시도 가능 시각(ms) */
+  private readonly cooldownUntil = new Map<string, number>();
+  /** 설정이 잘못됐다고 이미 알린 모델 (같은 경고를 반복하지 않으려고) */
+  private readonly warned = new Set<string>();
   /** 구조화 출력을 거부한 모델 (다음부터는 프롬프트 방식으로) */
   private readonly noStructuredOutput = new Set<string>();
   /** 마지막으로 성공한 모델 — 다음 요청에서 먼저 시도합니다 */
@@ -122,11 +131,16 @@ export class OpenRouterProvider implements LlmProvider {
 
     const failures: string[] = [];
 
+    const now = Date.now();
+
     for (const model of models) {
       if (this.exhausted.has(model)) continue;
 
+      const cooldown = this.cooldownUntil.get(model);
+      if (cooldown !== undefined && cooldown > now) continue;
+
       try {
-        const response = await this.callModel(model, request);
+        const response = await this.withTransientRetry(model, request);
         this.preferred = model;
         return response;
       } catch (error) {
@@ -134,9 +148,17 @@ export class OpenRouterProvider implements LlmProvider {
           // 인증 문제는 모델을 바꿔도 똑같습니다. 즉시 포기합니다.
           if (error.reason === 'auth') throw error;
 
-          this.exhausted.add(model);
+          if (error.reason === 'busy') {
+            // 공용 풀이 붐비는 것뿐이라 잠시 뒤엔 다시 쓸 수 있습니다.
+            // 영구 배제하면 쓸 수 있는 모델을 통째로 버리게 됩니다.
+            this.cooldownUntil.set(model, Date.now() + TRANSIENT_COOLDOWN_MS);
+            this.log(`${model} 이 붐빕니다 — 잠시 쉬고 다음 모델로 넘어갑니다.`);
+          } else {
+            this.exhausted.add(model);
+            this.log(`${model} 사용 불가 (${error.reason}) — 다음 모델로 넘어갑니다.`);
+          }
+
           failures.push(`${model}: ${error.message}`);
-          this.log(`${model} 사용 불가 (${error.reason}) — 다음 모델로 넘어갑니다.`);
           continue;
         }
 
@@ -211,6 +233,22 @@ export class OpenRouterProvider implements LlmProvider {
     }
 
     return this.discovered;
+  }
+
+  /** 일시적 붐빔이면 짧게 기다렸다가 같은 모델을 다시 시도합니다. */
+  private async withTransientRetry(model: string, request: LlmRequest): Promise<LlmResponse> {
+    for (let attempt = 0; ; attempt += 1) {
+      try {
+        return await this.callModel(model, request);
+      } catch (error) {
+        const busy = error instanceof ProviderUnavailableError && error.reason === 'busy';
+        if (!busy || attempt >= TRANSIENT_RETRIES) throw error;
+
+        const wait = 1500 * (attempt + 1);
+        this.log(`${model} 붐빔 — ${wait}ms 후 재시도 (${attempt + 1}/${TRANSIENT_RETRIES})`);
+        await sleep(wait);
+      }
+    }
   }
 
   private async callModel(model: string, request: LlmRequest): Promise<LlmResponse> {
@@ -289,10 +327,16 @@ export class OpenRouterProvider implements LlmProvider {
         throw new ProviderUnavailableError(this.name, 'auth', `인증 실패 (${response.status})`);
       }
       if (response.status === 402 || response.status === 429 || looksLikeQuotaError(bodyText)) {
+        // 무료 모델의 429 는 대개 "공용 풀이 잠깐 붐빔"입니다.
+        // 사용자 한도와 구분해야 잠시 뒤면 쓸 수 있는 모델을 버리지 않습니다.
+        const transient = response.status === 429 && looksLikeTransientError(bodyText);
+
         throw new ProviderUnavailableError(
           this.name,
-          'quota',
-          `한도/크레딧 문제 (${response.status})`,
+          transient ? 'busy' : 'quota',
+          transient
+            ? `일시적으로 붐빕니다 (${response.status})`
+            : `한도/크레딧 문제 (${response.status})`,
         );
       }
       if (response.status >= 500) {
@@ -302,6 +346,23 @@ export class OpenRouterProvider implements LlmProvider {
           `서버 오류 ${response.status}`,
         );
       }
+      if (response.status === 404 && /unavailable for free|no endpoints/i.test(bodyText)) {
+        // 설정에 적힌 모델이 더 이상 무료로 제공되지 않는 경우입니다.
+        // 목록을 고치지 않으면 매 실행마다 같은 자리에서 낭비합니다.
+        if (!this.warned.has(model)) {
+          this.warned.add(model);
+          this.log(
+            `${model} 은 더 이상 무료로 제공되지 않습니다. ` +
+              'OPENROUTER_FREE_MODELS 에서 빼거나, 비워 두고 자동 탐색을 쓰세요.',
+          );
+        }
+        throw new ProviderUnavailableError(
+          this.name,
+          'unavailable',
+          `${model} 은 무료로 제공되지 않습니다 (설정을 확인하세요).`,
+        );
+      }
+
       throw new LlmRequestError(this.name, `HTTP ${response.status}: ${bodyText.slice(0, 300)}`);
     }
 
@@ -464,6 +525,10 @@ function toUsage(payload: OpenRouterResponse): LlmUsage {
     // 무료 모델은 0 입니다. 값이 없으면 null 로 두어 "모름"과 구분합니다.
     costUsd: usage.cost ?? null,
   };
+}
+
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 function dedupe(models: string[]): string[] {

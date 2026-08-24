@@ -156,9 +156,13 @@ export function describeProviderError(error: unknown): string {
       case 'not_configured':
         return `${error.message}\n  → .env 의 OPENROUTER_API_KEY 를 설정하거나 VSCode 에서 Claude 에 로그인하세요.`;
       case 'quota':
-        return `${error.message}\n  → 요금제 한도입니다. OPENROUTER_API_KEY 를 설정하면 자동으로 폴백합니다.`;
+        return `${error.message}\n  → 한도에 걸렸습니다. OPENROUTER_FREE_MODELS 에 모델을 더 넣거나 잠시 뒤 다시 실행하세요.`;
+      case 'busy':
+        return `${error.message}\n  → 무료 공용 풀이 붐비는 중입니다. 잠시 뒤 다시 실행하면 대개 풀립니다.`;
       case 'auth':
-        return `${error.message}\n  → 인증을 확인하세요.`;
+        return `${error.message}\n  → API 키가 유효한지 확인하세요.`;
+      case 'unavailable':
+        return `${error.message}\n  → 모델 설정을 확인하세요. OPENROUTER_FREE_MODELS 를 비우면 자동 탐색합니다.`;
       default:
         return error.message;
     }

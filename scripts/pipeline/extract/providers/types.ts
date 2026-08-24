@@ -54,7 +54,7 @@ export interface LlmProvider {
 export class ProviderUnavailableError extends Error {
   constructor(
     readonly provider: string,
-    readonly reason: 'not_configured' | 'quota' | 'auth' | 'unavailable',
+    readonly reason: 'not_configured' | 'quota' | 'auth' | 'unavailable' | 'busy',
     message: string,
   ) {
     super(`[${provider}] ${message}`);
@@ -76,6 +76,19 @@ export class LlmRequestError extends Error {
 /** 요금제·한도 관련 메시지인지 판단합니다 (프로바이더 공통 휴리스틱). */
 export function looksLikeQuotaError(text: string): boolean {
   return /rate.?limit|usage limit|quota|too many requests|insufficient|credit|billing|upgrade your plan|out of (credits?|tokens?)|429/i.test(
+    text,
+  );
+}
+
+/**
+ * "잠깐 붐빔"인지 판단합니다.
+ *
+ * OpenRouter 무료 모델의 429 는 대개 사용자 한도가 아니라 **공용 풀이 일시적으로
+ * 붐비는 것**입니다 (limit_source: upstream_provider_shared_pool).
+ * 이걸 영구 배제로 처리하면 잠시 뒤면 쓸 수 있는 모델을 통째로 버리게 됩니다.
+ */
+export function looksLikeTransientError(text: string): boolean {
+  return /temporarily|retry shortly|try again|shared_pool|overloaded|capacity|busy|503|502|504/i.test(
     text,
   );
 }

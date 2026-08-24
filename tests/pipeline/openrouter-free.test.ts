@@ -524,3 +524,102 @@ describe('jsonOnlyInstruction', () => {
     expect(text).toContain('코드펜스');
   });
 });
+
+/* -------------------------------------------------------------------------- */
+/* 일시적 붐빔 vs 확정 한도                                                      */
+/* -------------------------------------------------------------------------- */
+
+describe('일시적 붐빔 처리', () => {
+  it('"잠깐 붐빔" 429 는 같은 모델을 재시도한다', async () => {
+    // OpenRouter 무료 모델의 429 는 대개 사용자 한도가 아니라
+    // 공용 풀이 일시적으로 붐비는 것입니다(limit_source: upstream_provider_shared_pool).
+    // 영구 배제하면 잠시 뒤면 쓸 수 있는 모델을 통째로 버립니다.
+    let attempts = 0;
+    const { impl } = makeFetch(() => {
+      attempts += 1;
+      if (attempts < 2) {
+        return new Response(
+          JSON.stringify({
+            error: {
+              message: 'Provider returned error',
+              metadata: { raw: 'temporarily rate-limited upstream. Please retry shortly' },
+            },
+          }),
+          { status: 429 },
+        );
+      }
+      return chatOk({ value: 7 });
+    });
+
+    const provider = new OpenRouterProvider({
+      apiKey: 'k',
+      freeModels: ['busy:free'],
+      fetchImpl: impl,
+    });
+
+    await expect(provider.complete(REQUEST)).resolves.toMatchObject({ data: { value: 7 } });
+    expect(attempts).toBe(2);
+  });
+
+  it('붐빔이 계속되면 다음 모델로 넘어가되 영구 배제하지는 않는다', async () => {
+    const { impl, calls } = makeFetch((_url, body) =>
+      body?.model === 'busy:free'
+        ? new Response('{"error":{"message":"temporarily rate-limited upstream"}}', { status: 429 })
+        : chatOk({ value: 1 }),
+    );
+
+    const provider = new OpenRouterProvider({
+      apiKey: 'k',
+      freeModels: ['busy:free', 'ok:free'],
+      fetchImpl: impl,
+    });
+
+    await provider.complete(REQUEST);
+
+    // 재시도까지 했으므로 여러 번 불립니다 (영구 배제였다면 1회로 끝납니다).
+    expect(calls.filter((c) => c.body?.model === 'busy:free').length).toBeGreaterThan(1);
+  });
+
+  it('확정 한도(402)는 그 모델을 영구 배제한다', async () => {
+    const { impl, calls } = makeFetch((_url, body) =>
+      body?.model === 'dead:free'
+        ? new Response('{"error":{"message":"insufficient credits"}}', { status: 402 })
+        : chatOk({ value: 1 }),
+    );
+
+    const provider = new OpenRouterProvider({
+      apiKey: 'k',
+      freeModels: ['dead:free', 'ok:free'],
+      fetchImpl: impl,
+    });
+
+    await provider.complete(REQUEST);
+    await provider.complete(REQUEST);
+
+    expect(calls.filter((c) => c.body?.model === 'dead:free')).toHaveLength(1);
+  });
+
+  it('무료로 제공되지 않는 모델을 명확히 알린다', async () => {
+    // 설정에 적힌 모델이 유료로 전환되면, 고치지 않는 한 매 실행마다 같은 자리에서 낭비합니다.
+    const logs: string[] = [];
+    const { impl } = makeFetch((_url, body) =>
+      body?.model === 'gone:free'
+        ? new Response(
+            '{"error":{"message":"This model is unavailable for free. The paid version is available now","code":404}}',
+            { status: 404 },
+          )
+        : chatOk({ value: 1 }),
+    );
+
+    const provider = new OpenRouterProvider({
+      apiKey: 'k',
+      freeModels: ['gone:free', 'ok:free'],
+      fetchImpl: impl,
+      log: (message) => logs.push(message),
+    });
+
+    await provider.complete(REQUEST);
+
+    expect(logs.some((line) => line.includes('더 이상 무료로 제공되지 않습니다'))).toBe(true);
+  });
+});
