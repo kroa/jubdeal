@@ -49,6 +49,11 @@ export interface OpenRouterOptions {
   freeModels?: string[];
   /** 위 목록이 모두 실패했을 때 순서대로 시도할 예비 모델 */
   fallbackModels?: string[];
+  /**
+   * 유료 모델 호출을 허용할지. 기본은 **false** — 무료가 아니면 아예 부르지 않습니다.
+   * (env: OPENROUTER_ALLOW_PAID=true)
+   */
+  allowPaid?: boolean;
   timeoutMs?: number;
   siteUrl?: string;
   appName?: string;
@@ -89,6 +94,9 @@ export class OpenRouterProvider implements LlmProvider {
   /** 마지막으로 성공한 모델 — 다음 요청에서 먼저 시도합니다 */
   private preferred: string | null = null;
   private discovered: string[] | null = null;
+  /** /models 응답 캐시. 탐색과 유료 차단이 함께 씁니다. */
+  private catalogue: Map<string, ModelInfo> | null | undefined;
+  private readonly allowPaid: boolean;
 
   constructor(options: OpenRouterOptions = {}) {
     this.apiKey = options.apiKey ?? process.env.OPENROUTER_API_KEY ?? '';
@@ -103,12 +111,74 @@ export class OpenRouterProvider implements LlmProvider {
     this.timeoutMs = options.timeoutMs ?? DEFAULT_TIMEOUT_MS;
     this.siteUrl = options.siteUrl ?? process.env.OPENROUTER_SITE_URL;
     this.appName = options.appName ?? process.env.OPENROUTER_APP_NAME;
+    this.allowPaid = options.allowPaid ?? process.env.OPENROUTER_ALLOW_PAID === 'true';
     this.fetchImpl = options.fetchImpl ?? globalThis.fetch;
     this.log = options.log ?? (() => {});
   }
 
   async isConfigured(): Promise<boolean> {
     return this.apiKey.trim() !== '';
+  }
+
+  /**
+   * 무료가 아닌 모델을 호출하기 전에 막습니다.
+   *
+   * 설정 파일에 유료 모델을 적으면 그대로 과금됩니다.
+   * 오타 하나로 요금이 나가는 상황을 코드에서 차단합니다.
+   * 카탈로그를 못 읽었을 때는 확인할 방법이 없으므로 `:free` 접미사만 허용합니다.
+   *
+   * @returns 막아야 하면 이유, 통과면 null
+   */
+  private async blockIfPaid(model: string): Promise<string | null> {
+    if (this.allowPaid) return null;
+
+    const catalogue = await this.loadCatalogue();
+
+    // 목록을 못 읽었거나 비어 있으면 검증할 방법이 없습니다.
+    // (비어 있다는 건 모델이 사라진 게 아니라 조회가 잘못됐다는 뜻입니다.)
+    // 이럴 때는 보수적으로 `:free` 접미사만 허용합니다.
+    if (!catalogue || catalogue.size === 0) {
+      return model.endsWith(':free')
+        ? null
+        : '모델 목록을 확인할 수 없어 무료 여부를 검증하지 못했습니다 (:free 모델만 허용).';
+    }
+
+    const info = catalogue.get(model);
+    if (!info) {
+      // 목록은 읽었는데 그 안에 없음 → 오타이거나 사라진 모델입니다.
+      return ':free 접미사라도 목록에 없으면 호출해도 실패합니다. 이름을 확인하세요.';
+    }
+
+    if (!isFreeModel(info)) {
+      const prompt = info.pricing?.prompt ?? '?';
+      const completion = info.pricing?.completion ?? '?';
+      return (
+        `유료 모델입니다 (prompt ${prompt} / completion ${completion}). ` +
+        '무료만 쓰려면 설정에서 빼세요. 의도한 것이라면 OPENROUTER_ALLOW_PAID=true 를 설정하세요.'
+      );
+    }
+
+    return null;
+  }
+
+  /** /models 를 한 번만 읽어 캐시합니다. 실패하면 null. */
+  private async loadCatalogue(): Promise<Map<string, ModelInfo> | null> {
+    if (this.catalogue !== undefined) return this.catalogue;
+
+    try {
+      const response = await this.fetchImpl(`${this.baseUrl}/models`, {
+        headers: { Authorization: `Bearer ${this.apiKey}` },
+      });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+      const payload = (await response.json()) as { data?: ModelInfo[] };
+      this.catalogue = new Map((payload.data ?? []).map((model) => [model.id, model]));
+    } catch (error) {
+      this.log(`모델 목록 조회 실패: ${error instanceof Error ? error.message : String(error)}`);
+      this.catalogue = null;
+    }
+
+    return this.catalogue;
   }
 
   async complete(request: LlmRequest): Promise<LlmResponse> {
@@ -138,6 +208,18 @@ export class OpenRouterProvider implements LlmProvider {
 
       const cooldown = this.cooldownUntil.get(model);
       if (cooldown !== undefined && cooldown > now) continue;
+
+      // 무료가 아니면 호출 자체를 하지 않습니다.
+      const blocked = await this.blockIfPaid(model);
+      if (blocked) {
+        this.exhausted.add(model);
+        failures.push(`${model}: ${blocked}`);
+        if (!this.warned.has(model)) {
+          this.warned.add(model);
+          this.log(`${model} 건너뜀 — ${blocked}`);
+        }
+        continue;
+      }
 
       try {
         const response = await this.withTransientRetry(model, request);
@@ -196,14 +278,14 @@ export class OpenRouterProvider implements LlmProvider {
   private async discoverFreeModels(): Promise<string[]> {
     if (this.discovered) return this.discovered;
 
-    try {
-      const response = await this.fetchImpl(`${this.baseUrl}/models`, {
-        headers: { Authorization: `Bearer ${this.apiKey}` },
-      });
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const catalogue = await this.loadCatalogue();
+    if (!catalogue) {
+      this.discovered = [];
+      return this.discovered;
+    }
 
-      const payload = (await response.json()) as { data?: ModelInfo[] };
-      const free = (payload.data ?? []).filter(
+    {
+      const free = [...catalogue.values()].filter(
         (model) => isFreeModel(model) && isTextOnlyModel(model),
       );
 
@@ -227,9 +309,6 @@ export class OpenRouterProvider implements LlmProvider {
         `무료 모델 ${this.discovered.length}개 탐색 (구조화 출력 지원 ${structuredCount}개): ` +
           this.discovered.join(', '),
       );
-    } catch (error) {
-      this.log(`무료 모델 탐색 실패: ${error instanceof Error ? error.message : String(error)}`);
-      this.discovered = [];
     }
 
     return this.discovered;

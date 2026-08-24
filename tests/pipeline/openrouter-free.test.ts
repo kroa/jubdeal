@@ -60,6 +60,15 @@ function makeFetch(handler: (url: string, body: Record<string, unknown> | null) 
   return { impl, calls };
 }
 
+/** 카탈로그 조회(/models)를 빼고 실제 채팅 호출만 남깁니다. */
+function chatCalls(calls: Array<{ url: string; body: Record<string, unknown> | null }>) {
+  return calls.filter((call) => call.body?.model !== undefined);
+}
+
+function chatModels(calls: Array<{ url: string; body: Record<string, unknown> | null }>) {
+  return chatCalls(calls).map((call) => String(call.body?.model));
+}
+
 /* -------------------------------------------------------------------------- */
 /* 설정 파싱                                                                    */
 /* -------------------------------------------------------------------------- */
@@ -152,7 +161,7 @@ describe('무료 모델 순환', () => {
 
     const response = await provider.complete(REQUEST);
 
-    expect(calls.map((c) => c.body?.model)).toEqual(['a:free', 'b:free']);
+    expect(chatModels(calls)).toEqual(['a:free', 'b:free']);
     expect(response.provider).toBe('openrouter:b:free');
   });
 
@@ -190,7 +199,7 @@ describe('무료 모델 순환', () => {
     await provider.complete(REQUEST);
     await provider.complete(REQUEST);
 
-    expect(calls.filter((c) => c.body?.model === 'a:free')).toHaveLength(1);
+    expect(chatModels(calls).filter((m) => m === 'a:free')).toHaveLength(1);
   });
 
   it('마지막에 성공한 모델을 다음 요청에서 먼저 쓴다', async () => {
@@ -210,7 +219,7 @@ describe('무료 모델 순환', () => {
     calls.length = 0;
     await provider.complete(REQUEST);
 
-    expect(calls[0]?.body?.model).toBe('b:free');
+    expect(chatModels(calls)[0]).toBe('b:free');
   });
 
   it('주 목록이 모두 실패하면 예비 목록으로 넘어간다', async () => {
@@ -229,7 +238,7 @@ describe('무료 모델 순환', () => {
 
     const response = await provider.complete(REQUEST);
 
-    expect(calls.map((c) => c.body?.model)).toEqual(['free1:free', 'free2:free', 'backup:free']);
+    expect(chatModels(calls)).toEqual(['free1:free', 'free2:free', 'backup:free']);
     expect(response.data).toEqual({ value: 9 });
   });
 
@@ -255,7 +264,7 @@ describe('무료 모델 순환', () => {
     });
 
     await expect(provider.complete(REQUEST)).rejects.toMatchObject({ reason: 'auth' });
-    expect(calls).toHaveLength(1);
+    expect(chatCalls(calls)).toHaveLength(1);
   });
 });
 
@@ -297,7 +306,7 @@ describe('무료 모델 자동 탐색', () => {
     await provider.complete(REQUEST);
 
     expect(calls[0]?.url).toContain('/models');
-    expect(String(calls.find((c) => c.body?.model)?.body?.model)).toContain(':free');
+    expect(chatModels(calls)[0]).toContain(':free');
   });
 
   it('구조화 출력을 지원하는 모델을 먼저 쓴다', async () => {
@@ -310,7 +319,7 @@ describe('무료 모델 자동 탐색', () => {
     const provider = new OpenRouterProvider({ apiKey: 'k', freeModels: [], fetchImpl: impl });
     await provider.complete(REQUEST);
 
-    expect(calls.find((c) => c.body?.model)?.body?.model).toBe('struct/free:free');
+    expect(chatModels(calls)[0]).toBe('struct/free:free');
   });
 
   it('유료 모델은 탐색 결과에 넣지 않는다', async () => {
@@ -323,7 +332,7 @@ describe('무료 모델 자동 탐색', () => {
     const provider = new OpenRouterProvider({ apiKey: 'k', freeModels: [], fetchImpl: impl });
     await expect(provider.complete(REQUEST)).rejects.toThrow();
 
-    const tried = calls.filter((c) => c.body?.model).map((c) => String(c.body?.model));
+    const tried = chatModels(calls);
     expect(tried).not.toContain('paid/model');
     expect(tried.every((model) => model.endsWith(':free'))).toBe(true);
   });
@@ -338,7 +347,7 @@ describe('무료 모델 자동 탐색', () => {
     const provider = new OpenRouterProvider({ apiKey: 'k', freeModels: [], fetchImpl: impl });
     await expect(provider.complete(REQUEST)).rejects.toThrow();
 
-    const tried = calls.filter((c) => c.body?.model).map((c) => String(c.body?.model));
+    const tried = chatModels(calls);
     expect(tried).not.toContain('music/free:free');
   });
 
@@ -376,7 +385,7 @@ describe('무료 모델 자동 탐색', () => {
     const { impl, calls } = makeFetch(() => chatOk({ value: 1 }));
     await new OpenRouterProvider({ fetchImpl: impl }).complete(REQUEST);
 
-    expect(calls[0]?.body?.model).toBe('env-a:free');
+    expect(chatModels(calls)[0]).toBe('env-a:free');
   });
 });
 
@@ -392,13 +401,14 @@ describe('구조화 출력 미지원 대응', () => {
       REQUEST,
     );
 
-    expect(calls[0]?.body?.response_format).toBeDefined();
+    expect(chatCalls(calls)[0]?.body?.response_format).toBeDefined();
   });
 
   it('거부하면 프롬프트 방식으로 같은 모델을 재시도한다', async () => {
     let attempt = 0;
     const { impl, calls } = makeFetch((_url, body) => {
-      attempt += 1;
+      // 카탈로그 조회(body 없음)는 세지 않습니다.
+      if (body) attempt += 1;
       if (body?.response_format) {
         return new Response(
           '{"error":{"message":"Model does not support response_format json_schema"}}',
@@ -417,8 +427,8 @@ describe('구조화 출력 미지원 대응', () => {
     const response = await provider.complete(REQUEST);
 
     expect(attempt).toBe(2);
-    expect(calls[1]?.body?.model).toBe('nostruct:free');
-    expect(calls[1]?.body?.response_format).toBeUndefined();
+    expect(chatModels(calls)[1]).toBe('nostruct:free');
+    expect(chatCalls(calls)[1]?.body?.response_format).toBeUndefined();
     expect(response.data).toEqual({ value: 3 });
   });
 
@@ -435,7 +445,10 @@ describe('구조화 출력 미지원 대응', () => {
       fetchImpl: impl,
     }).complete(REQUEST);
 
-    const messages = calls[1]?.body?.messages as Array<{ role: string; content: string }>;
+    const messages = chatCalls(calls)[1]?.body?.messages as Array<{
+      role: string;
+      content: string;
+    }>;
     expect(messages[0]?.content).toContain('JSON Schema');
     expect(messages[0]?.content).toContain('"value"');
   });
@@ -458,8 +471,8 @@ describe('구조화 출력 미지원 대응', () => {
     await provider.complete(REQUEST);
 
     // 두 번째 요청은 실패 시도 없이 곧바로 프롬프트 방식
-    expect(calls).toHaveLength(1);
-    expect(calls[0]?.body?.response_format).toBeUndefined();
+    expect(chatCalls(calls)).toHaveLength(1);
+    expect(chatCalls(calls)[0]?.body?.response_format).toBeUndefined();
   });
 });
 
@@ -577,7 +590,7 @@ describe('일시적 붐빔 처리', () => {
     await provider.complete(REQUEST);
 
     // 재시도까지 했으므로 여러 번 불립니다 (영구 배제였다면 1회로 끝납니다).
-    expect(calls.filter((c) => c.body?.model === 'busy:free').length).toBeGreaterThan(1);
+    expect(chatModels(calls).filter((m) => m === 'busy:free').length).toBeGreaterThan(1);
   });
 
   it('확정 한도(402)는 그 모델을 영구 배제한다', async () => {
@@ -596,7 +609,7 @@ describe('일시적 붐빔 처리', () => {
     await provider.complete(REQUEST);
     await provider.complete(REQUEST);
 
-    expect(calls.filter((c) => c.body?.model === 'dead:free')).toHaveLength(1);
+    expect(chatModels(calls).filter((m) => m === 'dead:free')).toHaveLength(1);
   });
 
   it('무료로 제공되지 않는 모델을 명확히 알린다', async () => {
@@ -621,5 +634,143 @@ describe('일시적 붐빔 처리', () => {
     await provider.complete(REQUEST);
 
     expect(logs.some((line) => line.includes('더 이상 무료로 제공되지 않습니다'))).toBe(true);
+  });
+});
+
+/* -------------------------------------------------------------------------- */
+/* 유료 모델 차단                                                                */
+/* -------------------------------------------------------------------------- */
+
+describe('유료 모델 차단', () => {
+  const catalogueWithPaid = {
+    data: [
+      {
+        id: 'expensive/model',
+        pricing: { prompt: '0.000003', completion: '0.000015' },
+        architecture: { input_modalities: ['text'], output_modalities: ['text'] },
+      },
+      {
+        id: 'ok/model:free',
+        pricing: { prompt: '0', completion: '0' },
+        supported_parameters: ['structured_outputs'],
+        architecture: { input_modalities: ['text'], output_modalities: ['text'] },
+      },
+    ],
+  };
+
+  it('설정에 유료 모델이 있어도 호출하지 않는다', async () => {
+    // 오타 하나로 요금이 나가는 상황을 코드에서 막습니다.
+    const { impl, calls } = makeFetch((url) =>
+      url.endsWith('/models')
+        ? new Response(JSON.stringify(catalogueWithPaid))
+        : chatOk({ value: 1 }),
+    );
+
+    const provider = new OpenRouterProvider({
+      apiKey: 'k',
+      freeModels: ['expensive/model', 'ok/model:free'],
+      fetchImpl: impl,
+    });
+
+    const response = await provider.complete(REQUEST);
+
+    const called = chatModels(calls);
+    expect(called).not.toContain('expensive/model');
+    expect(response.provider).toBe('openrouter:ok/model:free');
+  });
+
+  it('차단 이유를 로그로 알린다', async () => {
+    const logs: string[] = [];
+    const { impl } = makeFetch((url) =>
+      url.endsWith('/models')
+        ? new Response(JSON.stringify(catalogueWithPaid))
+        : chatOk({ value: 1 }),
+    );
+
+    await new OpenRouterProvider({
+      apiKey: 'k',
+      freeModels: ['expensive/model', 'ok/model:free'],
+      fetchImpl: impl,
+      log: (message) => logs.push(message),
+    }).complete(REQUEST);
+
+    expect(logs.some((line) => line.includes('유료 모델입니다'))).toBe(true);
+    expect(logs.some((line) => line.includes('OPENROUTER_ALLOW_PAID'))).toBe(true);
+  });
+
+  it('명시적으로 허용하면 유료 모델도 부른다', async () => {
+    // 기본은 차단이지만, 사용자가 의도적으로 켤 수 있어야 합니다.
+    const { impl, calls } = makeFetch((url) =>
+      url.endsWith('/models')
+        ? new Response(JSON.stringify(catalogueWithPaid))
+        : chatOk({ value: 1 }),
+    );
+
+    await new OpenRouterProvider({
+      apiKey: 'k',
+      freeModels: ['expensive/model'],
+      allowPaid: true,
+      fetchImpl: impl,
+    }).complete(REQUEST);
+
+    expect(chatModels(calls)).toContain('expensive/model');
+  });
+
+  it('목록에 없는 모델도 부르지 않는다', async () => {
+    const { impl, calls } = makeFetch((url) =>
+      url.endsWith('/models')
+        ? new Response(JSON.stringify(catalogueWithPaid))
+        : chatOk({ value: 1 }),
+    );
+
+    const provider = new OpenRouterProvider({
+      apiKey: 'k',
+      freeModels: ['unknown/model:free', 'ok/model:free'],
+      fetchImpl: impl,
+    });
+
+    await provider.complete(REQUEST);
+
+    const called = chatModels(calls);
+    expect(called).not.toContain('unknown/model:free');
+  });
+
+  it('카탈로그를 못 읽으면 :free 모델만 허용한다', async () => {
+    // 검증할 방법이 없을 때는 보수적으로 판단합니다.
+    const { impl, calls } = makeFetch((url) =>
+      url.endsWith('/models') ? new Response('boom', { status: 500 }) : chatOk({ value: 1 }),
+    );
+
+    const provider = new OpenRouterProvider({
+      apiKey: 'k',
+      freeModels: ['maybe-paid/model', 'safe/model:free'],
+      fetchImpl: impl,
+    });
+
+    const response = await provider.complete(REQUEST);
+
+    const called = chatModels(calls);
+    expect(called).not.toContain('maybe-paid/model');
+    expect(response.provider).toBe('openrouter:safe/model:free');
+  });
+
+  it('예비 목록의 유료 모델도 막는다', async () => {
+    const { impl, calls } = makeFetch((url) =>
+      url.endsWith('/models')
+        ? new Response(JSON.stringify(catalogueWithPaid))
+        : new Response('rate limited', { status: 429 }),
+    );
+
+    const provider = new OpenRouterProvider({
+      apiKey: 'k',
+      freeModels: ['ok/model:free'],
+      fallbackModels: ['expensive/model'],
+      fetchImpl: impl,
+    });
+
+    await expect(provider.complete(REQUEST)).rejects.toThrow();
+
+    const called = chatModels(calls);
+    expect(called).not.toContain('expensive/model');
   });
 });
