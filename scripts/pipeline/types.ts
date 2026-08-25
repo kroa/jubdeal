@@ -129,7 +129,16 @@ export interface PipelineReport {
   unchanged: number;
   reviewQueued: number;
   /** 추정 토큰 사용량 */
-  usage: { inputTokens: number; outputTokens: number; cachedInputTokens: number };
+  usage: {
+    inputTokens: number;
+    outputTokens: number;
+    cachedInputTokens: number;
+    /**
+     * 프로바이더가 알려준 실제 비용 합계(USD).
+     * 무료 모델이면 0 입니다. 아무도 알려주지 않았으면 null.
+     */
+    costUsd: number | null;
+  };
   /** 소스별 오류 (수집 자체가 실패한 경우) */
   errors: Array<{ sourceId: string; message: string }>;
 }

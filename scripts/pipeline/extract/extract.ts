@@ -71,6 +71,22 @@ function stripSchemaKeyword(schema: Record<string, unknown>): Record<string, unk
   return rest;
 }
 
+/**
+ * 한국어 결과에 한자(CJK 통합 한자)가 섞였는지 검사합니다.
+ *
+ * 무료 다국어 모델은 한국어 문장에 중국어 단어를 섞는 일이 있습니다.
+ * 실제로 관찰된 예: "아메리카노 톨 사이즈 1잔免费 쿠폰" (免费 = 무료)
+ *
+ * 스키마도 통과하고 신뢰도도 0.95 로 높게 나오기 때문에 기존 방어선으로는
+ * 걸러지지 않습니다. 사용자에게 그대로 노출되므로 검수 큐로 보냅니다.
+ *
+ * 요즘 한국어 프로모션 문구는 한자를 거의 쓰지 않아 오탐 위험이 낮습니다.
+ * 버리지 않고 검수로 넘기므로, 오탐이어도 사람이 확인해 살릴 수 있습니다.
+ */
+export function findCjkIdeographs(text: string): string[] {
+  return [...new Set(text.match(/[一-鿿]/g) ?? [])];
+}
+
 export class DealExtractor {
   private readonly provider: LlmProvider;
   private readonly threshold: number;
@@ -127,6 +143,20 @@ export class DealExtractor {
         ok: false,
         reason: 'not_a_deal',
         detail: value.notes || '혜택 정보가 아니라고 판단했습니다.',
+        candidate: value,
+        usage,
+      };
+    }
+
+    // 사용자에게 그대로 노출되는 필드에 한자가 섞이지 않았는지 확인합니다.
+    const foreign = findCjkIdeographs(`${value.title} ${value.summary}`);
+    if (foreign.length > 0) {
+      return {
+        ok: false,
+        reason: 'low_confidence',
+        detail:
+          `제목·요약에 한자가 섞였습니다 (${foreign.join('')}). ` +
+          '모델이 다른 언어를 섞은 것으로 보입니다. 문구를 확인해 주세요.',
         candidate: value,
         usage,
       };

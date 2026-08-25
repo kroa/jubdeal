@@ -8,6 +8,7 @@ import {
   parseJsonLoosely,
   parseModelList,
 } from '@pipeline/extract/providers/openrouter';
+import { findCjkIdeographs } from '@pipeline/extract/extract';
 import type { LlmRequest } from '@pipeline/extract/providers/types';
 
 const REQUEST: LlmRequest = {
@@ -772,5 +773,30 @@ describe('유료 모델 차단', () => {
 
     const called = chatModels(calls);
     expect(called).not.toContain('expensive/model');
+  });
+});
+
+/* -------------------------------------------------------------------------- */
+/* 한국어 결과에 다른 언어가 섞이는 문제                                          */
+/* -------------------------------------------------------------------------- */
+
+describe('findCjkIdeographs', () => {
+  it('한국어에 섞인 중국어를 잡아낸다', () => {
+    // 실제로 관찰된 무료 모델 출력: "아메리카노 톨 사이즈 1잔免费 쿠폰"
+    // 스키마도 통과하고 confidence 0.95 라 기존 방어선으로는 안 걸립니다.
+    expect(findCjkIdeographs('아메리카노 톨 사이즈 1잔免费 쿠폰')).toEqual(['免', '费']);
+  });
+
+  it('정상적인 한국어는 통과시킨다', () => {
+    expect(findCjkIdeographs('온더카페 아메리카노 1잔 무료 쿠폰')).toEqual([]);
+    expect(findCjkIdeographs('스타벅스 e-Gift 50% 할인 (선착순)')).toEqual([]);
+  });
+
+  it('중복 문자는 한 번만 보고한다', () => {
+    expect(findCjkIdeographs('免费免费')).toEqual(['免', '费']);
+  });
+
+  it('빈 문자열은 빈 배열', () => {
+    expect(findCjkIdeographs('')).toEqual([]);
   });
 });

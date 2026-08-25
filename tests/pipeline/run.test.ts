@@ -410,7 +410,12 @@ describe('formatReport', () => {
       updated: 2,
       unchanged: 0,
       reviewQueued: 1,
-      usage: { inputTokens: 100_000, outputTokens: 10_000, cachedInputTokens: 80_000 },
+      usage: {
+        inputTokens: 100_000,
+        outputTokens: 10_000,
+        cachedInputTokens: 80_000,
+        costUsd: null,
+      },
       errors: [],
     });
 
@@ -432,7 +437,7 @@ describe('formatReport', () => {
       updated: 0,
       unchanged: 0,
       reviewQueued: 0,
-      usage: { inputTokens: 0, outputTokens: 0, cachedInputTokens: 0 },
+      usage: { inputTokens: 0, outputTokens: 0, cachedInputTokens: 0, costUsd: null },
       errors: [{ sourceId: 'broken', message: '연결 실패' }],
     });
 
