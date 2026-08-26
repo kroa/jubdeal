@@ -131,6 +131,7 @@ export const dealPeriodSchema = z
   .object({
     startAt: isoDateTime,
     endAt: isoDateTime.nullable(),
+    deadlineUnknown: z.boolean().optional(),
   })
   .refine(
     (period) => period.endAt === null || Date.parse(period.endAt) > Date.parse(period.startAt),
@@ -138,7 +139,12 @@ export const dealPeriodSchema = z
       message: '종료 시각(endAt)은 시작 시각(startAt)보다 뒤여야 합니다.',
       path: ['endAt'],
     },
-  );
+  )
+  .refine((period) => !(period.deadlineUnknown && period.endAt !== null), {
+    // 마감일을 안다면 미상이 아닙니다. 둘 다 참이면 UI 가 어느 쪽을 믿을지 알 수 없습니다.
+    message: 'deadlineUnknown 이 true 면 endAt 은 null 이어야 합니다.',
+    path: ['deadlineUnknown'],
+  });
 
 export const dealLinkSchema = z.object({
   url: httpUrl,

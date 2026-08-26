@@ -306,7 +306,7 @@ export class PoliteFetcher {
     if (!body) return '';
 
     const reader = body.getReader();
-    const decoder = new TextDecoder('utf-8');
+    const decoder = createDecoder(response.headers.get('content-type'), url, this.log);
     const chunks: string[] = [];
     let total = 0;
 
@@ -333,6 +333,45 @@ export class PoliteFetcher {
     }
 
     return chunks.join('');
+  }
+}
+
+/**
+ * Content-Type 헤더에서 charset 을 뽑습니다.
+ *
+ * 예: `text/html; charset=euc-kr` → `euc-kr`
+ */
+export function charsetFromContentType(contentType: string | null): string | null {
+  if (!contentType) return null;
+
+  const match = /charset\s*=\s*"?([\w-]+)"?/i.exec(contentType);
+  return match?.[1]?.toLowerCase() ?? null;
+}
+
+/**
+ * 응답 인코딩에 맞는 디코더를 만듭니다.
+ *
+ * UTF-8 을 하드코딩하면 안 됩니다.
+ * 한국 커뮤니티·쇼핑몰에는 EUC-KR(=CP949) 페이지가 아직 흔하고,
+ * 그런 페이지를 UTF-8 로 읽으면 본문 전체가 깨진 문자로 바뀝니다.
+ * HTTP 오류가 아니라 조용히 쓰레기 텍스트가 되기 때문에, 그대로 LLM 에 넘어가
+ * "혜택 정보가 아님" 판정만 잔뜩 쌓입니다. 원인을 찾기 어려운 종류의 실패입니다.
+ *
+ * 모르는 인코딩이면 UTF-8 로 물러섭니다. 깨지더라도 멈추는 것보다는 낫습니다.
+ */
+export function createDecoder(
+  contentType: string | null,
+  url: string,
+  log: (message: string) => void = () => {},
+): TextDecoder {
+  const charset = charsetFromContentType(contentType);
+  if (!charset || charset === 'utf-8' || charset === 'utf8') return new TextDecoder('utf-8');
+
+  try {
+    return new TextDecoder(charset);
+  } catch {
+    log(`알 수 없는 인코딩 '${charset}' — UTF-8 로 읽습니다: ${url}`);
+    return new TextDecoder('utf-8');
   }
 }
 

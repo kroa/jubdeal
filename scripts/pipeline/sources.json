@@ -4,35 +4,39 @@
   "timeoutMs": 15000,
   "sources": [
     {
+      "id": "ruliweb-market",
+      "name": "루리웹 예판·핫딜",
+      "kind": "rss",
+      "url": "https://bbs.ruliweb.com/market/board/1020/rss",
+      "enabled": true,
+      "maxItems": 12,
+      "selectors": {
+        "detail": ".view_content"
+      },
+      "categoryHint": "shopping"
+    },
+    {
+      "id": "clien-jirum",
+      "name": "클리앙 알뜰구매",
+      "kind": "html",
+      "url": "https://www.clien.net/service/board/jirum",
+      "enabled": true,
+      "maxItems": 12,
+      "selectors": {
+        "item": ".list_item.symph_row",
+        "link": ".list_subject a",
+        "title": ".list_subject a",
+        "detail": ".post_article"
+      },
+      "categoryHint": "shopping"
+    },
+    {
       "id": "local-fixture",
       "name": "로컬 픽스처",
       "kind": "fixture",
       "url": "scripts/pipeline/fixtures/sample.json",
-      "enabled": true,
+      "enabled": false,
       "maxItems": 5
-    },
-    {
-      "id": "example-blog",
-      "name": "예시 블로그 (실제 소스로 교체하세요)",
-      "kind": "html",
-      "url": "https://example.com/events",
-      "enabled": false,
-      "maxItems": 10,
-      "selectors": {
-        "item": ".event-list li",
-        "link": "a",
-        "title": ".event-title",
-        "detail": "article.event-body"
-      },
-      "categoryHint": "food"
-    },
-    {
-      "id": "example-feed",
-      "name": "예시 RSS 피드 (실제 소스로 교체하세요)",
-      "kind": "rss",
-      "url": "https://example.com/events/feed.xml",
-      "enabled": false,
-      "maxItems": 10
     }
   ]
 }

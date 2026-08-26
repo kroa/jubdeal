@@ -44,13 +44,33 @@ describe('DealCard', () => {
     expect(screen.getByText('100원딜')).toBeInTheDocument();
   });
 
-  it('오늘 마감이면 마감 뱃지를 노출한다', () => {
+  it('오늘 마감이면 상태 뱃지 하나로만 알린다', () => {
+    // 상태 뱃지가 이미 "오늘마감"이라고 말합니다.
+    // 옆에 마감 뱃지가 "오늘 마감"을 또 붙이면 같은 사실이 두 번 적힌 카드가 됩니다.
     render(
       <DealCard deal={makeDecoratedDeal({ period: { endAt: '2026-08-20T23:59:59+09:00' } })} />,
     );
 
     expect(screen.getByText('오늘마감')).toBeInTheDocument();
-    expect(screen.getByText('오늘 마감')).toBeInTheDocument();
+    expect(screen.queryByText('오늘 마감')).not.toBeInTheDocument();
+  });
+
+  it('종료·소진도 상태 뱃지만 남긴다', () => {
+    render(
+      <DealCard deal={makeDecoratedDeal({ period: { endAt: '2026-08-01T23:59:59+09:00' } })} />,
+    );
+
+    expect(screen.getByText('종료')).toBeInTheDocument();
+    expect(screen.queryByText('종료됨')).not.toBeInTheDocument();
+  });
+
+  it('남은 일수처럼 상태 뱃지가 말해 주지 않는 것은 마감 뱃지로 보여준다', () => {
+    render(
+      <DealCard deal={makeDecoratedDeal({ period: { endAt: '2026-08-30T23:59:59+09:00' } })} />,
+    );
+
+    expect(screen.getByText('진행중')).toBeInTheDocument();
+    expect(screen.getByText(/^D-\d+$/)).toBeInTheDocument();
   });
 
   it('진행중이면 진행 상태 뱃지를 노출한다', () => {

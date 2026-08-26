@@ -244,15 +244,32 @@ describe('assembleDeal', () => {
     expect(result.deal.link.label).toBeUndefined();
   });
 
-  it('종료일을 모르면(unknown) 검수로 보낸다', () => {
-    // 상시 진행과 구분하지 않으면 이미 끝난 혜택이 목록에 영원히 남습니다.
+  it('종료일을 모르면 상시 진행이라 단언하지 않고 미상으로 표시한다', () => {
+    /*
+      커뮤니티 핫딜 글은 마감일을 적지 않는 것이 보통입니다.
+      그렇다고 endAt 을 그냥 null 로 두면 "상시 진행"과 구분되지 않아,
+      언제 끝날지 모르는 특가를 상시라고 단언하게 됩니다.
+      날짜를 지어내지도, 버리지도 않고 모른다고 표시합니다.
+    */
     const result = assembleDeal(makeExtracted({ endDate: null, endDateKind: 'unknown' }), RAW, {
       now: NOW,
     });
 
-    expect(result.ok).toBe(false);
-    if (result.ok) return;
-    expect(result.detail).toContain('종료일');
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.deal.period.endAt).toBeNull();
+    expect(result.deal.period.deadlineUnknown).toBe(true);
+  });
+
+  it('상시 진행(always)에는 미상 표시를 붙이지 않는다', () => {
+    const result = assembleDeal(makeExtracted({ endDate: null, endDateKind: 'always' }), RAW, {
+      now: NOW,
+    });
+
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.deal.period.endAt).toBeNull();
+    expect(result.deal.period.deadlineUnknown).toBeUndefined();
   });
 
   it('가격을 모르면 지어내지 않고 검수로 보낸다', () => {

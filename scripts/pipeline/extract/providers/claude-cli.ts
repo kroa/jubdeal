@@ -176,9 +176,16 @@ export class ClaudeCliProvider implements LlmProvider {
       this.options.model ?? DEFAULT_MODEL,
       '--effort',
       this.options.effort ?? 'medium',
-      // 추출은 텍스트 작업이라 도구가 필요 없습니다. 도구를 쓰려 하면 턴만 낭비합니다.
+      /*
+        추출은 텍스트 작업이라 도구가 필요 없습니다.
+
+        그래도 1 은 너무 빠듯합니다. 구조화 출력 전에 한 번 더 도는 경우가 있고,
+        그러면 "Reached maximum number of turns (1)" 로 그 건이 통째로 버려집니다.
+        실제 수집에서 관측된 실패라 여유를 둡니다.
+        도구가 꺼져 있어 폭주할 여지는 없습니다.
+      */
       '--max-turns',
-      '1',
+      '3',
       '--disable-slash-commands',
       '--strict-mcp-config',
       '--no-session-persistence',

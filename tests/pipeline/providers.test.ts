@@ -106,7 +106,9 @@ describe('ClaudeCliProvider', () => {
 
     expect(captured).toContain('-p');
     expect(captured).toContain('--max-turns');
-    expect(captured[captured.indexOf('--max-turns') + 1]).toBe('1');
+    // 1 은 너무 빠듯합니다. 실제 수집에서 "Reached maximum number of turns (1)" 로
+    // 멀쩡한 건이 버려지는 것을 확인해 3 으로 올렸습니다. 도구는 여전히 꺼져 있습니다.
+    expect(captured[captured.indexOf('--max-turns') + 1]).toBe('3');
     expect(captured).toContain('--disable-slash-commands');
     expect(captured).toContain('--no-session-persistence');
     expect(captured).toContain('--strict-mcp-config');

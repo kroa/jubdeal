@@ -63,10 +63,13 @@ export interface SourceConfig {
    * 예의 있는 수집과 비용 통제를 위해 반드시 상한을 둡니다.
    */
   maxItems: number;
-  /** html 어댑터용 CSS 선택자 */
+  /** CSS 선택자 */
   selectors?: {
-    /** 목록에서 각 항목을 고르는 선택자 */
-    item: string;
+    /**
+     * 목록에서 각 항목을 고르는 선택자 (html 어댑터 전용, 필수).
+     * rss 어댑터는 `detail` 만 쓰므로 생략합니다.
+     */
+    item?: string;
     /** 항목 안에서 상세 링크를 고르는 선택자 (생략 시 item 자체가 <a>) */
     link?: string;
     /** 항목 안에서 제목을 고르는 선택자 */

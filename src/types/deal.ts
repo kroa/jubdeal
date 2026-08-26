@@ -14,7 +14,7 @@
  */
 
 /** 스키마 버전. 파이프라인이 하위호환을 판단하는 데 사용합니다. */
-export const DEAL_SCHEMA_VERSION = 1 as const;
+export const DEAL_SCHEMA_VERSION = 2 as const;
 
 /* -------------------------------------------------------------------------- */
 /* 열거형(Enum) — 값과 라벨을 한곳에서 관리                                     */
@@ -160,8 +160,19 @@ export interface DealLimit {
 export interface DealPeriod {
   /** 시작 시각 (ISO 8601) */
   startAt: string;
-  /** 종료 시각 (ISO 8601). `null`이면 상시/무기한 */
+  /** 종료 시각 (ISO 8601). `null`이면 상시/무기한 또는 마감일 미상 */
   endAt: string | null;
+  /**
+   * 종료일을 원문에서 찾지 못한 경우 true.
+   *
+   * `endAt: null` 하나로는 "상시 진행"과 "마감일을 모름"을 구분할 수 없습니다.
+   * 커뮤니티 핫딜 글에는 마감일이 적히지 않는 것이 보통이라, 구분하지 않으면
+   * 언제 끝날지 모르는 특가를 "상시 진행"이라고 단언하게 됩니다.
+   *
+   * 날짜를 지어내지 않는 대신 모른다고 표시합니다.
+   * 오래된 항목은 `--prune-after` 가 정리합니다.
+   */
+  deadlineUnknown?: boolean;
 }
 
 /** 랜딩 링크 */

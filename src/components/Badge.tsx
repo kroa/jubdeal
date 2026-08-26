@@ -41,11 +41,27 @@ export function DealStatusBadge({ status }: { status: DealStatus }) {
 }
 
 /** 마감 임박 뱃지 — "오늘 마감", "D-2", "8월 25일 오픈" 등 */
+/**
+ * 마감 배지가 상태 배지와 같은 말을 하는 상태들.
+ *
+ * 상태 배지는 이미 "오늘마감 / 종료 / 소진"을 보여줍니다.
+ * 그 옆에 마감 배지가 "오늘 마감 / 종료됨 / 소진됨"을 또 붙이면
+ * 같은 사실이 두 번 적힌 카드가 됩니다.
+ * 남은 일수나 마감일 미상처럼 **상태 배지가 말해 주지 않는 것**이 있을 때만 붙입니다.
+ */
+const DEADLINE_SAID_BY_STATUS: ReadonlySet<DealStatus> = new Set([
+  'ending_today',
+  'ended',
+  'sold_out',
+]);
+
 export function DeadlineBadge({
   deal,
 }: {
   deal: Pick<DecoratedDeal, 'daysLeft' | 'status' | 'isUrgent' | 'period'>;
 }) {
+  if (DEADLINE_SAID_BY_STATUS.has(deal.status)) return null;
+
   const text = formatDeadline(deal);
 
   return (

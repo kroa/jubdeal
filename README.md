@@ -503,6 +503,26 @@ npm run pipeline -- --write --max-items 20
 - `Crawl-delay` 를 존중하되 `Retry-After` 에는 상한을 둬, 사이트 한 곳이 실행 전체를
   붙잡지 못하게 합니다.
 
+### 수집 소스
+
+`scripts/pipeline/sources.json` 에 정의합니다. 현재 활성 소스:
+
+| ID | 소스 | 방식 | 비고 |
+| --- | --- | --- | --- |
+| `ruliweb-market` | 루리웹 예판·핫딜 | RSS | 요약이 이미지뿐이라 본문은 글 페이지에서 가져옵니다 |
+| `clien-jirum` | 클리앙 알뜰구매 | HTML | `.list_item.symph_row` → `.post_article` |
+
+소스를 고를 때 확인한 것:
+
+- **robots.txt** — 크롤러가 강제하므로 허용되지 않으면 아예 못 가져옵니다.
+  쿨엔조이는 `Disallow: /` 라 제외했습니다.
+- **봇 UA 응답** — 뽐뿌는 robots 상 허용이지만 우리 UA 에 403 을 돌려줍니다.
+  브라우저인 척하지 않고 제외했습니다.
+- **JS 렌더링 여부** — 퀘이사존은 목록을 클라이언트에서 그려서
+  HTML 만 받아서는 항목이 나오지 않습니다.
+
+새 소스를 넣기 전에 위 세 가지를 먼저 확인하세요.
+
 ### LLM 프로바이더
 
 **Anthropic API 를 직접 호출하지 않습니다.** 세 경로를 순서대로 시도합니다.

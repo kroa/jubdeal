@@ -35,14 +35,15 @@ describe('DealDetailBadges', () => {
     expect(badges.queryByText('진행중')).not.toBeInTheDocument();
   });
 
-  it('오늘 마감이면 마감 뱃지를 보여준다', () => {
+  it('오늘 마감이면 상태 뱃지 하나로만 알린다', () => {
+    // 상태 뱃지와 마감 뱃지가 같은 말을 하면 정보가 아니라 잡음입니다.
     const today = makeDeal({ period: { endAt: '2026-08-20T23:59:59+09:00' } });
 
     render(<DealDetailBadges info={toBadgeInfo(today)} buildTime={STALE_BUILD_TIME} />);
 
     const badges = within(screen.getByTestId('detail-badges'));
     expect(badges.getByText('오늘마감')).toBeInTheDocument();
-    expect(badges.getByText('오늘 마감')).toBeInTheDocument();
+    expect(badges.queryByText('오늘 마감')).not.toBeInTheDocument();
   });
 
   it('선착순 혜택에 선착순 뱃지를 붙인다', () => {

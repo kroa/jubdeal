@@ -137,15 +137,16 @@ export function assembleDeal(
     };
   }
 
-  // 종료일을 못 찾은 것과 "상시 진행"은 다릅니다.
-  // 구분 없이 null 로 두면 이미 끝난 혜택이 목록에 영원히 남습니다.
-  if (extracted.endDateKind === 'unknown') {
-    return {
-      ok: false,
-      detail: '종료일을 확인할 수 없습니다. 상시 진행인지 특정 마감일이 있는지 확인해 주세요.',
-      candidate: extracted,
-    };
-  }
+  /*
+    종료일을 못 찾은 것과 "상시 진행"은 다릅니다.
+    구분 없이 null 로 두면 언제 끝날지 모르는 특가를 "상시 진행"이라 단언하게 되고,
+    이미 끝난 혜택이 목록에 영원히 남습니다.
+
+    그렇다고 통째로 버리면 실제 수집원(커뮤니티 핫딜 글)은 마감일을 적지 않는 것이
+    보통이라 거의 아무것도 남지 않습니다. 날짜를 지어내지 않으면서 모른다고
+    표시하고, 오래된 항목은 `--prune-after` 가 정리하도록 맡깁니다.
+  */
+  const deadlineUnknown = extracted.endDateKind === 'unknown';
 
   if (extracted.endDateKind === 'dated' && extracted.endDate === null) {
     return {
@@ -161,10 +162,13 @@ export function assembleDeal(
     // 실행할 때마다 값이 바뀌므로, 기존 항목의 시작일을 유지할 수 있게 날짜만 씁니다.
     `${toKstDay(options.now)}T00:00:00${KST_OFFSET}`;
 
-  // always 면 상시 진행(null), dated 면 그 날짜의 끝.
-  const endAt = extracted.endDateKind === 'always' ? null : toKstIso(extracted.endDate, true);
+  // always 면 상시 진행(null), unknown 이면 미상(null), dated 면 그 날짜의 끝.
+  const endAt =
+    extracted.endDateKind === 'always' || deadlineUnknown
+      ? null
+      : toKstIso(extracted.endDate, true);
 
-  const linkUrl = pickLinkUrl(extracted.linkUrl, raw.url);
+  const linkUrl = pickLinkUrl(extracted.linkUrl, raw.url, raw.text);
 
   const candidate: Deal = {
     id: options.existing?.id ?? makeStableId(raw.sourceId, raw.url),
@@ -186,7 +190,7 @@ export function assembleDeal(
       ...(extracted.quantity !== null ? { quantity: extracted.quantity } : {}),
       ...(extracted.perPersonLimit !== null ? { perPersonLimit: extracted.perPersonLimit } : {}),
     },
-    period: { startAt, endAt },
+    period: { startAt, endAt, ...(deadlineUnknown ? { deadlineUnknown: true } : {}) },
     link: {
       url: linkUrl,
       ...(extracted.linkLabel?.trim() ? { label: extracted.linkLabel.trim() } : {}),
@@ -219,16 +223,33 @@ export function assembleDeal(
   return { ok: true, deal: candidate };
 }
 
-/** 모델이 준 링크가 쓸 만하면 그것을, 아니면 원문 URL 을 씁니다. */
-function pickLinkUrl(fromModel: string | null, fallback: string): string {
+/**
+ * CTA 가 가리킬 주소를 정합니다.
+ *
+ * 모델이 준 URL 은 **원문에 실제로 등장할 때만** 씁니다.
+ * 링크는 사용자가 직접 눌러 다른 사이트로 이동하는 값이라, 지어낸 주소가 끼면
+ * 죽은 링크나 엉뚱한 페이지로 보내게 됩니다. 스키마 검증으로는 잡히지 않습니다
+ * (형식이 유효한 URL 이면 통과하니까요).
+ *
+ * 근거를 못 찾으면 원문 글 주소로 돌아갑니다. 정보가 조금 줄 뿐 항상 유효합니다.
+ */
+function pickLinkUrl(fromModel: string | null, fallback: string, sourceText: string): string {
   if (!fromModel) return fallback;
 
+  let parsed: URL;
   try {
-    const { protocol } = new URL(fromModel);
-    if (protocol === 'http:' || protocol === 'https:') return fromModel;
+    parsed = new URL(fromModel);
   } catch {
-    /* 무시하고 폴백 */
+    return fallback;
   }
+
+  if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') return fallback;
+
+  // 원문이 같은 주소를 담고 있는지 확인합니다.
+  // 프로토콜·트래킹 파라미터가 다를 수 있어 호스트+경로로 대조합니다.
+  const needle = `${parsed.host}${parsed.pathname}`.replace(/\/$/, '');
+  if (needle !== '' && sourceText.includes(needle)) return fromModel;
+
   return fallback;
 }
 

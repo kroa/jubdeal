@@ -1,4 +1,4 @@
-import type { Deal, DealsFile } from '@/types/deal';
+import { DEAL_SCHEMA_VERSION, type Deal, type DealsFile } from '@/types/deal';
 import { canonicalizeUrl } from '@pipeline/assemble';
 
 /**
@@ -130,7 +130,9 @@ export function mergeDeals(
 
   return {
     file: {
-      schemaVersion: existingFile.schemaVersion,
+      // 입력 파일은 parseDealsFile 을 통과했으므로 이미 현재 버전이지만,
+      // 상수를 그대로 쓰는 편이 버전을 올렸을 때 옛 값이 남을 여지를 없앱니다.
+      schemaVersion: DEAL_SCHEMA_VERSION,
       generatedAt: changed ? options.now.toISOString() : existingFile.generatedAt,
       deals,
     },

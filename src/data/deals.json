@@ -1,485 +1,18 @@
 {
-  "schemaVersion": 1,
-  "generatedAt": "2026-08-22T06:00:00+09:00",
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-26T07:17:24.695Z",
   "deals": [
     {
-      "id": "dl_2026_0820_onthecafe_free_americano",
-      "slug": "onthecafe-free-americano",
-      "title": "온더카페 아메리카노 1잔 무료 쿠폰",
-      "summary": "앱 신규 가입만 하면 아메리카노 톨 사이즈 1잔이 바로 쿠폰함에 들어옵니다.",
-      "description": "온더카페 앱을 처음 설치하고 회원가입을 완료하면 즉시 무료 음료 쿠폰이 지급됩니다. 별도의 결제수단 등록 없이 매장에서 바로 사용할 수 있습니다.",
+      "id": "dl_clien-jirum_92eac5c042f29bec",
+      "slug": "clien-jirum-board-jirum-ad7f35e2",
+      "title": "iOS Widgetik 홈 화면 위젯 앱 일시 무료",
+      "summary": "iOS 위젯 앱 Widgetik의 프리미엄 잠금 해제(평소 3,000원)가 한시적으로 무료 제공됩니다.",
+      "description": "평소 3,000원에 인앱 구매로 제공되던 iOS 위젯 앱 Widgetik의 프리미엄 잠금 해제가 한시적으로 무료 배포됩니다. 습관, 걸음 수, 물 섭취, 마음챙김, 카운트다운, 시계, 명언, 사진, 달의 위상, 배터리 등 다양한 위젯을 꾸밀 수 있습니다.",
       "brand": {
-        "name": "온더카페"
-      },
-      "category": "cafe",
-      "dealType": "free",
-      "difficulty": "easy",
-      "price": {
-        "original": 4500,
-        "final": 0,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": false,
-        "perPersonLimit": 1
-      },
-      "period": {
-        "startAt": "2026-08-01T00:00:00+09:00",
-        "endAt": "2026-09-30T23:59:59+09:00"
-      },
-      "link": {
-        "url": "https://example.com/deals/onthecafe-free-americano",
-        "label": "쿠폰 받으러 가기"
-      },
-      "howTo": [
-        "온더카페 앱 설치",
-        "휴대폰 번호로 회원가입",
-        "쿠폰함에서 무료 음료 쿠폰 확인",
-        "매장에서 바코드 제시"
-      ],
-      "caution": ["1인 1회 한정", "일부 매장 사용 불가"],
-      "tags": ["신규가입", "무료음료", "카페"],
-      "source": {
-        "name": "브랜드 공식 앱 공지",
-        "url": "https://example.com/source/onthecafe",
-        "collectedAt": "2026-08-22T05:30:00+09:00",
-        "method": "manual"
-      },
-      "meta": {
-        "featured": true,
-        "verified": true,
-        "updatedAt": "2026-08-22T05:30:00+09:00"
-      }
-    },
-    {
-      "id": "dl_2026_0820_freshtable_penny_mealkit",
-      "slug": "freshtable-penny-mealkit",
-      "title": "프레시테이블 첫 주문 밀키트 100원 딜",
-      "summary": "첫 주문 한정으로 인기 밀키트 2인분을 단돈 100원에. 배송비까지 무료입니다.",
-      "description": "신규 고객 대상 프로모션입니다. 장바구니에 대상 밀키트를 담고 프로모션 코드를 입력하면 100원에 결제됩니다.",
-      "brand": {
-        "name": "프레시테이블"
-      },
-      "category": "food",
-      "dealType": "penny",
-      "difficulty": "normal",
-      "price": {
-        "original": 18900,
-        "final": 100,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": true,
-        "quantity": 5000,
-        "remaining": 0,
-        "perPersonLimit": 1
-      },
-      "period": {
-        "startAt": "2026-08-14T10:00:00+09:00",
-        "endAt": "2026-08-20T23:59:59+09:00"
-      },
-      "link": {
-        "url": "https://example.com/deals/freshtable-penny-mealkit",
-        "label": "100원에 주문하기"
-      },
-      "howTo": ["앱 설치 후 신규 가입", "대상 밀키트 장바구니 담기", "결제 시 프로모션 코드 입력"],
-      "caution": ["신규 회원 전용", "수량 소진 시 조기 종료"],
-      "tags": ["100원딜", "밀키트", "첫주문", "무료배송"],
-      "source": {
-        "name": "공식 이벤트 페이지",
-        "url": "https://example.com/source/freshtable",
-        "collectedAt": "2026-08-21T05:30:00+09:00",
-        "method": "manual"
-      },
-      "meta": {
-        "featured": false,
-        "verified": true,
-        "updatedAt": "2026-08-21T05:30:00+09:00"
-      }
-    },
-    {
-      "id": "dl_2026_0820_livinghouse_summer_clearance",
-      "slug": "livinghouse-summer-clearance",
-      "title": "리빙하우스 여름 재고 정리 최대 70% 할인",
-      "summary": "시즌 오프 상품을 최대 70%까지. 3만원 이상 구매 시 배송비도 무료입니다.",
-      "brand": {
-        "name": "리빙하우스"
-      },
-      "category": "shopping",
-      "dealType": "discount",
-      "difficulty": "easy",
-      "price": {
-        "original": 49000,
-        "final": 14700,
-        "currency": "KRW",
-        "discountRate": 70
-      },
-      "limit": {
-        "firstComeFirstServed": false
-      },
-      "period": {
-        "startAt": "2026-08-10T00:00:00+09:00",
-        "endAt": "2026-08-23T23:59:59+09:00"
-      },
-      "link": {
-        "url": "https://example.com/deals/livinghouse-summer-clearance",
-        "label": "할인가 보러 가기"
-      },
-      "howTo": ["기획전 페이지 접속", "대상 상품 담기", "자동 할인 적용 확인"],
-      "tags": ["시즌오프", "생활용품", "무료배송"],
-      "source": {
-        "name": "공식몰 기획전",
-        "collectedAt": "2026-08-22T05:30:00+09:00",
-        "method": "crawler",
-        "confidence": 0.94
-      },
-      "meta": {
-        "verified": true,
-        "updatedAt": "2026-08-22T05:30:00+09:00"
-      }
-    },
-    {
-      "id": "dl_2026_0820_dailymart_welcome_coupon",
-      "slug": "dailymart-welcome-coupon",
-      "title": "데일리마트 앱 상시 2,000원 할인 쿠폰",
-      "summary": "매주 월요일 자정에 리셋되는 상시 쿠폰. 1만원 이상 구매 시 바로 적용됩니다.",
-      "brand": {
-        "name": "데일리마트"
-      },
-      "category": "convenience",
-      "dealType": "coupon",
-      "difficulty": "easy",
-      "price": {
-        "original": 10000,
-        "final": 8000,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": false,
-        "perPersonLimit": 1
-      },
-      "period": {
-        "startAt": "2026-01-01T00:00:00+09:00",
-        "endAt": null
-      },
-      "link": {
-        "url": "https://example.com/deals/dailymart-welcome-coupon",
-        "label": "쿠폰 다운로드"
-      },
-      "howTo": ["앱 내 쿠폰함 진입", "주간 쿠폰 다운로드", "결제 시 적용"],
-      "tags": ["상시", "편의점", "주간쿠폰"],
-      "source": {
-        "name": "브랜드 공식 앱",
-        "collectedAt": "2026-08-22T05:30:00+09:00",
-        "method": "manual"
-      },
-      "meta": {
-        "verified": true,
-        "updatedAt": "2026-08-18T09:00:00+09:00"
-      }
-    },
-    {
-      "id": "dl_2026_0820_stepwork_daily_point",
-      "slug": "stepwork-daily-point",
-      "title": "스텝워크 만보기 하루 최대 200포인트",
-      "summary": "걷기만 해도 쌓이는 포인트. 현금처럼 쓸 수 있고 출석 체크 보너스도 있습니다.",
-      "brand": {
-        "name": "스텝워크"
+        "name": "Widgetik"
       },
       "category": "app",
-      "dealType": "point",
-      "difficulty": "easy",
-      "price": {
-        "final": 0,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": false
-      },
-      "period": {
-        "startAt": "2026-03-01T00:00:00+09:00",
-        "endAt": null
-      },
-      "link": {
-        "url": "https://example.com/deals/stepwork-daily-point",
-        "label": "앱 받으러 가기"
-      },
-      "howTo": ["앱 설치 및 걸음 수 권한 허용", "하루 1만보 달성", "포인트 적립 확인"],
-      "tags": ["앱테크", "상시", "포인트"],
-      "source": {
-        "name": "앱 스토어 설명",
-        "collectedAt": "2026-08-22T05:30:00+09:00",
-        "method": "crawler",
-        "confidence": 0.88
-      },
-      "meta": {
-        "verified": true,
-        "updatedAt": "2026-08-17T12:00:00+09:00"
-      }
-    },
-    {
-      "id": "dl_2026_0820_sweetbite_penny_dessert",
-      "slug": "sweetbite-penny-dessert",
-      "title": "스위트바이트 시그니처 디저트 100원",
-      "summary": "음료 주문 없이 디저트 단품만 100원. 하루 매장당 50개 선착순입니다.",
-      "brand": {
-        "name": "스위트바이트"
-      },
-      "category": "cafe",
-      "dealType": "penny",
-      "difficulty": "easy",
-      "price": {
-        "original": 5800,
-        "final": 100,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": true,
-        "quantity": 50,
-        "remaining": 12,
-        "perPersonLimit": 1
-      },
-      "period": {
-        "startAt": "2026-08-18T09:00:00+09:00",
-        "endAt": "2026-08-22T21:00:00+09:00"
-      },
-      "link": {
-        "url": "https://example.com/deals/sweetbite-penny-dessert",
-        "label": "매장 확인하기"
-      },
-      "howTo": ["앱에서 참여 매장 확인", "쿠폰 발급", "매장 방문 후 제시"],
-      "caution": ["매장당 일 50개 한정", "포장만 가능"],
-      "tags": ["100원딜", "디저트", "선착순"],
-      "source": {
-        "name": "공식 SNS 공지",
-        "collectedAt": "2026-08-22T05:30:00+09:00",
-        "method": "llm",
-        "confidence": 0.91
-      },
-      "meta": {
-        "verified": true,
-        "updatedAt": "2026-08-22T05:30:00+09:00"
-      }
-    },
-    {
-      "id": "dl_2026_0820_movieplus_ticket_giveaway",
-      "slug": "movieplus-ticket-giveaway",
-      "title": "무비플러스 영화 예매권 2매 응모 이벤트",
-      "summary": "댓글 응모만 하면 추첨으로 500명에게 예매권 2매를 증정합니다.",
-      "brand": {
-        "name": "무비플러스"
-      },
-      "category": "culture",
-      "dealType": "giveaway",
-      "difficulty": "normal",
-      "price": {
-        "original": 30000,
-        "final": 0,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": false,
-        "quantity": 500,
-        "perPersonLimit": 1
-      },
-      "period": {
-        "startAt": "2026-08-15T00:00:00+09:00",
-        "endAt": "2026-09-15T23:59:59+09:00"
-      },
-      "link": {
-        "url": "https://example.com/deals/movieplus-ticket-giveaway",
-        "label": "응모하러 가기"
-      },
-      "howTo": ["이벤트 페이지 접속", "응모 폼 작성", "SNS 공유 시 당첨 확률 2배"],
-      "caution": ["당첨자 개별 통보", "중복 응모 불가"],
-      "tags": ["응모", "영화", "추첨"],
-      "source": {
-        "name": "공식 이벤트 페이지",
-        "collectedAt": "2026-08-22T05:30:00+09:00",
-        "method": "manual"
-      },
-      "meta": {
-        "verified": true,
-        "updatedAt": "2026-08-19T15:00:00+09:00"
-      }
-    },
-    {
-      "id": "dl_2026_0820_moneyplus_cashback",
-      "slug": "moneyplus-card-cashback",
-      "title": "머니플러스 카드 실적 달성 시 3만원 캐시백",
-      "summary": "신규 발급 후 2개월간 60만원 사용하면 현금성 캐시백 3만원을 지급합니다.",
-      "brand": {
-        "name": "머니플러스"
-      },
-      "category": "finance",
-      "dealType": "cashback",
-      "difficulty": "hard",
-      "price": {
-        "final": 0,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": false,
-        "perPersonLimit": 1
-      },
-      "period": {
-        "startAt": "2026-07-01T00:00:00+09:00",
-        "endAt": "2026-10-31T23:59:59+09:00"
-      },
-      "link": {
-        "url": "https://example.com/deals/moneyplus-card-cashback",
-        "label": "조건 확인하기"
-      },
-      "howTo": ["제휴 링크로 카드 신규 발급", "2개월 내 60만원 이상 사용", "익월 말 캐시백 지급"],
-      "caution": ["최근 6개월 내 해당 카드사 이용 이력이 없어야 함", "연회비 별도"],
-      "tags": ["캐시백", "카드", "고수용"],
-      "source": {
-        "name": "카드사 공식 안내",
-        "collectedAt": "2026-08-22T05:30:00+09:00",
-        "method": "manual"
-      },
-      "meta": {
-        "verified": true,
-        "updatedAt": "2026-08-16T10:00:00+09:00"
-      }
-    },
-    {
-      "id": "dl_2026_0820_beautylab_sample_kit",
-      "slug": "beautylab-sample-kit",
-      "title": "뷰티랩 신제품 샘플 키트 무료 배송",
-      "summary": "신제품 체험단 대상 무료 샘플 키트. 배송비까지 브랜드 부담입니다.",
-      "brand": {
-        "name": "뷰티랩"
-      },
-      "category": "beauty",
       "dealType": "free",
-      "difficulty": "normal",
-      "price": {
-        "original": 12000,
-        "final": 0,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": true,
-        "quantity": 2000,
-        "remaining": 0,
-        "perPersonLimit": 1
-      },
-      "period": {
-        "startAt": "2026-08-12T10:00:00+09:00",
-        "endAt": "2026-09-26T23:59:59+09:00"
-      },
-      "link": {
-        "url": "https://example.com/deals/beautylab-sample-kit",
-        "label": "이벤트 보기"
-      },
-      "howTo": ["체험단 신청 폼 작성", "배송지 입력", "선착순 마감 전 제출"],
-      "tags": ["무료", "샘플", "체험단"],
-      "source": {
-        "name": "브랜드 공식몰",
-        "collectedAt": "2026-08-22T05:30:00+09:00",
-        "method": "crawler",
-        "confidence": 0.9
-      },
-      "meta": {
-        "verified": true,
-        "updatedAt": "2026-08-22T05:30:00+09:00"
-      }
-    },
-    {
-      "id": "dl_2026_0820_greenmart_app_install",
-      "slug": "greenmart-app-install-discount",
-      "title": "그린마트 앱 설치하고 첫 결제 5,000원 할인",
-      "summary": "앱 최초 설치 회원 대상 즉시 할인이 적용됩니다.",
-      "brand": {
-        "name": "그린마트"
-      },
-      "category": "app",
-      "dealType": "discount",
-      "difficulty": "normal",
-      "price": {
-        "original": 15000,
-        "final": 10000,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": true,
-        "quantity": 10000,
-        "remaining": 0,
-        "perPersonLimit": 1
-      },
-      "period": {
-        "startAt": "2026-08-11T00:00:00+09:00",
-        "endAt": "2026-08-21T23:59:59+09:00"
-      },
-      "link": {
-        "url": "https://example.com/deals/greenmart-app-install-discount",
-        "label": "앱 설치하기"
-      },
-      "howTo": ["앱 설치", "신규 회원가입", "첫 결제 시 자동 할인"],
-      "tags": ["앱설치", "첫결제"],
-      "source": {
-        "name": "공식 앱 배너",
-        "collectedAt": "2026-08-22T05:30:00+09:00",
-        "method": "llm",
-        "confidence": 0.86
-      },
-      "meta": {
-        "verified": true,
-        "updatedAt": "2026-08-22T05:30:00+09:00"
-      }
-    },
-    {
-      "id": "dl_2026_0820_bookflow_open_event",
-      "slug": "bookflow-open-event",
-      "title": "북플로우 오픈 기념 전자책 3권 무료",
-      "summary": "8월 25일 오픈과 동시에 선착순 1만명에게 전자책 3권 이용권을 드립니다.",
-      "brand": {
-        "name": "북플로우"
-      },
-      "category": "culture",
-      "dealType": "free",
-      "difficulty": "easy",
-      "price": {
-        "original": 27000,
-        "final": 0,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": true,
-        "quantity": 10000,
-        "perPersonLimit": 1
-      },
-      "period": {
-        "startAt": "2026-08-25T10:00:00+09:00",
-        "endAt": "2026-09-05T23:59:59+09:00"
-      },
-      "link": {
-        "url": "https://example.com/deals/bookflow-open-event",
-        "label": "오픈 알림 신청"
-      },
-      "howTo": ["사전 알림 신청", "오픈 당일 앱 접속", "이용권 받기"],
-      "tags": ["전자책", "선착순"],
-      "source": {
-        "name": "사전 오픈 페이지",
-        "collectedAt": "2026-08-22T05:30:00+09:00",
-        "method": "manual"
-      },
-      "meta": {
-        "verified": true,
-        "updatedAt": "2026-08-19T18:00:00+09:00"
-      }
-    },
-    {
-      "id": "dl_2026_0805_quickfood_summer_deal",
-      "slug": "quickfood-summer-deal",
-      "title": "퀵푸드 한여름 배달비 0원 이벤트",
-      "summary": "여름 시즌 한정으로 배달비를 받지 않는 프로모션입니다.",
-      "brand": {
-        "name": "퀵푸드"
-      },
-      "category": "food",
-      "dealType": "discount",
       "difficulty": "easy",
       "price": {
         "original": 3000,
@@ -490,23 +23,399 @@
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-08-01T00:00:00+09:00",
-        "endAt": "2026-08-10T23:59:59+09:00"
+        "startAt": "2026-08-26T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
       },
       "link": {
-        "url": "https://example.com/deals/quickfood-summer-deal",
-        "label": "이벤트 보기"
+        "url": "https://apps.apple.com/kr/app/widgetik/id6760586460",
+        "label": "앱스토어에서 보기"
       },
-      "tags": ["배달비무료"],
+      "howTo": [
+        "앱스토어에서 Widgetik 설치 후 실행",
+        "메인화면에서 스크롤 다운",
+        "'프리미엄 잠금 해제 ₩0' 배너 버튼 클릭",
+        "인앱 구매 진행 (무료로 표시되는지 확인)"
+      ],
+      "caution": ["기간 한정 무료이므로 결제 전 반드시 무료 여부를 확인할 것"],
+      "tags": ["iOS", "위젯", "앱테크", "무료앱", "인앱구매"],
       "source": {
-        "name": "공식 앱 공지",
-        "collectedAt": "2026-08-11T05:30:00+09:00",
-        "method": "crawler",
-        "confidence": 0.95
+        "name": "클리앙 알뜰구매",
+        "url": "https://www.clien.net/service/board/jirum/19253741?od=T31&po=0&category=0&groupCd=",
+        "collectedAt": "2026-08-26T07:17:24.695Z",
+        "method": "llm",
+        "confidence": 0.85
       },
       "meta": {
-        "verified": true,
-        "updatedAt": "2026-08-11T05:30:00+09:00"
+        "verified": false,
+        "updatedAt": "2026-08-26T07:17:24.695Z"
+      }
+    },
+    {
+      "id": "dl_clien-jirum_cf5a727535ed7f30",
+      "slug": "clien-jirum-board-jirum-3c415e9f",
+      "title": "카스 제로 2캔 + 카스 레몬 제로 2캔 2,500원",
+      "summary": "네이버에서 카스 제로 2캔+카스 레몬 제로 2캔을 알림받기 쿠폰 적용 시 2,500원에 구매 가능",
+      "description": "네이버 브랜드스토어 오비맥주 공식몰에서 카스 제로 2캔 + 카스 레몬 제로 2캔 세트를 알림받기 쿠폰 적용 시 2,500원에 구매할 수 있다. 이전에 해당 제품을 구매한 이력이 있는 경우 쿠폰이 적용되지 않아 3,000원이다.",
+      "brand": {
+        "name": "오비맥주(카스)"
+      },
+      "category": "food",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "final": 2500,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-26T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://brand.naver.com/oriental-brewery/products/13046803488",
+        "label": "네이버 스마트스토어에서 구매"
+      },
+      "howTo": [
+        "네이버 브랜드스토어(오비맥주) 상품 페이지 접속",
+        "알림받기 쿠폰 다운로드",
+        "쿠폰 적용하여 2,500원에 구매"
+      ],
+      "caution": ["알림받기 쿠폰을 적용해야 2,500원 (미적용 또는 재구매자는 3,000원)"],
+      "tags": ["카스", "오비맥주", "네이버", "맥주", "제로"],
+      "source": {
+        "name": "클리앙 알뜰구매",
+        "url": "https://www.clien.net/service/board/jirum/19253057?od=T31&po=0&category=0&groupCd=",
+        "collectedAt": "2026-08-26T07:17:24.695Z",
+        "method": "llm",
+        "confidence": 0.85
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T07:17:24.695Z"
+      }
+    },
+    {
+      "id": "dl_clien-jirum_f799aa9c3149d0d7",
+      "slug": "clien-jirum-board-jirum-a98024a2",
+      "title": "네이버멤버십 양파 1.5kg 1,700원",
+      "summary": "네이버 스마트스토어에서 양파 1.5kg을 1,700원에 판매, 네이버 멤버십 회원 무료배송",
+      "description": "네이버 스마트스토어 판매자 ttrae에서 중사이즈(120g~250g) 양파 1.5kg을 1,700원에 판매. 정가 대비 83% 할인가이며, 네이버 멤버십 회원은 무료배송이 적용됨.",
+      "brand": {
+        "name": "네이버 스마트스토어(ttrae)"
+      },
+      "category": "food",
+      "dealType": "discount",
+      "difficulty": "normal",
+      "price": {
+        "final": 1700,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-26T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://smartstore.naver.com/ttrae/products/13640111634",
+        "label": "네이버 스마트스토어에서 구매"
+      },
+      "howTo": ["링크 접속 후 네이버 멤버십 로그인", "상품 구매(무료배송 적용 확인)"],
+      "caution": [
+        "네이버 멤버십 회원에게만 무료배송이 적용됨",
+        "일반 배송비 포함 시 실제 결제가는 1,700원보다 높을 수 있음"
+      ],
+      "tags": ["양파", "네이버멤버십", "스마트스토어", "무료배송", "식재료할인"],
+      "source": {
+        "name": "클리앙 알뜰구매",
+        "url": "https://www.clien.net/service/board/jirum/19253499?od=T31&po=0&category=0&groupCd=",
+        "collectedAt": "2026-08-26T07:17:24.695Z",
+        "method": "llm",
+        "confidence": 0.85
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T07:17:24.695Z"
+      }
+    },
+    {
+      "id": "dl_ruliweb-market_0286599ecdec7be1",
+      "slug": "ruliweb-market-board-read-ac365df7",
+      "title": "컨트롤 얼티밋 에디션 스팀코드 4000원",
+      "summary": "그린맨게이밍에서 컨트롤 얼티밋 에디션 스팀코드를 4000원에 판매",
+      "description": "그린맨게이밍(GreenManGaming)에서 PC 게임 '컨트롤 얼티밋 에디션'의 스팀 코드를 4000원에 판매하고 있다는 핫딜 게시글.",
+      "brand": {
+        "name": "그린맨게이밍"
+      },
+      "category": "culture",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "final": 4000,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-26T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://www.greenmangaming.com/ko/games/control-ultimate-edition-pc/",
+        "label": "구매 페이지로 이동"
+      },
+      "howTo": [
+        "링크로 그린맨게이밍 상품 페이지 접속",
+        "컨트롤 얼티밋 에디션 구매(4000원)",
+        "발급받은 스팀 코드를 스팀 클라이언트에 등록"
+      ],
+      "caution": [
+        "해외 사이트 결제이므로 결제 수단 및 통화, 환율에 따라 실제 청구 금액이 달라질 수 있음",
+        "가격 및 판매 여부는 변동될 수 있음"
+      ],
+      "tags": ["그린맨게이밍", "컨트롤", "스팀코드", "PC게임", "핫딜"],
+      "source": {
+        "name": "루리웹 예판·핫딜",
+        "url": "https://bbs.ruliweb.com/market/board/1020/read/106653",
+        "collectedAt": "2026-08-26T07:17:24.695Z",
+        "method": "llm",
+        "confidence": 0.8
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T07:17:24.695Z"
+      }
+    },
+    {
+      "id": "dl_ruliweb-market_39449d536beeda27",
+      "slug": "ruliweb-market-board-read-9d73901f",
+      "title": "대원샵 닌텐도&컴파일하트 균일가 10,000원",
+      "summary": "대원샵, 닌텐도·컴파일하트 상품 균일가 10,000원 판매(무료배송, 포인트 적용)",
+      "description": "대원샵에서 닌텐도·컴파일하트 관련 상품을 균일가 10,000원에 판매. 무료배송이며 포인트 적립도 적용된다. 다만 판매 리스트가 많지 않다고 함.",
+      "brand": {
+        "name": "대원샵"
+      },
+      "category": "shopping",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "final": 10000,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": true
+      },
+      "period": {
+        "startAt": "2026-08-26T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://bbs.ruliweb.com/market/board/1020/read/106648"
+      },
+      "caution": ["재고가 많지 않아 품절될 수 있음"],
+      "tags": ["대원샵", "닌텐도", "컴파일하트", "균일가", "무료배송"],
+      "source": {
+        "name": "루리웹 예판·핫딜",
+        "url": "https://bbs.ruliweb.com/market/board/1020/read/106648",
+        "collectedAt": "2026-08-26T07:17:24.695Z",
+        "method": "llm",
+        "confidence": 0.75
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T07:17:24.695Z"
+      }
+    },
+    {
+      "id": "dl_ruliweb-market_63b94b98f20a8c60",
+      "slug": "ruliweb-market-board-read-447bf686",
+      "title": "LG 울트라기어 27GS85Q 게이밍모니터 삼성카드 369,830원",
+      "summary": "롯데홈쇼핑, LG 울트라기어 27GS85Q 게이밍모니터 삼성카드 결제 시 369,830원(적립 포함 체감 339,830원)",
+      "description": "롯데홈쇼핑에서 LG 울트라기어 게이밍모니터 27GS85Q(QHD, 나노 IPS, 200Hz 오버클럭, 1ms, 밝기 400)를 삼성카드 결제 시 369,830원에 판매. 10% 적립 포함 시 체감가는 339,830원. 오후 8시 라이브 방송에서는 선착순 20명 구매인증 시 배달의민족 2만원권을 증정.",
+      "brand": {
+        "name": "LG전자"
+      },
+      "category": "shopping",
+      "dealType": "discount",
+      "difficulty": "normal",
+      "price": {
+        "final": 369830,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": true,
+        "quantity": 20
+      },
+      "period": {
+        "startAt": "2026-08-26T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://bbs.ruliweb.com/market/board/1020/read/106647",
+        "label": "원문 보기"
+      },
+      "howTo": [
+        "롯데홈쇼핑에서 삼성카드로 LG 울트라기어 27GS85Q 모니터 결제",
+        "오후 8시 라이브 방송에서 구매 인증 (선착순 20명, 배민 2만원 증정 대상)"
+      ],
+      "caution": [
+        "삼성카드 결제 시 가격이며, 10% 적립분은 즉시 할인이 아닌 적립 혜택입니다.",
+        "배민 2만원 증정은 오후 8시 라이브 방송에서 선착순 20명 구매인증자에 한함."
+      ],
+      "tags": ["LG전자", "울트라기어", "게이밍모니터", "롯데홈쇼핑", "삼성카드"],
+      "source": {
+        "name": "루리웹 예판·핫딜",
+        "url": "https://bbs.ruliweb.com/market/board/1020/read/106647",
+        "collectedAt": "2026-08-26T07:17:24.695Z",
+        "method": "llm",
+        "confidence": 0.75
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T07:17:24.695Z"
+      }
+    },
+    {
+      "id": "dl_ruliweb-market_b40da230186b4346",
+      "slug": "ruliweb-market-board-read-8924bc39",
+      "title": "아이시스8.0 생수 200ml 40펫 8,510원",
+      "summary": "롯데온에서 아이시스8.0 생수 200ml 40펫 묶음 8,510원(개당 약 210원)",
+      "description": "롯데온에서 아이시스8.0 생수 200ml 40펫 묶음을 8,510원에 판매. 개당 약 210원대.",
+      "brand": {
+        "name": "아이시스"
+      },
+      "category": "shopping",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "final": 8510,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-26T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://bbs.ruliweb.com/market/board/1020/read/106651"
+      },
+      "howTo": ["롯데온 접속 후 해당 상품 페이지에서 구매"],
+      "tags": ["아이시스", "생수", "롯데온", "핫딜"],
+      "source": {
+        "name": "루리웹 예판·핫딜",
+        "url": "https://bbs.ruliweb.com/market/board/1020/read/106651",
+        "collectedAt": "2026-08-26T07:17:24.695Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T07:17:24.695Z"
+      }
+    },
+    {
+      "id": "dl_ruliweb-market_ce6465b6d3b4b47d",
+      "slug": "ruliweb-market-board-read-91807b69",
+      "title": "커세어 제논 엣지 터치스크린 보조모니터 290,350원",
+      "summary": "쿠팡에서 커세어 제논 엣지 터치스크린 보조모니터가 290,350원에 판매 중 (최근 시세 대비 최저가).",
+      "description": "커세어 제논 엣지(Xeneon Edge) 터치스크린 보조모니터를 쿠팡에서 290,350원에 판매. 해상도 2560x720, 화이트·퍼플·블랙·스모크 색상 옵션 있음. 작성자는 최근 시세가 34만~31만원대였는데 오늘 29만원까지 내려온 것으로, 본인은 8월 14일에 34만원대에 구매했다고 언급.",
+      "brand": {
+        "name": "커세어(CORSAIR)"
+      },
+      "category": "shopping",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "final": 290350,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-26T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://www.coupang.com/vp/products/9684719295?vendorItemId=95188337071&itemId=28961874350&landingType=SDP",
+        "label": "쿠팡에서 보기"
+      },
+      "howTo": ["게시글 내 쿠팡 링크로 접속", "원하는 색상(화이트/퍼플/블랙/스모크) 선택 후 구매"],
+      "tags": ["커세어", "제논 엣지", "보조모니터", "쿠팡", "터치스크린"],
+      "source": {
+        "name": "루리웹 예판·핫딜",
+        "url": "https://bbs.ruliweb.com/market/board/1020/read/106662",
+        "collectedAt": "2026-08-26T07:17:24.695Z",
+        "method": "llm",
+        "confidence": 0.85
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T07:17:24.695Z"
+      }
+    },
+    {
+      "id": "dl_ruliweb-market_e883eecbef398c7d",
+      "slug": "ruliweb-market-board-read-855871c5",
+      "title": "네이버페이 라이브방송 5원~20원 특가 (8/26 시간표)",
+      "summary": "네이버페이 라이브방송에서 8/26 시간대별로 5원~20원 특가 상품 진행, 링크로 실시간 입장 후 구매",
+      "description": "네이버페이 라이브방송(라방)에서 시간대별로 5원~20원의 특가 상품이 진행됨. 원문에 게시된 금일(8/26) 일정: 오전 10시(1개, 5원), 10시30분(1개, 5원), 11시(3개, 15원), 오후 2시(1개, 5원), 5시(1개, 5원), 6시(2개, 10원), 7시(3개, 15원), 8시(4개, 20원), 9시(1개, 5원). 개수는 해당 시간대 진행 건수로 추정되며 구체적 상품명·재고 수량은 원문에 없음.",
+      "brand": {
+        "name": "네이버페이"
+      },
+      "category": "finance",
+      "dealType": "penny",
+      "difficulty": "normal",
+      "price": {
+        "final": 5,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": true
+      },
+      "period": {
+        "startAt": "2026-08-26T00:00:00+09:00",
+        "endAt": "2026-08-26T23:59:59+09:00"
+      },
+      "link": {
+        "url": "https://external-token.pay.naver.com/entry/pincrux?gd=ab8e18ef4ebebeddc0b3152ce9c9006e14fc05242e3fc9ce32246ea6a9543074",
+        "label": "네이버페이 라이브방송 입장"
+      },
+      "howTo": [
+        "원문에 있는 네이버페이 라이브방송 입장 링크로 접속",
+        "일정표의 시간대(10시/10시30분/11시/14시/17시/18시/19시/20시/21시)에 맞춰 라이브방송 입장",
+        "방송 중 노출되는 5원~20원 특가 상품을 구매"
+      ],
+      "caution": [
+        "시간대별로 가격이 다름(5원~20원), 5원이 아닌 슬롯도 있음",
+        "라이브방송 진행 중에만 참여 가능하며 실시간 입장 필요",
+        "선착순 여부 및 정확한 판매 상품명은 원문에 명시되어 있지 않음"
+      ],
+      "tags": ["네이버페이", "라이브커머스", "라방", "5원딜", "특가", "타임세일"],
+      "source": {
+        "name": "루리웹 예판·핫딜",
+        "url": "https://bbs.ruliweb.com/market/board/1020/read/106650",
+        "collectedAt": "2026-08-26T07:17:24.695Z",
+        "method": "llm",
+        "confidence": 0.75
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T07:17:24.695Z"
       }
     }
   ]

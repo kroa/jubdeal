@@ -85,7 +85,9 @@ export function formatKstDateTime(iso: string): string {
  * 혜택에 "오늘 마감"/"D-14" 가 붙어 사용자를 오도합니다.
  */
 export function formatDeadline(
-  deal: Pick<DecoratedDeal, 'daysLeft' | 'status'> & { period?: { startAt: string } },
+  deal: Pick<DecoratedDeal, 'daysLeft' | 'status'> & {
+    period?: { startAt: string; deadlineUnknown?: boolean };
+  },
 ): string {
   if (deal.status === 'ended') return '종료됨';
   if (deal.status === 'sold_out') return '소진됨';
@@ -95,6 +97,8 @@ export function formatDeadline(
     return openDay ? `${openDay} 오픈` : '오픈 예정';
   }
 
+  // 상시 진행과 "마감일을 모름"은 다릅니다. 모르는 것을 상시라고 하면 거짓말이 됩니다.
+  if (deal.period?.deadlineUnknown) return '마감일 미상';
   if (deal.daysLeft === null) return '상시 진행';
   if (deal.daysLeft <= 0) return '오늘 마감';
   if (deal.daysLeft === 1) return '내일 마감';
