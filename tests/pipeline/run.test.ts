@@ -415,14 +415,75 @@ describe('formatReport', () => {
         outputTokens: 10_000,
         cachedInputTokens: 80_000,
         costUsd: null,
+        unpricedCalls: 0,
       },
       errors: [],
     });
 
     expect(text).toContain('수집        5건');
     expect(text).toContain('추출 성공   3건');
-    expect(text).toContain('$');
     expect(text).toContain('10.0초');
+
+    /*
+      프로바이더가 비용을 알려주지 않았으면 **금액을 만들어 내지 않습니다.**
+      예전에는 Claude 단가로 추정했는데, Gemini 실행에 "추정 비용 $0.1046" 이
+      찍혔습니다. 무료 등급이라 0 인 실행에 요금이 있는 것처럼 보였습니다.
+      "유료로 돌리지 않는다"가 전제인 프로젝트라 이 오표기는 그냥 넘길 수 없습니다.
+    */
+    expect(text).toContain('알려주지 않음');
+    expect(text).not.toContain('$');
+  });
+
+  it('프로바이더가 알려준 비용은 그대로 적는다', () => {
+    const text = formatReport({
+      startedAt: '2026-08-23T00:00:00.000Z',
+      finishedAt: '2026-08-23T00:00:10.000Z',
+      sourcesRun: 1,
+      collected: 1,
+      extracted: 1,
+      rejected: 0,
+      added: 1,
+      updated: 0,
+      unchanged: 0,
+      reviewQueued: 0,
+      usage: {
+        inputTokens: 100,
+        outputTokens: 10,
+        cachedInputTokens: 0,
+        costUsd: 0.1234,
+        unpricedCalls: 0,
+      },
+      errors: [],
+    });
+
+    expect(text).toContain('실제 비용   $0.1234');
+  });
+
+  it('무료 모델의 0 을 "알 수 없음"으로 뭉개지 않는다', () => {
+    // 0 은 "모른다"가 아니라 "정말로 0" 입니다. null 과 구분해야 합니다.
+    const text = formatReport({
+      startedAt: '2026-08-23T00:00:00.000Z',
+      finishedAt: '2026-08-23T00:00:01.000Z',
+      sourcesRun: 1,
+      collected: 1,
+      extracted: 1,
+      rejected: 0,
+      added: 1,
+      updated: 0,
+      unchanged: 0,
+      reviewQueued: 0,
+      usage: {
+        inputTokens: 100,
+        outputTokens: 10,
+        cachedInputTokens: 0,
+        costUsd: 0,
+        unpricedCalls: 0,
+      },
+      errors: [],
+    });
+
+    expect(text).toContain('실제 비용   $0.0000');
+    expect(text).not.toContain('알려주지 않음');
   });
 
   it('오류를 함께 표시한다', () => {
@@ -437,11 +498,71 @@ describe('formatReport', () => {
       updated: 0,
       unchanged: 0,
       reviewQueued: 0,
-      usage: { inputTokens: 0, outputTokens: 0, cachedInputTokens: 0, costUsd: null },
+      usage: {
+        inputTokens: 0,
+        outputTokens: 0,
+        cachedInputTokens: 0,
+        costUsd: null,
+        unpricedCalls: 0,
+      },
       errors: [{ sourceId: 'broken', message: '연결 실패' }],
     });
 
     expect(text).toContain('broken');
     expect(text).toContain('연결 실패');
+  });
+});
+
+describe('여러 프로바이더를 섞어 쓴 실행의 비용 표기', () => {
+  const base = {
+    startedAt: '2026-08-27T00:00:00.000Z',
+    finishedAt: '2026-08-27T00:00:10.000Z',
+    sourcesRun: 1,
+    collected: 50,
+    extracted: 27,
+    rejected: 23,
+    added: 21,
+    updated: 6,
+    unchanged: 0,
+    reviewQueued: 14,
+    errors: [],
+  };
+
+  it('일부만 비용을 알려줬으면 전체인 척하지 않는다', () => {
+    /*
+      체인은 프로바이더를 섞어 씁니다.
+      Gemini(비용 미보고) 40건 + OpenRouter(0 보고) 10건이면
+      합계는 0 이지만 그건 10건만의 값입니다.
+      "실제 비용 $0.0000" 이라고만 적으면 40건이 빠진 걸 알 수 없습니다.
+    */
+    const text = formatReport({
+      ...base,
+      usage: {
+        inputTokens: 79_774,
+        outputTokens: 62_516,
+        cachedInputTokens: 7_680,
+        costUsd: 0,
+        unpricedCalls: 40,
+      },
+    });
+
+    expect(text).toContain('$0.0000');
+    expect(text).toContain('40건은 알려주지 않음');
+  });
+
+  it('전부 알려줬으면 단서를 붙이지 않는다', () => {
+    const text = formatReport({
+      ...base,
+      usage: {
+        inputTokens: 100,
+        outputTokens: 10,
+        cachedInputTokens: 0,
+        costUsd: 1.2682,
+        unpricedCalls: 0,
+      },
+    });
+
+    expect(text).toContain('실제 비용   $1.2682');
+    expect(text).not.toContain('알려주지 않음');
   });
 });

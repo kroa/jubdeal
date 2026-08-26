@@ -61,7 +61,10 @@ export const extractedDealSchema = z.object({
     .int()
     .nonnegative()
     .nullable()
-    .describe('실제 지불 금액(원). 무료면 0. 금액을 알 수 없으면 null — 추측하지 말 것'),
+    .describe(
+      '실제 지불 금액(원). 참여에 돈이 들지 않으면 0 (무료·응모·퀴즈·출석·포인트·캐시백). ' +
+        '돈은 내는데 액수를 알 수 없을 때만 null — 추측하지 말 것',
+    ),
 
   firstComeFirstServed: z.boolean().describe('선착순 여부'),
   quantity: z.number().int().positive().nullable().describe('총 수량. 모르면 null'),

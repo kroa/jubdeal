@@ -153,6 +153,15 @@ export interface PipelineReport {
      * 무료 모델이면 0 입니다. 아무도 알려주지 않았으면 null.
      */
     costUsd: number | null;
+    /**
+     * 비용을 알려주지 않은 호출 수.
+     *
+     * 체인은 프로바이더를 섞어 씁니다. Gemini 는 응답에 비용을 담지 않고
+     * OpenRouter 는 담습니다. 알려준 것만 더해 놓고 "실제 비용"이라고 적으면,
+     * 절반이 집계에서 빠진 값을 전체인 것처럼 보여 주게 됩니다.
+     * 몇 건이 빠졌는지 같이 남겨야 그 수치를 믿을지 판단할 수 있습니다.
+     */
+    unpricedCalls: number;
   };
   /** 소스별 오류 (수집 자체가 실패한 경우) */
   errors: Array<{ sourceId: string; message: string }>;

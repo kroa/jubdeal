@@ -289,7 +289,12 @@ export class GeminiProvider implements LlmProvider {
       });
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
-      throw new ProviderUnavailableError(this.name, 'unavailable', `요청 실패: ${message}`);
+      /*
+        연결이 끊기거나 타임아웃이 나는 것은 대개 일시적입니다(ECONNRESET 등, 실제로 관측).
+        'unavailable' 로 두면 그 모델이 이번 실행 내내 배제되는데,
+        네트워크가 한 번 튄 것 때문에 멀쩡한 모델을 통째로 버리게 됩니다.
+      */
+      throw new ProviderUnavailableError(this.name, 'busy', `요청 실패: ${message}`);
     } finally {
       clearTimeout(timer);
     }
@@ -314,10 +319,17 @@ export class GeminiProvider implements LlmProvider {
         );
       }
       if (response.status >= 500) {
+        /*
+          5xx 는 서버 쪽 일시 상태입니다.
+          최신 모델일수록 503 "This model is currently experiencing high demand" 가
+          자주 나옵니다(gemini-3.7-flash 에서 실제로 관측).
+          영구 배제하면 잠시 뒤면 쓸 수 있는 모델을 그 실행 내내 못 쓰게 됩니다.
+          429 와 같은 '붐빔'으로 다뤄 다음 모델로만 넘어갑니다.
+        */
         throw new ProviderUnavailableError(
           this.name,
-          'unavailable',
-          `서버 오류 ${response.status}`,
+          'busy',
+          `서버가 혼잡합니다 (${response.status})`,
         );
       }
       throw new LlmRequestError(this.name, `HTTP ${response.status}: ${bodyText.slice(0, 300)}`);

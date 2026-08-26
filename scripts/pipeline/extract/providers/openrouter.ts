@@ -258,14 +258,26 @@ export class OpenRouterProvider implements LlmProvider {
     );
   }
 
-  /** 시도 순서: 마지막 성공 모델 → 설정 목록(또는 자동 탐색) → 예비 목록 */
+  /** 시도 순서: 마지막 성공 모델 → 설정 목록 → 예비 목록 → 자동 탐색 */
   private async modelsToTry(): Promise<string[]> {
-    const primary =
-      this.configuredModels.length > 0 ? this.configuredModels : await this.discoverFreeModels();
+    const configured = [...this.configuredModels, ...this.fallbackModels];
 
-    const ordered = [...primary, ...this.fallbackModels];
+    /*
+      설정한 모델은 "선호"이지 상한이 아닙니다.
+
+      무료 공용 풀은 특정 모델이 며칠씩 붐비는 일이 흔합니다.
+      (사용자가 지정한 gemma 두 모델이 실제로 계속 429 를 돌려줬습니다.)
+      그때 목록에 없다는 이유로 통째로 실패하면, 쓸 수 있는 무료 모델이
+      여덟 개나 남아 있는데도 수집이 0건으로 끝납니다.
+
+      그래서 설정 목록을 앞에 두되, 뒤에 탐색 결과를 붙여 둡니다.
+      탐색은 유료 모델을 걸러내므로 요금이 새어 나갈 여지는 없습니다.
+    */
+    const discovered = await this.discoverFreeModels();
+    const ordered = configured.length > 0 ? [...configured, ...discovered] : discovered;
+
     if (this.preferred) {
-      return [this.preferred, ...ordered.filter((model) => model !== this.preferred)];
+      return dedupe([this.preferred, ...ordered.filter((model) => model !== this.preferred)]);
     }
     return dedupe(ordered);
   }

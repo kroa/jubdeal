@@ -70,49 +70,83 @@ export class ProviderChain implements LlmProvider {
   }
 }
 
-export type ProviderMode = 'auto' | 'claude-cli' | 'gemini' | 'openrouter';
+export type ProviderName = 'claude-cli' | 'gemini' | 'openrouter';
+export type ProviderMode = 'auto' | ProviderName;
+
+const PROVIDER_NAMES: readonly ProviderName[] = ['claude-cli', 'gemini', 'openrouter'];
+
+/** `auto` 가 펼쳐지는 순서 */
+const AUTO_ORDER: readonly ProviderName[] = ['claude-cli', 'gemini', 'openrouter'];
 
 export interface CreateProviderOptions {
-  mode?: ProviderMode;
+  mode?: string;
   log?: (message: string) => void;
+}
+
+/**
+ * LLM_PROVIDER 값을 프로바이더 순서로 해석합니다.
+ *
+ * 쉼표로 여러 개를 적을 수 있습니다. 적은 순서대로 시도합니다.
+ * 하나만 적으면 폴백 없이 그것만 씁니다.
+ *
+ *   auto                (기본) claude-cli → gemini → openrouter
+ *   gemini,openrouter   Gemini 를 쓰고 막히면 OpenRouter
+ *   gemini              Gemini 만 (폴백 없음)
+ *
+ * 오타를 조용히 무시하면 의도와 다른 프로바이더가 돌면서 요금이 나갑니다.
+ * 모르는 이름은 그 자리에서 실패시킵니다.
+ */
+export function parseProviderModes(raw: string | undefined): ProviderName[] {
+  const value = (raw ?? '').trim();
+  if (value === '' || value === 'auto') return [...AUTO_ORDER];
+
+  const names = value
+    .split(',')
+    .map((entry) => entry.trim())
+    .filter((entry) => entry !== '');
+
+  const unknown = names.filter((name) => !PROVIDER_NAMES.includes(name as ProviderName));
+  if (unknown.length > 0) {
+    throw new Error(
+      `LLM_PROVIDER 에 알 수 없는 값이 있습니다: ${unknown.join(', ')}\n` +
+        `  사용 가능: auto, ${PROVIDER_NAMES.join(', ')} (쉼표로 여러 개 지정 가능)`,
+    );
+  }
+
+  // 같은 프로바이더를 두 번 적어도 한 번만 시도합니다.
+  return [...new Set(names)] as ProviderName[];
 }
 
 /**
  * 환경변수에 따라 프로바이더를 구성합니다.
  *
- *   LLM_PROVIDER=auto        (기본) claude-cli → gemini → openrouter 순으로 시도
- *   LLM_PROVIDER=claude-cli  구독 인증만 사용 (폴백 없음)
- *   LLM_PROVIDER=gemini      Gemini 만 사용
- *   LLM_PROVIDER=openrouter  OpenRouter 만 사용
+ * 폴백은 **요금제 한도·인증·연결 문제일 때만** 일어납니다.
+ * 스키마 위반처럼 프로바이더를 바꿔도 똑같이 실패할 오류는 폴백하지 않습니다.
  */
 export function createProvider(options: CreateProviderOptions = {}): LlmProvider {
   const log = options.log ?? (() => {});
-  const mode = (options.mode ?? process.env.LLM_PROVIDER ?? 'auto') as ProviderMode;
+  const names = parseProviderModes(options.mode ?? process.env.LLM_PROVIDER);
 
-  const claude = () =>
-    new ClaudeCliProvider({
-      binaryPath: process.env.CLAUDE_CLI_PATH,
-      model: process.env.CLAUDE_CLI_MODEL,
-      effort: (process.env.CLAUDE_CLI_EFFORT as 'low' | 'medium' | 'high') || undefined,
-      maxBudgetUsd: numberFromEnv('CLAUDE_CLI_MAX_BUDGET_USD'),
-      log,
-    });
+  const build = (name: ProviderName): LlmProvider => {
+    switch (name) {
+      case 'claude-cli':
+        return new ClaudeCliProvider({
+          binaryPath: process.env.CLAUDE_CLI_PATH,
+          model: process.env.CLAUDE_CLI_MODEL,
+          effort: (process.env.CLAUDE_CLI_EFFORT as 'low' | 'medium' | 'high') || undefined,
+          maxBudgetUsd: numberFromEnv('CLAUDE_CLI_MAX_BUDGET_USD'),
+          log,
+        });
+      case 'gemini':
+        return new GeminiProvider({ log });
+      case 'openrouter':
+        return new OpenRouterProvider({ log });
+    }
+  };
 
-  const gemini = () => new GeminiProvider({ log });
-
-  const openrouter = () => new OpenRouterProvider({ log });
-
-  switch (mode) {
-    case 'claude-cli':
-      return claude();
-    case 'gemini':
-      return gemini();
-    case 'openrouter':
-      return openrouter();
-    case 'auto':
-    default:
-      return new ProviderChain([claude(), gemini(), openrouter()], log);
-  }
+  // 하나만 지정했으면 체인으로 감싸지 않습니다. 폴백이 없다는 뜻이니까요.
+  const providers = names.map(build);
+  return providers.length === 1 ? providers[0]! : new ProviderChain(providers, log);
 }
 
 function numberFromEnv(key: string): number | undefined {

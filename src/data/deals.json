@@ -1,20 +1,21 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-26T12:49:35.067Z",
+  "generatedAt": "2026-08-26T16:29:18.113Z",
   "deals": [
     {
       "id": "dl_clien-jirum_04962a01d4d3f120",
       "slug": "clien-jirum-board-jirum-0e775481",
-      "title": "iOS 게임 'Legacy-Reawakening' 일시 무료",
-      "summary": "iOS 어드벤처 게임 'Legacy-Reawakening'(평소 3.99유로)이 한시적으로 무료 배포 중",
-      "description": "평소 3.99유로에 판매되던 iOS 포인트 앤 클릭 어드벤처 게임 'Legacy-Reawakening'이 한시적으로 무료 배포 중입니다. 앱스토어 링크에서 다운로드할 수 있습니다.",
+      "title": "[iOS] Legacy-Reawakening 일시 무료",
+      "summary": "Legacy-Reawakening 포인트 앤 클릭 어드벤처 게임이 평소 3.99유로에서 일시적으로 무료로 제공됩니다.",
+      "description": "평소 3.99유로에 판매되던 iOS용 포인트 앤 클릭 어드벤처 게임 Legacy-Reawakening이 현재 무료로 배포 중입니다. 다운로드 링크는 App Store에서 확인 가능합니다.",
       "brand": {
-        "name": "Apple App Store"
+        "name": "Legacy-Reawakening"
       },
       "category": "app",
       "dealType": "free",
       "difficulty": "easy",
       "price": {
+        "original": 5786,
         "final": 0,
         "currency": "KRW"
       },
@@ -22,37 +23,39 @@
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-08-26T00:00:00+09:00",
+        "startAt": "2026-08-27T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
       },
       "link": {
         "url": "https://apps.apple.com/kr/app/legacy-reawakening/id6741156650",
-        "label": "App Store에서 보기"
+        "label": "App Store 다운로드"
       },
-      "howTo": ["App Store에서 Legacy-Reawakening 앱 페이지 접속", "무료로 다운로드"],
-      "caution": ["일시 무료 이벤트는 사전 예고 없이 종료될 수 있음"],
-      "tags": ["iOS", "앱스토어", "게임", "무료앱", "어드벤처게임"],
+      "howTo": ["App Store에서 'Legacy-Reawakening' 검색", "받기 버튼을 눌러 무료 다운로드"],
+      "caution": [
+        "무료 배포 기간이 언제까지인지 명시되지 않았으므로, 다운로드 시점에 유료로 전환될 수 있음"
+      ],
+      "tags": ["iOS", "무료", "게임"],
       "source": {
         "name": "클리앙 알뜰구매",
         "url": "https://www.clien.net/service/board/jirum/19253918",
-        "collectedAt": "2026-08-26T12:49:35.067Z",
+        "collectedAt": "2026-08-26T16:29:18.113Z",
         "method": "llm",
-        "confidence": 0.85
+        "confidence": 0.9
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-08-26T12:49:35.067Z"
+        "updatedAt": "2026-08-26T16:29:18.113Z"
       }
     },
     {
       "id": "dl_clien-jirum_2884204aeae2434b",
       "slug": "clien-jirum-board-jirum-26730de6",
-      "title": "SamWatch Digital Nekhbet 워치페이스 한시 무료",
-      "summary": "Wear OS 워치페이스 앱 'SamWatch Digital Nekhbet'가 내일 오전 9시까지 한시 무료 배포됩니다.",
-      "description": "Wear OS용 유료 워치 페이스 앱 'SamWatch Digital Nekhbet'가 한시적으로 무료 배포됩니다. Google Play 스토어에서 다운로드하면 됩니다.",
+      "title": "[WearOS] SamWatch Digital Nekhbet 일시 무료",
+      "summary": "유료 워치 페이스 SamWatch Digital Nekhbet이 내일 오전 9시까지 무료로 배포 중입니다.",
+      "description": "플레이스토어에서 해당 워치 페이스 앱을 무료로 다운로드할 수 있습니다.",
       "brand": {
-        "name": "SamWatch Digital Nekhbet"
+        "name": "SamWatch"
       },
       "category": "app",
       "dealType": "free",
@@ -65,29 +68,175 @@
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-08-26T00:00:00+09:00",
-        "endAt": "2026-08-27T09:00:00+09:00"
+        "startAt": "2026-08-27T00:00:00+09:00",
+        "endAt": "2026-08-28T09:00:00+09:00"
       },
       "link": {
         "url": "https://play.google.com/store/apps/details?id=com.watchfacestudio.samwatch_digital_nekhbet",
-        "label": "Google Play에서 보기"
+        "label": "플레이스토어 다운로드 페이지"
       },
-      "howTo": [
-        "Google Play 스토어 링크 접속",
-        "앱(워치페이스) 설치/구매 진행 시 무료로 적용되는지 확인"
-      ],
-      "caution": ["일시 무료 배포이므로 명시된 시간 내에 설치해야 합니다"],
-      "tags": ["WearOS", "워치페이스", "무료앱", "구글플레이", "SamWatch"],
+      "howTo": ["위 링크를 클릭하여 플레이스토어 페이지로 이동", "설치 버튼을 눌러 앱 다운로드"],
+      "caution": ["무료 배포는 내일 오전 9시까지이며, 이후에는 유료로 전환될 수 있음"],
+      "tags": ["워치페이스", "WearOS", "무료배포"],
       "source": {
         "name": "클리앙 알뜰구매",
         "url": "https://www.clien.net/service/board/jirum/19253680",
-        "collectedAt": "2026-08-26T12:49:35.067Z",
+        "collectedAt": "2026-08-26T16:29:18.113Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T16:29:18.113Z"
+      }
+    },
+    {
+      "id": "dl_clien-jirum_466391795434d695",
+      "slug": "clien-jirum-board-jirum-1d2ccc31",
+      "title": "끌올 [iOS] Widgetik: 홈 화면 위젯 일시 무료",
+      "summary": "평소 3,000원짜리 위젯 앱 Widgetik이 한시적으로 무료 배포 중이며, 앱스토어에서 다운로드 후 메인화면에서 프리미엄 잠금 해제 버튼을 눌러 인앱 구매 시 0원에 이용 가능.",
+      "description": "Widgetik은 습관, 걸음 수, 물 섭취, 마음챙김, 카운트다운, 시계, 명언, 사진, 달의 위상, 배터리 등 다양한 위젯을 제공하는 iOS 앱이다. 현재 무료로 제공되며, 앱 실행 후 메인화면에서 스크롤 다운하여 표시되는 '프리미엄 잠금 해제 ₩0' 버튼을 눌러 인앱 구매를 진행하면 된다.",
+      "brand": {
+        "name": "Widgetik"
+      },
+      "category": "app",
+      "dealType": "free",
+      "difficulty": "easy",
+      "price": {
+        "original": 3000,
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-27T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://www.clien.net/service/board/jirum/19253741",
+        "label": "클리앙 알뜰구매 게시글"
+      },
+      "howTo": [
+        "앱스토어에서 'Widgetik' 검색 후 다운로드 (https://apps.apple.com/kr/app/widgetik/id6760586460)",
+        "앱 실행 후 메인화면으로 이동",
+        "화면을 아래로 스크롤하여 '프리미엄 잠금 해제 ₩0' 배너 버튼 찾기",
+        "버튼을 눌러 인앱 구매 진행 (결제 금액 0원 확인 후 완료)"
+      ],
+      "caution": [
+        "무료 배포는 기간 한정이므로 결제 전 반드시 가격이 0원인지 확인할 것",
+        "인앱 구매 진행 시 애플 ID 비밀번호 또는 Face/Touch ID 인증이 필요할 수 있음"
+      ],
+      "tags": ["iOS", "위젯", "무료앱", "한시적무료"],
+      "source": {
+        "name": "클리앙 알뜰구매",
+        "url": "https://www.clien.net/service/board/jirum/19253741",
+        "collectedAt": "2026-08-26T16:29:18.113Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T16:29:18.113Z"
+      }
+    },
+    {
+      "id": "dl_clien-jirum_4c3d78ecd6b439f3",
+      "slug": "clien-jirum-board-jirum-43cd267a",
+      "title": "[네이버멤버쉽] 나이키 에브리데이 에센셜 크루 삭스 3P (8,500원)",
+      "summary": "네이버 멤버십 회원은 나이키 에브리데이 에센셜 크루 삭스 3P를 8,500원에 무료배송 구매 가능하며, 네이버 포인트 페이백으로 체감 비용 약 7,000원.",
+      "description": "네이버 멤버십 회원 대상 무료배송 적용 및 정가 대비 할인 가격으로 구매 가능. 구매 후 네이버 포인트 페이백 제공.",
+      "brand": {
+        "name": "나이키"
+      },
+      "category": "shopping",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "final": 8500,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-27T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://brand.naver.com/brickmansion/products/8560840292",
+        "label": "구매 링크"
+      },
+      "howTo": [
+        "네이버에 로그인 후 멤버십 확인",
+        "제품 페이지에서 구매 버튼 클릭",
+        "무료배송 적용 확인 후 결제"
+      ],
+      "caution": ["M사이즈만 현재 재고 있음", "색상별 재고 변동 가능"],
+      "tags": ["나이키", "삭스", "네이버멤버십", "무료배송", "포인트페이백"],
+      "source": {
+        "name": "클리앙 알뜰구매",
+        "url": "https://www.clien.net/service/board/jirum/19253159",
+        "collectedAt": "2026-08-26T16:29:18.113Z",
         "method": "llm",
         "confidence": 0.85
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-08-26T12:49:35.067Z"
+        "updatedAt": "2026-08-26T16:29:18.113Z"
+      }
+    },
+    {
+      "id": "dl_clien-jirum_6de70e4af7820be0",
+      "slug": "clien-jirum-board-jirum-6609d6ce",
+      "title": "[케이빌리지] K2 씬에어 리버서블 다운 (40,000원)",
+      "summary": "신규 가입 시 알림 허용으로 5,000포인트 지급, 10% 쿠폰 및 선물박스 10,000포인트 추가 지급 후 제품 구매 시 포인트와 쿠폰 적용하여 30,000원에 구매 가능",
+      "brand": {
+        "name": "K2"
+      },
+      "category": "shopping",
+      "dealType": "coupon",
+      "difficulty": "normal",
+      "price": {
+        "original": 40000,
+        "final": 30000,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-27T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://m.k-village.co.kr/goods/KMW22575JZ",
+        "label": "상품 구매 페이지"
+      },
+      "howTo": [
+        "신규 가입 후 알림 허용 시 5,000포인트 수령",
+        "https://m.k-village.co.kr/eventDetail?eventNo=1041 에서 10% 쿠폰 및 선물박스 10,000포인트 수령",
+        "https://m.k-village.co.kr/goods/KMW22575JZ 에서 제품 구매 시 포인트와 쿠폰 적용"
+      ],
+      "caution": [
+        "포인트 사용은 신규 가입자(탈퇴 후 재가입 포함)에게만 적용됨",
+        "쿠폰 및 선물박스 혜택은 해당 이벤트 페이지에서 반드시 수령해야 함"
+      ],
+      "tags": ["K2", "다운", "할인", "포인트"],
+      "source": {
+        "name": "클리앙 알뜰구매",
+        "url": "https://www.clien.net/service/board/jirum/19253695",
+        "collectedAt": "2026-08-26T16:29:18.113Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T16:29:18.113Z"
       }
     },
     {
@@ -145,11 +294,11 @@
     {
       "id": "dl_clien-jirum_cf5a727535ed7f30",
       "slug": "clien-jirum-board-jirum-3c415e9f",
-      "title": "카스 제로 2캔 + 카스 레몬 제로 2캔 2,500원",
-      "summary": "네이버 오비맥주 공식몰에서 카스 제로 2캔+카스 레몬 제로 2캔을 알림받기 쿠폰 적용 시 2,500원(기존 구매자 3,000원)에 구매 가능.",
-      "description": "네이버 브랜드스토어 오비맥주 공식몰에서 카스 제로 2캔 + 카스 레몬 제로 2캔 구성을 알림받기 쿠폰 적용 시 2,500원에 구매 가능. 이전에 해당 제품을 구매한 이력이 있는 경우 3,000원이 적용됨.",
+      "title": "[네이버] 카스 제로 2캔 + 카스 레몬 제로 2캔 (2,500원)",
+      "summary": "네이버 브랜드스토어에서 카스 제로 2캔 + 카스 레몬 제로 2캔을 알림받기 쿠폰 적용 시 2,500원에 구매 가능. 이전 구매 이력이 있는 사람은 3,000원.",
+      "description": "네이버 브랜드스토어에서 카스 제로 2캔 + 카스 레몬 제로 2캔을 알림받기 쿠폰 적용 시 2,500원에 구매 가능. 이전에 제품을 구매한 적이 있는 사람은 3,000원.",
       "brand": {
-        "name": "오비맥주(카스)"
+        "name": "네이버 브랜드스토어 (오리entalbrewery)"
       },
       "category": "food",
       "dealType": "discount",
@@ -162,49 +311,42 @@
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-08-26T00:00:00+09:00",
+        "startAt": "2026-08-27T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
       },
       "link": {
         "url": "https://brand.naver.com/oriental-brewery/products/13046803488",
-        "label": "네이버 스마트스토어에서 구매"
+        "label": "네이버 브랜드스토어 상품 페이지"
       },
-      "howTo": [
-        "네이버 브랜드스토어(오비맥주) 상품 페이지 접속",
-        "알림받기 쿠폰 다운로드/적용",
-        "카스 제로 2캔 + 카스 레몬 제로 2캔 상품 구매"
-      ],
-      "caution": [
-        "구매 이력에 따라 가격이 다름(신규 2,500원 / 기존 구매자 3,000원)",
-        "알림받기 쿠폰 적용이 선행되어야 함"
-      ],
-      "tags": ["카스", "카스제로", "오비맥주", "네이버쇼핑", "맥주할인"],
+      "howTo": ["네이버 브랜드스토어에서 알림받기 쿠폰을 적용하여 구매"],
+      "tags": ["맥주", "카스", "제로", "알코올", "네이버 브랜드스토어", "알림받기 쿠폰"],
       "source": {
         "name": "클리앙 알뜰구매",
         "url": "https://www.clien.net/service/board/jirum/19253057",
-        "collectedAt": "2026-08-26T12:49:35.067Z",
+        "collectedAt": "2026-08-26T16:29:18.113Z",
         "method": "llm",
         "confidence": 0.75
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-08-26T12:49:35.067Z"
+        "updatedAt": "2026-08-26T16:29:18.113Z"
       }
     },
     {
       "id": "dl_clien-jirum_f799aa9c3149d0d7",
       "slug": "clien-jirum-board-jirum-a98024a2",
-      "title": "양파 1.5kg 1,700원",
-      "summary": "네이버 멤버십 회원 무료배송으로 중사이즈 양파 1.5kg을 1,700원에 구매 가능",
-      "description": "네이버 스마트스토어(ttrae)에서 중사이즈(120g~250g) 양파 1.5kg을 1,700원에 판매. 네이버 멤버십 회원은 무료배송 적용. 정가 대비 83% 할인된 가격이라고 소개됨.",
+      "title": "네이버멤버쉽 양파 1.5kg 1,700원 (무료배송)",
+      "summary": "네이버 멤버십 회원은 무료배송 적용으로 중사이즈 양파 1.5kg을 1,700원에 구매 가능. 정가 대비 83% 할인.",
+      "description": "네이버 스마트스토어에서 양파 1.5kg을 1,700원에 판매하며, 멤버십 회원에게는 무료배송이 제공됩니다. 정가 대비 83% 세일 가격이라고 명시되어 있음.",
       "brand": {
-        "name": "네이버멤버쉽(스마트스토어)"
+        "name": "네이버"
       },
       "category": "food",
       "dealType": "discount",
       "difficulty": "easy",
       "price": {
+        "original": 10000,
         "final": 1700,
         "currency": "KRW"
       },
@@ -212,34 +354,77 @@
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-08-26T00:00:00+09:00",
+        "startAt": "2026-08-27T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
       },
       "link": {
         "url": "https://smartstore.naver.com/ttrae/products/13640111634",
-        "label": "스마트스토어에서 구매하기"
+        "label": "구매 링크"
       },
       "howTo": [
-        "네이버 멤버십 회원 로그인",
-        "링크의 스마트스토어 상품 페이지 접속",
-        "양파 1.5kg 상품 구매(무료배송 적용)"
+        "네이버 멤버십에 로그인",
+        "제공된 링크를 통해 상품 페이지 이동",
+        "장바구니에 담고 결제 시 무료배송 적용 확인"
       ],
-      "caution": [
-        "네이버 멤버십 회원에게만 무료배송이 적용됨",
-        "가격 및 재고는 판매자 사정에 따라 변동될 수 있음"
-      ],
-      "tags": ["네이버멤버십", "양파", "식료품", "무료배송", "스마트스토어"],
+      "caution": ["멤버십 미가입 시 배송비가 부과될 수 있음", "재고 소진 시 조기 마감 가능"],
+      "tags": ["양파", "할인", "무료배송", "네이버멤버십"],
       "source": {
         "name": "클리앙 알뜰구매",
         "url": "https://www.clien.net/service/board/jirum/19253499",
-        "collectedAt": "2026-08-26T12:49:35.067Z",
+        "collectedAt": "2026-08-26T16:29:18.113Z",
         "method": "llm",
-        "confidence": 0.85
+        "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-08-26T12:49:35.067Z"
+        "updatedAt": "2026-08-26T16:29:18.113Z"
+      }
+    },
+    {
+      "id": "dl_eomisae-fs_9610c3932a3697fe",
+      "slug": "eomisae-fs-fs-11cd8736",
+      "title": "메가커피 (ICE)아메리카노 1550원",
+      "summary": "메가커피 (ICE)아메리카노를 1,550원에 구매할 수 있는 쿠폰 이벤트입니다. 네이버 브랜드 스토어 및 쇼핑 페스타에서 쿠폰을 받고 구매할 수 있습니다.",
+      "description": "메가커피 (ICE)아메리카노를 1,550원에 구매할 수 있는 쿠폰 정보입니다. 네이버 브랜드 스토어 또는 쇼핑 페스타에서 쿠폰을 받은 후 구매할 수 있습니다.",
+      "brand": {
+        "name": "메가커피"
+      },
+      "category": "cafe",
+      "dealType": "coupon",
+      "difficulty": "easy",
+      "price": {
+        "final": 1550,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-27T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://shopping.naver.com/festa/onsale/6a8e4832571ca91ec588530f",
+        "label": "네이버 쇼핑 페스타 및 브랜드 스토어 링크 확인"
+      },
+      "howTo": [
+        "네이버 브랜드 스토어 또는 쇼핑 페스타 쿠폰 페이지 접속하기",
+        "coupon code or button click to receive coupon",
+        "Apply coupon at Mega Coffee store or order online"
+      ],
+      "tags": ["메가커피", "아메리카노", "coupon", "1550원"],
+      "source": {
+        "name": "어미새 인기정보",
+        "url": "https://eomisae.co.kr/fs/199590281",
+        "collectedAt": "2026-08-26T16:29:18.113Z",
+        "method": "llm",
+        "confidence": 0.75
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T16:29:18.113Z"
       }
     },
     {
@@ -293,6 +478,96 @@
       }
     },
     {
+      "id": "dl_ppomppu-coupon_379ce9284fea4f85",
+      "slug": "ppomppu-coupon-zboard-view-php-9cdee425",
+      "title": "[하나원큐] 슬기로운 금융생활 OX퀴즈 참여하고 랜덤 캐시 받기",
+      "summary": "하나원큐 OX퀴즈 참여 시 매일 랜덤 캐시 100% 즉시 지급",
+      "description": "하나은행 스마트폰뱅킹 NEW 하나원큐에서 슬기로운 금융생활 OX퀴즈에 참여하면 매일 랜덤 캐시를 100% 즉시 지급합니다.",
+      "brand": {
+        "name": "하나원큐"
+      },
+      "category": "finance",
+      "dealType": "cashback",
+      "difficulty": "normal",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-27T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=117798",
+        "label": "자세히 보기"
+      },
+      "howTo": ["하나원큐 앱에서 슬기로운 금융생활 OX퀴즈 참여"],
+      "tags": ["하나원큐", "하나은행", "OX퀴즈", "캐시", "앱테크", "금융"],
+      "source": {
+        "name": "뽐뿌 쿠폰게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=117798",
+        "collectedAt": "2026-08-26T16:29:18.113Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T16:29:18.113Z"
+      }
+    },
+    {
+      "id": "dl_ppomppu-coupon_41e0ec60f2ee9da4",
+      "slug": "ppomppu-coupon-zboard-view-php-c84f1fcb",
+      "title": "[OK캐시백] 종근당 깨노니 퀴즈 15P 적립",
+      "summary": "종근당 깨노니 관련 퀴즈 정답 '약국'을 입력하면 OK캐시백 15P 적립",
+      "description": "OK캐시백 앱에서 진행되는 종근당 깨노니 관련 퀴즈의 정답을 맞히고 15포인트를 적립받을 수 있습니다.",
+      "brand": {
+        "name": "OK캐시백"
+      },
+      "category": "app",
+      "dealType": "point",
+      "difficulty": "easy",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false,
+        "perPersonLimit": 1
+      },
+      "period": {
+        "startAt": "2026-08-27T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=117801",
+        "label": "출처 보기"
+      },
+      "howTo": [
+        "OK캐시백 앱을 실행합니다.",
+        "종근당 깨노니 관련 퀴즈 이벤트 페이지에 접속합니다.",
+        "질문 '종근당 꺠노니는 편의점 뿐만 아니라 OO에서도 판매중!'의 빈칸에 정답 '약국'을 입력합니다."
+      ],
+      "caution": ["포인트 소진 시 이벤트가 조기 종료될 수 있습니다."],
+      "tags": ["OK캐시백", "종근당", "깨노니", "퀴즈", "앱테크", "포인트적립"],
+      "source": {
+        "name": "뽐뿌 쿠폰게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=117801",
+        "collectedAt": "2026-08-26T16:29:18.113Z",
+        "method": "llm",
+        "confidence": 1
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T16:29:18.113Z"
+      }
+    },
+    {
       "id": "dl_ppomppu-coupon_43a5d8b7117cbedb",
       "slug": "ppomppu-coupon-zboard-view-php-ad821eff",
       "title": "하나Pay 트래블 미션(매일 5P) + 랜덤박스",
@@ -335,6 +610,52 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-08-26T12:49:35.067Z"
+      }
+    },
+    {
+      "id": "dl_ppomppu-coupon_4bd398b362558c7b",
+      "slug": "ppomppu-coupon-zboard-view-php-d129b9cf",
+      "title": "신한쏠 쏠퀴즈 8월 27일 정답",
+      "summary": "신한쏠 쏠퀴즈 참여하고 포인트 받으세요. 정답은 '오스틴 딘'.",
+      "description": "신한쏠 야구상식 쏠퀴즈 8월 27일자 정답은 '오스틴 딘'입니다. 쏠픽도 함께 참여하여 추가 혜택을 받으세요.",
+      "brand": {
+        "name": "신한쏠"
+      },
+      "category": "finance",
+      "dealType": "point",
+      "difficulty": "easy",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-27T00:00:00+09:00",
+        "endAt": "2026-08-27T23:59:59+09:00"
+      },
+      "link": {
+        "url": "https://nsol.shinhan.com/link.html?pr_id=CO0101S0010F01",
+        "label": "쏠퀴즈 참여하기"
+      },
+      "howTo": [
+        "신한쏠 앱에 접속합니다.",
+        "쏠퀴즈 이벤트 페이지로 이동합니다.",
+        "정답 '오스틴 딘'을 입력합니다.",
+        "쏠픽도 함께 참여합니다."
+      ],
+      "tags": ["신한쏠", "쏠퀴즈", "야구상식", "퀴즈", "포인트", "앱테크"],
+      "source": {
+        "name": "뽐뿌 쿠폰게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=117790",
+        "collectedAt": "2026-08-26T16:29:18.113Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T16:29:18.113Z"
       }
     },
     {
@@ -388,6 +709,216 @@
       }
     },
     {
+      "id": "dl_ppomppu-coupon_906858da655cb4d3",
+      "slug": "ppomppu-coupon-zboard-view-php-fc48dddf",
+      "title": "삼성화재 네이버페이 15원 받기",
+      "summary": "삼성화재 이벤트 참여하고 네이버페이 15원 받으세요.",
+      "description": "삼성화재 이벤트 참여 시 네이버페이 15원 지급",
+      "brand": {
+        "name": "삼성화재"
+      },
+      "category": "finance",
+      "dealType": "point",
+      "difficulty": "easy",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-27T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://campaign2.naver.com/npay/v2/click-point/?eventId=cr_2026082702_2609_1_1442",
+        "label": "혜택 받기"
+      },
+      "howTo": ["제공된 링크를 통해 이벤트 참여"],
+      "tags": ["네이버페이", "삼성화재", "포인트", "앱테크", "금융"],
+      "source": {
+        "name": "뽐뿌 쿠폰게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=117788",
+        "collectedAt": "2026-08-26T16:29:18.113Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T16:29:18.113Z"
+      }
+    },
+    {
+      "id": "dl_ppomppu-coupon_99fd2ab4623d6c1b",
+      "slug": "ppomppu-coupon-zboard-view-php-99a6ebba",
+      "title": "신한플레이 퀴즈팡팡 8월 27일 정답",
+      "summary": "신한플레이 퀴즈팡팡 8월 27일자 퀴즈 정답 '경험' 입력하고 혜택 받으세요.",
+      "description": "신한플레이 퀴즈팡팡 8월 27일자 퀴즈 정답은 '경험'입니다. 정답을 입력하고 혜택을 받으세요.",
+      "brand": {
+        "name": "신한플레이"
+      },
+      "category": "finance",
+      "dealType": "free",
+      "difficulty": "easy",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-27T00:00:00+09:00",
+        "endAt": "2026-08-27T23:59:59+09:00"
+      },
+      "link": {
+        "url": "https://pay.shinhancard.com/pay/PAYFM005N/PAYFM005J01.shc?screenId=NATIVE%7CRBFNA8021X01",
+        "label": "퀴즈 참여하기"
+      },
+      "howTo": ["신한플레이 앱에서 퀴즈팡팡 이벤트 페이지 접속", "정답 '경험' 입력"],
+      "tags": ["신한플레이", "퀴즈", "정답", "앱테크", "포인트"],
+      "source": {
+        "name": "뽐뿌 쿠폰게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=117789",
+        "collectedAt": "2026-08-26T16:29:18.113Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T16:29:18.113Z"
+      }
+    },
+    {
+      "id": "dl_ppomppu-coupon_c972063ab91b467a",
+      "slug": "ppomppu-coupon-zboard-view-php-47db5e67",
+      "title": "토스 두근두근 1등 찍기 팀플전 선택 정보 (8월 27일)",
+      "summary": "토스 두근두근 1등 찍기 팀플전 선택지 공유 (전: 하겐다즈 딸기파인트 / 후: 팥빙수)",
+      "description": "토스 앱에서 진행되는 '두근두근 1등 찍기 팀플전'의 선택 정보입니다. 전은 하겐다즈 딸기파인트, 후는 팥빙수입니다.",
+      "brand": {
+        "name": "토스"
+      },
+      "category": "app",
+      "dealType": "giveaway",
+      "difficulty": "easy",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-27T00:00:00+09:00",
+        "endAt": "2026-08-27T23:59:59+09:00"
+      },
+      "link": {
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=117794",
+        "label": "뽐뿌에서 확인하기"
+      },
+      "howTo": [
+        "토스 앱을 실행합니다.",
+        "두근두근 1등 찍기 팀플전 이벤트에 참여합니다.",
+        "선택 정보(전: 하겐다즈 딸기파인트 / 후: 팥빙수)를 참고하여 선택합니다."
+      ],
+      "tags": ["토스", "두근두근1등찍기", "팀플전", "토스이벤트"],
+      "source": {
+        "name": "뽐뿌 쿠폰게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=117794",
+        "collectedAt": "2026-08-26T16:29:18.113Z",
+        "method": "llm",
+        "confidence": 0.8
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T16:29:18.113Z"
+      }
+    },
+    {
+      "id": "dl_ppomppu-coupon_e1f93d720892c930",
+      "slug": "ppomppu-coupon-zboard-view-php-887d11e4",
+      "title": "H.Point 퀴즈 정답 이벤트",
+      "summary": "H.Point 퀴즈 참여하고 혜택 받으세요.",
+      "description": "현대백화점그룹 통합 멤버십 H.Point 퀴즈 이벤트입니다. 정답은 Apple Pe...",
+      "brand": {
+        "name": "H.Point"
+      },
+      "category": "finance",
+      "dealType": "point",
+      "difficulty": "easy",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-27T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://www.h-point.co.kr/cma/invite.nhd?scheme=quizMain-",
+        "label": "퀴즈 참여"
+      },
+      "howTo": ["H.Point 웹사이트 또는 앱에서 퀴즈에 참여하고 정답을 입력하세요."],
+      "tags": ["H.Point", "현대백화점", "퀴즈", "포인트", "앱테크"],
+      "source": {
+        "name": "뽐뿌 쿠폰게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=117795",
+        "collectedAt": "2026-08-26T16:29:18.113Z",
+        "method": "llm",
+        "confidence": 0.75
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T16:29:18.113Z"
+      }
+    },
+    {
+      "id": "dl_ppomppu-coupon_f9f9863ac466bb49",
+      "slug": "ppomppu-coupon-zboard-view-php-d1cccce4",
+      "title": "KB스타뱅킹 스타퀴즈 8/27 정답",
+      "summary": "KB스타뱅킹 스타퀴즈 정답 확인하고 KB스타포인트를 받으세요.",
+      "description": "27일자 KB스타뱅킹 스타퀴즈 정답입니다. KB 스타포인트는 KB Pay 포인트리로 전환 및 바로 계좌 이체가 가능합니다.",
+      "brand": {
+        "name": "KB스타뱅킹"
+      },
+      "category": "finance",
+      "dealType": "point",
+      "difficulty": "easy",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-27T00:00:00+09:00",
+        "endAt": "2026-08-27T23:59:59+09:00"
+      },
+      "link": {
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=117791",
+        "label": "정답 확인하기"
+      },
+      "tags": ["KB스타뱅킹", "스타퀴즈", "KB스타포인트", "포인트", "퀴즈"],
+      "source": {
+        "name": "뽐뿌 쿠폰게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=117791",
+        "collectedAt": "2026-08-26T16:29:18.113Z",
+        "method": "llm",
+        "confidence": 0.75
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T16:29:18.113Z"
+      }
+    },
+    {
       "id": "dl_ppomppu-hot_0207d5be635e5098",
       "slug": "ppomppu-hot-zboard-view-php-80beb3cb",
       "title": "휠라키즈 운동화/긴팔티/조거팬츠 모음전",
@@ -425,6 +956,170 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-08-26T12:49:35.067Z"
+      }
+    },
+    {
+      "id": "dl_ppomppu-hot_09c24aa3732f5d56",
+      "slug": "ppomppu-hot-zboard-view-php-e02dd42f",
+      "title": "CAS 블루투스 스마트 체지방 체중계 할인",
+      "summary": "CAS 블루투스 스마트 체지방 체중계를 쿠폰 적용가 29,900원에 구매",
+      "description": "체중, 체지방, BMI까지 한 번에 확인 가능하며 앱으로 변화 추이를 보기 편합니다. 블랙/화이트 컬러 선택 가능합니다.",
+      "brand": {
+        "name": "CAS"
+      },
+      "category": "shopping",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "final": 29900,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-27T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=729652"
+      },
+      "howTo": ["쿠폰 적용 후 구매"],
+      "tags": ["체중계", "체지방계", "스마트체중계", "CAS", "할인", "네이버"],
+      "source": {
+        "name": "뽐뿌 뽐뿌게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=729652",
+        "collectedAt": "2026-08-26T16:29:18.113Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T16:29:18.113Z"
+      }
+    },
+    {
+      "id": "dl_ppomppu-hot_1f487d4065e3a5ab",
+      "slug": "ppomppu-hot-zboard-view-php-b67ff3d5",
+      "title": "옥션 여수 돌산갓김치 1.5kg 무료배송",
+      "summary": "옥션에서 여수 돌산갓김치 1.5kg을 8,490원에 무료배송으로 구매하세요.",
+      "description": "국내산 갓김치이며 당일 생산되어 배송됩니다. 2개 이상 구매 시 사은품이 제공됩니다.",
+      "brand": {
+        "name": "옥션"
+      },
+      "category": "food",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "final": 8490,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-27T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=729658"
+      },
+      "howTo": ["옥션에서 여수 돌산갓김치 1.5kg 구매"],
+      "tags": ["갓김치", "여수", "국내산", "무료배송", "옥션"],
+      "source": {
+        "name": "뽐뿌 뽐뿌게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=729658",
+        "collectedAt": "2026-08-26T16:29:18.113Z",
+        "method": "llm",
+        "confidence": 0.75
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T16:29:18.113Z"
+      }
+    },
+    {
+      "id": "dl_ppomppu-hot_230b5c9403eb7340",
+      "slug": "ppomppu-hot-zboard-view-php-44a8093a",
+      "title": "샤오미 미지아 구강세정기 2세대 MEO705 27,900원",
+      "summary": "샤오미 미지아 구강세정기 2세대 MEO705를 네이버에서 쿠폰 적용 시 27,900원에 구매",
+      "description": "양치 후 치실과 병행 사용하면 개운한 편입니다. 네이버 멤버십 회원은 적립 혜택이 있습니다.",
+      "brand": {
+        "name": "샤오미"
+      },
+      "category": "shopping",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "final": 27900,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-27T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://shoppi...",
+        "label": "쿠폰 받기"
+      },
+      "howTo": ["링크를 통해 쿠폰 다운로드 후 적용하여 구매"],
+      "tags": ["샤오미", "구강세정기", "미지아", "네이버", "할인", "쿠폰"],
+      "source": {
+        "name": "뽐뿌 뽐뿌게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=729654",
+        "collectedAt": "2026-08-26T16:29:18.113Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T16:29:18.113Z"
+      }
+    },
+    {
+      "id": "dl_ppomppu-hot_3dac4e135d474c5b",
+      "slug": "ppomppu-hot-zboard-view-php-b9b451ab",
+      "title": "G마켓 1+1 피그먼트 베개커버 모음전",
+      "summary": "G마켓에서 피그먼트 베개커버 1+1 행사, 9,880원",
+      "brand": {
+        "name": "G마켓"
+      },
+      "category": "shopping",
+      "dealType": "discount",
+      "difficulty": "normal",
+      "price": {
+        "final": 9880,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-27T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=729655"
+      },
+      "howTo": ["G마켓에서 해당 상품 구매"],
+      "tags": ["G마켓", "베개커버", "1+1", "할인", "생활용품"],
+      "source": {
+        "name": "뽐뿌 뽐뿌게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=729655",
+        "collectedAt": "2026-08-26T16:29:18.113Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T16:29:18.113Z"
       }
     },
     {
@@ -552,6 +1247,53 @@
       }
     },
     {
+      "id": "dl_ppomppu-hot_ad507feb72ea5cf3",
+      "slug": "ppomppu-hot-zboard-view-php-e6373705",
+      "title": "[오늘의집] 매직캔 호환 반값 리필봉투 250 런드리향 20개 (17,415원/무배)",
+      "summary": "오늘의집에서 쿠폰과 카카오페이 할인을 적용해 매직캔 호환 리필봉투 250ml 런드리향 20개를 17,415원에 무료 배송으로 구매 가능.",
+      "description": "매직캔 호환 리필봉투 250ml 런드리향 20개 세트를 쿠폰+카카오페이 할인가 17,415원에 판매하며 무료 배송이 적용됨. 무향·파우더향도 동일 할인 중이며 무향이 더 저렴함.",
+      "brand": {
+        "name": "매직캔 호환"
+      },
+      "category": "shopping",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "final": 17415,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-27T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=729648",
+        "label": "원문 게시글"
+      },
+      "howTo": [
+        "오늘의집 앱/웹에 접속",
+        "상품 페이지에서 쿠폰 적용",
+        "결제 시 카카오페이 선택하여 추가 할인 적용",
+        "무료 배송으로 주문 완료"
+      ],
+      "tags": ["리필봉투", "매직캔", "할인", "쿠폰", "카카오페이", "무료배송"],
+      "source": {
+        "name": "뽐뿌 뽐뿌게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=729648",
+        "collectedAt": "2026-08-26T16:29:18.113Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T16:29:18.113Z"
+      }
+    },
+    {
       "id": "dl_ppomppu-hot_c48c8caef4b6286d",
       "slug": "ppomppu-hot-zboard-view-php-2bc43be5",
       "title": "비레토 무선 목어깨 미니롤러마사지기 롯데카드 결제 시 27,330원",
@@ -591,6 +1333,94 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-08-26T12:49:35.067Z"
+      }
+    },
+    {
+      "id": "dl_ppomppu-hot_cf36174618d4bec5",
+      "slug": "ppomppu-hot-zboard-view-php-c9571951",
+      "title": "쿠팡 아오리사과 1kg 1,000원 할인 및 리뷰 기프티콘 증정",
+      "summary": "쿠팡에서 아오리사과 1kg을 5,850원에 구매 시 선착순 1,000원 쿠폰 할인과 리뷰 작성 시 기프티콘을 받을 수 있습니다.",
+      "description": "아오리사과 1kg을 5,850원에 구매할 수 있으며, 선착순 1,000원 쿠폰 할인이 적용됩니다. 추가로 상품 리뷰 작성 시 기프티콘을 증정합니다.",
+      "brand": {
+        "name": "쿠팡"
+      },
+      "category": "food",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "original": 5850,
+        "final": 4850,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": true
+      },
+      "period": {
+        "startAt": "2026-08-27T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=729659"
+      },
+      "howTo": [
+        "쿠팡에서 아오리사과 1kg 구매",
+        "선착순 1,000원 쿠폰 적용",
+        "상품 리뷰 작성 후 기프티콘 수령"
+      ],
+      "tags": ["쿠팡", "아오리사과", "사과", "과일", "할인", "기프티콘", "리뷰이벤트"],
+      "source": {
+        "name": "뽐뿌 뽐뿌게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=729659",
+        "collectedAt": "2026-08-26T16:29:18.113Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T16:29:18.113Z"
+      }
+    },
+    {
+      "id": "dl_ppomppu-hot_d6e9533f29d275ce",
+      "slug": "ppomppu-hot-zboard-view-php-649ea6cf",
+      "title": "[오늘의집] 아이러브베베 시그니앙 오로즈 75gsm 10팩 캡형물티슈 (8,910원/무료)",
+      "summary": "오늘의집에서 아이러브베베 시그니앙 오로즈 캡형물티슈 10팩을 8,910원에 무료배송으로 판매 중입니다.",
+      "brand": {
+        "name": "아이러브베베"
+      },
+      "category": "shopping",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "final": 8910,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-27T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=729649",
+        "label": "원문 글"
+      },
+      "howTo": ["오늘의집 앱/웹사이트에 접속", "상품 페이지에서 '구매하기' 클릭", "결제 완료"],
+      "caution": ["무료배송 조건은 오늘의집 정책에 따릅니다."],
+      "tags": ["물티슈", "오늘의집", "할인"],
+      "source": {
+        "name": "뽐뿌 뽐뿌게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=729649",
+        "collectedAt": "2026-08-26T16:29:18.113Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T16:29:18.113Z"
       }
     },
     {
@@ -646,11 +1476,11 @@
     {
       "id": "dl_ruliweb-market_25a7b6a9637da64f",
       "slug": "ruliweb-market-board-read-9fbc87ae",
-      "title": "브레이블리 디폴트 FLYING FAIRY(스위치2) 23000원",
-      "summary": "스위치2용 브레이블리 디폴트 FLYING FAIRY, 네이버 스마트스토어에서 23000원에 판매 (쿠팡가보다 저렴)",
-      "description": "닌텐도 스위치2용 게임 '브레이블리 디폴트 FLYING FAIRY'를 네이버 스마트스토어 '청라롱롱리베' 판매처에서 23000원에 판매 중이며, 이전에 공유된 쿠팡 가격보다 저렴하다는 공유 글.",
+      "title": "브레이블리디폴트 FLYING FAIRY (Switch 2) 23,000원",
+      "summary": "청라롱롱리베 스마트스토어에서 스위치2용 브레이블리디폴트 FLYING FAIRY를 23,000원에 판매 중이며, 이전 쿠팡 가격보다 저렴하다고 공유함.",
+      "description": "스위치2용 게임 브레이블리디폴트 FLYING FAIRY를 23,000원에 구매할 수 있음.",
       "brand": {
-        "name": "롱롱리베게임즈(네이버 스마트스토어)"
+        "name": "청라롱롱리베"
       },
       "category": "shopping",
       "dealType": "discount",
@@ -663,30 +1493,27 @@
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-08-26T00:00:00+09:00",
+        "startAt": "2026-08-27T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
       },
       "link": {
         "url": "https://m.smartstore.naver.com/longlongliebegames/products/11935099810",
-        "label": "스마트스토어에서 보기"
+        "label": "상품 페이지"
       },
-      "howTo": ["아래 네이버 스마트스토어 링크 접속", "상품 페이지에서 가격 확인 후 구매"],
-      "caution": [
-        "가격은 게시 시점 기준이며 변동될 수 있음",
-        "판매처(스마트스토어 개인 판매자)의 재고·정책은 원문에 별도 언급 없음"
-      ],
-      "tags": ["닌텐도스위치2", "브레이블리디폴트", "게임할인", "네이버스마트스토어"],
+      "howTo": ["링크 접속", "상품 선택 후 구매"],
+      "caution": ["종료일이 명시되지 않아 재고 소진 시 조기 마감 가능"],
+      "tags": ["스위치2", "게임", "할인"],
       "source": {
         "name": "루리웹 예판·핫딜",
         "url": "https://bbs.ruliweb.com/market/board/1020/read/106670",
-        "collectedAt": "2026-08-26T12:49:35.067Z",
+        "collectedAt": "2026-08-26T16:29:18.113Z",
         "method": "llm",
-        "confidence": 0.75
+        "confidence": 0.9
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-08-26T12:49:35.067Z"
+        "updatedAt": "2026-08-26T16:29:18.113Z"
       }
     },
     {
@@ -728,6 +1555,49 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-08-26T07:17:24.695Z"
+      }
+    },
+    {
+      "id": "dl_ruliweb-market_4ee0b4f2c80bae78",
+      "slug": "ruliweb-market-board-read-ec4bab08",
+      "title": "[Xbox 공홈] 바이오하자드 RE4 골드에디션 16,140원",
+      "summary": "Xbox 공식 홈페이지에서 바이오하자드 RE4 골드에디션을 16,140원에 할인 판매 중이며, 바하 시리즈 전품목이 할인 중입니다.",
+      "description": "Xbox.com 한국 사이트에서 바이오하자드 RE4 골드에디션을 16,140원에 판매하고 있습니다. 해당 링크를 통해 Gamescom 2026 세일 페이지에서 바하 시리즈 전체 할인 정보를 확인할 수 있습니다.",
+      "brand": {
+        "name": "Xbox"
+      },
+      "category": "shopping",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "final": 16140,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-27T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://www.xbox.com/ko-KR/games/browse/CampsiteChannel.Games.Sale.2026.gamescomsale0825",
+        "label": "세일 페이지 이동"
+      },
+      "howTo": ["링크 접속 후 바이오하자드 RE4 골드에디션 선택", "구매 절차 진행"],
+      "caution": ["할인 종료일은 명시되지 않았으므로 조기 종료 가능성 있음"],
+      "tags": ["바이오하자드", "RE4", "게임", "할인"],
+      "source": {
+        "name": "루리웹 예판·핫딜",
+        "url": "https://bbs.ruliweb.com/market/board/1020/read/106678",
+        "collectedAt": "2026-08-26T16:29:18.113Z",
+        "method": "llm",
+        "confidence": 0.85
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T16:29:18.113Z"
       }
     },
     {
@@ -781,15 +1651,56 @@
       }
     },
     {
+      "id": "dl_ruliweb-market_7d2664b0ccfed386",
+      "slug": "ruliweb-market-board-read-da4021fb",
+      "title": "네이버페이 클릭적립 38원",
+      "summary": "클릭 적립 링크를 통해 총 38원 적립 가능",
+      "brand": {
+        "name": "네이버페이"
+      },
+      "category": "finance",
+      "dealType": "point",
+      "difficulty": "easy",
+      "price": {
+        "final": 38,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-27T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://bbs.ruliweb.com/market/board/1020/read/106676",
+        "label": "원문"
+      },
+      "howTo": ["주어진 클릭 적립 링크에 접속하여 클릭"],
+      "tags": ["네이버페이", "클릭적립", "포인트"],
+      "source": {
+        "name": "루리웹 예판·핫딜",
+        "url": "https://bbs.ruliweb.com/market/board/1020/read/106676",
+        "collectedAt": "2026-08-26T16:29:18.113Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T16:29:18.113Z"
+      }
+    },
+    {
       "id": "dl_ruliweb-market_94bbc29886c05bf6",
       "slug": "ruliweb-market-board-read-e8c6d712",
-      "title": "삼국지14 PK 컴플리트 에디션 5.2만원 구매법",
-      "summary": "삼국지14 오리지널판(2.2만원) 구매 후 스팀에서 컴플리트 에디션 DLC(3만원) 추가 구매 시 정가 7만원 컴플리트 에디션을 5.2만원에 구매 가능",
-      "description": "네이버쇼핑 공식 판매처에서 삼국지14 오리지널판을 2.2만원에 구매해 스팀에 등록한 뒤, 스팀에서 삼국지14 PK 컴플리트 에디션 DLC(3만원)를 추가 구매하면 정가 7만원인 컴플리트 에디션을 총 5.2만원에 확보할 수 있는 방법.",
+      "title": "[스팀] 삼국지14PK 컴플리트에디션 5.2만원",
+      "summary": "삼국지14 오리지널판 2.2만원 + DLC 3만원 구매로 컴플리트에디션을 정가 7만원에서 5.2만원에 구매 가능",
+      "description": "공식 유통 셀러에서 오리지널판을 22,000원에 구매 후 스팀에 등록하고, 스토어에서 DLC(30,000원)를 추가 구매하면 컴플리트에디션을 총 52,000원에 얻을 수 있음",
       "brand": {
-        "name": "스팀(삼국지14 PK)"
+        "name": "삼국지14"
       },
-      "category": "culture",
+      "category": "shopping",
       "dealType": "discount",
       "difficulty": "normal",
       "price": {
@@ -798,37 +1709,38 @@
         "currency": "KRW"
       },
       "limit": {
-        "firstComeFirstServed": true
+        "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-08-26T00:00:00+09:00",
+        "startAt": "2026-08-27T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
       },
       "link": {
-        "url": "https://store.steampowered.com/app/4508240/14__Complete_Edition/?l=koreana",
-        "label": "스팀 삼국지14 PK 컴플리트 에디션 DLC"
+        "url": "https://bbs.ruliweb.com/market/board/1020/read/106669",
+        "label": "원문"
       },
       "howTo": [
-        "네이버쇼핑에서 공식 유통 셀러 판매처를 찾아 삼국지14 오리지널판을 2.2만원에 구매",
-        "구매한 오리지널판을 스팀에 등록",
-        "스팀 상점에서 삼국지14 PK 컴플리트 에디션 DLC를 3만원에 구매(정가 7만원 → 5.2만원)"
+        "네이버 쇼핑 검색 링크에서 공식 유통 셀러의 삼국지14 오리지널판을 22,000원에 구매",
+        "구매 후 스팀에 등록",
+        "스팀 스토어에서 삼국지14 컴플리트에디션 DLC(30,000원) 구매",
+        "총 52,000원으로 컴플리트에디션 소유"
       ],
       "caution": [
-        "1번 판매처(네이버쇼핑 공식 셀러)의 오리지널판 재고가 소진되면 이 방법으로 구매할 수 없음",
-        "originalPrice는 스팀에 안내된 컴플리트 에디션 정가 7만원 기준이며, 실제로는 오리지널판(2.2만원)+DLC(3만원) 두 건을 별도로 결제해야 함"
+        "오리지널판 구매 시 정품 여부 확인",
+        "DLC 구매 전 스팀 계정에 오리지널판이 등록되어 있어야 정상 적용"
       ],
-      "tags": ["삼국지14", "스팀", "컴플리트에디션", "DLC", "PC게임할인"],
+      "tags": ["게임", "스팀", "할인"],
       "source": {
         "name": "루리웹 예판·핫딜",
         "url": "https://bbs.ruliweb.com/market/board/1020/read/106669",
-        "collectedAt": "2026-08-26T12:49:35.067Z",
+        "collectedAt": "2026-08-26T16:29:18.113Z",
         "method": "llm",
-        "confidence": 0.8
+        "confidence": 0.9
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-08-26T12:49:35.067Z"
+        "updatedAt": "2026-08-26T16:29:18.113Z"
       }
     },
     {

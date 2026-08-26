@@ -584,12 +584,17 @@ NAVER_CLIENT_SECRET=
 | 2 | **Google Gemini** | `GEMINI_API_KEY` ([발급](https://aistudio.google.com/apikey)) | 1번이 막혔을 때, 그리고 CI |
 | 3 | **OpenRouter (무료 티어)** | `OPENROUTER_API_KEY` (무료 발급) | 2번까지 막혔을 때 |
 
+쉼표로 여러 개를 적으면 **적은 순서대로** 시도합니다. 하나만 적으면 폴백이 없습니다.
+
 ```bash
-LLM_PROVIDER=auto        # 기본. claude-cli → gemini → openrouter
-LLM_PROVIDER=claude-cli  # 구독 인증만 (폴백 없음)
-LLM_PROVIDER=gemini      # Gemini 만
-LLM_PROVIDER=openrouter  # OpenRouter 만 (VSCode 가 없는 환경)
+LLM_PROVIDER=auto               # 기본. claude-cli → gemini → openrouter
+LLM_PROVIDER=gemini,openrouter  # Gemini 를 쓰고 막히면 OpenRouter (요금 없는 조합)
+LLM_PROVIDER=claude-cli         # 구독 인증만 (폴백 없음)
+LLM_PROVIDER=openrouter         # OpenRouter 만 (VSCode 가 없는 환경)
 ```
+
+오타는 조용히 무시하지 않고 그 자리에서 실패시킵니다.
+무시하면 의도와 다른 프로바이더가 돌면서 요금이 나갑니다.
 
 폴백은 **요금제 한도·인증·연결 문제일 때만** 일어납니다. 스키마 위반처럼 프로바이더를
 바꿔도 똑같이 실패할 오류는 폴백하지 않습니다 — 같은 실패를 두 번 하며 비용만 두 배가 됩니다.
@@ -613,6 +618,10 @@ Gemini 는 구조화 출력 스키마가 OpenAPI 서브셋이라 JSON Schema 를
 
 무료 등급은 분당·일일 요청 수가 제한됩니다. 429 는 대개 일시적이라 그 모델을
 영구 배제하지 않고 다음 모델로만 넘어갑니다.
+
+최신 모델일수록 503 `This model is currently experiencing high demand` 가 자주
+납니다. 이것도 일시 상태이므로 429 와 똑같이 다룹니다. 모델을 여러 개 적어 두면
+붐비는 모델을 건너뛰고 다음 것으로 이어집니다.
 
 ### OpenRouter 무료 티어
 
@@ -669,6 +678,11 @@ OPENROUTER_FALLBACK_MODELS=
 `CLAUDE_CLI_MAX_BUDGET_USD` 로 호출당 상한을 겁니다.
 
 **OpenRouter 무료 경로**: 과금이 없습니다. 대신 위의 레이트 리밋과 품질 편차를 감수합니다.
+
+**비용 표기**: 프로바이더가 실제 비용을 알려주면 그 값을 씁니다.
+알려주지 않으면 **추정하지 않고 "알려주지 않음"으로 적습니다.**
+남의 요금표로 값을 만들어 내면, 무료 등급 실행에 요금이 있는 것처럼 보입니다.
+(Gemini 는 응답에 비용을 담지 않습니다. 무료 등급이면 0 입니다.)
 
 실행 요약에 추정 비용이 출력되고, 프로바이더가 실제 비용을 알려주면 그 값을 씁니다.
 

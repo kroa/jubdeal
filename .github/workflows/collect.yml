@@ -88,9 +88,9 @@ jobs:
       - name: 파이프라인 실행
         env:
           # CI 에는 Claude 구독 인증이 없습니다.
-          # auto 로 두면 claude-cli 는 not_configured 로 건너뛰고
-          # gemini → openrouter 순으로 시도합니다.
-          LLM_PROVIDER: auto
+          # 없는 프로바이더를 체인에 두면 매 건마다 확인만 하고 넘어가므로
+          # 쓸 수 있는 둘만 순서대로 지정합니다.
+          LLM_PROVIDER: gemini,openrouter
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           # 비워 두면 사용 가능한 모델을 자동 조회합니다(flash 계열 우선).
           GEMINI_MODELS: ${{ vars.GEMINI_MODELS }}

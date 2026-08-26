@@ -60,7 +60,13 @@ export async function runPipeline(options: RunOptions): Promise<PipelineReport> 
     updated: 0,
     unchanged: 0,
     reviewQueued: 0,
-    usage: { inputTokens: 0, outputTokens: 0, cachedInputTokens: 0, costUsd: null },
+    usage: {
+      inputTokens: 0,
+      outputTokens: 0,
+      cachedInputTokens: 0,
+      costUsd: null,
+      unpricedCalls: 0,
+    },
     errors: [],
   };
 
@@ -135,6 +141,8 @@ export async function runPipeline(options: RunOptions): Promise<PipelineReport> 
     report.usage.cachedInputTokens += outcome.usage.cachedInputTokens;
     if (outcome.usage.costUsd !== null) {
       report.usage.costUsd = (report.usage.costUsd ?? 0) + outcome.usage.costUsd;
+    } else {
+      report.usage.unpricedCalls += 1;
     }
 
     if (!outcome.ok) {
@@ -275,20 +283,34 @@ async function loadDeals(dealsPath: string): Promise<DealsFile> {
 /** 실행 결과를 사람이 읽을 수 있게 요약합니다. */
 export function formatReport(report: PipelineReport): string {
   const durationMs = Date.parse(report.finishedAt) - Date.parse(report.startedAt);
-  const { inputTokens, outputTokens, cachedInputTokens, costUsd } = report.usage;
+  const { inputTokens, outputTokens, cachedInputTokens, costUsd, unpricedCalls } = report.usage;
 
-  // Claude Opus 5 기준 단가 ($5 / $25 per 1M). 캐시 읽기는 약 1/10.
-  // `input_tokens` 에는 캐시로 읽은 토큰이 이미 빠져 있습니다.
-  // 여기서 또 빼면 음수가 되어 PR 본문에 마이너스 비용이 찍힙니다.
-  // 프로바이더가 실제 비용을 알려줬으면 그 값을 씁니다.
-  // 무료 모델(OpenRouter :free)은 0 인데 토큰 수로 추정하면
-  // 있지도 않은 요금이 찍혀 사용자를 오해하게 만듭니다.
-  //
-  // 알려주지 않았을 때만 Claude 단가($5/$25 per 1M)로 추정합니다.
-  // `input_tokens` 에는 캐시로 읽은 토큰이 이미 빠져 있으므로 또 빼지 않습니다.
-  const estimated = (inputTokens * 5 + cachedInputTokens * 0.5 + outputTokens * 25) / 1_000_000;
-  const cost = costUsd ?? estimated;
-  const costLabel = costUsd !== null ? '실제 비용  ' : '추정 비용  ';
+  /*
+    비용은 **알려준 값만 적고, 모르는 건 모른다고 적습니다.**
+
+    (1) 추정하지 않습니다.
+        예전에는 Claude 단가($5/$25 per 1M)로 추정했는데, 프로바이더가 바뀌면
+        남의 요금표로 값을 만들어 내는 셈입니다.
+        실제로 Gemini(응답에 비용을 담지 않음) 실행에 "추정 비용 $0.1046" 이 찍혔습니다.
+        무료 등급이라 0 인 실행에 요금이 있는 것처럼 보였습니다.
+
+    (2) 일부만 알아도 전체인 척하지 않습니다.
+        체인은 프로바이더를 섞어 씁니다. Gemini 로 40건, OpenRouter 로 10건을
+        돌면 OpenRouter 가 알려준 0 만 더해져 "실제 비용 $0.0000" 이 찍힙니다.
+        40건이 집계에서 빠진 값인데 전체처럼 보입니다.
+
+    "유료로 돌리지 않는다"가 이 프로젝트의 전제라, 이 수치가 틀리면
+    가장 확인하고 싶은 값을 못 믿게 됩니다.
+  */
+  const costLine = (() => {
+    if (costUsd === null) {
+      return '  비용        프로바이더가 알려주지 않음 (무료 등급이면 0)';
+    }
+    if (unpricedCalls > 0) {
+      return `  실제 비용   $${costUsd.toFixed(4)} (+ ${unpricedCalls}건은 알려주지 않음)`;
+    }
+    return `  실제 비용   $${costUsd.toFixed(4)}`;
+  })();
 
   const lines = [
     '',
@@ -302,7 +324,7 @@ export function formatReport(report: PipelineReport): string {
     `  갱신        ${report.updated}건`,
     `  변화 없음   ${report.unchanged}건`,
     `  토큰        입력 ${inputTokens.toLocaleString()} (캐시 ${cachedInputTokens.toLocaleString()}) / 출력 ${outputTokens.toLocaleString()}`,
-    `  ${costLabel} $${cost.toFixed(4)}`,
+    costLine,
     `  소요        ${(durationMs / 1000).toFixed(1)}초`,
   ];
 
