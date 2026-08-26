@@ -4,12 +4,36 @@
   "timeoutMs": 15000,
   "sources": [
     {
+      "id": "ppomppu-coupon",
+      "name": "뽐뿌 쿠폰게시판",
+      "kind": "rss",
+      "url": "https://www.ppomppu.co.kr/rss.php?id=coupon",
+      "enabled": true,
+      "maxItems": 12,
+      "selectors": {
+        "detail": ".board-contents"
+      },
+      "categoryHint": "etc"
+    },
+    {
+      "id": "ppomppu-hot",
+      "name": "뽐뿌 뽐뿌게시판",
+      "kind": "rss",
+      "url": "https://www.ppomppu.co.kr/rss.php?id=ppomppu",
+      "enabled": true,
+      "maxItems": 10,
+      "selectors": {
+        "detail": ".board-contents"
+      },
+      "categoryHint": "shopping"
+    },
+    {
       "id": "ruliweb-market",
       "name": "루리웹 예판·핫딜",
       "kind": "rss",
       "url": "https://bbs.ruliweb.com/market/board/1020/rss",
       "enabled": true,
-      "maxItems": 12,
+      "maxItems": 10,
       "selectors": {
         "detail": ".view_content"
       },
@@ -21,12 +45,28 @@
       "kind": "html",
       "url": "https://www.clien.net/service/board/jirum",
       "enabled": true,
-      "maxItems": 12,
+      "maxItems": 10,
       "selectors": {
         "item": ".list_item.symph_row",
         "link": ".list_subject a",
         "title": ".list_subject a",
         "detail": ".post_article"
+      },
+      "categoryHint": "shopping",
+      "stripParams": ["od", "po", "category", "groupCd"]
+    },
+    {
+      "id": "eomisae-fs",
+      "name": "어미새 인기정보",
+      "kind": "html",
+      "url": "https://eomisae.co.kr/fs",
+      "enabled": true,
+      "maxItems": 8,
+      "selectors": {
+        "item": ".card_el",
+        "link": ".card_content h3 a",
+        "title": ".card_content h3 a",
+        "detail": ".xe_content"
       },
       "categoryHint": "shopping"
     },

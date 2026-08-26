@@ -1,13 +1,101 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-26T07:17:24.695Z",
+  "generatedAt": "2026-08-26T12:49:35.067Z",
   "deals": [
+    {
+      "id": "dl_clien-jirum_04962a01d4d3f120",
+      "slug": "clien-jirum-board-jirum-0e775481",
+      "title": "iOS 게임 'Legacy-Reawakening' 일시 무료",
+      "summary": "iOS 어드벤처 게임 'Legacy-Reawakening'(평소 3.99유로)이 한시적으로 무료 배포 중",
+      "description": "평소 3.99유로에 판매되던 iOS 포인트 앤 클릭 어드벤처 게임 'Legacy-Reawakening'이 한시적으로 무료 배포 중입니다. 앱스토어 링크에서 다운로드할 수 있습니다.",
+      "brand": {
+        "name": "Apple App Store"
+      },
+      "category": "app",
+      "dealType": "free",
+      "difficulty": "easy",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-26T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://apps.apple.com/kr/app/legacy-reawakening/id6741156650",
+        "label": "App Store에서 보기"
+      },
+      "howTo": ["App Store에서 Legacy-Reawakening 앱 페이지 접속", "무료로 다운로드"],
+      "caution": ["일시 무료 이벤트는 사전 예고 없이 종료될 수 있음"],
+      "tags": ["iOS", "앱스토어", "게임", "무료앱", "어드벤처게임"],
+      "source": {
+        "name": "클리앙 알뜰구매",
+        "url": "https://www.clien.net/service/board/jirum/19253918",
+        "collectedAt": "2026-08-26T12:49:35.067Z",
+        "method": "llm",
+        "confidence": 0.85
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T12:49:35.067Z"
+      }
+    },
+    {
+      "id": "dl_clien-jirum_2884204aeae2434b",
+      "slug": "clien-jirum-board-jirum-26730de6",
+      "title": "SamWatch Digital Nekhbet 워치페이스 한시 무료",
+      "summary": "Wear OS 워치페이스 앱 'SamWatch Digital Nekhbet'가 내일 오전 9시까지 한시 무료 배포됩니다.",
+      "description": "Wear OS용 유료 워치 페이스 앱 'SamWatch Digital Nekhbet'가 한시적으로 무료 배포됩니다. Google Play 스토어에서 다운로드하면 됩니다.",
+      "brand": {
+        "name": "SamWatch Digital Nekhbet"
+      },
+      "category": "app",
+      "dealType": "free",
+      "difficulty": "easy",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-26T00:00:00+09:00",
+        "endAt": "2026-08-27T09:00:00+09:00"
+      },
+      "link": {
+        "url": "https://play.google.com/store/apps/details?id=com.watchfacestudio.samwatch_digital_nekhbet",
+        "label": "Google Play에서 보기"
+      },
+      "howTo": [
+        "Google Play 스토어 링크 접속",
+        "앱(워치페이스) 설치/구매 진행 시 무료로 적용되는지 확인"
+      ],
+      "caution": ["일시 무료 배포이므로 명시된 시간 내에 설치해야 합니다"],
+      "tags": ["WearOS", "워치페이스", "무료앱", "구글플레이", "SamWatch"],
+      "source": {
+        "name": "클리앙 알뜰구매",
+        "url": "https://www.clien.net/service/board/jirum/19253680",
+        "collectedAt": "2026-08-26T12:49:35.067Z",
+        "method": "llm",
+        "confidence": 0.85
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T12:49:35.067Z"
+      }
+    },
     {
       "id": "dl_clien-jirum_92eac5c042f29bec",
       "slug": "clien-jirum-board-jirum-ad7f35e2",
-      "title": "iOS Widgetik 홈 화면 위젯 앱 일시 무료",
-      "summary": "iOS 위젯 앱 Widgetik의 프리미엄 잠금 해제(평소 3,000원)가 한시적으로 무료 제공됩니다.",
-      "description": "평소 3,000원에 인앱 구매로 제공되던 iOS 위젯 앱 Widgetik의 프리미엄 잠금 해제가 한시적으로 무료 배포됩니다. 습관, 걸음 수, 물 섭취, 마음챙김, 카운트다운, 시계, 명언, 사진, 달의 위상, 배터리 등 다양한 위젯을 꾸밀 수 있습니다.",
+      "title": "[iOS] Widgetik 프리미엄 위젯 한시 무료",
+      "summary": "iOS 위젯 앱 Widgetik의 프리미엄 인앱 구매(정가 3,000원)가 한시적으로 무료 배포 중",
+      "description": "홈 화면 위젯 커스터마이징 앱 Widgetik의 프리미엄 인앱 구매(평소 3,000원)가 한시적으로 무료로 전환되었습니다. 습관, 걸음 수, 물 섭취량, 마음챙김, 카운트다운, 시계, 명언, 사진, 달의 위상, 배터리 등 다양한 위젯을 꾸밀 수 있는 프리미엄 잠금이 해제됩니다. 앱 실행 후 메인 화면에서 스크롤을 내리면 나오는 '프리미엄 잠금 해제 ₩0' 배너를 눌러 인앱 구매를 진행하면 됩니다. 기간 한정 무료이므로 결제 전 반드시 가격이 0원인지 확인해야 합니다.",
       "brand": {
         "name": "Widgetik"
       },
@@ -29,34 +117,37 @@
       },
       "link": {
         "url": "https://apps.apple.com/kr/app/widgetik/id6760586460",
-        "label": "앱스토어에서 보기"
+        "label": "App Store에서 보기"
       },
       "howTo": [
-        "앱스토어에서 Widgetik 설치 후 실행",
-        "메인화면에서 스크롤 다운",
+        "App Store에서 Widgetik 앱 설치",
+        "앱 실행 후 메인 화면에서 아래로 스크롤",
         "'프리미엄 잠금 해제 ₩0' 배너 버튼 클릭",
-        "인앱 구매 진행 (무료로 표시되는지 확인)"
+        "결제 화면에서 금액이 0원인지 확인 후 인앱 구매 진행"
       ],
-      "caution": ["기간 한정 무료이므로 결제 전 반드시 무료 여부를 확인할 것"],
-      "tags": ["iOS", "위젯", "앱테크", "무료앱", "인앱구매"],
+      "caution": [
+        "결제 전 앱 내 배너에 표시된 가격이 무료(₩0)인지 반드시 확인 후 구매할 것",
+        "기간 한정 무료 배포이며 정확한 종료 시점은 원문에 명시되지 않음"
+      ],
+      "tags": ["iOS", "앱스토어", "위젯", "인앱구매무료", "Widgetik"],
       "source": {
         "name": "클리앙 알뜰구매",
-        "url": "https://www.clien.net/service/board/jirum/19253741?od=T31&po=0&category=0&groupCd=",
-        "collectedAt": "2026-08-26T07:17:24.695Z",
+        "url": "https://www.clien.net/service/board/jirum/19253741",
+        "collectedAt": "2026-08-26T12:49:35.067Z",
         "method": "llm",
         "confidence": 0.85
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-08-26T07:17:24.695Z"
+        "updatedAt": "2026-08-26T12:49:35.067Z"
       }
     },
     {
       "id": "dl_clien-jirum_cf5a727535ed7f30",
       "slug": "clien-jirum-board-jirum-3c415e9f",
       "title": "카스 제로 2캔 + 카스 레몬 제로 2캔 2,500원",
-      "summary": "네이버에서 카스 제로 2캔+카스 레몬 제로 2캔을 알림받기 쿠폰 적용 시 2,500원에 구매 가능",
-      "description": "네이버 브랜드스토어 오비맥주 공식몰에서 카스 제로 2캔 + 카스 레몬 제로 2캔 세트를 알림받기 쿠폰 적용 시 2,500원에 구매할 수 있다. 이전에 해당 제품을 구매한 이력이 있는 경우 쿠폰이 적용되지 않아 3,000원이다.",
+      "summary": "네이버 오비맥주 공식몰에서 카스 제로 2캔+카스 레몬 제로 2캔을 알림받기 쿠폰 적용 시 2,500원(기존 구매자 3,000원)에 구매 가능.",
+      "description": "네이버 브랜드스토어 오비맥주 공식몰에서 카스 제로 2캔 + 카스 레몬 제로 2캔 구성을 알림받기 쿠폰 적용 시 2,500원에 구매 가능. 이전에 해당 제품을 구매한 이력이 있는 경우 3,000원이 적용됨.",
       "brand": {
         "name": "오비맥주(카스)"
       },
@@ -81,35 +172,38 @@
       },
       "howTo": [
         "네이버 브랜드스토어(오비맥주) 상품 페이지 접속",
-        "알림받기 쿠폰 다운로드",
-        "쿠폰 적용하여 2,500원에 구매"
+        "알림받기 쿠폰 다운로드/적용",
+        "카스 제로 2캔 + 카스 레몬 제로 2캔 상품 구매"
       ],
-      "caution": ["알림받기 쿠폰을 적용해야 2,500원 (미적용 또는 재구매자는 3,000원)"],
-      "tags": ["카스", "오비맥주", "네이버", "맥주", "제로"],
+      "caution": [
+        "구매 이력에 따라 가격이 다름(신규 2,500원 / 기존 구매자 3,000원)",
+        "알림받기 쿠폰 적용이 선행되어야 함"
+      ],
+      "tags": ["카스", "카스제로", "오비맥주", "네이버쇼핑", "맥주할인"],
       "source": {
         "name": "클리앙 알뜰구매",
-        "url": "https://www.clien.net/service/board/jirum/19253057?od=T31&po=0&category=0&groupCd=",
-        "collectedAt": "2026-08-26T07:17:24.695Z",
+        "url": "https://www.clien.net/service/board/jirum/19253057",
+        "collectedAt": "2026-08-26T12:49:35.067Z",
         "method": "llm",
-        "confidence": 0.85
+        "confidence": 0.75
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-08-26T07:17:24.695Z"
+        "updatedAt": "2026-08-26T12:49:35.067Z"
       }
     },
     {
       "id": "dl_clien-jirum_f799aa9c3149d0d7",
       "slug": "clien-jirum-board-jirum-a98024a2",
-      "title": "네이버멤버십 양파 1.5kg 1,700원",
-      "summary": "네이버 스마트스토어에서 양파 1.5kg을 1,700원에 판매, 네이버 멤버십 회원 무료배송",
-      "description": "네이버 스마트스토어 판매자 ttrae에서 중사이즈(120g~250g) 양파 1.5kg을 1,700원에 판매. 정가 대비 83% 할인가이며, 네이버 멤버십 회원은 무료배송이 적용됨.",
+      "title": "양파 1.5kg 1,700원",
+      "summary": "네이버 멤버십 회원 무료배송으로 중사이즈 양파 1.5kg을 1,700원에 구매 가능",
+      "description": "네이버 스마트스토어(ttrae)에서 중사이즈(120g~250g) 양파 1.5kg을 1,700원에 판매. 네이버 멤버십 회원은 무료배송 적용. 정가 대비 83% 할인된 가격이라고 소개됨.",
       "brand": {
-        "name": "네이버 스마트스토어(ttrae)"
+        "name": "네이버멤버쉽(스마트스토어)"
       },
       "category": "food",
       "dealType": "discount",
-      "difficulty": "normal",
+      "difficulty": "easy",
       "price": {
         "final": 1700,
         "currency": "KRW"
@@ -124,24 +218,379 @@
       },
       "link": {
         "url": "https://smartstore.naver.com/ttrae/products/13640111634",
-        "label": "네이버 스마트스토어에서 구매"
+        "label": "스마트스토어에서 구매하기"
       },
-      "howTo": ["링크 접속 후 네이버 멤버십 로그인", "상품 구매(무료배송 적용 확인)"],
+      "howTo": [
+        "네이버 멤버십 회원 로그인",
+        "링크의 스마트스토어 상품 페이지 접속",
+        "양파 1.5kg 상품 구매(무료배송 적용)"
+      ],
       "caution": [
         "네이버 멤버십 회원에게만 무료배송이 적용됨",
-        "일반 배송비 포함 시 실제 결제가는 1,700원보다 높을 수 있음"
+        "가격 및 재고는 판매자 사정에 따라 변동될 수 있음"
       ],
-      "tags": ["양파", "네이버멤버십", "스마트스토어", "무료배송", "식재료할인"],
+      "tags": ["네이버멤버십", "양파", "식료품", "무료배송", "스마트스토어"],
       "source": {
         "name": "클리앙 알뜰구매",
-        "url": "https://www.clien.net/service/board/jirum/19253499?od=T31&po=0&category=0&groupCd=",
-        "collectedAt": "2026-08-26T07:17:24.695Z",
+        "url": "https://www.clien.net/service/board/jirum/19253499",
+        "collectedAt": "2026-08-26T12:49:35.067Z",
         "method": "llm",
         "confidence": 0.85
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-08-26T07:17:24.695Z"
+        "updatedAt": "2026-08-26T12:49:35.067Z"
+      }
+    },
+    {
+      "id": "dl_ppomppu-coupon_2bae5c947a99fdb2",
+      "slug": "ppomppu-coupon-zboard-view-php-69645e85",
+      "title": "네이버페이 키움증권 포인트 20원 받기",
+      "summary": "네이버페이에서 키움증권 관련 링크 4개 클릭 시 각각 10원·4원·3원·3원(합계 20원) 포인트 지급",
+      "description": "네이버페이 포인트 지급 이벤트로, 키움증권 관련 4개의 개별 링크를 클릭하면 각각 10원, 4원, 3원, 3원의 네이버페이 포인트를 받을 수 있습니다(합계 20원). 각 링크는 별도의 이벤트로 보이며 모두 클릭 시 즉시 포인트가 적립되는 방식으로 추정됩니다.",
+      "brand": {
+        "name": "키움증권"
+      },
+      "category": "finance",
+      "dealType": "point",
+      "difficulty": "easy",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-26T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://campaign2.naver.com/npay/v2/click-point/?eventId=cr_pointdraw_260826_1733",
+        "label": "네이버페이 포인트 받기"
+      },
+      "howTo": [
+        "아래 4개 링크를 각각 클릭한다",
+        "네이버페이 로그인 후 포인트 받기를 진행한다",
+        "링크별로 10원, 4원, 3원, 3원의 포인트가 적립되는지 확인한다"
+      ],
+      "caution": [
+        "종료일이 명시되지 않아 클릭 즉시 참여하는 것이 안전합니다",
+        "네이버페이 앱/계정 로그인이 필요할 수 있습니다"
+      ],
+      "tags": ["네이버페이", "키움증권", "포인트", "적립", "앱테크"],
+      "source": {
+        "name": "뽐뿌 쿠폰게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=117765",
+        "collectedAt": "2026-08-26T12:49:35.067Z",
+        "method": "llm",
+        "confidence": 0.8
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T12:49:35.067Z"
+      }
+    },
+    {
+      "id": "dl_ppomppu-coupon_43a5d8b7117cbedb",
+      "slug": "ppomppu-coupon-zboard-view-php-ad821eff",
+      "title": "하나Pay 트래블 미션(매일 5P) + 랜덤박스",
+      "summary": "하나Pay 앱에서 트래블 미션 참여 시 매일 5P 적립, 주 2회 랜덤박스 참여 가능한 앱테크 이벤트",
+      "description": "하나Pay 앱에서 트래블 미션(퀴즈 등 참여형 미션)을 수행하면 매일 5P가 적립되고, 주 2회 랜덤박스를 통해 추가 혜택(포인트 등)을 받을 수 있는 앱테크 이벤트입니다.",
+      "brand": {
+        "name": "하나카드"
+      },
+      "category": "finance",
+      "dealType": "point",
+      "difficulty": "normal",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-26T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://m.hanacard.co.kr/MKLANDINGWM.web?url=/MKTRVSTMPEVTM.web",
+        "label": "트래블 미션 참여하기"
+      },
+      "howTo": [
+        "하나Pay 앱 접속 > 마이 > 오른쪽 상단 전체/돋보기 > '트래블 미션' 검색 > 추천1 트래블미션 자세히보기에서 미션 수행 (예: 퀴즈 참여)",
+        "하나Pay 앱 > 혜택/실적 > 매일매일 돈 버는 습관(앱테크 혜택) > 앱테크 용돈 받기 > 랜덤박스 참여 (주 2회)"
+      ],
+      "tags": ["하나페이", "하나카드", "앱테크", "포인트적립", "랜덤박스", "트래블미션"],
+      "source": {
+        "name": "뽐뿌 쿠폰게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=117776",
+        "collectedAt": "2026-08-26T12:49:35.067Z",
+        "method": "llm",
+        "confidence": 0.75
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T12:49:35.067Z"
+      }
+    },
+    {
+      "id": "dl_ppomppu-coupon_6c12ce21a7e870cf",
+      "slug": "ppomppu-coupon-zboard-view-php-3a8b62ec",
+      "title": "네이버페이 매일 브랜드뽑기 10원(14시 오픈)",
+      "summary": "네이버페이에서 매일 14시 오픈되는 브랜드뽑기, 빨간 문구 클릭 시 10원 참여 가능",
+      "description": "네이버페이 앱/캠페인 페이지에서 매일 14시에 열리는 브랜드뽑기 이벤트. 클릭 시 포인트 추가 적립 기회가 있으며, 빨간 문구가 보일 때 클릭하면 10원에 참여 가능하다고 안내됨.",
+      "brand": {
+        "name": "네이버페이"
+      },
+      "category": "app",
+      "dealType": "penny",
+      "difficulty": "easy",
+      "price": {
+        "final": 10,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": true,
+        "perPersonLimit": 1
+      },
+      "period": {
+        "startAt": "2026-08-26T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://campaign2.naver.com/npay/branddraw/?from=pointtab",
+        "label": "네이버페이 브랜드뽑기 참여"
+      },
+      "howTo": [
+        "매일 14시 이후 네이버페이 브랜드뽑기 페이지 접속",
+        "빨간 문구가 보일 때 클릭",
+        "10원에 참여/추첨"
+      ],
+      "caution": [
+        "매일 14시 오픈, 빨간 문구 표시 시에만 10원 적용으로 추정됨(원문 표현 다소 불명확)"
+      ],
+      "tags": ["네이버페이", "브랜드뽑기", "10원딜", "포인트적립", "앱테크"],
+      "source": {
+        "name": "뽐뿌 쿠폰게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=117782",
+        "collectedAt": "2026-08-26T12:49:35.067Z",
+        "method": "llm",
+        "confidence": 0.75
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T12:49:35.067Z"
+      }
+    },
+    {
+      "id": "dl_ppomppu-hot_0207d5be635e5098",
+      "slug": "ppomppu-hot-zboard-view-php-80beb3cb",
+      "title": "휠라키즈 운동화/긴팔티/조거팬츠 모음전",
+      "summary": "지마켓 휠라키즈 운동화·긴팔티·조거팬츠 모음전, 26,960원 무료배송",
+      "description": "지마켓에서 휠라키즈 운동화, 긴팔 티셔츠, 조거팬츠 등 가을·환절기용 아동 의류 및 신발을 모아놓은 모음전. 2만원대 후반 가격대에 무료배송으로 구성되어 있다.",
+      "brand": {
+        "name": "휠라키즈"
+      },
+      "category": "shopping",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "final": 26960,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-26T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=729623"
+      },
+      "tags": ["휠라키즈", "지마켓", "아동복", "운동화", "무료배송"],
+      "source": {
+        "name": "뽐뿌 뽐뿌게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=729623",
+        "collectedAt": "2026-08-26T12:49:35.067Z",
+        "method": "llm",
+        "confidence": 0.75
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T12:49:35.067Z"
+      }
+    },
+    {
+      "id": "dl_ppomppu-hot_618e3ef0a6b90142",
+      "slug": "ppomppu-hot-zboard-view-php-6f73fc29",
+      "title": "지마켓 추희자두 3kg 왕특사이즈 19,650원 무료배송",
+      "summary": "지마켓 추희자두 3kg(왕특 150g 내외 20개) 쿠폰 적용가 19,650원, 무료배송",
+      "description": "추희자두 3kg (왕특 사이즈 150g 내외, 20개 내외 구성)을 쿠폰 적용 시 19,650원에 구매할 수 있으며 무료배송입니다.",
+      "brand": {
+        "name": "지마켓"
+      },
+      "category": "food",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "final": 19650,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-26T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=729622"
+      },
+      "howTo": ["지마켓에서 해당 상품 페이지 접속", "쿠폰 적용 후 19,650원에 결제"],
+      "tags": ["지마켓", "자두", "과일", "무료배송", "쿠폰할인"],
+      "source": {
+        "name": "뽐뿌 뽐뿌게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=729622",
+        "collectedAt": "2026-08-26T12:49:35.067Z",
+        "method": "llm",
+        "confidence": 0.85
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T12:49:35.067Z"
+      }
+    },
+    {
+      "id": "dl_ppomppu-hot_7f726030723b3b83",
+      "slug": "ppomppu-hot-zboard-view-php-82278194",
+      "title": "생선숙편 꼬치어묵 240gX4 + 짬뽕 어묵탕 소스50gX4 특가",
+      "summary": "토스에서 생선숙편 꼬치어묵 240gX4개와 짬뽕 어묵탕 소스 50gX4개를 7,760원 무료배송으로 구매 가능",
+      "description": "생선숙편 꼬치어묵 240g 4개와 짬뽕 어묵탕 소스 50g 4개 세트를 7,760원에 무료배송으로 판매하는 토스 쇼핑 특가 게시물입니다. 리뷰 평점 4.8점(리뷰 356개)으로 소개됨.",
+      "brand": {
+        "name": "토스"
+      },
+      "category": "food",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "final": 7760,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-26T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://toss.shopping/t/278354303",
+        "label": "토스에서 구매하기"
+      },
+      "howTo": ["링크로 토스 쇼핑 페이지 접속", "생선숙편 꼬치어묵+짬뽕 어묵탕 소스 세트 구매"],
+      "tags": ["토스", "어묵", "꼬치어묵", "무료배송", "특가"],
+      "source": {
+        "name": "뽐뿌 뽐뿌게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=729634",
+        "collectedAt": "2026-08-26T12:49:35.067Z",
+        "method": "llm",
+        "confidence": 0.85
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T12:49:35.067Z"
+      }
+    },
+    {
+      "id": "dl_ppomppu-hot_8cf36834a286b8c1",
+      "slug": "ppomppu-hot-zboard-view-php-3c2152f5",
+      "title": "네이버 팝핑 비타민C 20포 쿠폰 적용가 3,480원",
+      "summary": "네이버에서 팝핑 비타민C 20포를 쿠폰 적용가 3,480원에 구매 가능, 멤버십 무료배송.",
+      "description": "스틱형 개별포장 비타민C 20포 제품으로 비타민B, 비타민D도 함유되어 있음. 쿠폰 적용 시 3,480원이며 네이버 멤버십 회원은 무료배송.",
+      "brand": {
+        "name": "네이버"
+      },
+      "category": "etc",
+      "dealType": "coupon",
+      "difficulty": "easy",
+      "price": {
+        "final": 3480,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-26T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=729625"
+      },
+      "howTo": ["네이버에서 해당 상품 검색 후 쿠폰 적용", "네이버 멤버십 회원은 무료배송으로 주문"],
+      "tags": ["네이버", "비타민C", "쿠폰", "무료배송", "영양제"],
+      "source": {
+        "name": "뽐뿌 뽐뿌게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=729625",
+        "collectedAt": "2026-08-26T12:49:35.067Z",
+        "method": "llm",
+        "confidence": 0.8
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T12:49:35.067Z"
+      }
+    },
+    {
+      "id": "dl_ppomppu-hot_c48c8caef4b6286d",
+      "slug": "ppomppu-hot-zboard-view-php-2bc43be5",
+      "title": "비레토 무선 목어깨 미니롤러마사지기 롯데카드 결제 시 27,330원",
+      "summary": "롯데온, 비레토 무선 목어깨 미니롤러마사지기 롯데카드 결제 시 27,330원",
+      "description": "롯데온에서 판매하는 비레토 무선 목어깨 미니롤러마사지기를 롯데카드로 결제하면 27,330원에 구매 가능합니다. 옵션 2번인 프라데라 자동 롤러 올인원 마사지기는 할인 적용 시 106,500원입니다.",
+      "brand": {
+        "name": "비레토"
+      },
+      "category": "shopping",
+      "dealType": "discount",
+      "difficulty": "normal",
+      "price": {
+        "final": 27330,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-26T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=729621"
+      },
+      "howTo": ["롯데온에서 비레토 무선 목어깨 미니롤러마사지기 검색", "롯데카드로 결제"],
+      "caution": ["롯데카드로 결제해야 해당 가격이 적용됩니다."],
+      "tags": ["롯데온", "비레토", "마사지기", "롯데카드", "할인"],
+      "source": {
+        "name": "뽐뿌 뽐뿌게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=729621",
+        "collectedAt": "2026-08-26T12:49:35.067Z",
+        "method": "llm",
+        "confidence": 0.8
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T12:49:35.067Z"
       }
     },
     {
@@ -192,6 +641,52 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-08-26T07:17:24.695Z"
+      }
+    },
+    {
+      "id": "dl_ruliweb-market_25a7b6a9637da64f",
+      "slug": "ruliweb-market-board-read-9fbc87ae",
+      "title": "브레이블리 디폴트 FLYING FAIRY(스위치2) 23000원",
+      "summary": "스위치2용 브레이블리 디폴트 FLYING FAIRY, 네이버 스마트스토어에서 23000원에 판매 (쿠팡가보다 저렴)",
+      "description": "닌텐도 스위치2용 게임 '브레이블리 디폴트 FLYING FAIRY'를 네이버 스마트스토어 '청라롱롱리베' 판매처에서 23000원에 판매 중이며, 이전에 공유된 쿠팡 가격보다 저렴하다는 공유 글.",
+      "brand": {
+        "name": "롱롱리베게임즈(네이버 스마트스토어)"
+      },
+      "category": "shopping",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "final": 23000,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-26T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://m.smartstore.naver.com/longlongliebegames/products/11935099810",
+        "label": "스마트스토어에서 보기"
+      },
+      "howTo": ["아래 네이버 스마트스토어 링크 접속", "상품 페이지에서 가격 확인 후 구매"],
+      "caution": [
+        "가격은 게시 시점 기준이며 변동될 수 있음",
+        "판매처(스마트스토어 개인 판매자)의 재고·정책은 원문에 별도 언급 없음"
+      ],
+      "tags": ["닌텐도스위치2", "브레이블리디폴트", "게임할인", "네이버스마트스토어"],
+      "source": {
+        "name": "루리웹 예판·핫딜",
+        "url": "https://bbs.ruliweb.com/market/board/1020/read/106670",
+        "collectedAt": "2026-08-26T12:49:35.067Z",
+        "method": "llm",
+        "confidence": 0.75
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T12:49:35.067Z"
       }
     },
     {
@@ -286,6 +781,57 @@
       }
     },
     {
+      "id": "dl_ruliweb-market_94bbc29886c05bf6",
+      "slug": "ruliweb-market-board-read-e8c6d712",
+      "title": "삼국지14 PK 컴플리트 에디션 5.2만원 구매법",
+      "summary": "삼국지14 오리지널판(2.2만원) 구매 후 스팀에서 컴플리트 에디션 DLC(3만원) 추가 구매 시 정가 7만원 컴플리트 에디션을 5.2만원에 구매 가능",
+      "description": "네이버쇼핑 공식 판매처에서 삼국지14 오리지널판을 2.2만원에 구매해 스팀에 등록한 뒤, 스팀에서 삼국지14 PK 컴플리트 에디션 DLC(3만원)를 추가 구매하면 정가 7만원인 컴플리트 에디션을 총 5.2만원에 확보할 수 있는 방법.",
+      "brand": {
+        "name": "스팀(삼국지14 PK)"
+      },
+      "category": "culture",
+      "dealType": "discount",
+      "difficulty": "normal",
+      "price": {
+        "original": 70000,
+        "final": 52000,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": true
+      },
+      "period": {
+        "startAt": "2026-08-26T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://store.steampowered.com/app/4508240/14__Complete_Edition/?l=koreana",
+        "label": "스팀 삼국지14 PK 컴플리트 에디션 DLC"
+      },
+      "howTo": [
+        "네이버쇼핑에서 공식 유통 셀러 판매처를 찾아 삼국지14 오리지널판을 2.2만원에 구매",
+        "구매한 오리지널판을 스팀에 등록",
+        "스팀 상점에서 삼국지14 PK 컴플리트 에디션 DLC를 3만원에 구매(정가 7만원 → 5.2만원)"
+      ],
+      "caution": [
+        "1번 판매처(네이버쇼핑 공식 셀러)의 오리지널판 재고가 소진되면 이 방법으로 구매할 수 없음",
+        "originalPrice는 스팀에 안내된 컴플리트 에디션 정가 7만원 기준이며, 실제로는 오리지널판(2.2만원)+DLC(3만원) 두 건을 별도로 결제해야 함"
+      ],
+      "tags": ["삼국지14", "스팀", "컴플리트에디션", "DLC", "PC게임할인"],
+      "source": {
+        "name": "루리웹 예판·핫딜",
+        "url": "https://bbs.ruliweb.com/market/board/1020/read/106669",
+        "collectedAt": "2026-08-26T12:49:35.067Z",
+        "method": "llm",
+        "confidence": 0.8
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-08-26T12:49:35.067Z"
+      }
+    },
+    {
       "id": "dl_ruliweb-market_b40da230186b4346",
       "slug": "ruliweb-market-board-read-8924bc39",
       "title": "아이시스8.0 생수 200ml 40펫 8,510원",
@@ -329,9 +875,9 @@
     {
       "id": "dl_ruliweb-market_ce6465b6d3b4b47d",
       "slug": "ruliweb-market-board-read-91807b69",
-      "title": "커세어 제논 엣지 터치스크린 보조모니터 290,350원",
-      "summary": "쿠팡에서 커세어 제논 엣지 터치스크린 보조모니터가 290,350원에 판매 중 (최근 시세 대비 최저가).",
-      "description": "커세어 제논 엣지(Xeneon Edge) 터치스크린 보조모니터를 쿠팡에서 290,350원에 판매. 해상도 2560x720, 화이트·퍼플·블랙·스모크 색상 옵션 있음. 작성자는 최근 시세가 34만~31만원대였는데 오늘 29만원까지 내려온 것으로, 본인은 8월 14일에 34만원대에 구매했다고 언급.",
+      "title": "커세어 제논 엣지 터치스크린 보조모니터 29만원대 특가",
+      "summary": "쿠팡 커세어 제논 엣지 터치스크린 보조모니터(2560x720) 29만 350원 특가, 화이트/퍼플/블랙/스모크 색상 선택 가능",
+      "description": "쿠팡에서 커세어 제논 엣지 터치스크린 보조모니터(해상도 2560x720)가 29만 350원에 판매 중. 화이트, 퍼플, 블랙, 스모크 색상 옵션 있음. 작성자가 최근 본 가격(34만원대→31만원대) 중 가장 저렴하다고 언급.",
       "brand": {
         "name": "커세어(CORSAIR)"
       },
@@ -354,18 +900,22 @@
         "url": "https://www.coupang.com/vp/products/9684719295?vendorItemId=95188337071&itemId=28961874350&landingType=SDP",
         "label": "쿠팡에서 보기"
       },
-      "howTo": ["게시글 내 쿠팡 링크로 접속", "원하는 색상(화이트/퍼플/블랙/스모크) 선택 후 구매"],
-      "tags": ["커세어", "제논 엣지", "보조모니터", "쿠팡", "터치스크린"],
+      "howTo": [
+        "게시글에 첨부된 쿠팡 상품 링크 접속",
+        "원하는 색상(화이트/퍼플/블랙/스모크) 선택 후 구매"
+      ],
+      "caution": ["작성자 개인 구매 후기 기반 가격 정보로, 실제 쿠팡 판매가는 변동될 수 있음"],
+      "tags": ["커세어", "제논엣지", "보조모니터", "터치스크린", "쿠팡", "핫딜"],
       "source": {
         "name": "루리웹 예판·핫딜",
         "url": "https://bbs.ruliweb.com/market/board/1020/read/106662",
-        "collectedAt": "2026-08-26T07:17:24.695Z",
+        "collectedAt": "2026-08-26T12:49:35.067Z",
         "method": "llm",
         "confidence": 0.85
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-08-26T07:17:24.695Z"
+        "updatedAt": "2026-08-26T12:49:35.067Z"
       }
     },
     {

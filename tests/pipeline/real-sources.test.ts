@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { charsetFromContentType, createDecoder } from '@pipeline/fetch/http';
 import { assembleDeal } from '@pipeline/assemble';
+import { alignScheme, htmlToText, stripQueryParams } from '@pipeline/adapters/index';
 import { formatDeadline } from '@/lib/format';
 import { dealPeriodSchema } from '@/lib/deal-schema';
 import type { ExtractedDeal } from '@pipeline/extract/schema';
@@ -205,5 +206,119 @@ describe('마감일 미상', () => {
 
     expect(formatDeadline({ daysLeft: null, status: 'ended', period })).toBe('종료됨');
     expect(formatDeadline({ daysLeft: null, status: 'sold_out', period })).toBe('소진됨');
+  });
+});
+
+/* -------------------------------------------------------------------------- */
+/* 4. 링크 정규화 (뽐뿌·클리앙에서 관측)                                        */
+/* -------------------------------------------------------------------------- */
+
+describe('링크 정규화', () => {
+  it('같은 사이트의 http 링크를 https 로 올린다', () => {
+    /*
+      뽐뿌는 http 로 요청하면 3xx 가 아니라
+      <script>location.href='https://...'</script> 한 줄(104바이트)을 줍니다.
+      크롤러는 JS 를 실행하지 않으니 본문 대신 그 한 줄을 받고 끝나는데,
+      상태는 200 이고 리다이렉트도 아니라 실패한 티가 안 납니다.
+    */
+    expect(
+      alignScheme(
+        'https://www.ppomppu.co.kr/rss.php?id=coupon',
+        'http://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=1',
+      ),
+    ).toBe('https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=1');
+  });
+
+  it('https 를 http 로 내리지는 않는다', () => {
+    // 암호화를 벗기는 방향은 어떤 경우에도 하지 않습니다.
+    expect(alignScheme('http://example.com/feed', 'https://example.com/article/1')).toBe(
+      'https://example.com/article/1',
+    );
+  });
+
+  it('다른 사이트의 링크는 건드리지 않는다', () => {
+    expect(alignScheme('https://example.com/feed', 'http://other.test/a')).toBe(
+      'http://other.test/a',
+    );
+  });
+
+  it('목록 정렬 파라미터를 지운다', () => {
+    /*
+      클리앙 목록은 정렬 상태를 링크에 실어 보냅니다.
+      그대로 두면 같은 글이 두 URL 로 보여 중복 수집되고,
+      URL 로 만드는 안정 ID 까지 흔들려 정렬이 바뀔 때마다 다시 쌓입니다.
+    */
+    expect(
+      stripQueryParams(
+        'https://www.clien.net/service/board/jirum/19253940?od=T31&po=0&category=0&groupCd=',
+        ['od', 'po', 'category', 'groupCd'],
+      ),
+    ).toBe('https://www.clien.net/service/board/jirum/19253940');
+  });
+
+  it('지정하지 않은 파라미터는 남긴다', () => {
+    // 뽐뿌의 id·no 처럼 글을 특정하는 값을 지우면 안 됩니다.
+    expect(
+      stripQueryParams('https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=1&po=0', ['po']),
+    ).toBe('https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=1');
+  });
+
+  it('설정이 없으면 URL 을 그대로 둔다', () => {
+    const url = 'https://example.com/a?x=1';
+    expect(stripQueryParams(url, undefined)).toBe(url);
+    expect(stripQueryParams(url, [])).toBe(url);
+  });
+});
+
+/* -------------------------------------------------------------------------- */
+/* 5. 본문과 댓글 분리 (어미새에서 관측)                                        */
+/* -------------------------------------------------------------------------- */
+
+describe('본문 추출', () => {
+  /*
+    게시판 소프트웨어는 본문과 댓글에 같은 클래스를 붙이는 일이 흔합니다.
+    (XE/라이믹스의 .xe_content, 뽐뿌의 .board-contents)
+    매칭을 전부 합치면 댓글이 본문으로 흘러들어, 실제로 어미새에서
+    "100원에 구매했습니다" 라는 댓글 한 줄이 본문 행세를 했습니다.
+    그대로 두면 100원딜로 둔갑해 사용자에게 노출됩니다.
+  */
+  const HTML = `
+    <html><body>
+      <div class="xe_content">헤인즈 기본아이템 공홈 시즌오프 최대 40% 할인합니다.</div>
+      <ul class="comments">
+        <li><div class="xe_content">100원에구매했습니다</div></li>
+        <li><div class="xe_content">맛있겠다</div></li>
+      </ul>
+    </body></html>`;
+
+  it('선택자가 여러 개 매칭돼도 첫 번째(본문)만 쓴다', () => {
+    const text = htmlToText(HTML, '.xe_content');
+
+    expect(text).toContain('헤인즈');
+    expect(text).not.toContain('100원에구매했습니다');
+    expect(text).not.toContain('맛있겠다');
+  });
+
+  it('선택자가 없으면 body 전체를 쓴다', () => {
+    expect(htmlToText(HTML)).toContain('헤인즈');
+  });
+
+  it('선택자가 아무것도 못 맞히면 body 로 물러선다', () => {
+    // 사이트 구조가 바뀌어 선택자가 죽었을 때 빈 문자열을 돌려주면
+    // 원인 모를 "본문이 너무 짧음" 만 쌓입니다.
+    const text = htmlToText(HTML, '.does-not-exist');
+    expect(text).toContain('헤인즈');
+  });
+
+  it('script·style 은 본문에서 제외한다', () => {
+    const withScript = `
+      <html><body><div class="c">
+        본문입니다<script>var x = "스크립트";</script><style>.a{color:red}</style>
+      </div></body></html>`;
+
+    const text = htmlToText(withScript, '.c');
+    expect(text).toContain('본문입니다');
+    expect(text).not.toContain('스크립트');
+    expect(text).not.toContain('color:red');
   });
 });

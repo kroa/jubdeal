@@ -21,10 +21,25 @@ export function htmlToText(html: string, selector?: string): string {
   // 본문과 무관한 요소는 통째로 제거합니다.
   $('script, style, noscript, iframe, svg, template').remove();
 
-  const root = selector ? $(selector) : $('body');
-  const target = root.length > 0 ? root : $('body');
+  if (!selector) return normalizeWhitespace($('body').text());
 
-  return normalizeWhitespace(target.text());
+  const matched = $(selector);
+  if (matched.length === 0) return normalizeWhitespace($('body').text());
+
+  /*
+    매칭된 요소를 전부 합치면 안 됩니다.
+
+    게시판 소프트웨어는 본문과 댓글에 **같은 클래스**를 붙이는 일이 흔합니다.
+    (XE/라이믹스의 `.xe_content`, 뽐뿌의 `.board-contents` 모두 그렇습니다.)
+    합쳐 버리면 댓글이 본문으로 흘러들어, 어미새에서 실제로 관측했듯
+    "100원에 구매했습니다" 같은 댓글 한 줄이 100원딜로 둔갑합니다.
+    사용자에게 그대로 노출되는 값이라 조용히 넘길 수 없습니다.
+
+    문서 순서상 본문이 댓글보다 먼저 오므로 첫 매칭만 씁니다.
+    본문이 여러 블록으로 나뉜 소스라면 그 블록들을 감싸는 상위 요소를
+    선택자로 지정하세요.
+  */
+  return normalizeWhitespace(matched.first().text());
 }
 
 export function normalizeWhitespace(text: string): string {
@@ -63,6 +78,49 @@ export function isSameSite(sourceUrl: string, targetUrl: string): boolean {
     return sourceBase.includes('.') && sourceBase === base(target.hostname);
   } catch {
     return false;
+  }
+}
+
+/**
+ * 링크를 소스와 같은 스킴으로 맞춥니다. **http → https 방향으로만** 올립니다.
+ *
+ * https 로 옮긴 사이트가 피드·목록에는 http 주소를 그대로 뱉는 일이 흔합니다.
+ * 뽐뿌는 http 로 요청하면 3xx 가 아니라
+ * `<script>document.location.href='https://...'</script>` 한 줄(104바이트)을 돌려줍니다.
+ * 크롤러는 JS 를 실행하지 않으니 본문 대신 그 한 줄을 받고 끝나는데,
+ * HTTP 상태는 200 이고 리다이렉트도 아니라 어디서 실패했는지 드러나지 않습니다.
+ *
+ * 반대 방향(https → http)은 절대 하지 않습니다. 암호화를 벗기는 쪽이니까요.
+ */
+export function stripQueryParams(url: string, params: string[] | undefined): string {
+  if (!params || params.length === 0) return url;
+
+  try {
+    const parsed = new URL(url);
+    for (const name of params) parsed.searchParams.delete(name);
+    return parsed.href;
+  } catch {
+    return url;
+  }
+}
+
+export function alignScheme(sourceUrl: string, targetUrl: string): string {
+  try {
+    const source = new URL(sourceUrl);
+    const target = new URL(targetUrl);
+
+    if (
+      source.protocol === 'https:' &&
+      target.protocol === 'http:' &&
+      isSameSite(sourceUrl, targetUrl)
+    ) {
+      target.protocol = 'https:';
+      return target.href;
+    }
+
+    return targetUrl;
+  } catch {
+    return targetUrl;
   }
 }
 
@@ -113,7 +171,10 @@ export const htmlAdapter: SourceAdapter = {
 
       let detailUrl: string;
       try {
-        detailUrl = new URL(href, source.url).href;
+        detailUrl = stripQueryParams(
+          alignScheme(source.url, new URL(href, source.url).href),
+          source.stripParams,
+        );
       } catch {
         continue;
       }
@@ -173,6 +234,7 @@ export const rssAdapter: SourceAdapter = {
     ctx.log(`[${source.id}] 피드에서 ${entries.length}개 항목 발견`);
 
     const items: RawItem[] = [];
+    const seen = new Set<string>();
     let budget = fetchBudgetFor(source.maxItems);
 
     for (const element of entries) {
@@ -192,10 +254,16 @@ export const rssAdapter: SourceAdapter = {
 
       let url: string;
       try {
-        url = new URL(href, source.url).href;
+        url = stripQueryParams(
+          alignScheme(source.url, new URL(href, source.url).href),
+          source.stripParams,
+        );
       } catch {
         continue;
       }
+      // 피드에도 같은 글이 두 번 실리는 일이 있어 정규화 후 다시 거릅니다.
+      if (seen.has(url)) continue;
+      seen.add(url);
 
       // 피드 요약이 충분하면 그대로 쓰고, 짧으면 상세 페이지를 가져옵니다.
       const summaryHtml =
