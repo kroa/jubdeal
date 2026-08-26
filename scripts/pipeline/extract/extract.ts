@@ -21,7 +21,8 @@ import type { RawItem } from '@pipeline/types';
  * LLM 추출기
  * ---------------------------------------------------------------------------
  * 이 프로젝트는 Anthropic API 를 **직접 호출하지 않습니다.**
- * VSCode 에 연결된 Claude Code(구독 인증)를 쓰고, 막히면 OpenRouter 로 넘어갑니다.
+ * VSCode 에 연결된 Claude Code(구독 인증)를 먼저 쓰고,
+ * 막히면 Gemini → OpenRouter 순으로 넘어갑니다.
  *
  * 스키마를 두 번 거는 이유:
  *   프로바이더의 구조화 출력은 "형태"만 보장합니다.
@@ -184,15 +185,15 @@ export function describeProviderError(error: unknown): string {
   if (error instanceof ProviderUnavailableError) {
     switch (error.reason) {
       case 'not_configured':
-        return `${error.message}\n  → .env 의 OPENROUTER_API_KEY 를 설정하거나 VSCode 에서 Claude 에 로그인하세요.`;
+        return `${error.message}\n  → .env 의 GEMINI_API_KEY(또는 OPENROUTER_API_KEY)를 설정하거나 VSCode 에서 Claude 에 로그인하세요.`;
       case 'quota':
-        return `${error.message}\n  → 한도에 걸렸습니다. OPENROUTER_FREE_MODELS 에 모델을 더 넣거나 잠시 뒤 다시 실행하세요.`;
+        return `${error.message}\n  → 한도에 걸렸습니다. GEMINI_MODELS 나 OPENROUTER_FREE_MODELS 에 모델을 더 넣거나 잠시 뒤 다시 실행하세요.`;
       case 'busy':
         return `${error.message}\n  → 무료 공용 풀이 붐비는 중입니다. 잠시 뒤 다시 실행하면 대개 풀립니다.`;
       case 'auth':
         return `${error.message}\n  → API 키가 유효한지 확인하세요.`;
       case 'unavailable':
-        return `${error.message}\n  → 모델 설정을 확인하세요. OPENROUTER_FREE_MODELS 를 비우면 자동 탐색합니다.`;
+        return `${error.message}\n  → 모델 설정을 확인하세요. GEMINI_MODELS / OPENROUTER_FREE_MODELS 를 비우면 자동 탐색합니다.`;
       default:
         return error.message;
     }

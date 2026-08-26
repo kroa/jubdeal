@@ -55,13 +55,23 @@ jobs:
         id: params
         env:
           RAW_MAX_ITEMS: ${{ inputs.max-items || '20' }}
-          KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          GEMINI_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENROUTER_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         run: |
           # CI 러너에는 VSCode 도 Claude 구독 인증도 없습니다.
-          # 그래서 CI 는 항상 OpenRouter 를 씁니다. (로컬은 구독 인증이 1순위)
-          if [ -z "$KEY" ]; then
-            echo "::error::OPENROUTER_API_KEY 시크릿이 없습니다. 저장소 Settings → Secrets 에 등록하세요."
+          # 그래서 CI 는 Gemini 를 먼저 쓰고, 없거나 막히면 OpenRouter 로 넘어갑니다.
+          # (로컬은 구독 인증이 1순위)
+          if [ -z "$GEMINI_KEY" ] && [ -z "$OPENROUTER_KEY" ]; then
+            echo "::error::GEMINI_API_KEY 또는 OPENROUTER_API_KEY 시크릿이 필요합니다. 저장소 Settings → Secrets 에 등록하세요."
             exit 1
+          fi
+
+          # 키가 있는 프로바이더만 체인에 남깁니다.
+          # 키 없는 프로바이더는 not_configured 로 걸러지므로 auto 로 두어도 안전합니다.
+          if [ -n "$GEMINI_KEY" ]; then
+            echo "Gemini 키 확인됨 — 1순위로 사용합니다."
+          else
+            echo "::notice::GEMINI_API_KEY 가 없어 OpenRouter 만 사용합니다."
           fi
 
           # 비용 폭주 방지: 수동 실행에서 큰 값을 넣어도 상한을 넘지 않습니다.
@@ -77,8 +87,13 @@ jobs:
 
       - name: 파이프라인 실행
         env:
-          # CI 에는 구독 인증이 없으므로 OpenRouter 로 고정합니다.
-          LLM_PROVIDER: openrouter
+          # CI 에는 Claude 구독 인증이 없습니다.
+          # auto 로 두면 claude-cli 는 not_configured 로 건너뛰고
+          # gemini → openrouter 순으로 시도합니다.
+          LLM_PROVIDER: auto
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          # 비워 두면 사용 가능한 모델을 자동 조회합니다(flash 계열 우선).
+          GEMINI_MODELS: ${{ vars.GEMINI_MODELS }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           # 비워 두면 무료 모델을 자동 탐색합니다.
           # 특정 모델로 고정하려면 저장소 Variables 에 등록하세요.

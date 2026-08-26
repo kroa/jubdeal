@@ -11,9 +11,63 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  background: color-mix(in srgb, var(--bg) 88%, transparent);
-  backdrop-filter: saturate(180%) blur(12px);
+  background: var(--surface-glass);
+  backdrop-filter: saturate(180%) blur(16px);
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
   border-bottom: 1px solid var(--border);
+}
+
+/*
+  스크롤에 따라 진해지는 그림자.
+  box-shadow 를 직접 애니메이션하면 레이어 수가 달라 보간이 어긋나므로,
+  그림자를 얹은 가상 요소의 opacity 만 움직입니다.
+*/
+.site-header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+}
+
+/* 스크롤 진행률 막대 */
+.site-header__progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--gradient-brand);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: scroll()) {
+    .site-header::after {
+      animation: jd-header-solid linear both;
+      animation-timeline: scroll(root block);
+      animation-range: 0 90px;
+    }
+
+    .site-header__progress {
+      animation: jd-progress linear both;
+      animation-timeline: scroll(root block);
+    }
+
+    @keyframes jd-header-solid {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes jd-progress {
+      to {
+        transform: scaleX(1);
+      }
+    }
+  }
 }
 
 .site-header__inner {
@@ -21,47 +75,83 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-4);
-  height: 62px;
+  height: 68px;
 }
 
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-  font-size: 1.15rem;
+  gap: 9px;
+  font-size: 1.18rem;
   font-weight: 800;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.045em;
 }
 
 .logo__mark {
   display: grid;
   place-items: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 9px;
-  background: var(--brand-500);
-  color: var(--brand-contrast);
+  width: 32px;
+  height: 32px;
+  border-radius: 11px;
+  background: var(--gradient-cta);
+  color: #ffffff;
   font-size: 0.95rem;
+  font-weight: 800;
+  box-shadow: var(--shadow-glow);
+  transition:
+    transform var(--transition-slow),
+    box-shadow var(--transition);
+}
+
+.logo:hover .logo__mark {
+  transform: rotate(-8deg) scale(1.06);
 }
 
 .site-nav {
   display: flex;
   align-items: center;
-  gap: var(--space-4);
+  gap: var(--space-2);
   font-size: 0.9rem;
   font-weight: 600;
   color: var(--text-secondary);
+}
+
+/* 링크 밑에서 자라나는 밑줄 */
+.site-nav a {
+  position: relative;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  transition: color var(--transition);
+}
+
+.site-nav a::after {
+  content: '';
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 2px;
+  height: 2px;
+  border-radius: var(--radius-full);
+  background: var(--gradient-brand);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform var(--transition);
 }
 
 .site-nav a:hover {
   color: var(--text);
 }
 
+.site-nav a:hover::after {
+  transform: scaleX(1);
+}
+
 .theme-toggle {
   display: grid;
   place-items: center;
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
+  margin-left: var(--space-2);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   background: var(--surface);
@@ -69,12 +159,19 @@
   cursor: pointer;
   transition:
     background-color var(--transition),
-    border-color var(--transition);
+    border-color var(--transition),
+    transform var(--transition);
 }
 
 .theme-toggle:hover {
   background: var(--surface-hover);
   border-color: var(--border-strong);
+  transform: rotate(-12deg);
+}
+
+.theme-toggle:active {
+  transform: scale(0.94);
+  transition-duration: 60ms;
 }
 
 /*
@@ -115,11 +212,24 @@
 }
 
 .site-footer {
-  margin-top: var(--space-8);
+  position: relative;
+  margin-top: var(--space-10);
   padding-block: var(--space-6);
   border-top: 1px solid var(--border);
   color: var(--text-muted);
   font-size: 0.85rem;
+}
+
+/* 상단에 가운데가 밝은 실선 하나 — 경계를 부드럽게 만듭니다. */
+.site-footer::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--gradient-hairline);
+  opacity: 0.7;
 }
 
 .site-footer__inner {
@@ -132,7 +242,7 @@
 
 .site-footer__disclaimer {
   max-width: 62ch;
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
 /* --------------------------------------------------------------------------
@@ -140,73 +250,182 @@
    -------------------------------------------------------------------------- */
 
 .hero {
-  padding-block: var(--space-8) var(--space-6);
+  padding-block: var(--space-10) var(--space-6);
   text-align: center;
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding-block: var(--space-8) var(--space-5);
+  }
+}
+
+/* 순차 등장 — 위에서부터 차례로 떠오릅니다. */
+.hero__eyebrow,
+.hero__title,
+.hero__desc,
+.hero__stats {
+  animation: jd-rise 700ms var(--ease-out) both;
+}
+
+.hero__eyebrow {
+  animation-delay: 40ms;
+}
+
+.hero__title {
+  animation-delay: 130ms;
+}
+
+.hero__desc {
+  animation-delay: 220ms;
+}
+
+.hero__stats {
+  animation-delay: 310ms;
 }
 
 .hero__eyebrow {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  padding: 5px 12px;
+  padding: 6px 14px;
+  border: 1px solid var(--border);
   border-radius: var(--radius-full);
-  background: var(--brand-50);
-  color: var(--brand-700);
+  background: var(--surface-glass);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-sm);
+  color: var(--text-secondary);
   font-size: 0.8rem;
-  font-weight: 700;
+  font-weight: 650;
+  letter-spacing: -0.015em;
 }
 
 .hero__title {
-  margin-top: var(--space-4);
-  font-size: clamp(1.85rem, 5.5vw, 3rem);
+  margin-top: var(--space-5);
+  font-size: clamp(2rem, 6vw, 3.6rem);
   font-weight: 800;
-  letter-spacing: -0.045em;
+  letter-spacing: -0.05em;
+  line-height: 1.16;
 }
 
 .hero__title em {
+  position: relative;
   font-style: normal;
-  background: linear-gradient(105deg, var(--brand-500), var(--danger));
+  background: var(--gradient-brand);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .hero__desc {
-  margin-top: var(--space-3);
+  margin-top: var(--space-4);
   margin-inline: auto;
-  max-width: 46ch;
+  max-width: 48ch;
   color: var(--text-secondary);
-  font-size: clamp(0.95rem, 2.4vw, 1.075rem);
+  font-size: clamp(0.98rem, 2.4vw, 1.12rem);
+  line-height: 1.7;
   text-wrap: pretty;
 }
 
+/* --------------------------------------------------------------------------
+   통계 타일
+   -------------------------------------------------------------------------- */
+
+/*
+  3열 그리드로 고정합니다.
+  flex + wrap 으로 두면 좁은 화면에서 2 + 1 로 갈라져 가운데 한 칸만 남습니다.
+*/
 .hero__stats {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-3);
-  margin-top: var(--space-5);
+  max-width: 520px;
+  margin: var(--space-6) auto 0;
+}
+
+@media (max-width: 400px) {
+  .hero__stats {
+    gap: var(--space-2);
+  }
 }
 
 .stat {
-  min-width: 104px;
-  padding: var(--space-3) var(--space-4);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  background: var(--surface);
+  position: relative;
+  /* 톤 클래스가 빠져도 color-mix 가 무효화되지 않도록 기본값을 둡니다. */
+  --stat-accent: var(--brand-500);
+  padding: var(--space-4) var(--space-3);
+  /* 테두리와 배경에 의미색을 아주 옅게 섞어 타일과 숫자가 한 덩어리로 보이게 합니다. */
+  border: 1px solid color-mix(in srgb, var(--stat-accent) 22%, var(--border));
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--stat-accent) 6%, var(--surface));
+  background-image: var(--card-sheen);
   box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    border-color var(--transition);
+}
+
+/* 숫자 뒤에서 은은하게 번지는 빛 */
+.stat::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  left: 50%;
+  width: 120%;
+  aspect-ratio: 1;
+  translate: -50% 0;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--stat-accent) 22%, transparent),
+    transparent 62%
+  );
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.stat:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--stat-accent) 45%, var(--border));
+  box-shadow: var(--shadow-md);
+}
+
+.stat--brand {
+  --stat-accent: var(--brand-500);
+}
+
+.stat--danger {
+  --stat-accent: var(--danger);
+}
+
+.stat--success {
+  --stat-accent: var(--success);
+}
+
+/* 절대배치된 ::before 글로우보다 위에 오도록 스택 순서를 올립니다. */
+.stat__value,
+.stat__label {
+  position: relative;
 }
 
 .stat__value {
-  font-size: 1.35rem;
+  color: var(--stat-accent);
+  font-size: clamp(1.6rem, 6vw, 2rem);
   font-weight: 800;
-  letter-spacing: -0.03em;
+  line-height: 1.1;
+  letter-spacing: -0.045em;
+  font-variant-numeric: tabular-nums;
 }
 
 .stat__label {
+  margin-top: 2px;
   color: var(--text-muted);
-  font-size: 0.775rem;
-  font-weight: 600;
+  font-size: 0.78rem;
+  font-weight: 650;
+  letter-spacing: -0.015em;
 }
 
 /* --------------------------------------------------------------------------
@@ -214,14 +433,37 @@
    -------------------------------------------------------------------------- */
 
 .filter-bar {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
-  padding: var(--space-4);
+  padding: var(--space-5);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  background: var(--surface);
-  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-xl);
+  background: var(--surface-glass);
+  backdrop-filter: saturate(160%) blur(14px);
+  -webkit-backdrop-filter: saturate(160%) blur(14px);
+  box-shadow: var(--shadow-md);
+  animation: jd-rise 700ms var(--ease-out) both;
+  animation-delay: 60ms;
+}
+
+/* 상단 하이라이트 실선 */
+.filter-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 12%;
+  right: 12%;
+  height: 1px;
+  background: var(--gradient-hairline);
+}
+
+@media (max-width: 640px) {
+  .filter-bar {
+    padding: var(--space-4);
+    border-radius: var(--radius-lg);
+  }
 }
 
 .filter-bar__row {
@@ -244,22 +486,28 @@
 
 .filter-bar__search-icon {
   position: absolute;
-  left: 12px;
+  left: 13px;
   font-size: 0.9rem;
   pointer-events: none;
   opacity: 0.6;
+  transition: opacity var(--transition);
+}
+
+.filter-bar__search:focus-within .filter-bar__search-icon {
+  opacity: 1;
 }
 
 .filter-bar__input {
   width: 100%;
-  padding: 0.62rem 0.9rem 0.62rem 2.25rem;
+  padding: 0.68rem 0.95rem 0.68rem 2.35rem;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   background: var(--surface-sunken);
   font-size: 0.92rem;
   transition:
     border-color var(--transition),
-    background-color var(--transition);
+    background-color var(--transition),
+    box-shadow var(--transition);
 }
 
 .filter-bar__input::placeholder {
@@ -269,17 +517,26 @@
 .filter-bar__input:focus {
   background: var(--surface);
   border-color: var(--brand-500);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--brand-500) 16%, transparent);
   outline: none;
 }
 
 .filter-bar__select {
-  padding: 0.62rem 0.75rem;
+  padding: 0.68rem 0.8rem;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   background: var(--surface-sunken);
   font-size: 0.88rem;
-  font-weight: 600;
+  font-weight: 650;
   cursor: pointer;
+  transition:
+    border-color var(--transition),
+    background-color var(--transition);
+}
+
+.filter-bar__select:hover {
+  border-color: var(--border-strong);
+  background: var(--surface);
 }
 
 /*
@@ -296,9 +553,10 @@
 .filter-group__label {
   padding: 0;
   color: var(--text-muted);
-  font-size: 0.775rem;
+  font-size: 0.75rem;
   font-weight: 700;
-  line-height: 1.9;
+  letter-spacing: 0.01em;
+  line-height: 2;
 }
 
 .filter-group__chips {
@@ -324,50 +582,62 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 0.34rem 0.7rem;
+  padding: 0.38rem 0.78rem;
   border: 1px solid var(--border);
   border-radius: var(--radius-full);
   background: var(--surface);
   font-size: 0.825rem;
-  font-weight: 600;
+  font-weight: 650;
+  letter-spacing: -0.015em;
   color: var(--text-secondary);
   cursor: pointer;
   transition:
     background-color var(--transition),
     border-color var(--transition),
-    color var(--transition);
+    color var(--transition),
+    transform 140ms var(--ease-spring),
+    box-shadow var(--transition);
 }
 
 .chip:hover:not(:disabled) {
   border-color: var(--border-strong);
   color: var(--text);
+  transform: translateY(-1px);
+}
+
+.chip:active:not(:disabled) {
+  transform: scale(0.95);
+  transition-duration: 60ms;
 }
 
 /* aria-disabled 칩 — 포커스를 잃지 않도록 실제 disabled 를 쓰지 않습니다. */
 .chip[aria-disabled='true'] {
-  opacity: 0.45;
+  opacity: 0.42;
   cursor: default;
 }
 
 .chip[aria-disabled='true']:hover {
   border-color: var(--border);
   color: var(--text-secondary);
+  transform: none;
 }
 
 .chip--active {
-  background: var(--brand-500);
-  border-color: var(--brand-500);
-  color: var(--brand-contrast);
+  background: var(--gradient-cta);
+  border-color: transparent;
+  color: #ffffff;
+  box-shadow: var(--shadow-glow);
 }
 
 .chip--active:hover {
-  color: var(--brand-contrast);
+  color: #ffffff;
+  border-color: transparent;
 }
 
 .chip__count {
   font-size: 0.7rem;
   font-weight: 700;
-  opacity: 0.7;
+  opacity: 0.72;
   font-variant-numeric: tabular-nums;
 }
 
@@ -386,16 +656,21 @@
 .filter-bar__toggle {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 650;
   color: var(--text-secondary);
   cursor: pointer;
+  transition: color var(--transition);
+}
+
+.filter-bar__toggle:hover {
+  color: var(--text);
 }
 
 .filter-bar__toggle input {
-  width: 15px;
-  height: 15px;
+  width: 16px;
+  height: 16px;
   accent-color: var(--brand-500);
   cursor: pointer;
 }
@@ -413,7 +688,8 @@
 
 .filter-bar__count strong {
   color: var(--brand-500);
-  font-size: 1rem;
+  font-size: 1.05rem;
+  font-weight: 800;
   font-variant-numeric: tabular-nums;
 }
 
@@ -446,8 +722,15 @@
   }
 }
 
+/*
+  카드가 순차적으로 떠오릅니다.
+  --i 는 DealBoard 가 인라인으로 넣는 목록 인덱스입니다.
+  지연이 무한히 늘어나지 않도록 12번째 카드에서 상한을 둡니다.
+*/
 .deal-grid__item {
   display: flex;
+  animation: jd-rise 620ms var(--ease-out) both;
+  animation-delay: calc(min(var(--i, 0), 11) * 50ms);
 }
 
 /* 필터 초기화 후 포커스를 받는 컨테이너 — 마우스 조작 시엔 테두리를 숨깁니다. */
@@ -456,33 +739,72 @@
 }
 
 .deal-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
   width: 100%;
-  padding: var(--space-4);
+  padding: var(--space-5);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   background: var(--surface);
+  background-image: var(--card-sheen);
   box-shadow: var(--shadow-sm);
   transition:
-    transform var(--transition),
-    box-shadow var(--transition),
+    transform var(--transition-slow),
+    box-shadow var(--transition-slow),
     border-color var(--transition);
 }
 
+/*
+  호버 시 나타나는 그라디언트 테두리.
+  mask 두 장을 XOR 로 겹쳐 안쪽을 파내면 테두리만 남습니다.
+  mask-composite 를 못 쓰는 브라우저에서는 카드 전체가 그라디언트로 덮이므로
+  @supports 로 감쌉니다.
+*/
+@supports (mask-composite: exclude) or (-webkit-mask-composite: xor) {
+  .deal-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: var(--gradient-brand);
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-slow);
+  }
+
+  .deal-card:hover::before {
+    opacity: 1;
+  }
+}
+
 .deal-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--border-strong);
+  transform: translateY(-5px);
+  border-color: transparent;
   box-shadow: var(--shadow-lg);
 }
 
 .deal-card--closed {
-  opacity: 0.6;
+  opacity: 0.58;
 }
 
 .deal-card--closed:hover {
   transform: none;
+  box-shadow: var(--shadow-sm);
+}
+
+.deal-card--closed:hover::before {
+  opacity: 0;
 }
 
 .deal-card__badges {
@@ -492,8 +814,14 @@
 }
 
 .deal-card__title {
-  font-size: 1.05rem;
-  font-weight: 700;
+  font-size: 1.08rem;
+  font-weight: 750;
+  letter-spacing: -0.028em;
+  transition: color var(--transition);
+}
+
+.deal-card:hover .deal-card__title {
+  color: var(--brand-600);
 }
 
 .deal-card__link::after {
@@ -502,14 +830,10 @@
   inset: 0;
 }
 
-.deal-card {
-  position: relative;
-}
-
 .deal-card__summary {
   color: var(--text-secondary);
   font-size: 0.875rem;
-  line-height: 1.65;
+  line-height: 1.68;
   text-wrap: pretty;
 }
 
@@ -521,33 +845,39 @@
 }
 
 .deal-card__discount {
-  color: var(--danger);
-  font-size: 1.05rem;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  background: var(--danger-soft);
+  color: var(--danger-text);
+  font-size: 0.9rem;
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
+  font-variant-numeric: tabular-nums;
 }
 
 .deal-card__final {
-  font-size: 1.2rem;
+  font-size: 1.42rem;
   font-weight: 800;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
 }
 
 .deal-card__original {
   color: var(--text-muted);
   font-size: 0.85rem;
   text-decoration: line-through;
+  font-variant-numeric: tabular-nums;
 }
 
 .deal-card__stock {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--space-3);
 }
 
 .deal-card__stock-bar {
   flex: 1;
-  height: 5px;
+  height: 6px;
   border-radius: var(--radius-full);
   background: var(--surface-sunken);
   overflow: hidden;
@@ -558,12 +888,16 @@
   height: 100%;
   border-radius: inherit;
   background: linear-gradient(90deg, var(--danger), var(--warning));
+  /* 인라인 width 위에 얹는 등장 연출 — 0 에서 실제 폭까지 차오릅니다. */
+  transform-origin: 0 50%;
+  animation: jd-fill 900ms var(--ease-out) both;
+  animation-delay: 220ms;
 }
 
 .deal-card__stock-text {
   color: var(--text-muted);
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 650;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
@@ -574,7 +908,7 @@
   gap: var(--space-2) var(--space-3);
   color: var(--text-muted);
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 650;
 }
 
 .deal-card__brand {
@@ -589,7 +923,7 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-3);
-  padding-top: var(--space-3);
+  padding-top: var(--space-4);
   border-top: 1px solid var(--border);
 }
 
@@ -597,6 +931,20 @@
   position: relative;
   z-index: 1;
   flex: 0 0 auto;
+}
+
+/*
+  CTA 화살표는 CSS 로만 넣습니다.
+  마크업에 넣으면 접근성 이름과 테스트의 텍스트 매칭에 섞여 들어갑니다.
+*/
+a.deal-card__cta::after {
+  content: '→';
+  font-weight: 700;
+  transition: transform var(--transition);
+}
+
+a.deal-card__cta:hover::after {
+  transform: translateX(3px);
 }
 
 /* --------------------------------------------------------------------------
@@ -608,25 +956,28 @@
   flex-direction: column;
   align-items: center;
   gap: var(--space-2);
-  padding: var(--space-8) var(--space-4);
+  padding: var(--space-10) var(--space-4);
   border: 1px dashed var(--border-strong);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
+  background: var(--surface-glass);
   text-align: center;
+  animation: jd-pop 500ms var(--ease-out) both;
 }
 
 .empty-state__emoji {
-  font-size: 2.25rem;
+  font-size: 2.5rem;
+  animation: jd-rise 900ms var(--ease-spring) both;
 }
 
 .empty-state__title {
-  font-size: 1.05rem;
-  font-weight: 700;
+  font-size: 1.1rem;
+  font-weight: 750;
 }
 
 .empty-state__desc {
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-4);
   color: var(--text-muted);
-  font-size: 0.875rem;
+  font-size: 0.885rem;
 }
 
 /* --------------------------------------------------------------------------
@@ -637,19 +988,31 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-5);
-  max-width: 760px;
+  max-width: 780px;
   margin-inline: auto;
-  padding-block: var(--space-6);
+  padding-block: var(--space-6) var(--space-8);
+}
+
+.detail > * {
+  animation: jd-rise 600ms var(--ease-out) both;
 }
 
 .detail__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
   color: var(--text-muted);
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 650;
+  transition:
+    color var(--transition),
+    gap var(--transition);
 }
 
 .detail__back:hover {
   color: var(--text);
+  gap: 10px;
 }
 
 .detail__badges {
@@ -659,26 +1022,31 @@
 }
 
 .detail__title {
-  font-size: clamp(1.5rem, 4.5vw, 2.1rem);
+  font-size: clamp(1.6rem, 5vw, 2.35rem);
+  letter-spacing: -0.045em;
 }
 
 .detail__summary {
   color: var(--text-secondary);
-  font-size: 1.02rem;
+  font-size: 1.05rem;
+  line-height: 1.75;
   text-wrap: pretty;
 }
 
 .detail__panel {
-  padding: var(--space-4);
+  position: relative;
+  padding: var(--space-5);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   background: var(--surface);
+  background-image: var(--card-sheen);
+  box-shadow: var(--shadow-sm);
 }
 
 .detail__facts {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-3);
+  gap: var(--space-4);
   margin: 0;
 }
 
@@ -690,25 +1058,27 @@
 
 .detail__fact dt {
   color: var(--text-muted);
-  font-size: 0.775rem;
+  font-size: 0.75rem;
   font-weight: 700;
+  letter-spacing: 0.01em;
 }
 
 .detail__fact dd {
-  margin: 2px 0 0;
-  font-size: 0.95rem;
-  font-weight: 600;
+  margin: 3px 0 0;
+  font-size: 1rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
 }
 
 .detail__section-title {
-  margin-bottom: var(--space-3);
-  font-size: 1.05rem;
+  margin-bottom: var(--space-4);
+  font-size: 1.1rem;
 }
 
 .detail__steps {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--space-3);
   counter-reset: step;
 }
 
@@ -716,7 +1086,8 @@
   display: flex;
   gap: var(--space-3);
   align-items: flex-start;
-  font-size: 0.92rem;
+  font-size: 0.94rem;
+  line-height: 1.7;
   color: var(--text-secondary);
 }
 
@@ -726,12 +1097,13 @@
   display: grid;
   place-items: center;
   flex-shrink: 0;
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
+  margin-top: 2px;
   border-radius: 50%;
-  background: var(--brand-50);
-  color: var(--brand-700);
-  font-size: 0.75rem;
+  background: var(--gradient-cta);
+  color: #ffffff;
+  font-size: 0.72rem;
   font-weight: 800;
 }
 
@@ -741,6 +1113,7 @@
   gap: var(--space-2);
   color: var(--text-secondary);
   font-size: 0.9rem;
+  line-height: 1.7;
 }
 
 .detail__cautions li::before {
@@ -754,7 +1127,7 @@
 .detail__source {
   color: var(--text-muted);
   font-size: 0.8rem;
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
 /* --------------------------------------------------------------------------
@@ -766,13 +1139,18 @@
   flex-direction: column;
   align-items: center;
   gap: var(--space-3);
-  padding-block: var(--space-8);
+  padding-block: var(--space-10);
   text-align: center;
+  animation: jd-rise 620ms var(--ease-out) both;
 }
 
 .notfound__code {
-  font-size: 3.5rem;
+  font-size: clamp(4rem, 16vw, 6.5rem);
   font-weight: 800;
-  letter-spacing: -0.05em;
-  color: var(--brand-500);
+  line-height: 1;
+  letter-spacing: -0.06em;
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }

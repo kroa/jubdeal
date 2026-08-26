@@ -27,16 +27,29 @@ export function DealStats({ pulses, buildTime }: DealStatsProps) {
 
   return (
     <div className="hero__stats" data-testid="hero-stats">
-      <Stat value={summary.live} label="지금 참여 가능" testId="stat-live" />
-      <Stat value={summary.urgent} label="마감 임박" testId="stat-urgent" />
-      <Stat value={summary.free} label="완전 무료" testId="stat-free" />
+      <Stat value={summary.live} label="지금 참여 가능" testId="stat-live" tone="brand" />
+      <Stat value={summary.urgent} label="마감 임박" testId="stat-urgent" tone="danger" />
+      <Stat value={summary.free} label="완전 무료" testId="stat-free" tone="success" />
     </div>
   );
 }
 
-function Stat({ value, label, testId }: { value: number; label: string; testId: string }) {
+/** 타일 색은 의미를 따릅니다: 진행중=브랜드, 임박=위험, 무료=성공 */
+type StatTone = 'brand' | 'danger' | 'success';
+
+function Stat({
+  value,
+  label,
+  testId,
+  tone,
+}: {
+  value: number;
+  label: string;
+  testId: string;
+  tone: StatTone;
+}) {
   return (
-    <div className="stat" data-testid={testId}>
+    <div className={`stat stat--${tone}`} data-testid={testId}>
       <p className="stat__value">{value}</p>
       <p className="stat__label">{label}</p>
     </div>

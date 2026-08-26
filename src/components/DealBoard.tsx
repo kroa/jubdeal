@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from 'react';
 import type { Deal } from '@/types/deal';
 import { decorateDeals } from '@/lib/deal-status';
 import { DEFAULT_FILTER, filterDeals, type DealFilterState } from '@/lib/deal-filter';
@@ -72,8 +72,16 @@ export function DealBoard({ deals, buildTime }: DealBoardProps) {
           className="deal-grid"
           data-testid="deal-grid"
         >
-          {visible.map((deal) => (
-            <li key={deal.id} className="deal-grid__item">
+          {visible.map((deal, index) => (
+            <li
+              key={deal.id}
+              className="deal-grid__item"
+              /*
+                카드가 순차적으로 떠오르도록 목록 인덱스를 CSS 로 넘깁니다.
+                지연 상한은 CSS 쪽 min() 이 맡습니다.
+              */
+              style={{ '--i': index } as CSSProperties}
+            >
               <DealCard deal={deal} />
             </li>
           ))}

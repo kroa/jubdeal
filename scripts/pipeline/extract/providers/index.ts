@@ -1,4 +1,5 @@
 import { ClaudeCliProvider } from '@pipeline/extract/providers/claude-cli';
+import { GeminiProvider } from '@pipeline/extract/providers/gemini';
 import { OpenRouterProvider } from '@pipeline/extract/providers/openrouter';
 import {
   ProviderUnavailableError,
@@ -69,7 +70,7 @@ export class ProviderChain implements LlmProvider {
   }
 }
 
-export type ProviderMode = 'auto' | 'claude-cli' | 'openrouter';
+export type ProviderMode = 'auto' | 'claude-cli' | 'gemini' | 'openrouter';
 
 export interface CreateProviderOptions {
   mode?: ProviderMode;
@@ -79,8 +80,9 @@ export interface CreateProviderOptions {
 /**
  * 환경변수에 따라 프로바이더를 구성합니다.
  *
- *   LLM_PROVIDER=auto        (기본) claude-cli 를 먼저, 막히면 openrouter
+ *   LLM_PROVIDER=auto        (기본) claude-cli → gemini → openrouter 순으로 시도
  *   LLM_PROVIDER=claude-cli  구독 인증만 사용 (폴백 없음)
+ *   LLM_PROVIDER=gemini      Gemini 만 사용
  *   LLM_PROVIDER=openrouter  OpenRouter 만 사용
  */
 export function createProvider(options: CreateProviderOptions = {}): LlmProvider {
@@ -96,16 +98,20 @@ export function createProvider(options: CreateProviderOptions = {}): LlmProvider
       log,
     });
 
+  const gemini = () => new GeminiProvider({ log });
+
   const openrouter = () => new OpenRouterProvider({ log });
 
   switch (mode) {
     case 'claude-cli':
       return claude();
+    case 'gemini':
+      return gemini();
     case 'openrouter':
       return openrouter();
     case 'auto':
     default:
-      return new ProviderChain([claude(), openrouter()], log);
+      return new ProviderChain([claude(), gemini(), openrouter()], log);
   }
 }
 
@@ -117,5 +123,5 @@ function numberFromEnv(key: string): number | undefined {
   return Number.isFinite(value) && value > 0 ? value : undefined;
 }
 
-export { ClaudeCliProvider, OpenRouterProvider };
+export { ClaudeCliProvider, GeminiProvider, OpenRouterProvider };
 export * from '@pipeline/extract/providers/types';

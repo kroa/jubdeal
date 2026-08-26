@@ -1,8 +1,15 @@
 /* ==========================================================================
    줍딜(JubDeal) 디자인 시스템
-   - 라이트/다크 모드 모두 토큰 기반으로 정의합니다.
-   - :root 에 라이트 값을 먼저 정의하고, 시스템 다크(prefers-color-scheme)와
-     수동 토글([data-theme='dark'])에서 재정의합니다.
+   --------------------------------------------------------------------------
+   - 색은 전부 토큰으로만 다룹니다. 컴포넌트에서 하드코딩 금지.
+   - 라이트 값을 :root 에 먼저 정의하고, 시스템 다크(prefers-color-scheme)와
+     수동 토글([data-theme='dark']) 두 곳에서 재정의합니다.
+
+   ⚠️ 다크 팔레트 블록이 두 개인 이유
+     JS 가 꺼져 있으면 <head> 인라인 스크립트가 data-theme 을 못 붙입니다.
+     그 경우를 위해 미디어쿼리 블록이 따로 필요합니다.
+     두 블록의 토큰 목록과 값은 **완전히 같아야** 합니다.
+     한쪽만 고치는 실수를 막으려고 tests/theme-tokens.test.ts 가 두 블록을 비교합니다.
    ========================================================================== */
 
 :root {
@@ -14,6 +21,7 @@
   --brand-600: #4338ca;
   --brand-700: #3730a3;
   --brand-contrast: #ffffff;
+  --accent-500: #db2777;
 
   /* --- 시맨틱 --- */
   --danger: #e11d48;
@@ -30,41 +38,42 @@
   --info-text: #075985;
 
   /* --- 표면/텍스트 --- */
-  --bg: #f7f7f8;
+  --bg: #f5f5f7;
   --surface: #ffffff;
-  --surface-hover: #fafafa;
-  --surface-sunken: #f4f4f5;
-  --text: #18181b;
-  --text-secondary: #52525b;
+  --surface-hover: #fcfcfd;
+  --surface-sunken: #f1f1f4;
+  --surface-glass: rgb(255 255 255 / 0.72);
+  --text: #111114;
+  --text-secondary: #4a4a55;
   --text-muted: #63636b;
-  --border: #e6e6e9;
-  --border-strong: #d4d4d8;
+  --border: #e7e7ec;
+  --border-strong: #d6d6de;
   --badge-muted-text: #4b4b52;
 
-  --shadow-sm: 0 1px 2px rgb(24 24 27 / 0.05);
-  --shadow-md: 0 4px 14px -4px rgb(24 24 27 / 0.1);
-  --shadow-lg: 0 18px 40px -18px rgb(24 24 27 / 0.28);
+  /*
+    카드 상단의 옅은 광택. 평평한 단색 면에 깊이를 줍니다.
+    라이트에서는 흰빛, 다크에서는 아주 약한 흰빛만 얹습니다.
+  */
+  --card-sheen: linear-gradient(180deg, rgb(255 255 255 / 0.9), rgb(255 255 255 / 0) 42%);
 
-  /* --- 형태 --- */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 18px;
-  --radius-full: 999px;
+  /*
+    --gradient-brand 는 장식·텍스트용입니다. 끝단이 밝아 흰 글씨를 얹으면 안 됩니다.
+    버튼처럼 흰 글씨가 올라가는 곳은 양끝이 모두 어두운 --gradient-cta 를 씁니다.
+  */
+  --gradient-brand: linear-gradient(120deg, #4f46e5, #7c3aed 45%, #db2777);
+  --gradient-cta: linear-gradient(135deg, #4f46e5, #7c3aed);
+  --gradient-hairline: linear-gradient(90deg, transparent, var(--brand-300), transparent);
 
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-5: 1.5rem;
-  --space-6: 2rem;
-  --space-8: 3rem;
+  /* 배경 오로라 (BaseLayout 의 .ambient) */
+  --aurora-1: rgb(99 102 241 / 0.085);
+  --aurora-2: rgb(217 70 239 / 0.06);
+  --aurora-3: rgb(45 212 191 / 0.05);
 
-  --font-sans:
-    Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Segoe UI',
-    'Malgun Gothic', system-ui, 'Noto Sans KR', sans-serif;
-
-  --content-width: 1180px;
-  --transition: 160ms cubic-bezier(0.4, 0, 0.2, 1);
+  /* 겹겹이 쌓은 그림자 — 한 겹짜리보다 훨씬 자연스럽습니다. */
+  --shadow-sm: 0 1px 2px rgb(17 17 20 / 0.04), 0 1px 3px rgb(17 17 20 / 0.06);
+  --shadow-md: 0 2px 4px rgb(17 17 20 / 0.04), 0 8px 20px -6px rgb(17 17 20 / 0.1);
+  --shadow-lg: 0 4px 8px rgb(17 17 20 / 0.04), 0 24px 48px -16px rgb(17 17 20 / 0.18);
+  --shadow-glow: 0 2px 6px rgb(79 70 229 / 0.18), 0 18px 40px -14px rgb(79 70 229 / 0.42);
 
   color-scheme: light;
 }
@@ -78,7 +87,8 @@
     --brand-500: #818cf8;
     --brand-600: #a5b4fc;
     --brand-700: #c7d2fe;
-    --brand-contrast: #101014;
+    --brand-contrast: #0d0d12;
+    --accent-500: #f472b6;
 
     --danger: #fb7185;
     --danger-soft: #4c0519;
@@ -93,20 +103,32 @@
     --info-soft: #082f49;
     --info-text: #bae6fd;
 
-    --bg: #0b0b0e;
-    --surface: #131317;
-    --surface-hover: #1a1a20;
-    --surface-sunken: #191920;
-    --text: #f4f4f5;
-    --text-secondary: #b4b4bd;
+    --bg: #07070a;
+    --surface: #111116;
+    --surface-hover: #17171e;
+    --surface-sunken: #16161d;
+    --surface-glass: rgb(17 17 22 / 0.72);
+    --text: #f5f5f7;
+    --text-secondary: #b8b8c4;
     --text-muted: #9a9aa6;
-    --border: #26262e;
-    --border-strong: #35353f;
+    --border: #24242e;
+    --border-strong: #34343f;
     --badge-muted-text: #c2c2cc;
 
-    --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
-    --shadow-md: 0 4px 14px -4px rgb(0 0 0 / 0.55);
-    --shadow-lg: 0 18px 40px -18px rgb(0 0 0 / 0.8);
+    --card-sheen: linear-gradient(180deg, rgb(255 255 255 / 0.055), rgb(255 255 255 / 0) 42%);
+
+    --gradient-brand: linear-gradient(120deg, #818cf8, #c084fc 45%, #f472b6);
+    --gradient-cta: linear-gradient(135deg, #4f46e5, #7c3aed);
+    --gradient-hairline: linear-gradient(90deg, transparent, var(--brand-300), transparent);
+
+    --aurora-1: rgb(99 102 241 / 0.2);
+    --aurora-2: rgb(192 38 211 / 0.14);
+    --aurora-3: rgb(20 184 166 / 0.1);
+
+    --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4), 0 1px 3px rgb(0 0 0 / 0.3);
+    --shadow-md: 0 2px 4px rgb(0 0 0 / 0.4), 0 8px 20px -6px rgb(0 0 0 / 0.55);
+    --shadow-lg: 0 4px 8px rgb(0 0 0 / 0.45), 0 24px 48px -16px rgb(0 0 0 / 0.8);
+    --shadow-glow: 0 2px 6px rgb(99 102 241 / 0.3), 0 18px 40px -14px rgb(99 102 241 / 0.5);
 
     color-scheme: dark;
   }
@@ -120,7 +142,8 @@
   --brand-500: #818cf8;
   --brand-600: #a5b4fc;
   --brand-700: #c7d2fe;
-  --brand-contrast: #101014;
+  --brand-contrast: #0d0d12;
+  --accent-500: #f472b6;
 
   --danger: #fb7185;
   --danger-soft: #4c0519;
@@ -135,22 +158,72 @@
   --info-soft: #082f49;
   --info-text: #bae6fd;
 
-  --bg: #0b0b0e;
-  --surface: #131317;
-  --surface-hover: #1a1a20;
-  --surface-sunken: #191920;
-  --text: #f4f4f5;
-  --text-secondary: #b4b4bd;
+  --bg: #07070a;
+  --surface: #111116;
+  --surface-hover: #17171e;
+  --surface-sunken: #16161d;
+  --surface-glass: rgb(17 17 22 / 0.72);
+  --text: #f5f5f7;
+  --text-secondary: #b8b8c4;
   --text-muted: #9a9aa6;
-  --border: #26262e;
-  --border-strong: #35353f;
+  --border: #24242e;
+  --border-strong: #34343f;
   --badge-muted-text: #c2c2cc;
 
-  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
-  --shadow-md: 0 4px 14px -4px rgb(0 0 0 / 0.55);
-  --shadow-lg: 0 18px 40px -18px rgb(0 0 0 / 0.8);
+  --card-sheen: linear-gradient(180deg, rgb(255 255 255 / 0.055), rgb(255 255 255 / 0) 42%);
+
+  --gradient-brand: linear-gradient(120deg, #818cf8, #c084fc 45%, #f472b6);
+  --gradient-cta: linear-gradient(135deg, #4f46e5, #7c3aed);
+  --gradient-hairline: linear-gradient(90deg, transparent, var(--brand-300), transparent);
+
+  --aurora-1: rgb(99 102 241 / 0.2);
+  --aurora-2: rgb(192 38 211 / 0.14);
+  --aurora-3: rgb(20 184 166 / 0.1);
+
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4), 0 1px 3px rgb(0 0 0 / 0.3);
+  --shadow-md: 0 2px 4px rgb(0 0 0 / 0.4), 0 8px 20px -6px rgb(0 0 0 / 0.55);
+  --shadow-lg: 0 4px 8px rgb(0 0 0 / 0.45), 0 24px 48px -16px rgb(0 0 0 / 0.8);
+  --shadow-glow: 0 2px 6px rgb(99 102 241 / 0.3), 0 18px 40px -14px rgb(99 102 241 / 0.5);
 
   color-scheme: dark;
+}
+
+/* --------------------------------------------------------------------------
+   형태 · 타이포 · 모션 (테마와 무관한 값)
+   -------------------------------------------------------------------------- */
+
+:root {
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 26px;
+  --radius-full: 999px;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 3rem;
+  --space-10: 4.5rem;
+
+  --font-sans:
+    'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo',
+    'Segoe UI', 'Malgun Gothic', system-ui, 'Noto Sans KR', sans-serif;
+
+  --content-width: 1200px;
+
+  /*
+    감속이 강한 이징. 처음에 빠르게 움직이고 끝에서 부드럽게 멈춰
+    "묵직하고 고급스러운" 느낌을 냅니다.
+  */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  /* 살짝 튀는 이징 — 눌림·활성 전환처럼 촉감이 필요한 곳에만. */
+  --ease-spring: cubic-bezier(0.34, 1.4, 0.64, 1);
+
+  --transition: 180ms var(--ease-out);
+  --transition-slow: 420ms var(--ease-out);
 }
 
 /* --------------------------------------------------------------------------
@@ -169,6 +242,7 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -179,8 +253,11 @@ body {
   font-family: var(--font-sans);
   font-size: 16px;
   line-height: 1.6;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.011em;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* 오로라 배경이 가로로 넘쳐도 스크롤바가 생기지 않게. */
+  overflow-x: hidden;
 }
 
 img,
@@ -206,8 +283,8 @@ h1,
 h2,
 h3,
 h4 {
-  line-height: 1.25;
-  letter-spacing: -0.025em;
+  line-height: 1.22;
+  letter-spacing: -0.03em;
   font-weight: 700;
   text-wrap: balance;
   /*
@@ -225,17 +302,129 @@ ol {
 
 :where(a, button, input, select, [tabindex]):focus-visible {
   outline: 2px solid var(--brand-500);
-  outline-offset: 2px;
+  outline-offset: 3px;
   border-radius: var(--radius-sm);
 }
 
+::selection {
+  background: color-mix(in srgb, var(--brand-500) 28%, transparent);
+}
+
+/* --------------------------------------------------------------------------
+   모션 라이브러리
+   -------------------------------------------------------------------------- */
+
+/* 아래에서 떠오르며 나타나기 — 히어로·카드 등장에 사용 */
+@keyframes jd-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* 살짝 커지며 나타나기 */
+@keyframes jd-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* 실시간 표시 점 */
+@keyframes jd-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.7);
+  }
+}
+
+/* 점 주변으로 퍼져 나가는 링 */
+@keyframes jd-ring {
+  0% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  70%,
+  100% {
+    opacity: 0;
+    transform: scale(2.6);
+  }
+}
+
+/* 좌 → 우로 훑고 지나가는 광택 */
+@keyframes jd-sweep {
+  from {
+    transform: translateX(-120%);
+  }
+  to {
+    transform: translateX(220%);
+  }
+}
+
+/* 배경 오로라의 느린 표류 */
+@keyframes jd-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(4%, -5%, 0) scale(1.12);
+  }
+  66% {
+    transform: translate3d(-5%, 3%, 0) scale(0.94);
+  }
+}
+
+/* 수량 게이지가 0 에서 차오르기 */
+@keyframes jd-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/*
+  모션 최소화 설정 존중.
+  duration 만 0 으로 줄이고 fill-mode 는 건드리지 않으므로,
+  등장 애니메이션(both)은 즉시 최종 상태로 고정되어 내용이 사라지지 않습니다.
+*/
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+    animation-delay: 0ms !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/*
+  페이지 전환 크로스페이드 (MPA View Transitions).
+  지원하지 않는 브라우저는 평소처럼 즉시 전환됩니다. JS 없이 동작합니다.
+*/
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
   }
 }
 
@@ -252,7 +441,7 @@ ol {
 
 @media (min-width: 768px) {
   .container {
-    padding-inline: var(--space-5);
+    padding-inline: var(--space-6);
   }
 }
 
@@ -268,19 +457,81 @@ ol {
 }
 
 /* --------------------------------------------------------------------------
+   배경 오로라
+   -------------------------------------------------------------------------- */
+
+/*
+  body 배경은 캔버스로 승격되어 가장 아래에 칠해지므로,
+  z-index: -1 인 이 레이어는 배경 위·본문 아래에 놓입니다.
+*/
+.ambient {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  /*
+    아래로 갈수록 사라지게 잘라 냅니다.
+    화면 전체를 균일하게 물들이면 배경이 아니라 색지처럼 보입니다.
+    위에서 빛이 내려오는 형태여야 본문이 깨끗하게 남습니다.
+  */
+  mask-image: linear-gradient(180deg, #000 0%, #000 35%, transparent 82%);
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 35%, transparent 82%);
+  /* 스크롤해도 배경이 따라와 화면 전체가 살아 있는 느낌을 유지합니다. */
+  contain: strict;
+}
+
+.ambient__blob {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  filter: blur(130px);
+  will-change: transform;
+  animation: jd-drift 28s ease-in-out infinite;
+}
+
+.ambient__blob--1 {
+  top: -18vmax;
+  left: -10vmax;
+  width: 58vmax;
+  height: 58vmax;
+  background: var(--aurora-1);
+}
+
+.ambient__blob--2 {
+  top: -6vmax;
+  right: -16vmax;
+  width: 48vmax;
+  height: 48vmax;
+  background: var(--aurora-2);
+  animation-duration: 34s;
+  animation-delay: -8s;
+}
+
+.ambient__blob--3 {
+  bottom: -24vmax;
+  left: 32%;
+  width: 44vmax;
+  height: 44vmax;
+  background: var(--aurora-3);
+  animation-duration: 40s;
+  animation-delay: -18s;
+}
+
+/* --------------------------------------------------------------------------
    뱃지
    -------------------------------------------------------------------------- */
 
 .badge {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 3px 9px;
+  gap: 5px;
+  padding: 4px 10px;
   border-radius: var(--radius-full);
   font-size: 0.75rem;
   font-weight: 700;
   line-height: 1.45;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.012em;
   white-space: nowrap;
 }
 
@@ -321,7 +572,9 @@ ol {
   color: var(--text-secondary);
 }
 
+/* 실시간 표시 점 — 점 자체가 깜박이고, 그 주위로 링이 퍼집니다. */
 .badge__dot {
+  position: relative;
   width: 6px;
   height: 6px;
   border-radius: 50%;
@@ -329,16 +582,13 @@ ol {
   animation: jd-pulse 1.8s ease-in-out infinite;
 }
 
-@keyframes jd-pulse {
-  0%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.35;
-    transform: scale(0.7);
-  }
+.badge__dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: currentColor;
+  animation: jd-ring 1.8s ease-out infinite;
 }
 
 /* --------------------------------------------------------------------------
@@ -346,21 +596,25 @@ ol {
    -------------------------------------------------------------------------- */
 
 .btn {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
-  padding: 0.6rem 1.1rem;
-  border: 1px solid transparent;
+  padding: 0.62rem 1.15rem;
+  border: 1px solid var(--border);
   border-radius: var(--radius-md);
   background: var(--surface-sunken);
   color: var(--text);
   font-size: 0.9rem;
-  font-weight: 600;
+  font-weight: 650;
+  letter-spacing: -0.015em;
   cursor: pointer;
+  overflow: hidden;
   transition:
     background-color var(--transition),
     border-color var(--transition),
+    color var(--transition),
     transform var(--transition),
     box-shadow var(--transition);
 }
@@ -368,6 +622,12 @@ ol {
 .btn:hover:not(:disabled) {
   background: var(--surface-hover);
   border-color: var(--border-strong);
+  transform: translateY(-1px);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(0) scale(0.985);
+  transition-duration: 60ms;
 }
 
 .btn:disabled {
@@ -376,16 +636,36 @@ ol {
 }
 
 .btn--primary {
-  background: var(--brand-500);
-  color: var(--brand-contrast);
+  /* 양끝이 모두 어두운 그라디언트라 흰 글씨 대비가 유지됩니다. */
+  background: var(--gradient-cta);
+  border-color: transparent;
+  color: #ffffff;
   box-shadow: var(--shadow-sm);
 }
 
 .btn--primary:hover:not(:disabled) {
-  background: var(--brand-600);
+  background: var(--gradient-cta);
   border-color: transparent;
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+/* 호버 시 버튼 위를 훑고 지나가는 광택 */
+.btn--primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 45%;
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.28), transparent);
+  transform: translateX(-120%);
+  pointer-events: none;
+}
+
+.btn--primary:hover:not(:disabled)::before {
+  animation: jd-sweep 780ms var(--ease-out);
 }
 
 .btn--ghost {
@@ -395,6 +675,12 @@ ol {
 
 .btn--block {
   width: 100%;
+}
+
+.btn--lg {
+  padding: 0.85rem 1.5rem;
+  font-size: 1rem;
+  border-radius: var(--radius-lg);
 }
 
 /*
@@ -409,4 +695,5 @@ ol {
 .btn--inactive:hover {
   background: transparent;
   border-color: var(--border);
+  transform: none;
 }

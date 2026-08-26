@@ -223,8 +223,10 @@ cp .env.example .env
 | `PUBLIC_SITE_URL`    | canonical / sitemap / OG 태그 생성       | 권장 |
 | `PUBLIC_SITE_NAME`   | 사이트 표기명                            | 선택 |
 | `DEALS_API_KEY`      | 추후 크롤러 파이프라인 연동용            | 선택 |
-| `LLM_PROVIDER`       | `auto`(기본) / `claude-cli` / `openrouter` | 선택 |
-| `OPENROUTER_API_KEY` | Claude 한도 초과 시 폴백용                | 폴백 사용 시 |
+| `LLM_PROVIDER`       | `auto`(기본) / `claude-cli` / `gemini` / `openrouter` | 선택 |
+| `GEMINI_API_KEY`     | Gemini 사용 시 (2순위 폴백)               | 폴백 사용 시 |
+| `GEMINI_MODELS`      | 쓸 모델 고정. 비우면 자동 탐색            | 선택 |
+| `OPENROUTER_API_KEY` | Gemini 도 막혔을 때 (3순위 폴백)          | 폴백 사용 시 |
 | `DATABASE_URL`       | 추후 DB 연동용                           | 선택 |
 
 ### 운영 환경 (Cloudflare Pages)
@@ -503,21 +505,43 @@ npm run pipeline -- --write --max-items 20
 
 ### LLM 프로바이더
 
-**Anthropic API 를 직접 호출하지 않습니다.** 두 경로를 순서대로 시도합니다.
+**Anthropic API 를 직접 호출하지 않습니다.** 세 경로를 순서대로 시도합니다.
 
 | 순위 | 프로바이더 | 인증 | 쓰는 곳 |
 | --- | --- | --- | --- |
 | 1 | **Claude Code (VSCode 연결)** | 이미 로그인된 **구독 인증** — API 키 불필요 | 로컬 |
-| 2 | **OpenRouter (무료 티어)** | `OPENROUTER_API_KEY` (무료 발급) | 1번이 한도로 막혔을 때, 그리고 CI |
+| 2 | **Google Gemini** | `GEMINI_API_KEY` ([발급](https://aistudio.google.com/apikey)) | 1번이 막혔을 때, 그리고 CI |
+| 3 | **OpenRouter (무료 티어)** | `OPENROUTER_API_KEY` (무료 발급) | 2번까지 막혔을 때 |
 
 ```bash
-LLM_PROVIDER=auto        # 기본. claude-cli 먼저, 막히면 openrouter
+LLM_PROVIDER=auto        # 기본. claude-cli → gemini → openrouter
 LLM_PROVIDER=claude-cli  # 구독 인증만 (폴백 없음)
+LLM_PROVIDER=gemini      # Gemini 만
 LLM_PROVIDER=openrouter  # OpenRouter 만 (VSCode 가 없는 환경)
 ```
 
 폴백은 **요금제 한도·인증·연결 문제일 때만** 일어납니다. 스키마 위반처럼 프로바이더를
 바꿔도 똑같이 실패할 오류는 폴백하지 않습니다 — 같은 실패를 두 번 하며 비용만 두 배가 됩니다.
+
+### Gemini
+
+키는 [aistudio.google.com/apikey](https://aistudio.google.com/apikey) 에서 발급합니다.
+
+```bash
+# .env
+GEMINI_API_KEY=AIza...
+
+# 비워 두면 사용 가능한 모델을 조회해 flash 계열을 먼저 씁니다.
+# 모델 이름은 자주 바뀌므로 고정하지 않는 쪽을 권합니다.
+GEMINI_MODELS=
+```
+
+Gemini 는 구조화 출력 스키마가 OpenAPI 서브셋이라 JSON Schema 를 그대로 받지 않습니다
+(`additionalProperties` 를 모르고, null 을 `anyOf` 대신 `nullable: true` 로 씁니다).
+`toGeminiSchema()` 가 변환해 보내고, 그래도 거부하면 프롬프트 방식으로 물러섭니다.
+
+무료 등급은 분당·일일 요청 수가 제한됩니다. 429 는 대개 일시적이라 그 모델을
+영구 배제하지 않고 다음 모델로만 넘어갑니다.
 
 ### OpenRouter 무료 티어
 

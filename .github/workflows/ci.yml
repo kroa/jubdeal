@@ -125,7 +125,13 @@ jobs:
           # 키 이름으로만 판단하면 이름이 다른 시크릿을 놓칩니다.
           # PUBLIC_ (브라우저 노출용 공개 값)과 아래 화이트리스트를 제외한
           # **모든** 항목이 빈 값이어야 합니다.
-          allowlist='^[0-9]+:(LLM_MODEL)='
+          #
+          # 화이트리스트는 비밀이 아닌 설정 스위치뿐입니다.
+          # (프로바이더 이름·모델 별칭·추론 강도·비용 상한 — 기본값을 보여 주는 편이
+          #  문서로서 훨씬 쓸모 있습니다.)
+          # 여기에 이름을 추가하는 것은 리뷰에서 눈에 띄는 행위여야 하므로
+          # 패턴이 아니라 정확한 이름만 나열합니다.
+          allowlist='^[0-9]+:(LLM_PROVIDER|CLAUDE_CLI_MODEL|CLAUDE_CLI_EFFORT|CLAUDE_CLI_MAX_BUDGET_USD)='
           filled=$(grep -nE '^[A-Z0-9_]+=.+' .env.example \
                    | grep -vE '^[0-9]+:PUBLIC_' \
                    | grep -vE "$allowlist" \
