@@ -6,3 +6,7 @@ coverage
 node_modules
 package-lock.json
 *.md
+
+# 벤더 자산 — 스크립트로 생성했고 원본 그대로 두어야 합니다.
+# (포맷하면 unicode-range 목록이 재배치되어 원본 대조가 어려워집니다)
+public/fonts/

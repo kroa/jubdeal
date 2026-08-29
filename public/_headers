@@ -11,3 +11,7 @@
 # Astro 는 해시가 붙은 자산을 /_astro/ 아래에 배치합니다.
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
+
+# 폰트는 버전이 박힌 파일명이라 내용이 바뀌지 않습니다.
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable

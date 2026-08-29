@@ -54,18 +54,19 @@ const year = new Date().getFullYear();
 
     {
       /*
-      Pretendard — 한국어 본문용 웹폰트.
+      Pretendard — 한국어 본문용 웹폰트 (자체 호스팅).
       Windows 기본 폴백(맑은 고딕)은 자간·굵기가 고르지 않아 화면이 거칠어 보입니다.
-      dynamic-subset 은 실제로 쓰이는 글자 범위만 내려받습니다.
-      CDN 이 막혀도 --font-sans 의 시스템 폰트로 그대로 떨어집니다.
+
+      CDN 을 쓰지 않습니다. public/_headers 의 CSP 가 style-src·font-src 를
+      'self' 로 묶어 두어 jsdelivr 링크가 차단됐고(배포본에서 실제로 확인),
+      폰트 하나 때문에 페이지 전체의 스타일 출처를 넓히는 것은 교환이 맞지 않습니다.
+      같은 오리진이라 DNS·TLS 왕복이 없고 CDN 장애에도 영향받지 않습니다.
+
+      unicode-range 로 쪼개져 있어 실제로 쓰인 글자 범위만 내려받습니다.
+      파일을 못 읽어도 --font-sans 의 시스템 폰트로 그대로 떨어집니다.
     */
     }
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
-    <link
-      rel="stylesheet"
-      crossorigin
-      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
-    />
+    <link rel="stylesheet" href="/fonts/pretendard/pretendard.css" />
 
     {/* 화면 깜빡임(FOUC) 방지: 페인트 전에 저장된 테마를 적용합니다. */}
     <script is:inline>
