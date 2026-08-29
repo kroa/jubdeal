@@ -82,15 +82,12 @@ export function isSameSite(sourceUrl: string, targetUrl: string): boolean {
 }
 
 /**
- * 링크를 소스와 같은 스킴으로 맞춥니다. **http → https 방향으로만** 올립니다.
+ * 링크에서 무의미한 쿼리 파라미터를 지웁니다.
  *
- * https 로 옮긴 사이트가 피드·목록에는 http 주소를 그대로 뱉는 일이 흔합니다.
- * 뽐뿌는 http 로 요청하면 3xx 가 아니라
- * `<script>document.location.href='https://...'</script>` 한 줄(104바이트)을 돌려줍니다.
- * 크롤러는 JS 를 실행하지 않으니 본문 대신 그 한 줄을 받고 끝나는데,
- * HTTP 상태는 200 이고 리다이렉트도 아니라 어디서 실패했는지 드러나지 않습니다.
- *
- * 반대 방향(https → http)은 절대 하지 않습니다. 암호화를 벗기는 쪽이니까요.
+ * 게시판 목록은 정렬·페이지 상태를 링크에 실어 보냅니다.
+ * 그대로 두면 같은 글이 서로 다른 URL 로 보여 중복 수집되고,
+ * URL 로 만드는 안정 ID 까지 흔들려 목록 정렬이 바뀔 때마다
+ * 같은 혜택이 새 항목으로 다시 쌓입니다.
  */
 export function stripQueryParams(url: string, params: string[] | undefined): string {
   if (!params || params.length === 0) return url;
@@ -104,6 +101,17 @@ export function stripQueryParams(url: string, params: string[] | undefined): str
   }
 }
 
+/**
+ * 링크를 소스와 같은 스킴으로 맞춥니다. **http → https 방향으로만** 올립니다.
+ *
+ * https 로 옮긴 사이트가 피드·목록에는 http 주소를 그대로 뱉는 일이 흔합니다.
+ * 뽐뿌는 http 로 요청하면 3xx 가 아니라
+ * `<script>document.location.href='https://...'</script>` 한 줄(104바이트)을 돌려줍니다.
+ * 크롤러는 JS 를 실행하지 않으니 본문 대신 그 한 줄을 받고 끝나는데,
+ * HTTP 상태는 200 이고 리다이렉트도 아니라 어디서 실패했는지 드러나지 않습니다.
+ *
+ * 반대 방향(https → http)은 절대 하지 않습니다. 암호화를 벗기는 쪽이니까요.
+ */
 export function alignScheme(sourceUrl: string, targetUrl: string): string {
   try {
     const source = new URL(sourceUrl);
@@ -123,6 +131,22 @@ export function alignScheme(sourceUrl: string, targetUrl: string): string {
     return targetUrl;
   }
 }
+
+/**
+ * 상세 페이지 요청을 계속 시도할 가치가 있는지 판단하는 차단기.
+ *
+ * 어떤 사이트는 데이터센터 IP 를 봇으로 보고 전부 거절합니다.
+ * (뽐뿌는 GitHub Actions 에서 `ppck=1` 챌린지로 리다이렉트한 뒤 403 을 줍니다.
+ *  같은 요청이 가정용 회선에서는 200 이라 로컬에서는 드러나지 않습니다.)
+ *
+ * 그때 목록에 있는 항목마다 계속 두드리면, 실패가 뻔한 요청에
+ * 레이트리밋 대기 시간(항목당 3~5초)을 그대로 태웁니다.
+ * 실제 실행에서 29번을 헛되이 두드리며 90초를 버렸습니다.
+ *
+ * 연속으로 이만큼 실패하면 그 소스의 남은 항목은 요약만 씁니다.
+ * 한두 건의 일시적 오류로 성급히 포기하지 않을 만큼은 남겨 둡니다.
+ */
+export const DETAIL_FAILURE_LIMIT = 3;
 
 /**
  * 한 소스가 한 번 실행에서 보낼 수 있는 요청 수 상한.
@@ -236,6 +260,7 @@ export const rssAdapter: SourceAdapter = {
     const items: RawItem[] = [];
     const seen = new Set<string>();
     let budget = fetchBudgetFor(source.maxItems);
+    let consecutiveDetailFailures = 0;
 
     for (const element of entries) {
       if (items.length >= source.maxItems) break;
@@ -274,12 +299,26 @@ export const rssAdapter: SourceAdapter = {
 
       let text = normalizeWhitespace(cheerio.load(summaryHtml || '').text());
 
-      if (text.length < 200 && isSameSite(source.url, url)) {
+      const detailWorthTrying =
+        text.length < 200 &&
+        isSameSite(source.url, url) &&
+        consecutiveDetailFailures < DETAIL_FAILURE_LIMIT;
+
+      if (detailWorthTrying) {
         budget -= 1;
         try {
           text = htmlToText(await ctx.fetchText(url), source.selectors?.detail);
+          consecutiveDetailFailures = 0;
         } catch (error) {
+          consecutiveDetailFailures += 1;
           ctx.log(`[${source.id}] 상세 페이지 실패, 요약만 사용: ${url} — ${String(error)}`);
+
+          if (consecutiveDetailFailures === DETAIL_FAILURE_LIMIT) {
+            ctx.log(
+              `[${source.id}] 상세 페이지가 연속 ${DETAIL_FAILURE_LIMIT}회 실패했습니다. ` +
+                '이 소스는 남은 항목을 피드 요약만으로 처리합니다.',
+            );
+          }
         }
       }
 

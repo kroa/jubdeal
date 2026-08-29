@@ -1,7 +1,13 @@
 import { describe, expect, it } from 'vitest';
 import { charsetFromContentType, createDecoder } from '@pipeline/fetch/http';
 import { assembleDeal } from '@pipeline/assemble';
-import { alignScheme, htmlToText, stripQueryParams } from '@pipeline/adapters/index';
+import {
+  DETAIL_FAILURE_LIMIT,
+  alignScheme,
+  htmlToText,
+  rssAdapter,
+  stripQueryParams,
+} from '@pipeline/adapters/index';
 import { formatDeadline } from '@/lib/format';
 import { dealPeriodSchema } from '@/lib/deal-schema';
 import type { ExtractedDeal } from '@pipeline/extract/schema';
@@ -320,5 +326,90 @@ describe('본문 추출', () => {
     expect(text).toContain('본문입니다');
     expect(text).not.toContain('스크립트');
     expect(text).not.toContain('color:red');
+  });
+});
+
+/* -------------------------------------------------------------------------- */
+/* 6. 상세 요청 차단기 (CI 실행에서 관측)                                       */
+/* -------------------------------------------------------------------------- */
+
+describe('상세 페이지 차단기', () => {
+  /*
+    뽐뿌는 GitHub Actions 의 데이터센터 IP 를 봇으로 보고
+    `ppck=1` 챌린지로 리다이렉트한 뒤 403 을 돌려줍니다.
+    같은 요청이 가정용 회선에서는 200 이라 로컬에서는 드러나지 않았습니다.
+
+    그때 항목마다 계속 두드리면 실패가 뻔한 요청에 레이트리밋 대기(3~5초)를
+    그대로 태웁니다. 실제 실행에서 29번을 헛되이 두드리며 90초를 버렸습니다.
+  */
+  const FEED = `<?xml version="1.0"?><rss><channel>
+    ${Array.from({ length: 10 }, (_, i) => `<item><title>항목 ${i}</title><link>https://board.test/read/${i}</link><description>피드 요약입니다. 상세 페이지에는 더 자세한 조건과 참여 방법이 적혀 있습니다. 항목 번호 ${i} 입니다.</description></item>`).join('')}
+  </channel></rss>`;
+
+  function makeCtx(onDetail: (url: string) => string) {
+    const detailCalls: string[] = [];
+
+    return {
+      detailCalls,
+      ctx: {
+        now: new Date('2026-08-29T00:00:00+09:00'),
+        log: () => {},
+        fetchText: async (url: string) => {
+          if (url.includes('/feed')) return FEED;
+          detailCalls.push(url);
+          return onDetail(url);
+        },
+      },
+    };
+  }
+
+  const SOURCE = {
+    id: 'board',
+    name: '테스트 게시판',
+    kind: 'rss',
+    url: 'https://board.test/feed',
+    enabled: true,
+    maxItems: 10,
+  };
+
+  it('상세가 계속 실패하면 두드리기를 멈춘다', async () => {
+    const { ctx, detailCalls } = makeCtx(() => {
+      throw new Error('HTTP 403');
+    });
+
+    const items = await rssAdapter.collect(SOURCE, ctx);
+
+    // 한도까지만 시도하고 나머지는 요약으로 처리합니다.
+    expect(detailCalls).toHaveLength(DETAIL_FAILURE_LIMIT);
+    // 포기했다고 항목까지 버리지는 않습니다. 요약이 충분하면 그걸로 남깁니다.
+    // (실제 뽐뿌 RSS 요약이 49~135자라 이 경로로 11건이 살아남았습니다.)
+    expect(items.length).toBe(10);
+  });
+
+  it('중간에 성공하면 실패 횟수를 초기화한다', async () => {
+    // 일시적인 오류 두어 번으로 성급히 포기하면 안 됩니다.
+    let call = 0;
+    const { ctx, detailCalls } = makeCtx(() => {
+      call += 1;
+      // 2번 실패 → 1번 성공 → 다시 반복
+      if (call % 3 === 0) return '<html><body>' + '본문입니다. '.repeat(30) + '</body></html>';
+      throw new Error('HTTP 503');
+    });
+
+    await rssAdapter.collect(SOURCE, ctx);
+
+    // 연속 3회에 도달하지 않으므로 끝까지 시도합니다.
+    expect(detailCalls.length).toBeGreaterThan(DETAIL_FAILURE_LIMIT);
+  });
+
+  it('상세가 잘 되면 전부 가져온다', async () => {
+    const { ctx, detailCalls } = makeCtx(
+      () => '<html><body>' + '충분히 긴 본문입니다. '.repeat(20) + '</body></html>',
+    );
+
+    const items = await rssAdapter.collect(SOURCE, ctx);
+
+    expect(detailCalls).toHaveLength(10);
+    expect(items).toHaveLength(10);
   });
 });
