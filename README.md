@@ -231,17 +231,35 @@ cp .env.example .env
 
 ### 운영 환경 (Cloudflare Pages)
 
-운영 값은 저장소가 아니라 **Cloudflare Pages Dashboard** 에서 관리합니다.
+**Git 연동이 아니라 Direct Upload 방식입니다.** GitHub Actions 가 빌드하고
+`wrangler` 로 산출물을 올립니다. Cloudflare 대시보드에서 저장소를 연결할 필요가 없습니다.
 
-1. Cloudflare Dashboard → **Workers & Pages** → 프로젝트 선택
-2. **Settings** → **Environment variables**
-3. **Add variable** 로 하나씩 등록
-   - `Production` 과 `Preview` 환경을 따로 설정할 수 있습니다.
-   - 비밀 값은 **Encrypt** 를 눌러 암호화 저장하세요. 저장 후에는 다시 조회되지 않습니다.
-4. 저장 후 **재배포해야** 새 값이 반영됩니다.
+이 방식을 고른 이유는 **품질 게이트를 배포 앞에 세우기 위해서**입니다.
+Git 연동은 Cloudflare 가 직접 빌드하므로 테스트·린트 실패와 무관하게 배포됩니다.
+Direct Upload 는 `ci.yml` 의 `deploy` 잡이 `build` 를 거쳐야만 실행되고,
+`build` 는 다시 품질 게이트와 보안 검사를 모두 통과해야 합니다.
 
-> GitHub Actions에서 빌드하는 경우에는 저장소 **Settings → Secrets and variables → Actions** 에
-> 등록하고, 비밀이 아닌 값은 `Variables` 탭에 넣으세요. (`ci.yml` 이 `vars.PUBLIC_SITE_URL` 을 참조합니다)
+준비물은 저장소 시크릿 두 개뿐입니다.
+(**Settings → Secrets and variables → Actions → Secrets**)
+
+| 이름 | 값 |
+| --- | --- |
+| `CLOUDFLARE_API_TOKEN` | [API 토큰](https://dash.cloudflare.com/profile/api-tokens) — Custom token, 권한은 `Account` → `Cloudflare Pages` → **Edit** 하나면 충분합니다 |
+| `CLOUDFLARE_ACCOUNT_ID` | 32자리 16진수. 대시보드 URL(`dash.cloudflare.com/<여기>`) 또는 Workers & Pages 우측 사이드바에서 복사 |
+
+둘 다 없으면 배포 단계는 **조용히 건너뜁니다**(실패가 아닙니다).
+Pages 프로젝트는 워크플로가 없으면 만들어 주므로 미리 생성하지 않아도 됩니다.
+
+빌드에 주입되는 공개 값은 `Variables` 탭에 넣습니다.
+`PUBLIC_` 접두 값은 브라우저 번들에 그대로 들어가므로 **비밀을 넣지 마세요.**
+
+| 이름 | 기본값 |
+| --- | --- |
+| `PUBLIC_SITE_URL` | `https://jubdeal.pages.dev` |
+| `PUBLIC_SITE_NAME` | `줍딜` |
+
+> Cloudflare 대시보드의 Environment variables 는 **Git 연동으로 빌드할 때만** 쓰입니다.
+> 지금 구성에서는 빌드가 GitHub Actions 에서 일어나므로 거기 넣은 값은 반영되지 않습니다.
 
 ---
 
