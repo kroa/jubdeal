@@ -9,7 +9,7 @@
       "kind": "rss",
       "url": "https://www.ppomppu.co.kr/rss.php?id=coupon",
       "enabled": true,
-      "maxItems": 12,
+      "maxItems": 15,
       "selectors": {
         "detail": ".board-contents"
       },
@@ -60,7 +60,7 @@
       "name": "어미새 인기정보",
       "kind": "html",
       "url": "https://eomisae.co.kr/fs",
-      "enabled": true,
+      "enabled": false,
       "maxItems": 8,
       "selectors": {
         "item": ".card_el",

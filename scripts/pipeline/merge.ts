@@ -109,11 +109,45 @@ export function mergeDeals(
   const pruneAfterDays = options.pruneAfterDays ?? 0;
   if (pruneAfterDays > 0) {
     const cutoff = options.now.getTime() - pruneAfterDays * MS_PER_DAY;
+
+    /*
+      이번 실행에서 소스에 여전히 올라와 있던 항목입니다.
+      아직 살아 있다는 가장 확실한 증거이므로 나이와 무관하게 남깁니다.
+
+      이 보호가 없으면 `unchanged` 로 분류된 항목이 문제가 됩니다.
+      내용이 같으면 기존 항목을 그대로 두는데(diff 를 깨끗하게 유지하려고),
+      그러면 collectedAt 이 "처음 본 시각"에 멈춰 있어서
+      소스에 멀쩡히 있는 혜택이 오래됐다는 이유로 지워집니다.
+      다음 실행에서 다시 추가되고 또 지워지기를 반복하게 됩니다.
+    */
+    const seenNow = new Set(incoming.map((deal) => deal.id));
+
     deals = deals.filter((deal) => {
       // 사람이 검수한 항목은 자동으로 지우지 않습니다.
       // 큐레이션한 데이터가 소리 없이 사라지면 복구할 방법이 없습니다.
       if (deal.meta.verified) return true;
-      if (deal.period.endAt === null) return true;
+      if (seenNow.has(deal.id)) return true;
+
+      /*
+        마감일이 없는 항목은 두 종류입니다.
+
+        - 상시 진행: 정말로 끝나지 않으므로 남깁니다.
+        - 마감일 미상: 커뮤니티 핫딜은 며칠이면 죽습니다.
+          소스에서 사라진 뒤로도 계속 두면 "지금 참여 가능" 목록이
+          죽은 혜택으로 채워집니다. 마지막 수집 시점을 기준으로 내립니다.
+
+        둘을 구분하지 않아 `endAt === null` 을 전부 남기고 있었고,
+        그래서 마감일 미상 항목이 영원히 쌓였습니다.
+      */
+      if (deal.period.endAt === null) {
+        if (!deal.period.deadlineUnknown) return true;
+
+        const collected = Date.parse(deal.source.collectedAt);
+        if (Number.isNaN(collected) || collected >= cutoff) return true;
+        pruned.push(deal);
+        return false;
+      }
+
       const ended = Date.parse(deal.period.endAt);
       if (Number.isNaN(ended) || ended >= cutoff) return true;
       pruned.push(deal);

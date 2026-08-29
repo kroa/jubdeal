@@ -28,7 +28,10 @@ const USAGE = `
   --source <id>         특정 소스만 실행
   --sources <path>      소스 설정 파일 (기본: scripts/pipeline/sources.json)
   --deals <path>        데이터 파일 (기본: src/data/deals.json)
-  --prune-after <days>  종료 후 N일 지난 항목 제거 (기본: 0 = 제거 안 함)
+  --prune-after <days>  오래된 항목 제거 (기본: 0 = 제거 안 함)
+                        · 종료된 지 N일 지난 항목
+                        · 마감일을 모른 채 마지막 수집 후 N일 지난 항목
+                        소스에 아직 올라와 있거나 검수 완료한 항목은 남습니다.
   --help                이 도움말
 
 환경변수:

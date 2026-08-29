@@ -102,12 +102,21 @@ jobs:
           MAX_ITEMS: ${{ steps.params.outputs.max-items }}
           # schedule 트리거에서는 inputs 가 비어 있으므로 기본은 실제 실행입니다.
           DRY_RUN: ${{ inputs.dry-run || 'false' }}
+          # 종료됐거나, 마감일을 모른 채 소스에서 사라진 지 오래된 항목을 내립니다.
+          # 이게 없으면 목록이 죽은 혜택으로 계속 불어납니다.
+          # 소스에 아직 올라와 있는 항목은 나이와 무관하게 남습니다.
+          PRUNE_AFTER: ${{ vars.PRUNE_AFTER_DAYS || '7' }}
         run: |
           set -o pipefail
           MODE="--write"
           [ "$DRY_RUN" = "true" ] && MODE="--dry-run"
 
-          npm run pipeline -- "$MODE" --max-items "$MAX_ITEMS" 2>&1 | tee run.log
+          case "$PRUNE_AFTER" in
+            ''|*[!0-9]*)
+              echo "::error::PRUNE_AFTER_DAYS 는 숫자여야 합니다: $PRUNE_AFTER"; exit 1;;
+          esac
+
+          npm run pipeline -- "$MODE" --max-items "$MAX_ITEMS" --prune-after "$PRUNE_AFTER" 2>&1 | tee run.log
 
       - name: 실행 요약 작성
         if: always()

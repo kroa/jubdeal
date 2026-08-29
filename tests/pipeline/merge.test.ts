@@ -5,6 +5,15 @@ import { isSameContent, mergeDeals } from '@pipeline/merge';
 
 const NOW = new Date('2026-08-23T12:00:00+09:00');
 
+/** 기존 deals.json 한 벌 */
+function fileWith(deals: Deal[]): DealsFile {
+  return {
+    schemaVersion: DEAL_SCHEMA_VERSION,
+    generatedAt: '2026-08-01T00:00:00+09:00',
+    deals,
+  };
+}
+
 function makeDeal(overrides: Partial<Deal> = {}): Deal {
   return {
     id: 'dl_demo_aaa',
@@ -232,5 +241,91 @@ describe('isSameContent', () => {
     const b = makeDeal({ source: { ...a.source, name: '다른 소스' } });
 
     expect(isSameContent(a, b)).toBe(false);
+  });
+});
+
+describe('마감일 미상 항목 정리', () => {
+  /*
+    deadlineUnknown 을 도입하면서 "오래된 항목은 --prune-after 가 정리한다"고
+    했지만, prune 은 `endAt === null` 을 전부 남기고 있었습니다.
+    마감일 미상이 전체의 8할이라 사실상 아무것도 정리되지 않고,
+    죽은 핫딜이 "지금 참여 가능"에 영원히 남습니다.
+  */
+  const NOW = new Date('2026-09-01T00:00:00+09:00');
+
+  function unknownDeadlineDeal(id: string, collectedAt: string): Deal {
+    return makeDeal({
+      id,
+      slug: `slug-${id}`,
+      period: { startAt: '2026-08-01T00:00:00+09:00', endAt: null, deadlineUnknown: true },
+      source: {
+        name: '테스트 소스',
+        url: `https://example.com/${id}`,
+        collectedAt,
+        method: 'llm',
+        confidence: 0.9,
+      },
+    });
+  }
+
+  it('소스에서 사라진 지 오래된 마감일 미상 항목을 내린다', () => {
+    const stale = unknownDeadlineDeal('dl_old', '2026-08-01T00:00:00+09:00');
+
+    const result = mergeDeals(fileWith([stale]), [], { now: NOW, pruneAfterDays: 7 });
+
+    expect(result.pruned.map((d) => d.id)).toEqual(['dl_old']);
+    expect(result.file.deals).toHaveLength(0);
+  });
+
+  it('이번 실행에서 소스에 여전히 있으면 나이와 무관하게 남긴다', () => {
+    /*
+      내용이 같으면 unchanged 로 분류되어 collectedAt 이 처음 본 시각에 멈춥니다.
+      나이만 보면 소스에 멀쩡히 있는 혜택이 지워지고,
+      다음 실행에 다시 추가되기를 반복합니다.
+    */
+    const stale = unknownDeadlineDeal('dl_old', '2026-08-01T00:00:00+09:00');
+
+    const result = mergeDeals(fileWith([stale]), [stale], { now: NOW, pruneAfterDays: 7 });
+
+    expect(result.pruned).toHaveLength(0);
+    expect(result.file.deals).toHaveLength(1);
+  });
+
+  it('최근에 수집한 항목은 남긴다', () => {
+    const fresh = unknownDeadlineDeal('dl_new', '2026-08-30T00:00:00+09:00');
+
+    const result = mergeDeals(fileWith([fresh]), [], { now: NOW, pruneAfterDays: 7 });
+
+    expect(result.pruned).toHaveLength(0);
+  });
+
+  it('상시 진행은 오래돼도 내리지 않는다', () => {
+    // 마감일이 없는 것과 마감일을 모르는 것은 다릅니다.
+    const always = makeDeal({
+      id: 'dl_always',
+      slug: 'slug-always',
+      period: { startAt: '2026-01-01T00:00:00+09:00', endAt: null },
+      source: {
+        name: '테스트 소스',
+        url: 'https://example.com/always',
+        collectedAt: '2026-01-01T00:00:00+09:00',
+        method: 'llm',
+        confidence: 0.9,
+      },
+    });
+
+    const result = mergeDeals(fileWith([always]), [], { now: NOW, pruneAfterDays: 7 });
+
+    expect(result.pruned).toHaveLength(0);
+    expect(result.file.deals).toHaveLength(1);
+  });
+
+  it('검수 완료 항목은 오래돼도 내리지 않는다', () => {
+    const verified = unknownDeadlineDeal('dl_verified', '2026-08-01T00:00:00+09:00');
+    verified.meta.verified = true;
+
+    const result = mergeDeals(fileWith([verified]), [], { now: NOW, pruneAfterDays: 7 });
+
+    expect(result.pruned).toHaveLength(0);
   });
 });
