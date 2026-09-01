@@ -71,6 +71,19 @@ export const extractedDealSchema = z.object({
   perPersonLimit: z.number().int().positive().nullable().describe('1인당 참여 제한. 모르면 null'),
 
   /** 기간 — 시작일을 모르면 null (조립 단계에서 수집 시각으로 대체) */
+  /**
+   * 이 혜택으로 손에 들어오는 금액(원). 원문에서 읽히지 않으면 null.
+   * 할인처럼 정가·실지불액으로 계산되는 것은 조립 단계가 채우므로 null 로 두어도 됩니다.
+   */
+  benefitAmount: z
+    .number()
+    .int()
+    .positive()
+    .nullable()
+    .describe('혜택으로 받는 금액(원). 캐시백·포인트·증정의 값어치. 모르면 null'),
+  /** "최대 N원"처럼 조건에 따라 달라지는 상한이면 true */
+  benefitIsMax: z.boolean().describe('"최대 90만원"처럼 상한이면 true, 확정 금액이면 false'),
+
   startDate: localDateTime.nullable().describe('시작일. 명시가 없으면 null'),
   endDate: localDateTime.nullable().describe('종료일. 모르거나 상시면 null'),
 

@@ -146,6 +146,12 @@ export const dealPeriodSchema = z
     path: ['deadlineUnknown'],
   });
 
+export const dealBenefitSchema = z.object({
+  // 0원짜리 "혜택"은 혜택이 아닙니다. 값이 없으면 필드를 생략하세요.
+  amount: z.number().int().positive(),
+  isMax: z.boolean(),
+});
+
 export const dealLinkSchema = z.object({
   url: httpUrl,
   label: z.string().min(1).optional(),
@@ -181,6 +187,7 @@ export const dealSchema = z.object({
   price: dealPriceSchema,
   limit: dealLimitSchema,
   period: dealPeriodSchema,
+  benefit: dealBenefitSchema.optional(),
   link: dealLinkSchema,
   howTo: z.array(z.string().min(1)).optional(),
   caution: z.array(z.string().min(1)).optional(),

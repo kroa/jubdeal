@@ -7,11 +7,12 @@ import { sortDeals } from '@/lib/deal-status';
  * UI(React 아일랜드)와 완전히 분리되어 있어 단독으로 테스트할 수 있습니다.
  */
 
-export const DEAL_SORT_KEYS = ['recommended', 'deadline', 'discount', 'latest'] as const;
+export const DEAL_SORT_KEYS = ['recommended', 'benefit', 'deadline', 'discount', 'latest'] as const;
 export type DealSortKey = (typeof DEAL_SORT_KEYS)[number];
 
 export const SORT_LABELS: Record<DealSortKey, string> = {
   recommended: '추천순',
+  benefit: '혜택 큰 순',
   deadline: '마감임박순',
   discount: '할인율순',
   latest: '최신등록순',
@@ -105,6 +106,25 @@ export function applySort(deals: DecoratedDeal[], sort: DealSortKey): DecoratedD
         const right = b.daysLeft ?? Number.MAX_SAFE_INTEGER;
         const byDeadline = isClosed(a) ? right - left : left - right;
         if (byDeadline !== 0) return byDeadline;
+
+        return Date.parse(b.meta.updatedAt) - Date.parse(a.meta.updatedAt);
+      });
+
+    case 'benefit':
+      /*
+        혜택의 크기 순. 종류가 달라도 하나의 축으로 비교합니다.
+        (캐시백 87만원과 할인 8,300원을 나란히 놓을 수 있어야
+         "줍딜할 만한 게 없다"는 인상을 바로잡을 수 있습니다.)
+
+        "최대 N원"은 조건에 따라 실제로는 훨씬 적을 수 있으므로,
+        금액이 같으면 확정 금액을 앞에 둡니다.
+      */
+      return [...deals].sort((a, b) => {
+        const byAmount = (b.benefit?.amount ?? -1) - (a.benefit?.amount ?? -1);
+        if (byAmount !== 0) return byAmount;
+
+        const byCertainty = Number(a.benefit?.isMax ?? false) - Number(b.benefit?.isMax ?? false);
+        if (byCertainty !== 0) return byCertainty;
 
         return Date.parse(b.meta.updatedAt) - Date.parse(a.meta.updatedAt);
       });

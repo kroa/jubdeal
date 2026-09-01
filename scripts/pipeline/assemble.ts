@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import type { Deal } from '@/types/deal';
+import type { Deal, DealBenefit } from '@/types/deal';
 import { safeParseDeal } from '@/lib/deal-schema';
 import type { ExtractedDeal } from '@pipeline/extract/schema';
 import type { RawItem } from '@pipeline/types';
@@ -168,6 +168,8 @@ export function assembleDeal(
       ? null
       : toKstIso(extracted.endDate, true);
 
+  const benefit = pickBenefit(extracted);
+
   const linkUrl = pickLinkUrl(extracted.linkUrl, raw.url, raw.text);
 
   const candidate: Deal = {
@@ -191,6 +193,7 @@ export function assembleDeal(
       ...(extracted.perPersonLimit !== null ? { perPersonLimit: extracted.perPersonLimit } : {}),
     },
     period: { startAt, endAt, ...(deadlineUnknown ? { deadlineUnknown: true } : {}) },
+    ...(benefit ? { benefit } : {}),
     link: {
       url: linkUrl,
       ...(extracted.linkLabel?.trim() ? { label: extracted.linkLabel.trim() } : {}),
@@ -221,6 +224,35 @@ export function assembleDeal(
   }
 
   return { ok: true, deal: candidate };
+}
+
+/**
+ * 이 혜택의 값어치를 정합니다.
+ *
+ * 종류가 달라도 **하나의 축으로 비교**할 수 있어야 "큰 혜택"을 골라낼 수 있습니다.
+ * 그래서 두 경로를 하나로 모읍니다.
+ *
+ *   - 캐시백·포인트·증정: 모델이 원문에서 읽은 금액 (price 로는 표현 불가)
+ *   - 할인: 정가 − 실지불액 (모델이 굳이 다시 적을 필요 없음)
+ *
+ * 이걸 두기 전에는 카드 캐시백 87만원짜리가 `original: null, final: 0` 이라
+ * 절약액 0원으로 계산됐습니다. 값이 제목 문자열에만 남아
+ * 정렬에도 필터에도 쓰이지 못했습니다.
+ */
+function pickBenefit(extracted: ExtractedDeal): DealBenefit | null {
+  if (extracted.benefitAmount !== null && extracted.benefitAmount > 0) {
+    return { amount: extracted.benefitAmount, isMax: extracted.benefitIsMax };
+  }
+
+  // 할인은 가격에서 계산합니다. 모델이 적지 않아도 값이 나옵니다.
+  const original = extracted.originalPrice;
+  const final = extracted.finalPrice;
+  if (original !== null && final !== null && original > final) {
+    // 계산으로 나온 값은 조건부가 아니라 확정입니다.
+    return { amount: original - final, isMax: false };
+  }
+
+  return null;
 }
 
 /**

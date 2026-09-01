@@ -14,7 +14,7 @@
  */
 
 /** 스키마 버전. 파이프라인이 하위호환을 판단하는 데 사용합니다. */
-export const DEAL_SCHEMA_VERSION = 2 as const;
+export const DEAL_SCHEMA_VERSION = 3 as const;
 
 /* -------------------------------------------------------------------------- */
 /* 열거형(Enum) — 값과 라벨을 한곳에서 관리                                     */
@@ -175,6 +175,31 @@ export interface DealPeriod {
   deadlineUnknown?: boolean;
 }
 
+/**
+ * 이 혜택으로 손에 들어오는 값어치(원).
+ *
+ * `price` 로는 표현할 수 없어서 따로 둡니다.
+ * price 는 **상품을 살 때 내는 돈**입니다. 그런데 캐시백·포인트·증정·응모는
+ * 상품을 사는 게 아니라 **받는** 것이라 정가라는 개념이 없습니다.
+ * 실제로 카드 캐시백 87만원짜리가 `original: null, final: 0` 으로 들어와
+ * 절약액 0원으로 계산됐습니다. 값이 제목 문자열에만 남아
+ * 정렬·필터·강조 어디에도 쓰이지 못했습니다.
+ *
+ * 할인처럼 price 로 계산되는 혜택은 조립 단계에서 채웁니다(정가 − 실지불액).
+ * 그래야 종류가 달라도 **하나의 축으로 비교**할 수 있습니다.
+ */
+export interface DealBenefit {
+  /** 원화 금액 */
+  amount: number;
+  /**
+   * 조건에 따라 달라지는 **상한**이면 true.
+   *
+   * "최대 90만원"은 카드 종류·실적에 따라 실제로는 훨씬 적을 수 있습니다.
+   * 확정 금액과 구분하지 않으면 화면이 사용자에게 과장된 약속을 하게 됩니다.
+   */
+  isMax: boolean;
+}
+
 /** 랜딩 링크 */
 export interface DealLink {
   url: string;
@@ -233,6 +258,8 @@ export interface Deal {
   price: DealPrice;
   limit: DealLimit;
   period: DealPeriod;
+  /** 이 혜택의 값어치. 계산도 추출도 안 되면 생략합니다. */
+  benefit?: DealBenefit;
   link: DealLink;
   /** 참여 방법 단계별 안내 */
   howTo?: string[];

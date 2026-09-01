@@ -126,3 +126,39 @@ export function statusVariant(status: DealStatus): string {
 export function formatCount(value: number): string {
   return value.toLocaleString('ko-KR');
 }
+
+/**
+ * 혜택 금액을 한국식으로 짧게 적습니다.
+ *
+ * 870000 을 "870,000원"으로 쓰면 카드에서 자리를 많이 먹고 한눈에 안 들어옵니다.
+ * "87만원"이 한국어 사용자에게 훨씬 빠르게 읽힙니다.
+ */
+export function formatBenefitAmount(amount: number): string {
+  if (amount >= 100_000_000) {
+    const eok = amount / 100_000_000;
+    return `${floorToTenth(eok)}억원`;
+  }
+  if (amount >= 10_000) {
+    const man = amount / 10_000;
+    return `${floorToTenth(man)}만원`;
+  }
+  return `${amount.toLocaleString('ko-KR')}원`;
+}
+
+/**
+ * 소수점 첫째 자리에서 **내립니다**. 1.0 → "1", 1.97 → "1.9"
+ *
+ * 반올림하면 안 됩니다. 19,790원이 "2만원"이 되어 실제보다 크게 보입니다.
+ * 혜택 금액은 사용자가 받을 것을 약속하는 값이라, 어긋난다면
+ * 적게 적힌 쪽이어야 합니다.
+ */
+function floorToTenth(value: number): string {
+  return (Math.floor(value * 10) / 10).toLocaleString('ko-KR');
+}
+
+/** "최대 87만원" / "3만원" */
+export function formatBenefit(benefit: { amount: number; isMax: boolean }): string {
+  const amount = formatBenefitAmount(benefit.amount);
+  // "최대"를 빠뜨리면 조건부 상한을 확정 금액처럼 약속하게 됩니다.
+  return benefit.isMax ? `최대 ${amount}` : amount;
+}

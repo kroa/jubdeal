@@ -1154,3 +1154,36 @@ a.deal-card__cta:hover::after {
   background-clip: text;
   color: transparent;
 }
+
+/* --------------------------------------------------------------------------
+   혜택 크기
+   -------------------------------------------------------------------------- */
+
+/*
+  카드에서 가장 먼저 읽혀야 하는 값입니다.
+  캐시백·포인트·증정은 price 로 표현되지 않아, 이 줄이 없으면
+  87만원짜리와 8,300원짜리가 화면에서 똑같아 보입니다.
+*/
+.deal-card__benefit {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-top: -2px;
+}
+
+.deal-card__benefit-amount {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.deal-card__benefit-label {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 650;
+}

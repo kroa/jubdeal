@@ -1,19 +1,19 @@
 {
-  "schemaVersion": 2,
-  "generatedAt": "2026-09-01T15:34:09.144Z",
+  "schemaVersion": 3,
+  "generatedAt": "2026-09-01T15:56:55.072Z",
   "deals": [
     {
       "id": "dl_cardgorilla-event_2d65de8ba06a8150",
       "slug": "cardgorilla-event-event-detail-3246e0e0",
       "title": "KB국민카드 최대 87만원 혜택",
-      "summary": "KB국민카드 발급 시 최대 87만원 혜택, 체크카드별 3만원 캐시백 및 생활대금 자동납부 시 최대 4만원 캐시백 제공",
-      "description": "KB국민카드 발급 시 최대 87만원 혜택 제공. 체크카드 종류별 3만원, 생활대금 자동납부 신청 시 최대 4만원 캐시백 추가.",
+      "summary": "KB국민카드 최대 87만원 혜택. 여러 체크카드 및 생활대금 자동납부 신청 시 캐시백 제공.",
+      "description": "KB국민카드를 대상으로 한 최대 87만원 혜택 이벤트. 생활대금 자동납부 신청 시 최대 4만원, 여러 체크카드 신청 시 3만원 캐시백 제공.",
       "brand": {
         "name": "KB국민카드"
       },
       "category": "finance",
       "dealType": "cashback",
-      "difficulty": "normal",
+      "difficulty": "easy",
       "price": {
         "final": 0,
         "currency": "KRW"
@@ -26,32 +26,36 @@
         "endAt": null,
         "deadlineUnknown": true
       },
+      "benefit": {
+        "amount": 870000,
+        "isMax": true
+      },
       "link": {
         "url": "https://www.card-gorilla.com/event/detail/3",
-        "label": "KB국민카드 발급 신청"
+        "label": "카드고릴라에서 자세히보기"
       },
-      "howTo": ["KB국민카드 온라인 발급 신청", "체크카드 선택 및 발급", "생활대금 자동납부 설정"],
-      "tags": ["KB국민카드", "카드 발급", "캐시백", "체크카드", "생활대금"],
+      "howTo": ["KB국민카드 신청", "체크카드 신청", "생활대금 자동납부 신청"],
+      "tags": ["KB국민카드", "캐시백", "카드", "체크카드", "혜택", "이벤트", "무료"],
       "source": {
         "name": "카드고릴라 카드 이벤트",
         "url": "https://www.card-gorilla.com/event/detail/3",
-        "collectedAt": "2026-09-01T15:34:09.144Z",
+        "collectedAt": "2026-09-01T15:56:55.072Z",
         "method": "llm",
-        "confidence": 0.8
+        "confidence": 0.9
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-09-01T15:34:09.144Z"
+        "updatedAt": "2026-09-01T15:56:55.072Z"
       }
     },
     {
       "id": "dl_cardgorilla-event_da64d017753b7d25",
       "slug": "cardgorilla-event-event-detail-9d27f5bc",
-      "title": "카드고릴라 현대카드 발급 캐시백 이벤트",
-      "summary": "카드고릴라를 통해 현대카드 및 제휴 카드 발급 시, 카드 종류에 따라 1.5만원부터 최대 90만원까지 캐시백 제공.",
-      "description": "현대카드 및 제휴 카드 발급 시 캐시백 혜택 제공. 대상 카드에 따라 1.5만원~90만원까지.",
+      "title": "현대카드 최대 90만원 캐시백 이벤트",
+      "summary": "현대카드 계열 신용카드 발급 시 1.5만원~90만원 범위의 캐시백을 제공합니다.",
+      "description": "현대카드 계열의 다양한 신용카드 발급 시 캐시백 혜택을 제공합니다. 대한항공카드 the First Edition2 발급 시 최대 90만원, 에너지플러스 현대카드 발급 시 80만원, American Express Gold Card Edition2 발급 시 50만원 등 각 카드별로 차등된 캐시백을 받을 수 있습니다.",
       "brand": {
-        "name": "카드고릴라"
+        "name": "현대카드"
       },
       "category": "finance",
       "dealType": "cashback",
@@ -67,35 +71,30 @@
         "startAt": "2026-09-02T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
+      },
+      "benefit": {
+        "amount": 900000,
+        "isMax": true
       },
       "link": {
         "url": "https://www.card-gorilla.com/event/detail/7",
         "label": "카드 발급 신청"
       },
       "howTo": [
-        "카드고릴라 웹사이트에서 대상 카드 온라인 발급 신청",
-        "제시된 혜택 확인 및 발급 절차 진행"
+        "카드고릴라 웹사이트에서 각 카드 발급 절차를 진행합니다.",
+        "발급된 카드로 조건에 맞는 금액을 사용하면 캐시백이 적립됩니다."
       ],
-      "tags": [
-        "카드",
-        "캐시백",
-        "신규 발급",
-        "현대카드",
-        "제휴 카드",
-        "대한항공카드",
-        "American Express",
-        "알파벳카드"
-      ],
+      "tags": ["현대카드", "캐시백", "신용카드", "카드 발급"],
       "source": {
         "name": "카드고릴라 카드 이벤트",
         "url": "https://www.card-gorilla.com/event/detail/7",
-        "collectedAt": "2026-09-01T15:34:09.144Z",
+        "collectedAt": "2026-09-01T15:56:55.072Z",
         "method": "llm",
-        "confidence": 0.9
+        "confidence": 0.75
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-09-01T15:34:09.144Z"
+        "updatedAt": "2026-09-01T15:56:55.072Z"
       }
     },
     {
@@ -122,6 +121,10 @@
         "startAt": "2026-08-27T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
+      },
+      "benefit": {
+        "amount": 5786,
+        "isMax": false
       },
       "link": {
         "url": "https://apps.apple.com/kr/app/legacy-reawakening/id6741156650",
@@ -211,6 +214,10 @@
         "endAt": null,
         "deadlineUnknown": true
       },
+      "benefit": {
+        "amount": 19790,
+        "isMax": false
+      },
       "link": {
         "url": "https://www.uplusmvno.com/plan/plan-list/detail?mvnopPpId=CP0000004551&mvnopPtnId=PC0000000020",
         "label": "A모바일 요금제 상세 보기"
@@ -259,6 +266,10 @@
         "startAt": "2026-08-27T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
+      },
+      "benefit": {
+        "amount": 3000,
+        "isMax": false
       },
       "link": {
         "url": "https://www.clien.net/service/board/jirum/19253741",
@@ -358,6 +369,10 @@
         "endAt": null,
         "deadlineUnknown": true
       },
+      "benefit": {
+        "amount": 10000,
+        "isMax": false
+      },
       "link": {
         "url": "https://m.k-village.co.kr/goods/KMW22575JZ",
         "label": "상품 구매 페이지"
@@ -408,6 +423,10 @@
         "startAt": "2026-08-26T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
+      },
+      "benefit": {
+        "amount": 3000,
+        "isMax": false
       },
       "link": {
         "url": "https://apps.apple.com/kr/app/widgetik/id6760586460",
@@ -502,6 +521,10 @@
         "startAt": "2026-08-27T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
+      },
+      "benefit": {
+        "amount": 8300,
+        "isMax": false
       },
       "link": {
         "url": "https://smartstore.naver.com/ttrae/products/13640111634",
@@ -1594,6 +1617,10 @@
         "endAt": null,
         "deadlineUnknown": true
       },
+      "benefit": {
+        "amount": 11090,
+        "isMax": false
+      },
       "link": {
         "url": "https://m.ppomppu.co.kr/new/bbs_list.php?id=relay",
         "label": "릴레이게시판 링크"
@@ -2022,6 +2049,10 @@
         "startAt": "2026-09-02T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
+      },
+      "benefit": {
+        "amount": 6975,
+        "isMax": false
       },
       "link": {
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=730930",
@@ -2483,6 +2514,10 @@
         "startAt": "2026-08-27T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
+      },
+      "benefit": {
+        "amount": 1000,
+        "isMax": false
       },
       "link": {
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=729659"
@@ -3037,6 +3072,10 @@
         "endAt": null,
         "deadlineUnknown": true
       },
+      "benefit": {
+        "amount": 18000,
+        "isMax": false
+      },
       "link": {
         "url": "https://bbs.ruliweb.com/market/board/1020/read/106669",
         "label": "원문"
@@ -3214,6 +3253,10 @@
         "startAt": "2026-09-02T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
+      },
+      "benefit": {
+        "amount": 10280,
+        "isMax": false
       },
       "link": {
         "url": "https://bbs.ruliweb.com/market/board/1020/read/106854"

@@ -1,6 +1,12 @@
 import type { DecoratedDeal } from '@/types/deal';
 import { CATEGORY_EMOJI, CATEGORY_LABELS } from '@/types/deal';
-import { formatCount, formatDiscountRate, formatPrice, hasMeaningfulPrice } from '@/lib/format';
+import {
+  formatBenefit,
+  formatCount,
+  formatDiscountRate,
+  formatPrice,
+  hasMeaningfulPrice,
+} from '@/lib/format';
 import { getRemainingRatio } from '@/lib/deal-status';
 import {
   DeadlineBadge,
@@ -47,6 +53,18 @@ export function DealCard({ deal, href }: DealCardProps) {
       </h3>
 
       <p className="deal-card__summary">{deal.summary}</p>
+
+      {/*
+        혜택의 크기를 가격보다 먼저, 크게 보여줍니다.
+        캐시백·포인트·증정은 price 로 표현되지 않아 예전에는 제목 안에만 있었고,
+        그래서 87만원짜리가 8,300원짜리와 똑같아 보였습니다.
+      */}
+      {deal.benefit && (
+        <p className="deal-card__benefit" data-testid="deal-benefit">
+          <span className="deal-card__benefit-amount">{formatBenefit(deal.benefit)}</span>
+          <span className="deal-card__benefit-label"> 상당</span>
+        </p>
+      )}
 
       {showPrice && (
         <div className="deal-card__price" data-testid="deal-price">
