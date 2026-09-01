@@ -51,6 +51,11 @@ jobs:
       - name: 의존성 설치
         run: npm ci
 
+      - name: 브라우저 설치
+        # browser 어댑터가 쓰는 Chromium 입니다. npm ci 로는 바이너리가 오지 않습니다.
+        # --with-deps 는 리눅스 러너에 필요한 시스템 라이브러리까지 함께 깝니다.
+        run: npx playwright install --with-deps chromium
+
       - name: 입력값 검증
         id: params
         env:

@@ -177,6 +177,22 @@ export class PoliteFetcher {
     throw new Error(`리다이렉트가 ${this.maxRedirects}회를 넘었습니다: ${url}`);
   }
 
+  /**
+   * 요청을 보내기 전 검문만 수행합니다. 통과하면 아무것도 반환하지 않습니다.
+   *
+   * 이 클래스로 직접 가져오지 **않는** 요청에 쓰입니다.
+   * 브라우저 어댑터는 Playwright 가 네트워크를 담당하므로 fetchText 를 거치지
+   * 않는데, 그러면 robots.txt·레이트리밋·사설망 차단이 통째로 우회됩니다.
+   * "예의 있는 수집"이라는 약속이 어댑터 종류에 따라 달라지면 안 되므로,
+   * 브라우저로 열기 전에 여기를 반드시 통과시킵니다.
+   *
+   * 통과하지 못하면 fetchText 와 동일한 오류를 던집니다.
+   */
+  async assertAllowed(url: string): Promise<void> {
+    const parsed = this.assertFetchable(url);
+    await this.guardRobots(parsed, url);
+  }
+
   /** 프로토콜·호스트 검사. 통과하면 파싱된 URL 을 돌려줍니다. */
   private assertFetchable(url: string): URL {
     let parsed: URL;

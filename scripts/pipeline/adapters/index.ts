@@ -367,12 +367,22 @@ export const fixtureAdapter: SourceAdapter = {
   },
 };
 
+/*
+  browser 어댑터는 지연 로딩합니다.
+  최상단에서 import 하면 playwright 가 항상 딸려 들어와,
+  브라우저를 쓰지 않는 실행(html·rss·fixture)까지 기동이 느려집니다.
+*/
 const ADAPTERS: SourceAdapter[] = [htmlAdapter, rssAdapter, fixtureAdapter];
 
-export function getAdapter(kind: string): SourceAdapter {
+export async function getAdapter(kind: string): Promise<SourceAdapter> {
+  if (kind === 'browser') {
+    const { createBrowserAdapter } = await import('@pipeline/adapters/browser');
+    return createBrowserAdapter();
+  }
+
   const adapter = ADAPTERS.find((candidate) => candidate.kind === kind);
   if (!adapter) {
-    const known = ADAPTERS.map((a) => a.kind).join(', ');
+    const known = [...ADAPTERS.map((a) => a.kind), 'browser'].join(', ');
     throw new Error(`알 수 없는 어댑터 종류 '${kind}'. 사용 가능: ${known}`);
   }
   return adapter;

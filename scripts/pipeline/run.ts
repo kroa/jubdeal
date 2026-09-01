@@ -41,7 +41,7 @@ export interface RunOptions {
   /** 종료 후 N일 지난 항목 제거 */
   pruneAfterDays?: number;
   extractor?: DealExtractor;
-  fetcher?: Pick<PoliteFetcher, 'fetchText'>;
+  fetcher?: Pick<PoliteFetcher, 'fetchText' | 'assertAllowed'>;
   log?: (message: string) => void;
 }
 
@@ -96,9 +96,11 @@ export async function runPipeline(options: RunOptions): Promise<PipelineReport> 
   for (const source of active) {
     report.sourcesRun += 1;
     try {
-      const adapter = getAdapter(source.kind);
+      const adapter = await getAdapter(source.kind);
       const collected = await adapter.collect(source, {
         fetchText: (url) => fetcher.fetchText(url),
+        assertAllowed: (url) => fetcher.assertAllowed(url),
+        userAgent: sourcesFile.userAgent,
         now: options.now,
         log,
       });
@@ -114,7 +116,7 @@ export async function runPipeline(options: RunOptions): Promise<PipelineReport> 
   report.collected = rawItems.length;
 
   // 비용 상한. 넘치면 조용히 자르지 않고 남은 건수를 로그로 알립니다.
-  const targets = rawItems.slice(0, options.maxItems);
+  const targets = shareAcrossSources(rawItems, options.maxItems);
   if (rawItems.length > targets.length) {
     log(
       `주의: 수집 ${rawItems.length}건 중 ${targets.length}건만 처리합니다 ` +
@@ -228,6 +230,51 @@ export async function runPipeline(options: RunOptions): Promise<PipelineReport> 
 
   report.finishedAt = new Date().toISOString();
   return report;
+}
+
+/**
+ * 상한을 소스끼리 나눠 갖습니다.
+ *
+ * 앞에서부터 자르면(`slice(0, maxItems)`) 상한을 **먼저 수집된 소스가 다 씁니다.**
+ * 실제로 카드고릴라(74~118만원짜리 카드 캐시백)를 붙였는데 한 건도 처리되지
+ * 않았습니다. 설정 파일 맨 뒤에 있어서 앞의 네 소스가 30건을 다 채워 버린 탓입니다.
+ * 한 번의 사고가 아니라 매 실행 반복되는 구조라, 뒤쪽 소스는 영원히 굶습니다.
+ *
+ * 소스 순서는 설정 파일에 적힌 순서일 뿐 우선순위가 아닙니다.
+ * 번갈아 가며 한 건씩 골라 상한을 공평하게 나눕니다.
+ * 항목이 적은 소스가 먼저 바닥나면 남은 몫은 나머지 소스가 이어받습니다.
+ */
+export function shareAcrossSources(items: RawItem[], limit: number): RawItem[] {
+  if (limit <= 0) return [];
+
+  const queues = new Map<string, RawItem[]>();
+  for (const item of items) {
+    const queue = queues.get(item.sourceId);
+    if (queue) queue.push(item);
+    else queues.set(item.sourceId, [item]);
+  }
+
+  const picked: RawItem[] = [];
+  const lists = [...queues.values()];
+
+  for (let round = 0; picked.length < limit; round += 1) {
+    let progressed = false;
+
+    for (const list of lists) {
+      if (picked.length >= limit) break;
+
+      const item = list[round];
+      if (item === undefined) continue;
+
+      picked.push(item);
+      progressed = true;
+    }
+
+    // 모든 소스가 바닥나면 더 돌 필요가 없습니다.
+    if (!progressed) break;
+  }
+
+  return picked;
 }
 
 /** 임시 파일 + rename 으로 원자적으로 씁니다. */

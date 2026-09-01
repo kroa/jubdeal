@@ -260,6 +260,8 @@ describe('어댑터 요청 예산', () => {
     const ctx: CollectContext = {
       now: new Date('2026-08-23T12:00:00+09:00'),
       log: () => {},
+      userAgent: 'JubDealBot/1.0 (+https://jubdeal.pages.dev/about)',
+      assertAllowed: async () => {},
       fetchText: async (url) => {
         fetched.push(url);
         if (url.endsWith('/list')) return `<ul>${links}</ul>`;
@@ -289,6 +291,8 @@ describe('어댑터 요청 예산', () => {
     const ctx: CollectContext = {
       now: new Date('2026-08-23T12:00:00+09:00'),
       log: () => {},
+      userAgent: 'JubDealBot/1.0 (+https://jubdeal.pages.dev/about)',
+      assertAllowed: async () => {},
       fetchText: async (url) => {
         fetched.push(url);
         return '<ul><li class="item"><a href="http://169.254.169.254/">메타데이터</a></li></ul>';

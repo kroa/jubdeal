@@ -56,6 +56,19 @@
       "stripParams": ["od", "po", "category", "groupCd"]
     },
     {
+      "id": "cardgorilla-event",
+      "name": "카드고릴라 카드 이벤트",
+      "kind": "browser",
+      "url": "https://www.card-gorilla.com/event",
+      "enabled": true,
+      "maxItems": 6,
+      "selectors": {
+        "item": "a[href*=\"/event/detail/\"]",
+        "detail": ".event_lst"
+      },
+      "categoryHint": "finance"
+    },
+    {
       "id": "eomisae-fs",
       "name": "어미새 인기정보",
       "kind": "html",

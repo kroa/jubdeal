@@ -38,9 +38,31 @@ export interface SourceAdapter {
   collect(source: SourceConfig, ctx: CollectContext): Promise<RawItem[]>;
 }
 
+/**
+ * 어댑터에 넘기는 수집 환경.
+ *
+ * "무엇을 쓸 수 있는지"를 담습니다. 어댑터마다 쓰는 것이 다릅니다.
+ * html·rss 는 fetchText 만 쓰고, browser 는 Playwright 가 네트워크를 담당하므로
+ * fetchText 대신 assertAllowed 와 userAgent 를 씁니다.
+ *
+ * 컨텍스트를 종류별로 쪼개지 않는 이유:
+ * 이건 파이프라인이 **제공하는** 것의 목록이지 어댑터가 요구하는 목록이 아닙니다.
+ * 쪼개면 어댑터를 추가할 때마다 타입이 갈라지고, 정작 쓰지도 않는 필드를
+ * 기존 어댑터 테스트가 전부 채워 넣어야 합니다.
+ */
 export interface CollectContext {
   /** 예의 있는 fetch (robots.txt·레이트리밋·타임아웃 적용) */
   fetchText: (url: string) => Promise<string>;
+  /**
+   * 요청 전 검문만 수행합니다.
+   *
+   * 브라우저 어댑터는 fetchText 를 거치지 않아 robots.txt·레이트리밋·
+   * 사설망 차단이 통째로 우회됩니다. "예의 있는 수집"이 어댑터 종류에 따라
+   * 달라지면 안 되므로, 페이지를 열기 전에 이걸 통과시킵니다.
+   */
+  assertAllowed: (url: string) => Promise<void>;
+  /** 브라우저에 그대로 실어 보낼 User-Agent */
+  userAgent: string;
   /** 기준 시각 (테스트 결정성을 위해 주입) */
   now: Date;
   log: (message: string) => void;
@@ -52,7 +74,7 @@ export interface SourceConfig {
   id: string;
   /** 표시명 — Deal.source.name 이 됩니다 */
   name: string;
-  /** 어댑터 종류: html | rss | fixture */
+  /** 어댑터 종류: html | rss | browser | fixture */
   kind: string;
   /** 목록 페이지 URL (fixture 는 로컬 경로) */
   url: string;

@@ -19,6 +19,8 @@ function makeContext(pages: Record<string, string>): CollectContext & { fetched:
     fetched,
     now: NOW,
     log: vi.fn(),
+    userAgent: 'JubDealBot/1.0 (+https://jubdeal.pages.dev/about)',
+    assertAllowed: async () => {},
     fetchText: async (url: string) => {
       fetched.push(url);
       const page = pages[url];
@@ -262,13 +264,21 @@ describe('fixtureAdapter', () => {
 });
 
 describe('getAdapter', () => {
-  it('알려진 종류를 돌려준다', () => {
-    expect(getAdapter('html').kind).toBe('html');
-    expect(getAdapter('rss').kind).toBe('rss');
-    expect(getAdapter('fixture').kind).toBe('fixture');
+  it('알려진 종류를 돌려준다', async () => {
+    expect((await getAdapter('html')).kind).toBe('html');
+    expect((await getAdapter('rss')).kind).toBe('rss');
+    expect((await getAdapter('fixture')).kind).toBe('fixture');
   });
 
-  it('모르는 종류는 사용 가능한 목록과 함께 알린다', () => {
-    expect(() => getAdapter('graphql')).toThrow(/html, rss, fixture/);
+  it('browser 는 필요할 때만 불러온다', async () => {
+    /*
+      playwright 를 최상단에서 import 하면 브라우저를 쓰지 않는 실행까지
+      기동이 느려집니다. 그래서 이 종류만 동적 import 로 가져옵니다.
+    */
+    expect((await getAdapter('browser')).kind).toBe('browser');
+  });
+
+  it('모르는 종류는 사용 가능한 목록과 함께 알린다', async () => {
+    await expect(getAdapter('graphql')).rejects.toThrow(/html, rss, fixture, browser/);
   });
 });

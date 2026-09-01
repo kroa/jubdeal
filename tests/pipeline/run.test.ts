@@ -5,7 +5,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { DEAL_SCHEMA_VERSION, type DealsFile } from '@/types/deal';
 import { parseDealsFile } from '@/lib/deal-schema';
-import { formatReport, runPipeline } from '@pipeline/run';
+import { formatReport, runPipeline, shareAcrossSources } from '@pipeline/run';
 import type { ExtractOutcome } from '@pipeline/extract/extract';
 import type { DealExtractor } from '@pipeline/extract/extract';
 import type { ExtractedDeal } from '@pipeline/extract/schema';
@@ -564,5 +564,76 @@ describe('여러 프로바이더를 섞어 쓴 실행의 비용 표기', () => {
 
     expect(text).toContain('실제 비용   $1.2682');
     expect(text).not.toContain('알려주지 않음');
+  });
+});
+
+describe('상한을 소스끼리 나눠 갖기', () => {
+  function items(sourceId: string, count: number): RawItem[] {
+    return Array.from({ length: count }, (_, i) => ({
+      sourceId,
+      sourceName: sourceId,
+      url: `https://${sourceId}.test/${i}`,
+      text: '본문',
+      collectedAt: '2026-09-02T00:00:00+09:00',
+    }));
+  }
+
+  function countBySource(picked: RawItem[]): Record<string, number> {
+    const counts: Record<string, number> = {};
+    for (const item of picked) counts[item.sourceId] = (counts[item.sourceId] ?? 0) + 1;
+    return counts;
+  }
+
+  it('뒤쪽 소스가 굶지 않는다', () => {
+    /*
+      앞에서부터 자르면 상한을 먼저 수집된 소스가 다 씁니다.
+      실제로 카드고릴라(74~118만원 카드 캐시백)를 붙였는데 한 건도 처리되지
+      않았습니다. 설정 맨 뒤라 앞의 네 소스가 30건을 다 채운 탓입니다.
+      한 번의 사고가 아니라 매 실행 반복되는 구조입니다.
+    */
+    const collected = [
+      ...items('a', 15),
+      ...items('b', 10),
+      ...items('c', 10),
+      ...items('d', 10),
+      ...items('valuable', 6),
+    ];
+
+    const picked = shareAcrossSources(collected, 30);
+    const counts = countBySource(picked);
+
+    expect(picked).toHaveLength(30);
+    expect(counts.valuable ?? 0).toBeGreaterThan(0);
+    // 항목 수가 적은 소스는 가진 만큼 전부 들어갑니다.
+    expect(counts.valuable).toBe(6);
+  });
+
+  it('항목이 적은 소스가 바닥나면 남은 몫을 나머지가 이어받는다', () => {
+    const collected = [...items('few', 2), ...items('many', 20)];
+
+    const picked = shareAcrossSources(collected, 10);
+    const counts = countBySource(picked);
+
+    expect(picked).toHaveLength(10);
+    expect(counts.few).toBe(2);
+    expect(counts.many).toBe(8);
+  });
+
+  it('상한이 전체보다 크면 전부 담는다', () => {
+    const collected = [...items('a', 3), ...items('b', 2)];
+
+    expect(shareAcrossSources(collected, 100)).toHaveLength(5);
+  });
+
+  it('상한이 0 이하면 아무것도 담지 않는다', () => {
+    expect(shareAcrossSources(items('a', 5), 0)).toEqual([]);
+    expect(shareAcrossSources(items('a', 5), -1)).toEqual([]);
+  });
+
+  it('소스가 하나면 순서를 그대로 유지한다', () => {
+    const collected = items('only', 5);
+    const picked = shareAcrossSources(collected, 3);
+
+    expect(picked.map((i) => i.url)).toEqual(collected.slice(0, 3).map((i) => i.url));
   });
 });

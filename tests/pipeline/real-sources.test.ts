@@ -354,6 +354,8 @@ describe('상세 페이지 차단기', () => {
       ctx: {
         now: new Date('2026-08-29T00:00:00+09:00'),
         log: () => {},
+        userAgent: 'JubDealBot/1.0 (+https://jubdeal.pages.dev/about)',
+        assertAllowed: async () => {},
         fetchText: async (url: string) => {
           if (url.includes('/feed')) return FEED;
           detailCalls.push(url);
