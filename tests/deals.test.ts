@@ -1,6 +1,8 @@
 import { afterEach, describe, expect, it } from 'vitest';
+import type { Deal } from '@/types/deal';
 import {
   __resetDealsCache,
+  dedupeByDestination,
   getAllDeals,
   getDealBySlug,
   getDealsFile,
@@ -83,5 +85,70 @@ describe('deals 로더', () => {
     for (const deal of getAllDeals()) {
       expect(getDealBySlug(deal.slug, NOW)?.id).toBe(deal.id);
     }
+  });
+});
+
+describe('같은 곳으로 보내는 항목 합치기', () => {
+  /*
+    여러 소스가 같은 혜택을 각자 올립니다. 실제로 뽐뿌 쿠폰게시판과 루리웹이
+    같은 네이버페이 이벤트를 각각 수집해, **완전히 동일한 URL** 을 가진
+    카드가 두 장 떴습니다.
+
+    merge.ts 는 서로 다른 소스의 항목을 합치지 않습니다 — 그쪽에서 덮어쓰면
+    기존 id·slug 아래 전혀 다른 혜택이 들어앉을 수 있어서입니다.
+    저장은 그대로 두고 화면에서만 겹칩니다.
+  */
+  function deal(id: string, url: string, extra: Partial<Deal> = {}): Deal {
+    return {
+      id,
+      slug: `slug-${id}`,
+      link: { url },
+      source: {
+        name: '소스',
+        url: 'https://s.test',
+        collectedAt: '',
+        method: 'llm',
+        confidence: 0.8,
+      },
+      ...extra,
+    } as unknown as Deal;
+  }
+
+  it('링크가 같으면 하나만 남긴다', () => {
+    const url = 'https://campaign2.naver.com/npay/v2/click-point/?eventId=cr_2026090111_2';
+    const result = dedupeByDestination([deal('ppomppu', url), deal('ruliweb', url)]);
+
+    expect(result).toHaveLength(1);
+  });
+
+  it('값어치를 아는 쪽을 남긴다', () => {
+    // 정보가 더 많은 항목이 살아남아야 화면에서 손해가 없습니다.
+    const url = 'https://shop.test/a';
+    const result = dedupeByDestination([
+      deal('빈약', url),
+      deal('풍부', url, { benefit: { amount: 850_000, isMax: true } }),
+    ]);
+
+    expect(result).toHaveLength(1);
+    expect(result[0]?.id).toBe('풍부');
+  });
+
+  it('추적 파라미터만 다르면 같은 곳으로 본다', () => {
+    const result = dedupeByDestination([
+      deal('a', 'https://shop.test/x?utm_source=ppomppu'),
+      deal('b', 'https://shop.test/x?utm_source=ruliweb'),
+    ]);
+
+    expect(result).toHaveLength(1);
+  });
+
+  it('링크가 다르면 둘 다 남긴다', () => {
+    // 같은 카드사라도 중개사가 다르면 조건이 다른 별개 오퍼입니다.
+    const result = dedupeByDestination([
+      deal('아정당', 'https://www.ajd.co.kr/card/event/detail/347'),
+      deal('카드고릴라', 'https://www.card-gorilla.com/event/detail/3'),
+    ]);
+
+    expect(result).toHaveLength(2);
   });
 });

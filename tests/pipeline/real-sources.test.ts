@@ -8,6 +8,7 @@ import {
   rssAdapter,
   stripQueryParams,
 } from '@pipeline/adapters/index';
+import { buildExtractionUserMessage } from '@pipeline/extract/prompt';
 import { formatDeadline } from '@/lib/format';
 import { dealPeriodSchema } from '@/lib/deal-schema';
 import type { ExtractedDeal } from '@pipeline/extract/schema';
@@ -415,5 +416,62 @@ describe('상세 페이지 차단기', () => {
 
     expect(detailCalls).toHaveLength(10);
     expect(items).toHaveLength(10);
+  });
+});
+
+/* -------------------------------------------------------------------------- */
+/* 7. categoryHint 전달 (죽어 있던 설정)                                        */
+/* -------------------------------------------------------------------------- */
+
+describe('categoryHint', () => {
+  /*
+    설정 파일에는 있었지만 어디서도 읽지 않아 **아무 효과가 없던 값**입니다.
+    types.ts 에 필드만 있고 어댑터도 프롬프트도 쓰지 않았습니다.
+    설정을 넣은 사람은 동작한다고 믿을 수밖에 없습니다.
+  */
+  it('프롬프트에 힌트를 싣는다', () => {
+    const message = buildExtractionUserMessage(
+      { ...RAW, title: '최대 85만원 캐시백' },
+      '2026-09-05',
+      'finance',
+    );
+
+    expect(message).toContain('finance');
+    // 본문이 다른 말을 하면 본문을 따라야 합니다. 힌트가 판단을 덮으면 안 됩니다.
+    expect(message).toContain('본문 우선');
+  });
+
+  it('힌트가 없으면 아무 줄도 넣지 않는다', () => {
+    const message = buildExtractionUserMessage(RAW, '2026-09-05');
+
+    expect(message).not.toContain('출처가 주로 다루는 분야');
+  });
+
+  it('어댑터가 소스 설정의 힌트를 항목에 실어 보낸다', async () => {
+    const FEED = `<?xml version="1.0"?><rss><channel>
+      <item><title>항목</title><link>https://board.test/read/1</link>
+      <description>피드 요약입니다. 상세 페이지에는 더 자세한 조건과 참여 방법이 적혀 있습니다.</description></item>
+    </channel></rss>`;
+
+    const items = await rssAdapter.collect(
+      {
+        id: 'board',
+        name: '테스트',
+        kind: 'rss',
+        url: 'https://board.test/feed',
+        enabled: true,
+        maxItems: 1,
+        categoryHint: 'finance',
+      },
+      {
+        now: new Date('2026-09-05T00:00:00+09:00'),
+        log: () => {},
+        userAgent: 'JubDealBot/1.0 (+https://jubdeal.pages.dev/about)',
+        assertAllowed: async () => {},
+        fetchText: async () => FEED,
+      },
+    );
+
+    expect(items[0]?.categoryHint).toBe('finance');
   });
 });

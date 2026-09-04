@@ -28,6 +28,11 @@ export interface RawItem {
   text: string;
   /** 수집 시각 (ISO 8601, 오프셋 포함) */
   collectedAt: string;
+  /**
+   * 이 소스가 주로 다루는 분야. 추출 시 LLM 에 힌트로 전달합니다.
+   * 소스 설정의 `categoryHint` 를 어댑터가 그대로 실어 보냅니다.
+   */
+  categoryHint?: string;
 }
 
 /** 소스 어댑터가 구현해야 하는 인터페이스 */

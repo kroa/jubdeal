@@ -233,6 +233,43 @@ export async function runPipeline(options: RunOptions): Promise<PipelineReport> 
 }
 
 /**
+ * 제목에서 원화 금액을 어림잡습니다. **우선순위 결정에만** 씁니다.
+ *
+ * "최대 85만원 캐시백" → 850000, "5,000만원" → 50000000, "23,340원" → 23340
+ * 여러 개가 있으면 가장 큰 값을 씁니다.
+ *
+ * 정확도는 중요하지 않습니다. 최종 금액은 LLM 이 본문을 읽고 정하고,
+ * 여기서 틀리면 처리 순서만 바뀝니다.
+ *
+ * 다만 1억을 넘는 값은 무시합니다. 개인이 받는 혜택일 리 없고
+ * (대개 "예산 149조" 같은 기사 제목입니다) 그대로 두면
+ * 진짜 혜택을 밀어내고 목록 맨 앞을 차지합니다.
+ */
+export function guessAmount(title: string | undefined): number {
+  if (!title) return 0;
+
+  const CAP = 100_000_000;
+  let best = 0;
+
+  const scales: Array<[RegExp, number]> = [
+    [/([\d,]+(?:\.\d+)?)\s*억/g, 100_000_000],
+    [/([\d,]+(?:\.\d+)?)\s*천\s*만/g, 10_000_000],
+    [/([\d,]+(?:\.\d+)?)\s*만/g, 10_000],
+    [/([\d,]+)\s*원/g, 1],
+  ];
+
+  for (const [pattern, scale] of scales) {
+    for (const match of title.matchAll(pattern)) {
+      const digits = (match[1] ?? '').replace(/,/g, '');
+      const value = Number.parseFloat(digits) * scale;
+      if (Number.isFinite(value) && value > best && value <= CAP) best = value;
+    }
+  }
+
+  return best;
+}
+
+/**
  * 상한을 소스끼리 나눠 갖습니다.
  *
  * 앞에서부터 자르면(`slice(0, maxItems)`) 상한을 **먼저 수집된 소스가 다 씁니다.**
@@ -252,6 +289,22 @@ export function shareAcrossSources(items: RawItem[], limit: number): RawItem[] {
     const queue = queues.get(item.sourceId);
     if (queue) queue.push(item);
     else queues.set(item.sourceId, [item]);
+  }
+
+  /*
+    소스 안에서는 **값이 커 보이는 것부터** 처리합니다.
+
+    소스끼리 나누는 것만으로는 부족했습니다. 목록 순서는 대개 등록순이라
+    큰 혜택이 앞에 온다는 보장이 없습니다. 아정당 카드 이벤트를 실측하니
+    앞 세 건이 2.6만·4만·2.9만원이고 85만원짜리는 네 번째였습니다.
+    소스가 여럿이고 상한이 빠듯하면 그 85만원 건은 **매 실행 한 번도**
+    처리되지 않습니다.
+
+    제목의 금액은 어림값입니다. 정확한 값은 LLM 이 본문을 읽고 정합니다.
+    여기서는 "무엇을 먼저 LLM 에 태울지"만 정하므로 틀려도 순서만 바뀝니다.
+  */
+  for (const queue of queues.values()) {
+    queue.sort((a, b) => guessAmount(b.title) - guessAmount(a.title));
   }
 
   const picked: RawItem[] = [];

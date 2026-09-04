@@ -69,6 +69,20 @@
       "categoryHint": "finance"
     },
     {
+      "id": "ajd-card-event",
+      "name": "아정당 카드 이벤트",
+      "kind": "html",
+      "url": "https://www.ajd.co.kr/card/event/list",
+      "enabled": true,
+      "maxItems": 8,
+      "selectors": {
+        "item": "a.card-event-list-box",
+        "title": ".card-event-list-box--text-info",
+        "detail": ".card-event-list-contents"
+      },
+      "categoryHint": "finance"
+    },
+    {
       "id": "eomisae-fs",
       "name": "어미새 인기정보",
       "kind": "html",

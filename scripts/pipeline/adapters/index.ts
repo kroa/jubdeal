@@ -236,6 +236,7 @@ export const htmlAdapter: SourceAdapter = {
         title: title || undefined,
         text: clampText(text),
         collectedAt: ctx.now.toISOString(),
+        ...(source.categoryHint ? { categoryHint: source.categoryHint } : {}),
       });
     }
 
@@ -331,6 +332,7 @@ export const rssAdapter: SourceAdapter = {
         title: title || undefined,
         text: clampText(text),
         collectedAt: ctx.now.toISOString(),
+        ...(source.categoryHint ? { categoryHint: source.categoryHint } : {}),
       });
     }
 
@@ -362,6 +364,7 @@ export const fixtureAdapter: SourceAdapter = {
         title: typeof record.title === 'string' ? record.title : undefined,
         text: clampText(normalizeWhitespace(String(record.text ?? ''))),
         collectedAt: ctx.now.toISOString(),
+        ...(source.categoryHint ? { categoryHint: source.categoryHint } : {}),
       };
     });
   },

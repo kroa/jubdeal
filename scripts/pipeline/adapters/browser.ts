@@ -272,6 +272,7 @@ async function readDetails(
       title: entry.title || undefined,
       text: clampText(text),
       collectedAt: ctx.now.toISOString(),
+      ...(source.categoryHint ? { categoryHint: source.categoryHint } : {}),
     });
   }
 

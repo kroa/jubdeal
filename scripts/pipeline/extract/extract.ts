@@ -106,7 +106,7 @@ export class DealExtractor {
       response = await this.provider.complete({
         // 요청마다 완전히 동일해야 프롬프트 캐시가 걸립니다.
         system: EXTRACTION_SYSTEM_PROMPT,
-        user: buildExtractionUserMessage(item, toReferenceDate(now)),
+        user: buildExtractionUserMessage(item, toReferenceDate(now), item.categoryHint),
         jsonSchema: EXTRACTION_JSON_SCHEMA,
         schemaName: 'extracted_deal',
       });

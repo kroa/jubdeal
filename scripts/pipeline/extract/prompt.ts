@@ -130,7 +130,11 @@ title 과 summary 는 정보 전달에 집중하세요.
 "놓치면 후회!", "역대급" 같은 광고 문구는 제거하고 사실만 남기세요.`;
 
 /** 요청마다 달라지는 부분 (캐시 경계 뒤) */
-export function buildExtractionUserMessage(item: RawItem, referenceDate: string): string {
+export function buildExtractionUserMessage(
+  item: RawItem,
+  referenceDate: string,
+  categoryHint?: string,
+): string {
   const lines = [
     `기준 날짜(KST): ${referenceDate}`,
     `출처: ${item.sourceName}`,
@@ -138,6 +142,17 @@ export function buildExtractionUserMessage(item: RawItem, referenceDate: string)
   ];
 
   if (item.title) lines.push(`목록에 표시된 제목: ${item.title}`);
+
+  /*
+    소스가 주로 다루는 분야. 설정에는 있었지만 여기로 전달되지 않아
+    **아무 데도 쓰이지 않는 값**이었습니다.
+    본문만으로 카테고리가 애매한 글(예: 카드 이벤트를 "쇼핑"으로 볼지
+    "금융·포인트"로 볼지)에서 판단을 도와줍니다.
+    어디까지나 힌트이므로 본문이 다른 말을 하면 본문을 따르게 합니다.
+  */
+  if (categoryHint) {
+    lines.push(`출처가 주로 다루는 분야(힌트, 본문과 다르면 본문 우선): ${categoryHint}`);
+  }
 
   lines.push('', '--- 본문 시작 ---', item.text, '--- 본문 끝 ---');
 

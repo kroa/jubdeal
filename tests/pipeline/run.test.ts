@@ -5,7 +5,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { DEAL_SCHEMA_VERSION, type DealsFile } from '@/types/deal';
 import { parseDealsFile } from '@/lib/deal-schema';
-import { formatReport, runPipeline, shareAcrossSources } from '@pipeline/run';
+import { formatReport, guessAmount, runPipeline, shareAcrossSources } from '@pipeline/run';
 import type { ExtractOutcome } from '@pipeline/extract/extract';
 import type { DealExtractor } from '@pipeline/extract/extract';
 import type { ExtractedDeal } from '@pipeline/extract/schema';
@@ -637,5 +637,92 @@ describe('상한을 소스끼리 나눠 갖기', () => {
     const picked = shareAcrossSources(collected, 3);
 
     expect(picked.map((i) => i.url)).toEqual(collected.slice(0, 3).map((i) => i.url));
+  });
+});
+
+describe('제목에서 금액 어림잡기', () => {
+  it('한국식 단위를 읽는다', () => {
+    expect(guessAmount('최대 85만원 캐시백 이벤트 KB국민카드 5종')).toBe(850_000);
+    expect(guessAmount('최대 2.6만원 할인')).toBe(26_000);
+    expect(guessAmount('총 상금 5,000만원')).toBe(50_000_000);
+    expect(guessAmount('네이버페이 23,340원 적립')).toBe(23_340);
+    expect(guessAmount('1억원 상당')).toBe(100_000_000);
+  });
+
+  it('여러 금액이 있으면 가장 큰 값을 쓴다', () => {
+    // "월 최대 할인한도 2만 5천 + 프로모션 1천" 처럼 조각이 섞여 나옵니다.
+    expect(guessAmount('아정당 우리카드 월납 최대 2.6만원 할인 월 최대 할인한도 2만 5천')).toBe(
+      26_000,
+    );
+  });
+
+  it('금액이 없으면 0', () => {
+    expect(guessAmount('연회비 100% 캐시백 우리카드 11종')).toBe(0);
+    expect(guessAmount(undefined)).toBe(0);
+    expect(guessAmount('')).toBe(0);
+  });
+
+  it('1억을 넘는 값은 무시한다', () => {
+    /*
+      개인이 받는 혜택일 리 없습니다. 대개 "예산 149조" 같은 기사 제목인데,
+      그대로 두면 진짜 혜택을 밀어내고 목록 맨 앞을 차지합니다.
+    */
+    expect(guessAmount('복지부 내년 예산 149조 원')).toBe(0);
+    expect(guessAmount('문체부 예산 첫 9조 원 돌파')).toBe(0);
+  });
+});
+
+describe('값이 큰 것부터 처리하기', () => {
+  function item(sourceId: string, title: string, i: number): RawItem {
+    return {
+      sourceId,
+      sourceName: sourceId,
+      url: `https://${sourceId}.test/${i}`,
+      title,
+      text: '본문',
+      collectedAt: '2026-09-05T00:00:00+09:00',
+    };
+  }
+
+  it('목록 순서가 아니라 금액 순으로 예산을 쓴다', () => {
+    /*
+      실제 아정당 카드 이벤트 목록 순서입니다.
+      앞 세 건이 저액이고 85만원짜리는 네 번째라, 소스가 여럿이고
+      상한이 빠듯하면 그 85만원 건은 매 실행 한 번도 처리되지 않았습니다.
+    */
+    const collected = [
+      item('ajd', '아정당 우리카드 월납 최대 2.6만원 할인', 0),
+      item('ajd', '월 최대 4만원 혜택 NH농협 렌탈 제휴카드 2종', 1),
+      item('ajd', '월 최대 2.9만원 혜택 NH농협 통신 제휴카드 3종', 2),
+      item('ajd', '최대 85만원 캐시백 이벤트 KB국민카드 5종', 3),
+      item('ajd', '최대 80만원 캐시백 에너지플러스 현대카드', 4),
+    ];
+
+    const picked = shareAcrossSources(collected, 2);
+
+    expect(picked.map((i) => i.title)).toEqual([
+      '최대 85만원 캐시백 이벤트 KB국민카드 5종',
+      '최대 80만원 캐시백 에너지플러스 현대카드',
+    ]);
+  });
+
+  it('소스별 몫은 그대로 지킨다', () => {
+    // 금액 우선순위가 소스 간 공평 배분을 무너뜨리면 안 됩니다.
+    const collected = [
+      item('big', '최대 85만원 캐시백', 0),
+      item('big', '최대 80만원 캐시백', 1),
+      item('big', '최대 76만원 캐시백', 2),
+      item('small', '3,000원 할인', 0),
+      item('small', '2,000원 할인', 1),
+    ];
+
+    const picked = shareAcrossSources(collected, 4);
+    const bySource = picked.reduce<Record<string, number>>((acc, i) => {
+      acc[i.sourceId] = (acc[i.sourceId] ?? 0) + 1;
+      return acc;
+    }, {});
+
+    expect(bySource.big).toBe(2);
+    expect(bySource.small).toBe(2);
   });
 });
