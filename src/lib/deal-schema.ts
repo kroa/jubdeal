@@ -146,11 +146,23 @@ export const dealPeriodSchema = z
     path: ['deadlineUnknown'],
   });
 
-export const dealBenefitSchema = z.object({
-  // 0원짜리 "혜택"은 혜택이 아닙니다. 값이 없으면 필드를 생략하세요.
-  amount: z.number().int().positive(),
-  isMax: z.boolean(),
-});
+export const dealBenefitSchema = z
+  .object({
+    // 0원짜리 "혜택"은 혜택이 아닙니다. 값이 없으면 필드를 생략하세요.
+    amount: z.number().int().positive(),
+    isMax: z.boolean(),
+    baseAmount: z.number().int().positive().optional(),
+  })
+  .refine((b) => b.baseAmount === undefined || b.baseAmount <= b.amount, {
+    // 기본이 상한보다 크면 둘 중 하나를 잘못 읽은 것입니다.
+    message: 'baseAmount 는 amount 보다 클 수 없습니다.',
+    path: ['baseAmount'],
+  })
+  .refine((b) => b.baseAmount === undefined || b.isMax, {
+    // 확정 금액에 "기본값"을 또 두면 의미가 없습니다.
+    message: 'baseAmount 는 isMax 가 true 일 때만 씁니다.',
+    path: ['baseAmount'],
+  });
 
 export const dealLinkSchema = z.object({
   url: httpUrl,

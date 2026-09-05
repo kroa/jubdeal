@@ -90,6 +90,22 @@ function isClosed(deal: DecoratedDeal): boolean {
 }
 
 /** 정렬만 적용합니다. 원본 배열은 변경되지 않습니다. */
+/**
+ * 줄 세우기에 쓰는 **실질 가치**.
+ *
+ * 상한(`isMax`)이면 기본 금액을 씁니다. 기본을 모르면 상한을 쓸 수밖에
+ * 없지만, 그때도 확정 금액과 나란히 놓으면 과대평가됩니다.
+ * 조건을 다 채워야 나오는 숫자이므로 절반으로 봅니다 — 임의의 값이지만,
+ * "도달 불가능한 상한이 확정 금액을 이기는" 것보다는 실제에 가깝습니다.
+ */
+function realizedBenefit(deal: DecoratedDeal): number {
+  const benefit = deal.benefit;
+  if (!benefit) return -1;
+  if (!benefit.isMax) return benefit.amount;
+
+  return benefit.baseAmount ?? benefit.amount / 2;
+}
+
 export function applySort(deals: DecoratedDeal[], sort: DealSortKey): DecoratedDeal[] {
   switch (sort) {
     case 'deadline':
@@ -116,13 +132,16 @@ export function applySort(deals: DecoratedDeal[], sort: DealSortKey): DecoratedD
         (캐시백 87만원과 할인 8,300원을 나란히 놓을 수 있어야
          "줍딜할 만한 게 없다"는 인상을 바로잡을 수 있습니다.)
 
-        "최대 N원"은 조건에 따라 실제로는 훨씬 적을 수 있으므로,
-        금액이 같으면 확정 금액을 앞에 둡니다.
+        **상한이 아니라 실질 가치로 줄 세웁니다.**
+        "최대 85만원" 카드 이벤트의 실체는 카드 5종을 전부 발급했을 때의
+        합산이고, 한 장으로 받는 기본은 18만원입니다. 상한으로 정렬하면
+        도달 불가능한 숫자가 목록 위를 차지하고, 확정 16만원짜리가 밀립니다.
       */
       return [...deals].sort((a, b) => {
-        const byAmount = (b.benefit?.amount ?? -1) - (a.benefit?.amount ?? -1);
-        if (byAmount !== 0) return byAmount;
+        const byValue = realizedBenefit(b) - realizedBenefit(a);
+        if (byValue !== 0) return byValue;
 
+        // 실질이 같으면 확정 쪽을 앞에 둡니다.
         const byCertainty = Number(a.benefit?.isMax ?? false) - Number(b.benefit?.isMax ?? false);
         if (byCertainty !== 0) return byCertainty;
 

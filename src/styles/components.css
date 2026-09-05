@@ -1167,7 +1167,8 @@ a.deal-card__cta:hover::after {
 .deal-card__benefit {
   display: flex;
   align-items: baseline;
-  gap: 4px;
+  flex-wrap: wrap;
+  gap: 0 4px;
   margin-top: -2px;
 }
 
@@ -1186,4 +1187,15 @@ a.deal-card__cta:hover::after {
   color: var(--text-muted);
   font-size: 0.8rem;
   font-weight: 650;
+}
+
+/*
+  조건을 다 채웠을 때의 상한. 기본 금액 뒤에 작게 둡니다.
+  앞세우면 도달 불가능한 숫자를 손에 들어올 값처럼 약속하게 됩니다.
+*/
+.deal-card__benefit-ceiling {
+  flex-basis: 100%;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
 }

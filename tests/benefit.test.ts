@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { formatBenefit, formatBenefitAmount } from '@/lib/format';
+import { formatBenefit, formatBenefitAmount, formatBenefitCeiling } from '@/lib/format';
 import { applySort } from '@/lib/deal-filter';
 import { dealBenefitSchema } from '@/lib/deal-schema';
 import type { DecoratedDeal } from '@/types/deal';
@@ -106,5 +106,96 @@ describe('혜택 큰 순 정렬', () => {
     );
 
     expect(sorted.map((d) => d.id)).toEqual(['확정', '상한']);
+  });
+});
+
+describe('도달 불가능한 상한이 확정 금액을 이기지 않는다', () => {
+  /*
+    사용자 지적: "아정당 보니까 모든 카드를 다 신청해야만 나오는거라서.. 좀 그렇네"
+
+    KB국민카드 "최대 85만원"의 실체는 카드 5종을 전부 발급하고 모든 조건을
+    채웠을 때의 합산입니다. 카드 한 장으로 받는 기본은 18만원입니다.
+    상한으로 줄 세우면 도달 불가능한 숫자가 목록 위를 차지하고,
+    확정 16만원짜리가 그 아래로 밀립니다.
+  */
+  function deal(id: string, benefit?: { amount: number; isMax: boolean; baseAmount?: number }) {
+    return {
+      id,
+      meta: { verified: false, updatedAt: '2026-09-05T00:00:00.000Z' },
+      ...(benefit ? { benefit } : {}),
+    } as unknown as DecoratedDeal;
+  }
+
+  it('기본 금액이 있으면 그걸로 줄 세운다', () => {
+    const sorted = applySort(
+      [
+        deal('카드최대85만', { amount: 850_000, isMax: true, baseAmount: 180_000 }),
+        deal('확정20만', { amount: 200_000, isMax: false }),
+      ],
+      'benefit',
+    );
+
+    // 18만원(실질) < 20만원(확정) 이므로 확정이 앞입니다.
+    expect(sorted.map((d) => d.id)).toEqual(['확정20만', '카드최대85만']);
+  });
+
+  it('기본 금액을 모르는 상한은 절반으로 본다', () => {
+    // 임의의 값이지만, 상한이 확정을 그대로 이기는 것보다는 실제에 가깝습니다.
+    const sorted = applySort(
+      [
+        deal('최대100만', { amount: 1_000_000, isMax: true }),
+        deal('확정60만', { amount: 600_000, isMax: false }),
+      ],
+      'benefit',
+    );
+
+    expect(sorted.map((d) => d.id)).toEqual(['확정60만', '최대100만']);
+  });
+
+  it('화면에는 기본 금액을 앞세우고 상한은 부연으로 둔다', () => {
+    const benefit = { amount: 850_000, isMax: true, baseAmount: 180_000 };
+
+    expect(formatBenefit(benefit)).toBe('18만원');
+    expect(formatBenefitCeiling(benefit)).toContain('최대 85만원');
+  });
+
+  it('기본을 모르면 "최대"를 그대로 쓴다', () => {
+    // 숨기면 거짓말이 됩니다. 아는 만큼만 말합니다.
+    expect(formatBenefit({ amount: 850_000, isMax: true })).toBe('최대 85만원');
+    expect(formatBenefitCeiling({ amount: 850_000, isMax: true })).toBe('');
+  });
+
+  it('확정 금액에는 부연을 붙이지 않는다', () => {
+    expect(formatBenefitCeiling({ amount: 30_000, isMax: false })).toBe('');
+  });
+});
+
+describe('benefit 스키마 — 기본 금액', () => {
+  it('기본이 상한보다 크면 거절한다', () => {
+    // 둘 중 하나를 잘못 읽은 것입니다.
+    const parsed = dealBenefitSchema.safeParse({
+      amount: 100_000,
+      isMax: true,
+      baseAmount: 200_000,
+    });
+    expect(parsed.success).toBe(false);
+  });
+
+  it('확정 금액에 기본값을 또 두면 거절한다', () => {
+    const parsed = dealBenefitSchema.safeParse({
+      amount: 100_000,
+      isMax: false,
+      baseAmount: 50_000,
+    });
+    expect(parsed.success).toBe(false);
+  });
+
+  it('상한 + 기본 조합은 받는다', () => {
+    const parsed = dealBenefitSchema.safeParse({
+      amount: 850_000,
+      isMax: true,
+      baseAmount: 180_000,
+    });
+    expect(parsed.success).toBe(true);
   });
 });

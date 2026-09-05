@@ -156,9 +156,33 @@ function floorToTenth(value: number): string {
   return (Math.floor(value * 10) / 10).toLocaleString('ko-KR');
 }
 
-/** "최대 87만원" / "3만원" */
-export function formatBenefit(benefit: { amount: number; isMax: boolean }): string {
+/**
+ * "18만원" / "최대 87만원" / "3만원"
+ *
+ * 기본 금액을 아는 상한이면 **기본을 앞세웁니다.**
+ * "최대 85만원"만 보여주면 카드 5종을 전부 발급해야 나오는 숫자를
+ * 손에 들어올 값처럼 약속하게 됩니다. 상한은 부연으로 밀어 둡니다.
+ */
+export function formatBenefit(benefit: {
+  amount: number;
+  isMax: boolean;
+  baseAmount?: number;
+}): string {
+  if (benefit.isMax && benefit.baseAmount !== undefined) {
+    return formatBenefitAmount(benefit.baseAmount);
+  }
+
   const amount = formatBenefitAmount(benefit.amount);
   // "최대"를 빠뜨리면 조건부 상한을 확정 금액처럼 약속하게 됩니다.
   return benefit.isMax ? `최대 ${amount}` : amount;
+}
+
+/** 기본 금액을 앞세운 경우의 부연. 없으면 빈 문자열. */
+export function formatBenefitCeiling(benefit: {
+  amount: number;
+  isMax: boolean;
+  baseAmount?: number;
+}): string {
+  if (!benefit.isMax || benefit.baseAmount === undefined) return '';
+  return `조건 다 채우면 최대 ${formatBenefitAmount(benefit.amount)}`;
 }

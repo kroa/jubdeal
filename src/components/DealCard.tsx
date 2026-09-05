@@ -2,6 +2,7 @@ import type { DecoratedDeal } from '@/types/deal';
 import { CATEGORY_EMOJI, CATEGORY_LABELS } from '@/types/deal';
 import {
   formatBenefit,
+  formatBenefitCeiling,
   formatCount,
   formatDiscountRate,
   formatPrice,
@@ -63,6 +64,13 @@ export function DealCard({ deal, href }: DealCardProps) {
         <p className="deal-card__benefit" data-testid="deal-benefit">
           <span className="deal-card__benefit-amount">{formatBenefit(deal.benefit)}</span>
           <span className="deal-card__benefit-label"> 상당</span>
+          {/*
+            기본 금액을 앞세운 경우에만 상한을 부연합니다.
+            숨기면 정보를 잃고, 앞세우면 도달 불가능한 숫자를 약속하게 됩니다.
+          */}
+          {formatBenefitCeiling(deal.benefit) && (
+            <span className="deal-card__benefit-ceiling">{formatBenefitCeiling(deal.benefit)}</span>
+          )}
         </p>
       )}
 

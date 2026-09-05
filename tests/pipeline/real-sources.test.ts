@@ -51,6 +51,7 @@ function makeExtracted(overrides: Partial<ExtractedDeal> = {}): ExtractedDeal {
     endDate: null,
     benefitAmount: null,
     benefitIsMax: false,
+    benefitBaseAmount: null,
     endDateKind: 'unknown',
     firstComeFirstServed: false,
     quantity: null,

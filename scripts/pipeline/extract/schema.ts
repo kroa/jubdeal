@@ -83,6 +83,13 @@ export const extractedDealSchema = z.object({
     .describe('혜택으로 받는 금액(원). 캐시백·포인트·증정의 값어치. 모르면 null'),
   /** "최대 N원"처럼 조건에 따라 달라지는 상한이면 true */
   benefitIsMax: z.boolean().describe('"최대 90만원"처럼 상한이면 true, 확정 금액이면 false'),
+  /** 기본 조건만 채웠을 때 확실히 받는 금액. 상한일 때만 의미가 있습니다. */
+  benefitBaseAmount: z
+    .number()
+    .int()
+    .positive()
+    .nullable()
+    .describe('기본 조건만 채웠을 때 확실히 받는 금액(원). 원문에 없으면 null'),
 
   startDate: localDateTime.nullable().describe('시작일. 명시가 없으면 null'),
   endDate: localDateTime.nullable().describe('종료일. 모르거나 상시면 null'),

@@ -44,6 +44,7 @@ function makeExtracted(overrides: Partial<ExtractedDeal> = {}): ExtractedDeal {
     endDate: '2026-09-30',
     benefitAmount: null,
     benefitIsMax: false,
+    benefitBaseAmount: null,
     endDateKind: 'dated' as const,
     linkUrl: null,
     linkLabel: null,

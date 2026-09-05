@@ -241,7 +241,18 @@ export function assembleDeal(
  */
 function pickBenefit(extracted: ExtractedDeal): DealBenefit | null {
   if (extracted.benefitAmount !== null && extracted.benefitAmount > 0) {
-    return { amount: extracted.benefitAmount, isMax: extracted.benefitIsMax };
+    const base = extracted.benefitBaseAmount;
+    // 기본이 상한보다 크면 둘 중 하나를 잘못 읽은 것이니 버립니다.
+    const usableBase =
+      extracted.benefitIsMax && base !== null && base > 0 && base <= extracted.benefitAmount
+        ? base
+        : undefined;
+
+    return {
+      amount: extracted.benefitAmount,
+      isMax: extracted.benefitIsMax,
+      ...(usableBase !== undefined ? { baseAmount: usableBase } : {}),
+    };
   }
 
   // 할인은 가격에서 계산합니다. 모델이 적지 않아도 값이 나옵니다.
