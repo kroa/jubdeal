@@ -5,7 +5,13 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { DEAL_SCHEMA_VERSION, type DealsFile } from '@/types/deal';
 import { parseDealsFile } from '@/lib/deal-schema';
-import { formatReport, guessAmount, runPipeline, shareAcrossSources } from '@pipeline/run';
+import {
+  formatReport,
+  guessAmount,
+  guessDiscountRate,
+  runPipeline,
+  shareAcrossSources,
+} from '@pipeline/run';
 import type { ExtractOutcome } from '@pipeline/extract/extract';
 import type { DealExtractor } from '@pipeline/extract/extract';
 import type { ExtractedDeal } from '@pipeline/extract/schema';
@@ -725,5 +731,83 @@ describe('값이 큰 것부터 처리하기', () => {
 
     expect(bySource.big).toBe(2);
     expect(bySource.small).toBe(2);
+  });
+});
+
+describe('할인율 어림잡기', () => {
+  it('퍼센트를 읽는다', () => {
+    expect(guessDiscountRate('무신사 LEE 패딩 머플러 82% 할인 (쿠폰 적용)')).toBe(82);
+    expect(guessDiscountRate('스팀 메가맨 컴플리트 팩 69% 할인')).toBe(69);
+    expect(guessDiscountRate('토스 25%할인+6.1%적립')).toBe(25);
+  });
+
+  it('숫자로 적히지 않는 관용 표현도 읽는다', () => {
+    expect(guessDiscountRate('버거킹 와퍼 반값 행사')).toBe(50);
+    expect(guessDiscountRate('카스 제로 1+1')).toBe(50);
+    expect(guessDiscountRate('편의점 2+1 행사')).toBe(33);
+  });
+
+  it('100%는 할인이 아니라 증정으로 본다', () => {
+    // 금액 쪽(guessAmount)에서 다룹니다. 여기서 잡으면 무료 항목이
+    // 전부 최고 할인율로 올라가 진짜 "반값" 상품을 밀어냅니다.
+    expect(guessDiscountRate('[iOS] Widgetik 100% 무료')).toBe(0);
+  });
+
+  it('할인 표현이 없으면 0', () => {
+    expect(guessDiscountRate('KB국민카드 최대 85만원 캐시백')).toBe(0);
+    expect(guessDiscountRate(undefined)).toBe(0);
+  });
+});
+
+describe('반값 상품을 먼저 처리한다', () => {
+  function item(title: string, i: number): RawItem {
+    return {
+      sourceId: 'board',
+      sourceName: '게시판',
+      url: `https://board.test/${i}`,
+      title,
+      text: '본문',
+      collectedAt: '2026-09-05T00:00:00+09:00',
+    };
+  }
+
+  it('금액이 없어도 고할인이면 앞에 온다', () => {
+    /*
+      할인 상품은 제목에 절약액이 아니라 판매가가 적히거나 아예 금액이 없습니다.
+      금액만으로 줄 세우면 guessAmount 가 0 을 돌려줘,
+      상한만 큰 카드 이벤트에 자리를 뺏기고 한 번도 처리되지 않습니다.
+      사용자가 원한 것이 바로 이 항목들입니다.
+    */
+    const picked = shareAcrossSources(
+      [
+        item('KB국민카드 5종 최대 85만원 캐시백 이벤트', 0),
+        item('무신사 LEE 패딩 머플러 82% 할인', 1),
+      ],
+      1,
+    );
+
+    expect(picked[0]?.title).toBe('무신사 LEE 패딩 머플러 82% 할인');
+  });
+
+  it('고할인끼리는 금액이 큰 것부터', () => {
+    const picked = shareAcrossSources(
+      [
+        item('의류 70% 할인 3만원', 0),
+        item('가전 65% 할인 40만원', 1),
+        item('간식 55% 할인 5천원', 2),
+      ],
+      3,
+    );
+
+    expect(picked.map((i) => i.title?.slice(0, 2))).toEqual(['가전', '의류', '간식']);
+  });
+
+  it('반값 미만끼리는 금액 순서를 유지한다', () => {
+    const picked = shareAcrossSources(
+      [item('30% 할인 1만원', 0), item('최대 85만원 캐시백', 1)],
+      2,
+    );
+
+    expect(picked[0]?.title).toBe('최대 85만원 캐시백');
   });
 });

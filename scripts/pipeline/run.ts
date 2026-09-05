@@ -233,6 +233,38 @@ export async function runPipeline(options: RunOptions): Promise<PipelineReport> 
 }
 
 /**
+ * 제목에서 할인율을 어림잡습니다. **우선순위 결정에만** 씁니다.
+ *
+ * "82% 할인" → 82, "반값" → 50, "1+1" → 50
+ *
+ * 금액만으로 줄 세우면 "반값에 사는" 항목이 뒤로 밀립니다.
+ * 할인 상품은 제목에 절약액이 아니라 **판매가**가 적히는 일이 많아
+ * (예: "무신사 패딩 82% 할인" — 금액 자체가 없음)
+ * guessAmount 가 0 을 돌려주고, 그러면 상한만 큰 카드 이벤트에 밀려
+ * 한 번도 처리되지 않습니다. 사용자가 원한 것이 바로 이 항목들입니다.
+ */
+export function guessDiscountRate(title: string | undefined): number {
+  if (!title) return 0;
+
+  let best = 0;
+
+  for (const match of title.matchAll(/(\d{1,2})\s*%/g)) {
+    const rate = Number.parseInt(match[1] ?? '', 10);
+    // 100% 는 "무료"라 할인이 아니라 증정에 가깝고, guessAmount 쪽에서 다룹니다.
+    if (Number.isFinite(rate) && rate > best && rate < 100) best = rate;
+  }
+
+  // 숫자로 적히지 않는 관용 표현. 퍼센트는 위 루프가 이미 잡았습니다.
+  if (best === 0 && /반값|1\s*\+\s*1|원\s*플러스\s*원/.test(title)) best = 50;
+  if (best === 0 && /2\s*\+\s*1/.test(title)) best = 33;
+
+  return best;
+}
+
+/** 사용자가 명시적으로 원한 "반값에 산다"의 기준 */
+const DEEP_DISCOUNT_RATE = 50;
+
+/**
  * 제목에서 원화 금액을 어림잡습니다. **우선순위 결정에만** 씁니다.
  *
  * "최대 85만원 캐시백" → 850000, "5,000만원" → 50000000, "23,340원" → 23340
@@ -304,7 +336,20 @@ export function shareAcrossSources(items: RawItem[], limit: number): RawItem[] {
     여기서는 "무엇을 먼저 LLM 에 태울지"만 정하므로 틀려도 순서만 바뀝니다.
   */
   for (const queue of queues.values()) {
-    queue.sort((a, b) => guessAmount(b.title) - guessAmount(a.title));
+    queue.sort((a, b) => {
+      /*
+        "반값 이하"를 먼저 봅니다. 금액만으로 줄 세우면 할인 상품이 밀립니다 —
+        제목에 절약액이 아니라 판매가가 적히거나 아예 금액이 없어
+        (예: "무신사 패딩 82% 할인") guessAmount 가 0 을 돌려주고,
+        상한만 큰 카드 이벤트에 자리를 뺏깁니다.
+      */
+      const deep = (item: RawItem) => Number(guessDiscountRate(item.title) >= DEEP_DISCOUNT_RATE);
+
+      const byDeep = deep(b) - deep(a);
+      if (byDeep !== 0) return byDeep;
+
+      return guessAmount(b.title) - guessAmount(a.title);
+    });
   }
 
   const picked: RawItem[] = [];
