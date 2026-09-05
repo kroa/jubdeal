@@ -1,13 +1,13 @@
 {
   "schemaVersion": 4,
-  "generatedAt": "2026-09-04T18:31:43.340Z",
+  "generatedAt": "2026-09-05T15:08:34.985Z",
   "deals": [
     {
       "id": "dl_ajd-card-event_3c0d80aed1f556c7",
       "slug": "ajd-card-event-event-detail-cc35f66b",
-      "title": "신한카드 발급 및 이용 시 최대 74만원 혜택",
-      "summary": "신한카드 신규 발급 후 이용 금액, 해외 결제, 자동납부, 앱 설치 등 다양한 조건 달성 시 최대 74만원 상당의 캐시백 및 혜택 제공",
-      "description": "온라인 채널을 통해 이벤트 카드를 보유하고 최근 6개월(2026.3.1~2026.8.31)간 신한 개인 신용카드 이용 및 탈회 이력이 없는 회원을 대상으로 합니다. 행사 기간 내 응모 및 마케팅 활용을 위한 개인(신용)정보 선택적 동의 전체 선택이 필수입니다. 총 4가지 혜택으로 구성되어 있으며, 각 혜택별 조건 충족 시 캐시백 또는 상당의 혜택이 제공됩니다.",
+      "title": "신한카드 5종 발급 및 이용 시 최대 74만원 혜택",
+      "summary": "신한카드 대상 카드 25만원 이용 시 20만원 지급, 해외 결제·자동납부 등 추가 시 최대 74만원 혜택",
+      "description": "온라인 채널을 통해 대상 신한카드 발급 후 25만원 이상 이용 시 20만원을 지급하며, 해외 오프라인 추가 이용 시 최대 50만원, 생활요금 자동납부 시 최대 4만원 등 조건 충족 시 최대 74만원 상당의 혜택을 제공합니다.",
       "brand": {
         "name": "신한카드"
       },
@@ -19,67 +19,54 @@
         "currency": "KRW"
       },
       "limit": {
-        "firstComeFirstServed": false
+        "firstComeFirstServed": false,
+        "perPersonLimit": 1
       },
       "period": {
         "startAt": "2026-09-01T00:00:00+09:00",
-        "endAt": "2026-10-31T23:59:59+09:00"
+        "endAt": "2026-09-30T23:59:59+09:00"
       },
       "benefit": {
         "amount": 740000,
-        "isMax": true
+        "isMax": true,
+        "baseAmount": 200000
       },
       "link": {
         "url": "https://www.ajd.co.kr/card/event/detail/348",
-        "label": "이벤트 페이지"
+        "label": "응모하기"
       },
       "howTo": [
-        "온라인 채널을 통해 대상 신한카드 5종 중 하나를 발급합니다.",
-        "응모 기간(2026.9.1~2026.9.30) 내 이벤트 페이지에서 응모하기를 완료합니다.",
-        "마케팅 활용을 위한 개인(신용)정보 선택적 동의를 전체 선택하고 혜택 제공일까지 유지합니다.",
-        "각 혜택별 이용 기간 및 조건을 충족하여 캐시백 또는 혜택을 받습니다."
+        "온라인 채널을 통해 대상 카드(Point Plan, 알리익스프레스, Mr.Life, 처음, Deep Oil) 발급",
+        "이벤트 페이지에서 [응모하기] 완료",
+        "신한SOL페이 마케팅 선택 정보 수신동의 전체 선택 및 유지",
+        "2026년 10월 31일까지 대상 카드로 25만원 이상 일시불/할부 이용",
+        "해외 결제, 생활요금 자동이체 등 추가 조건 달성 시 추가 혜택 수령"
       ],
       "caution": [
-        "최근 6개월(2026.3.1~2026.8.31)간 신한 개인 신용카드 이용 및 탈회 이력이 없는 회원만 대상입니다.",
-        "행사 기간 내 응모 필수이며, 미응모 시 혜택이 제공되지 않습니다.",
-        "마케팅 관련 동의는 혜택 지급일까지 전체 동의 상태를 유지해야 합니다.",
-        "이용금액은 쿠폰적용/포인트 사용 등을 제외한 실제 카드 사용 금액 기준입니다.",
-        "가족카드결제, 현금성결제, 선불금액충전, 무승인거래, 단기/장기대출, 연회비 등은 이용금액에서 제외됩니다.",
-        "혜택 제공일 이전 대상카드를 해지/교체/이용정지/분실/연체 등의 사유로 정상보유하지 않은 고객은 혜택이 제공되지 않습니다.",
-        "본 이벤트는 신한카드의 연회비 캐시백 및 다른 이용 이벤트와 중복 적용되지 않습니다.",
-        "2022.1.1~2026.11.30 이내 신한카드의 다른 이벤트 혜택을 받으신 경우 대상에서 제외됩니다.",
-        "2026.6.1~2026.9.30 이내 카드 모집인, 은행채널 등 오프라인 채널에서 개인 신용카드를 소지한 회원은 대상에서 제외됩니다.",
-        "혜택 제공일은 변경될 수 있으며, 제휴사 및 신한카드 내부 사정에 따라 사전고지 없이 이벤트 변경/중단될 수 있습니다.",
-        "혜택을 받은 후 12개월 이내 신한카드 탈회 시 지급받은 혜택 금액이 청구될 수 있습니다."
+        "직전 6개월(2026.03.01~2026.08.31) 동안 신한 개인 신용카드 이용 및 탈회 이력이 없는 회원 대상",
+        "마케팅 선택 동의 전체 항목을 혜택 제공일까지 유지해야 함",
+        "최종 혜택 수령 후 12개월 이내 탈회 시 혜택 금액이 청구되거나 자동 출금될 수 있음",
+        "상품권, 선불충전, 후불교통, 단기/장기카드대출, 연회비 등은 실적 금액에서 제외"
       ],
-      "tags": [
-        "신한카드",
-        "캐시백",
-        "카드발급",
-        "이용금액",
-        "해외결제",
-        "자동납부",
-        "슈퍼SOL",
-        "앱테크"
-      ],
+      "tags": ["신한카드", "카드이벤트", "캐시백", "신용카드발급", "아정당"],
       "source": {
         "name": "아정당 카드 이벤트",
         "url": "https://www.ajd.co.kr/card/event/detail/348",
-        "collectedAt": "2026-09-04T18:31:43.340Z",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
         "method": "llm",
-        "confidence": 0.9
+        "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-09-04T18:31:43.340Z"
+        "updatedAt": "2026-09-05T15:08:34.985Z"
       }
     },
     {
       "id": "dl_ajd-card-event_8f352758faf3037b",
       "slug": "ajd-card-event-event-detail-77149310",
       "title": "KB국민카드 5종 최대 85만원 캐시백 이벤트",
-      "summary": "KB국민카드 대상 카드로 조건 달성 시 최대 85만원 캐시백 혜택",
-      "description": "KB국민카드 5종(WE:SH Travel, My WE:SH, 굿데이, YOU Prime, NEED Pay) 신규 발급 및 이용 고객을 대상으로 이용 금액 및 조건에 따라 최대 85만원의 캐시백을 제공하는 이벤트입니다.",
+      "summary": "KB국민카드 신규 발급 및 이용 조건 충족 시 최대 85만원 캐시백",
+      "description": "KB국민 대상 카드 5종 발급 후 이용 금액 및 조건 달성 시 최대 85만원 캐시백 혜택을 제공합니다. (기본 18만원 + 마케팅 동의 3만원 + 추가 이용 최대 30만원 + 해외 이용 최대 30만원 + 자동납부 최대 4만원)",
       "brand": {
         "name": "KB국민카드"
       },
@@ -100,46 +87,46 @@
       },
       "benefit": {
         "amount": 850000,
-        "isMax": true
+        "isMax": true,
+        "baseAmount": 180000
       },
       "link": {
         "url": "https://www.ajd.co.kr/card/event/detail/347",
-        "label": "이벤트 확인하기"
+        "label": "이벤트 참여하기"
       },
       "howTo": [
-        "이벤트 페이지에서 '응모하기'를 통해 이벤트에 응모합니다.",
-        "대상 KB국민카드(WE:SH Travel, My WE:SH, 굿데이, YOU Prime, NEED Pay)를 온라인 채널을 통해 발급받습니다.",
-        "이용 기간 내에 대상 카드로 25만원 이상 이용하고, KB Pay로 1만원 이상 결제하여 기본 18만원 캐시백 조건을 충족합니다.",
-        "선택항목 전체동의 및 장기카드대출 이용 동의를 완료하여 추가 3만원 캐시백을 받습니다.",
-        "추가 이용 실적, 해외 이용 실적, 생활요금 자동납부 신청 등의 추가 미션을 달성하여 최대 85만원까지 혜택을 받습니다."
+        "이벤트 페이지에서 대상 카드(KB국민 WE:SH Travel, My WE:SH, 굿데이카드, YOU Prime, NEED Pay) 중 하나를 온라인으로 발급받습니다.",
+        "이벤트 응모 기간(2026.09.01 ~ 2026.09.30) 내에 응모를 완료합니다.",
+        "이용 기간(2026.09.01 ~ 2026.10.15) 동안 대상 카드로 25만원 이상 이용합니다. (KB Pay 1만원 이상 결제 필수)",
+        "선택항목 전체 동의 및 장기카드대출 이용 동의를 완료하고 혜택 제공일까지 유지합니다.",
+        "추가 이용 실적, 해외 이용 실적, 자동납부 신청 등 추가 조건 달성 시 추가 캐시백을 받습니다."
       ],
       "caution": [
-        "이벤트 시작일 기준 직전 6개월간(2026.02.01 ~ 2026.07.31) KB국민 신용카드 결제 이력이 없는 고객 대상입니다.",
+        "이벤트 직전 6개월간(2026.02.01 ~ 2026.07.31) KB국민 신용카드 결제 이력이 없는 고객 대상입니다.",
+        "온라인 채널을 통해 대상 카드를 보유한 회원만 대상이 되며, 타 채널(은행, 설계사 등)을 통한 발급은 제외됩니다.",
         "이벤트 시작일 기준 직전 1년간 KB국민카드 온라인 이용증대 프로모션 혜택을 받은 경우 대상에서 제외됩니다.",
-        "온라인 채널이 아닌 타 채널(은행 방문, 스타뱅킹 앱, 카드모집인 등)을 통해 카드를 소지한 경우 대상에서 제외됩니다.",
-        "기간 내 이벤트 응모가 필수이며, 미응모 시 혜택을 받을 수 없습니다.",
         "혜택 제공 이전 카드 해지, 교체, 연체 시 대상에서 제외됩니다.",
-        "혜택 제공 후 12개월 이내 카드 탈회 시 제공된 혜택이 일할 계산되어 청구될 수 있습니다."
+        "단기카드대출, 세금, 상품권 구매, 선불카드 충전 등 일부 결제 금액은 실적 산정에서 제외됩니다."
       ],
       "tags": ["KB국민카드", "신용카드", "캐시백", "카드이벤트", "아정당", "재테크"],
       "source": {
         "name": "아정당 카드 이벤트",
         "url": "https://www.ajd.co.kr/card/event/detail/347",
-        "collectedAt": "2026-09-04T18:31:43.340Z",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
         "method": "llm",
         "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-09-04T18:31:43.340Z"
+        "updatedAt": "2026-09-05T15:08:34.985Z"
       }
     },
     {
       "id": "dl_ajd-card-event_9e6a3bc9d61dd693",
       "slug": "ajd-card-event-event-detail-43667646",
-      "title": "삼성카드 신규 고객 20만원 이용 시 16만원 캐시백",
-      "summary": "삼성카드 신규 발급 후 20만원 이상 이용하면 16만원 캐시백",
-      "description": "행사 직전 6개월(2026.3.1~2026.8.31) 동안 삼성개인신용카드 전체 결제 이력 및 탈회 이력이 없는 회원이 온라인을 통해 대상카드를 보유하고, 이벤트 기간 동안 응모 후 2026.9.1~2026.10.31 동안 대상카드로 일시불 및 할부 합산 20만원 이상 이용 시 16만원 캐시백 제공. 마케팅 수신 동의 필수.",
+      "title": "삼성카드 대상카드 9종 이용 시 최대 60.2만원 혜택",
+      "summary": "삼성카드 대상카드 발급 및 20만원 이상 이용 시 16만원 기본 캐시백 포함 최대 60.2만원 혜택",
+      "description": "직전 6개월간 삼성개인신용카드 결제 및 탈회 이력이 없는 회원을 대상으로 이벤트 응모 후 20만원 이상 이용 시 16만원 캐시백을 제공하며, 해외 이용·생활요금 정기결제·LINK 혜택·특정 카드 추가 혜택 등을 통해 최대 60.2만원 상당의 혜택을 지급합니다.",
       "brand": {
         "name": "삼성카드"
       },
@@ -159,51 +146,43 @@
         "endAt": "2026-09-30T23:59:59+09:00"
       },
       "benefit": {
-        "amount": 160000,
-        "isMax": false
+        "amount": 602000,
+        "isMax": true,
+        "baseAmount": 160000
       },
       "link": {
         "url": "https://www.ajd.co.kr/card/event/detail/341",
         "label": "응모하기"
       },
       "howTo": [
-        "이벤트 기간 동안 '응모하기'를 통해 이벤트 응모",
-        "2026.9.1~2026.10.31 동안 대상카드로 일시불 및 할부 합산 20만원 이상 이용",
-        "마케팅 수신 동의 전체 필수 (모니모앱 > 전체메뉴 > 삼성카드 > 내정보 관리 > 프로필 설정 > 마케팅 수신 동의)"
+        "이벤트 기간 내 페이지에서 '응모하기' 버튼을 눌러 이벤트에 응모합니다.",
+        "2026년 9월 1일부터 10월 31일까지 대상카드로 일시불 및 할부 합산 20만원 이상을 이용합니다.",
+        "모니모앱 마케팅 수신 동의 전체를 완료합니다."
       ],
       "caution": [
-        "행사기간 직전 6개월(2026.3.1~2026.8.31) 동안 삼성개인신용카드 전체(대상카드 포함) 결제 이력 및 탈회 이력이 없는 회원 대상",
-        "온라인(PC, 모바일)을 통해 대상카드를 보유한 회원으로 한정",
-        "2022.1.1(토)부터 혜택 제공일 전까지 삼성카드의 다른 이벤트 혜택을 받은 경우 혜택 불가",
-        "자동차 프로모션 혜택 이력이 있는 경우 혜택 불가",
-        "혜택을 받은 달로부터 12개월 내 삼성개인신용카드 탈회 시 받은 혜택 금액 환수",
-        "마케팅 수신 동의 다음 항목 모두 필수: 카드상품/금융서비스 혜택 관련 안내 및 이용 권유, 카드상품/금융서비스 이외의 혜택 관련 안내 및 이용 권유, 전자적 전송매체를 통한 광고성 정보의 수신 동의, 혜택 안내 수신방법의 문자메시지/이메일/전화 항목 모두 체크",
-        "가족카드는 본 행사 대상이 아님",
-        "이용금액은 쿠폰적용/포인트사용 등을 제외한 최종 카드 승인금액으로 삼성카드 승인일 기준",
-        "단기카드대출, 장기카드대출, 각종 수수료 및 이자, 연체료, 연회비 납부건은 이용금액 산정 시 제외",
-        "신규회원 연회비 캐시백 이벤트 및 삼성카드의 다른 이용 유도 프로모션과 중복 적용 불가",
-        "혜택 제공 시점까지 이용 가능한 대상카드 보유 시 혜택 제공 (카드 해지·교체·정지·연체 등의 경우 제공 불가)",
-        "카드사 및 제휴사의 사정으로 사전 예고 없이 변경·중단될 수 있음"
+        "행사기간 직전 6개월(2026.3.1~2026.8.31) 동안 삼성개인신용카드 전체 결제 이력 및 탈회 이력이 없는 온라인 발급 회원 대상입니다.",
+        "2022년 1월 1일 이후 삼성카드의 다른 이벤트 혜택을 받은 경우 대상에서 제외됩니다.",
+        "혜택 제공일(2026.11.18 이후)로부터 12개월 이내 탈회 시 제공된 혜택이 청구될 수 있습니다."
       ],
-      "tags": ["삼성카드", "캐시백", "신규회원", "카드발급", "20만원"],
+      "tags": ["삼성카드", "신용카드", "캐시백", "카드이벤트", "모니모"],
       "source": {
         "name": "아정당 카드 이벤트",
         "url": "https://www.ajd.co.kr/card/event/detail/341",
-        "collectedAt": "2026-09-04T18:31:43.340Z",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
         "method": "llm",
-        "confidence": 0.9
+        "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-09-04T18:31:43.340Z"
+        "updatedAt": "2026-09-05T15:08:34.985Z"
       }
     },
     {
       "id": "dl_ajd-card-event_dd45edf2c8309da5",
       "slug": "ajd-card-event-event-detail-7f0d4a8b",
-      "title": "에너지플러스 현대카드 20만원 이상 이용 시 10만원 캐시백",
-      "summary": "에너지플러스 현대카드로 국내외 가맹점에서 20만원 이상 이용 시 10만원 캐시백을 드립니다.",
-      "description": "대상 카드로 국내외 가맹점에서 누적 20만원 이상 이용 시 10만원 캐시백을 제공합니다. 바로주유 누적 10만원 이상 이용이 필수 포함되어야 합니다.",
+      "title": "에너지플러스 현대카드 발급 후 20만원 이용 시 10만원 캐시백",
+      "summary": "에너지플러스 현대카드를 발급하고 20만원 이상 이용하면 10만원 캐시백",
+      "description": "현대카드 홈페이지 및 앱을 통해 에너지플러스 현대카드를 발급하고, 이벤트 시작일 직전 6개월간 현대카드 결제 이력이 없는 회원이 대상입니다. 2026년 9월 1일부터 9월 30일까지 국내외 가맹점에서 누적 20만원 이상 이용 시 10만원 캐시백을 제공합니다. (바로주유 누적 10만원 이상 이용 필수 포함)",
       "brand": {
         "name": "현대카드"
       },
@@ -231,36 +210,36 @@
         "label": "대상 카드 확인하기"
       },
       "howTo": [
-        "현대카드 홈페이지 및 앱을 통해 대상 카드를 기소지합니다.",
-        "이벤트 시작일 직전 6개월간(2026. 3. 1 ~ 2026. 8. 31) 모든 현대카드 결제 이력이 없어야 합니다.",
-        "2026. 9. 1 ~ 9. 30 기간 동안 국내외 가맹점에서 누적 20만원 이상 이용합니다 (바로주유 누적 10만원 이상 이용 포함 필수)."
+        "현대카드 홈페이지 및 앱을 통해 에너지플러스 현대카드 발급",
+        "이벤트 시작일 직전 6개월간(2026. 3. 1 ~ 2026. 8. 31) 모든 현대카드 결제 이력이 없을 것",
+        "2026. 9. 1 ~ 9. 30 기간 내 대상 카드로 국내외 가맹점에서 누적 20만원 이상 이용 (바로주유 누적 10만원 이상 이용 포함 필수)"
       ],
       "caution": [
-        "혜택 제공월 포함 13개월 내 대상 카드 해지 또는 탈회 시 받은 혜택은 현금으로 청구되거나, 등록된 본인 명의 결제 계좌에서 자동 출금될 수 있습니다.",
-        "이벤트 기간 직전 6개월간(2026. 3. 1 ~ 2026. 8. 31) 결제 이력은 본인 명의 현대카드(대상 카드, 가족·체크·후불하이패스카드, 정기결제, 수수료 결제 등 포함)의 모든 결제 건을 포함합니다.",
-        "혜택 제공 시점에 대상 카드 해지, 분실, 교체(재발급 등), 정지(연체 등), 탈회 등의 경우 혜택 제공이 불가합니다.",
-        "온라인 채널이 아닌, 카드 모집인 등 오프라인 채널 및 고객센터를 통해 대상 카드를 보유한 경우 혜택이 제외됩니다.",
-        "혜택 제공월 포함 12개월 내 이벤트 채널에 관계없이 현대카드의 다른 이벤트 혜택(캐시백, 포인트, 할인 쿠폰 등)을 받은 이력이 있는 경우 혜택이 제외됩니다."
+        "혜택 제공월 포함 13개월 내 대상 카드 해지 또는 탈회 시 받은 혜택은 현금으로 청구되거나 자동 출금될 수 있음",
+        "혜택 제공월 포함 12개월 내 현대카드의 다른 이벤트 혜택을 받은 이력이 있는 경우 혜택 제외",
+        "혜택 제공 시점에 대상 카드 해지, 분실, 교체, 정지, 탈회 등의 경우 혜택 제공 불가",
+        "온라인 채널이 아닌 오프라인 채널 및 고객센터를 통해 대상 카드를 보유한 경우 혜택 제외",
+        "누적 이용 금액 합산 제외 항목: 승인 취소, 부분 취소, 환불, 장기/단기카드대출, 연회비, 제수수료, 이자, 상품권 등 현금성 유가증권 구매 및 선불 카드 구매·충전 금액, 국제브랜드 수수료 및 해외 이용 수수료, 현장 할인 금액"
       ],
-      "tags": ["현대카드", "캐시백", "신용카드", "에너지플러스", "발급"],
+      "tags": ["현대카드", "캐시백", "카드발급", "에너지플러스"],
       "source": {
         "name": "아정당 카드 이벤트",
         "url": "https://www.ajd.co.kr/card/event/detail/337",
-        "collectedAt": "2026-09-04T18:31:43.340Z",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
         "method": "llm",
-        "confidence": 0.95
+        "confidence": 0.9
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-09-04T18:31:43.340Z"
+        "updatedAt": "2026-09-05T15:08:34.985Z"
       }
     },
     {
       "id": "dl_cardgorilla-event_2d65de8ba06a8150",
       "slug": "cardgorilla-event-event-detail-3246e0e0",
-      "title": "KB국민카드 최대 87만원 혜택",
-      "summary": "KB국민카드 발급 시 최대 87만원 혜택 제공",
-      "description": "굿데이카드, KB ALL 카드, KB국민 My WE:SH 카드, KB NEED Pay 카드, KB YOU Prime 카드 발급 시 최대 87만원 혜택을 받을 수 있습니다. (구체적인 혜택 내용 및 조건은 원문에서 확인 불가)",
+      "title": "KB국민 신용카드 5종 발급 시 최대 87만원 혜택",
+      "summary": "굿데이, ALL, My WE:SH, NEED Pay, YOU Prime 카드 발급 시 최대 87만원 혜택",
+      "description": "굿데이카드, KB ALL 카드, KB국민 My WE:SH 카드, KB NEED Pay 카드, KB YOU Prime 카드 발급 시 최대 87만원 혜택 제공.",
       "brand": {
         "name": "KB국민카드"
       },
@@ -275,7 +254,7 @@
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-09-05T00:00:00+09:00",
+        "startAt": "2026-09-06T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
       },
@@ -284,28 +263,27 @@
         "isMax": true
       },
       "link": {
-        "url": "https://www.card-gorilla.com/event/detail/3",
-        "label": "혜택 자세히 보기"
+        "url": "https://www.card-gorilla.com/event/detail/3"
       },
-      "tags": ["KB국민카드", "신용카드", "카드발급", "캐시백"],
+      "tags": ["KB국민카드", "신용카드", "캐시백", "카드발급"],
       "source": {
         "name": "카드고릴라 카드 이벤트",
         "url": "https://www.card-gorilla.com/event/detail/3",
-        "collectedAt": "2026-09-04T18:31:43.340Z",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
         "method": "llm",
         "confidence": 0.75
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-09-04T18:31:43.340Z"
+        "updatedAt": "2026-09-05T15:08:34.985Z"
       }
     },
     {
       "id": "dl_cardgorilla-event_6b9e2084e102fa38",
       "slug": "cardgorilla-event-event-detail-9f9e8a44",
-      "title": "삼성카드 신규 발급 및 이용 시 최대 118만원 혜택",
+      "title": "삼성카드 대상 카드 발급 시 최대 118만원 혜택",
       "summary": "삼성카드 대상 카드 발급 및 이용 조건 충족 시 최대 118만원 캐시백 및 혜택 제공",
-      "description": "삼성카드의 다양한 대상 카드를 발급받고 이용 조건을 충족하면 최대 118만원의 캐시백 및 혜택을 제공합니다. 삼성카드 & MILEAGE PLATINUM (스카이패스) 118만원 캐시백, 삼성 iD SELECT UP 카드 23.8만원 혜택 등이 포함됩니다.",
+      "description": "삼성카드의 다양한 대상 카드(삼성카드 & MILEAGE PLATINUM, 삼성 iD SELECT UP 등)를 발급하고 이용 시 최대 118만원 상당의 캐시백 및 혜택을 제공합니다.",
       "brand": {
         "name": "삼성카드"
       },
@@ -320,7 +298,7 @@
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-09-05T00:00:00+09:00",
+        "startAt": "2026-09-06T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
       },
@@ -335,31 +313,31 @@
       "howTo": [
         "이벤트 페이지에서 대상 삼성카드를 확인합니다.",
         "원하는 카드를 신청하여 발급받습니다.",
-        "카드별로 제시된 이용 조건(실적 등)을 충족하여 혜택을 받습니다."
+        "카드별 이용 조건 및 실적을 충족하여 캐시백 및 혜택을 받습니다."
       ],
       "caution": [
-        "카드별로 제공되는 혜택 금액과 조건이 다를 수 있습니다.",
-        "상세한 이용 조건 및 대상 여부는 이벤트 페이지에서 확인이 필요합니다."
+        "카드별로 제공되는 혜택 금액과 상세 조건이 다릅니다.",
+        "자세한 대상 조건 및 이벤트 기간은 상세 페이지를 확인하시기 바랍니다."
       ],
-      "tags": ["삼성카드", "신용카드", "캐시백", "카드이벤트", "카드고릴라"],
+      "tags": ["삼성카드", "신용카드", "캐시백", "카드이벤트", "마일리지"],
       "source": {
         "name": "카드고릴라 카드 이벤트",
         "url": "https://www.card-gorilla.com/event/detail/1",
-        "collectedAt": "2026-09-04T18:31:43.340Z",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
         "method": "llm",
         "confidence": 0.9
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-09-04T18:31:43.340Z"
+        "updatedAt": "2026-09-05T15:08:34.985Z"
       }
     },
     {
       "id": "dl_cardgorilla-event_da64d017753b7d25",
       "slug": "cardgorilla-event-event-detail-9d27f5bc",
-      "title": "현대카드 최대 90만원 캐시백",
-      "summary": "현대카드 발급 시 최대 90만원 캐시백 혜택",
-      "description": "다양한 현대카드 발급 시 카드 종류에 따라 1.5만원부터 최대 90만원까지 캐시백 혜택을 제공합니다.",
+      "title": "현대카드 발급 시 최대 90만원 캐시백",
+      "summary": "다양한 현대카드 발급 및 이용 조건 충족 시 최대 90만원 캐시백 혜택",
+      "description": "현대카드 발급 시 카드 종류에 따라 다음과 같은 캐시백 혜택을 제공합니다: 대한항공카드 300 (80만원), 에너지플러스 현대카드 (80만원), American Express® Gold Card Edition2 (50만원), 현대카드MY BUSINESS M F&B (62만원), 대한항공카드 the First Edition2 (90만원), 대한항공카드 120 (75만원), 대한항공카드 060 (75만원), 현대카드MY BUSINESS M Retail (62만원), 현대카드MY BUSINESS M E-seller (62만원), American Express® Green Card Edition2 (35만원), the Orange (20만원), 현대카드 Summit (20만원), 현대카드 MX Black Edition2 (20만원), the Green Edition3 (15만원), the Pink Edition2 (15만원), 알파벳카드D BOLD (5만원), 알파벳카드S BOLD (5만원), 알파벳카드T BOLD (5만원), 현대카드 ZERO Up(할인형) (3만원), 현대카드 ZERO Up(포인트형) (3만원), 현대카드M (3만원), 현대카드 X Save (3만원), 현대카드 X Cut (3만원), 현대카드Z everyday (2만원), 현대카드Z play (2만원), 현대카드Z family Edition2 (2만원), 현대카드Z work Edition2 (2만원), 알파벳카드B (1.5만원), 알파벳카드D (1.5만원), 알파벳카드H (1.5만원), 알파벳카드O (1.5만원), 알파벳카드P (1.5만원), 알파벳카드R (1.5만원), 알파벳카드S (1.5만원), 알파벳카드T (1.5만원), 현대카드ZERO Edition3(할인형) (1.5만원), 현대카드ZERO Edition3(포인트형) (1.5만원).",
       "brand": {
         "name": "현대카드"
       },
@@ -374,7 +352,7 @@
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-09-05T00:00:00+09:00",
+        "startAt": "2026-09-06T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
       },
@@ -384,27 +362,36 @@
       },
       "link": {
         "url": "https://www.card-gorilla.com/event/detail/7",
-        "label": "자세히 보기"
+        "label": "혜택 확인하기"
       },
-      "tags": ["현대카드", "캐시백", "카드발급", "신용카드"],
+      "howTo": [
+        "원하는 현대카드 선택 및 발급 신청",
+        "카드사에서 정한 이용 조건 충족",
+        "조건 충족 시 캐시백 지급"
+      ],
+      "caution": [
+        "카드 발급 및 캐시백 지급 조건은 카드사 정책에 따라 상이하며, 자세한 내용은 현대카드 홈페이지를 참조하시기 바랍니다.",
+        "본 혜택은 카드고릴라를 통한 발급 시 적용될 수 있습니다."
+      ],
+      "tags": ["현대카드", "캐시백", "신용카드", "카드발급", "금융혜택"],
       "source": {
         "name": "카드고릴라 카드 이벤트",
         "url": "https://www.card-gorilla.com/event/detail/7",
-        "collectedAt": "2026-09-04T18:31:43.340Z",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
         "method": "llm",
-        "confidence": 0.9
+        "confidence": 0.85
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-09-04T18:31:43.340Z"
+        "updatedAt": "2026-09-05T15:08:34.985Z"
       }
     },
     {
       "id": "dl_cardgorilla-event_fa323d00f5ccb15c",
       "slug": "cardgorilla-event-event-detail-53a95191",
-      "title": "신한카드 최대 74만원 혜택",
-      "summary": "신한카드 발급 시 최대 74만원 혜택 제공",
-      "description": "신한카드 Mr.Life 73만원 혜택, 신한카드 Discount Plan+ 74만원 혜택, 신한카드 처음(ANNIVERSE) 73만원 혜택, 신한카드 Simple Plan+ 74만원 혜택, 알리익스프레스 신한카드 73만원 혜택, 신한카드 Air One 74만원 혜택, 신한카드 Point Plan 73만원 혜택, 신한카드 Deep Oil 73만원 혜택.",
+      "title": "신한카드 대상 카드 발급 시 최대 74만원 혜택",
+      "summary": "신한카드 행사 대상 카드 발급 시 최대 74만원 상당의 혜택 제공",
+      "description": "신한카드 Discount Plan+, Simple Plan+, Air One 등 대상 카드 발급 및 이용 시 최대 74만원 혜택 제공 (Mr.Life, Point Plan, Deep Oil 등은 최대 73만원 혜택)",
       "brand": {
         "name": "신한카드"
       },
@@ -419,7 +406,7 @@
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-09-05T00:00:00+09:00",
+        "startAt": "2026-09-06T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
       },
@@ -429,19 +416,21 @@
       },
       "link": {
         "url": "https://www.card-gorilla.com/event/detail/2",
-        "label": "혜택 확인하기"
+        "label": "카드 이벤트 확인하기"
       },
-      "tags": ["신한카드", "카드", "혜택", "캐시백", "신규발급"],
+      "howTo": ["이벤트 페이지에서 대상 신한카드 신청 및 발급", "이벤트 조건에 맞춰 카드 이용"],
+      "caution": ["카드 상품별 혜택 금액 및 상세 제공 조건이 상이할 수 있습니다."],
+      "tags": ["신한카드", "카드고릴라", "신용카드", "캐시백", "카드발급이벤트"],
       "source": {
         "name": "카드고릴라 카드 이벤트",
         "url": "https://www.card-gorilla.com/event/detail/2",
-        "collectedAt": "2026-09-04T18:31:43.340Z",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
         "method": "llm",
-        "confidence": 0.75
+        "confidence": 0.85
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-09-04T18:31:43.340Z"
+        "updatedAt": "2026-09-05T15:08:34.985Z"
       }
     },
     {
@@ -546,9 +535,9 @@
     {
       "id": "dl_clien-jirum_6595ea07f6ac27fa",
       "slug": "clien-jirum-board-jirum-cf14fd4b",
-      "title": "무신사 LEE 패딩 머플러 82% 할인 (쿠폰 적용)",
-      "summary": "무신사에서 LEE 패딩 머플러를 30% 쿠폰 적용 시 82% 할인된 10,500원에 구매할 수 있습니다.",
-      "description": "링크에서 리 FW 신상 30% 쿠폰을 적용하면 정가 대비 82% 세일 가격으로 구매가능합니다. 글 작성 현재 검은색과 베이지색 모두 있습니다. 등급과 적립금에 따라 추가 할인도 가능합니다. 오늘까지 적용가능한 이 30% 쿠폰은 세개 정도 주기 때문에 다른 상품에도 적용가능합니다.",
+      "title": "무신사 LEE 패딩 머플러 82% 할인 (10,500원)",
+      "summary": "무신사에서 LEE 패딩 머플러를 82% 할인된 10,500원에 구매하세요.",
+      "description": "링크에서 리 FW 신상 30% 쿠폰을 적용하면 정가 대비 82% 세일 가격으로 구매 가능합니다. 글 작성 현재 검은색과 베이지색 모두 있습니다. 등급과 적립금에 따라 추가 할인도 가능합니다. 오늘까지 적용 가능한 이 30% 쿠폰은 세개 정도 주기 때문에 다른 상품에도 적용 가능합니다.",
       "brand": {
         "name": "무신사"
       },
@@ -564,8 +553,8 @@
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-09-05T00:00:00+09:00",
-        "endAt": "2026-09-05T23:59:59+09:00"
+        "startAt": "2026-09-06T00:00:00+09:00",
+        "endAt": "2026-09-06T23:59:59+09:00"
       },
       "benefit": {
         "amount": 47833,
@@ -573,32 +562,29 @@
       },
       "link": {
         "url": "https://www.musinsa.com/products/4486573",
-        "label": "상품 페이지"
+        "label": "구매 링크"
       },
-      "howTo": ["링크에서 LEE 패딩 머플러 상품 선택", "FW 신상 30% 쿠폰 적용하여 구매"],
-      "caution": [
-        "등급 및 적립금에 따라 추가 할인 가능",
-        "30% 쿠폰은 3개 정도 제공되어 다른 상품에도 적용 가능"
-      ],
-      "tags": ["무신사", "LEE", "패딩머플러", "할인", "쿠폰", "FW신상"],
+      "howTo": ["상품 링크 접속", "FW 신상 30% 쿠폰 적용 후 구매"],
+      "caution": ["등급 및 적립금에 따라 추가 할인 가능", "30% 쿠폰은 다른 상품에도 적용 가능"],
+      "tags": ["무신사", "LEE", "패딩머플러", "할인", "패션"],
       "source": {
         "name": "클리앙 알뜰구매",
         "url": "https://www.clien.net/service/board/jirum/19258187",
-        "collectedAt": "2026-09-04T18:31:43.340Z",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
         "method": "llm",
         "confidence": 0.9
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-09-04T18:31:43.340Z"
+        "updatedAt": "2026-09-05T15:08:34.985Z"
       }
     },
     {
       "id": "dl_clien-jirum_6a207bc1d0b507bf",
       "slug": "clien-jirum-board-jirum-2f60e7bb",
-      "title": "삼성 Mini LED TV 65인치 KU65MH70AFXKR 할인",
-      "summary": "삼성 65인치 Mini LED TV 할인 판매 (체감가 약 99만 원)",
-      "description": "2026년형 삼성 Mini LED TV 163cm(65인치) KU65MH70AFXKR 모델 할인 정보입니다. 판매 가격은 1,096,260원이며, 오후 7시 라이브 상품권 2만 원 등을 적용 시 체감가 약 99만 원에 구매 가능합니다.",
+      "title": "삼성 Mini LED TV 65인치 KU65MH70AFXKR 특가",
+      "summary": "삼성 65인치 Mini LED TV 특가 판매 및 라이브 상품권 2만 원 혜택",
+      "description": "2026년형 삼성 Mini LED TV 163cm(65인치) KU65MH70AFXKR 모델 특가 정보입니다. 오후 7시 라이브 상품권 2만 원 혜택 등을 포함해 체감가 약 99만 원대에 구매 가능합니다.",
       "brand": {
         "name": "삼성전자"
       },
@@ -613,41 +599,45 @@
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-09-05T00:00:00+09:00",
+        "startAt": "2026-09-06T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
       },
+      "benefit": {
+        "amount": 20000,
+        "isMax": false
+      },
       "link": {
         "url": "https://www.clien.net/service/board/jirum/19257976",
-        "label": "원문 보기"
+        "label": "구매하러 가기"
       },
       "howTo": [
-        "원문 링크를 통해 판매처로 이동합니다.",
-        "오후 7시 라이브 혜택(상품권 2만 원 등)을 적용하여 구매합니다."
+        "원문 링크를 통해 판매 페이지로 이동합니다.",
+        "오후 7시 라이브 방송 참여를 통해 상품권 2만 원 혜택을 적용받습니다."
       ],
       "caution": [
-        "체감가 99만 원은 라이브 상품권 등 추가 혜택이 적용된 기준입니다.",
+        "체감가 99만 원은 추가 할인 및 상품권 혜택이 모두 적용된 기준일 수 있습니다.",
         "판매 조건 및 가격은 판매처 사정에 따라 변경될 수 있습니다."
       ],
-      "tags": ["삼성TV", "65인치TV", "MiniLED", "KU65MH70AFXKR", "가전할인"],
+      "tags": ["삼성전자", "TV", "65인치", "MiniLED", "가전", "특가"],
       "source": {
         "name": "클리앙 알뜰구매",
         "url": "https://www.clien.net/service/board/jirum/19257976",
-        "collectedAt": "2026-09-04T18:31:43.340Z",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
         "method": "llm",
-        "confidence": 0.8
+        "confidence": 0.85
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-09-04T18:31:43.340Z"
+        "updatedAt": "2026-09-05T15:08:34.985Z"
       }
     },
     {
       "id": "dl_clien-jirum_839daa08947e6693",
       "slug": "clien-jirum-board-jirum-d71326b9",
-      "title": "[하이마트] 쿠쿠 1구 하이라이트 특가",
-      "summary": "쿠쿠 1구 하이라이트를 6,000원 무료배송에 판매합니다.",
-      "description": "하이마트에서 쿠쿠 1구 하이라이트를 가격 오류급 특가인 6,000원에 무료배송으로 판매 중입니다.",
+      "title": "하이마트 쿠쿠 1구 하이라이트 특가",
+      "summary": "쿠쿠 1구 하이라이트 무료배송 6,000원 특가 판매",
+      "description": "하이마트에서 쿠쿠 1구 하이라이트를 무료배송 6,000원에 판매 중입니다.",
       "brand": {
         "name": "하이마트"
       },
@@ -659,10 +649,10 @@
         "currency": "KRW"
       },
       "limit": {
-        "firstComeFirstServed": true
+        "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-09-05T00:00:00+09:00",
+        "startAt": "2026-09-06T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
       },
@@ -670,30 +660,30 @@
         "url": "https://m.e-himart.co.kr/app/goods/goodsDetail?goodsNo=0060970556",
         "label": "구매하러 가기"
       },
-      "howTo": ["구매 링크로 접속합니다.", "상품을 장바구니에 담고 결제를 진행합니다."],
+      "howTo": ["구매 링크로 이동하여 상품을 구매합니다."],
       "caution": [
-        "가격 오류성 상품의 경우 판매처 사정에 의해 주문이 취소될 수 있습니다.",
-        "한정 수량 소진 시 예고 없이 종료될 수 있습니다."
+        "가격 오류 가능성이 있어 주문 취소될 수 있습니다.",
+        "재고 소진 시 조기 종료될 수 있습니다."
       ],
-      "tags": ["하이마트", "쿠쿠", "하이라이트", "주방가전", "특가"],
+      "tags": ["하이마트", "쿠쿠", "하이라이트", "특가", "무료배송"],
       "source": {
         "name": "클리앙 알뜰구매",
         "url": "https://www.clien.net/service/board/jirum/19258458",
-        "collectedAt": "2026-09-04T18:31:43.340Z",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
         "method": "llm",
-        "confidence": 0.9
+        "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-09-04T18:31:43.340Z"
+        "updatedAt": "2026-09-05T15:08:34.985Z"
       }
     },
     {
       "id": "dl_clien-jirum_ef4e7190c61d8c03",
       "slug": "clien-jirum-board-jirum-2fce9eb2",
-      "title": "필라 배드민턴채 세트 할인 (라켓 2자루 + 가방)",
-      "summary": "필라 배드민턴 라켓 2자루와 풀케이스 가방 세트를 6,900원에 무료배송으로 구매하세요.",
-      "description": "필라 배드민턴라켓 2자루와 풀케이스 가방 1개로 구성된 세트가 세일 중입니다. 무료배송이며, 네이버 스마트스토어의 네번째 옵션입니다.",
+      "title": "필라 배드민턴채 세일",
+      "summary": "필라 배드민턴 라켓 2자루 + 풀케이스 가방 1개 구성, 6,900원 무료배송",
+      "description": "필라 배드민턴채 세일중입니다. 배드민턴라켓 2자루 + 풀케이스 가방 1개로 구성되어 있고 무료배송입니다. 네번째 옵션입니다.",
       "brand": {
         "name": "필라"
       },
@@ -708,7 +698,7 @@
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-09-05T00:00:00+09:00",
+        "startAt": "2026-09-06T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
       },
@@ -716,18 +706,407 @@
         "url": "https://smartstore.naver.com/oud_fitness/products/11843500770",
         "label": "구매하기"
       },
-      "howTo": ["네이버 스마트스토어에서 네번째 옵션을 선택하여 구매"],
-      "tags": ["필라", "배드민턴", "라켓", "스포츠", "할인", "무료배송"],
+      "howTo": ["네이버 스마트스토어에서 필라 배드민턴채 구매"],
+      "tags": ["필라", "배드민턴", "라켓", "스포츠", "네이버", "무료배송"],
       "source": {
         "name": "클리앙 알뜰구매",
         "url": "https://www.clien.net/service/board/jirum/19258223",
-        "collectedAt": "2026-09-04T18:31:43.340Z",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-09-05T15:08:34.985Z"
+      }
+    },
+    {
+      "id": "dl_kakamuka-nearexpiry_6ddcb1dd33c2346c",
+      "slug": "kakamuka-nearexpiry-category-display-5f4b6631",
+      "title": "오리온 무뚝뚝 감자칩 (통후추 소금맛) 소비기한 임박 할인",
+      "summary": "오리온 무뚝뚝 감자칩 106g을 3,000원에서 2,000원으로 할인 판매합니다. 소비기한은 2026년 9월 28일입니다.",
+      "brand": {
+        "name": "오리온"
+      },
+      "category": "food",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "original": 3000,
+        "final": 2000,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-09-06T00:00:00+09:00",
+        "endAt": "2026-09-28T23:59:59+09:00"
+      },
+      "benefit": {
+        "amount": 1000,
+        "isMax": false
+      },
+      "link": {
+        "url": "https://kakamuka.com/product/%EC%84%B8%EC%9D%BC-%EC%98%A4%EB%A6%AC%EC%98%A8-%EB%AC%B4%EB%9A%9D%EB%9A%9D-%EA%B0%90%EC%9E%90%EC%B9%A9-106g-%ED%86%B5%ED%9B%84%EC%B6%94-%EC%86%8C%EA%B8%88%EB%A7%9B-%EC%86%8C%EB%B9%84%EA%B8%B0%ED%95%9C-260928/15506/category/28/display/1/"
+      },
+      "howTo": ["상품 구매"],
+      "caution": ["소비기한 2026년 9월 28일"],
+      "tags": ["오리온", "감자칩", "과자", "할인", "소비기한임박"],
+      "source": {
+        "name": "까까무카 소비기한 임박",
+        "url": "https://kakamuka.com/product/%EC%84%B8%EC%9D%BC-%EC%98%A4%EB%A6%AC%EC%98%A8-%EB%AC%B4%EB%9A%9D%EB%9A%9D-%EA%B0%90%EC%9E%90%EC%B9%A9-106g-%ED%86%B5%ED%9B%84%EC%B6%94-%EC%86%8C%EA%B8%88%EB%A7%9B-%EC%86%8C%EB%B9%84%EA%B8%B0%ED%95%9C-260928/15506/category/28/display/1/",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-09-05T15:08:34.985Z"
+      }
+    },
+    {
+      "id": "dl_kakamuka-nearexpiry_ba467a9863d927e9",
+      "slug": "kakamuka-nearexpiry-category-display-22e157b4",
+      "title": "드래곤 콜라향 볼캔디 캔디건 장난감 소비기한 임박 세일",
+      "summary": "소비기한 임박 드래곤 콜라향 볼캔디 캔디건 장난감 800원에서 120원으로 할인",
+      "description": "소비기한이 2026년 10월 2일까지인 드래곤 콜라향 볼캔디 캔디건 장난감을 800원에서 120원에 판매합니다.",
+      "brand": {
+        "name": "까까무카"
+      },
+      "category": "food",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "original": 800,
+        "final": 120,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-09-06T00:00:00+09:00",
+        "endAt": "2026-10-02T23:59:59+09:00"
+      },
+      "benefit": {
+        "amount": 680,
+        "isMax": false
+      },
+      "link": {
+        "url": "https://kakamuka.com/product/%EC%84%B8%EC%9D%BC-%EB%93%9C%EB%9E%98%EA%B3%A4-%EC%BD%9C%EB%9D%BC%ED%96%A5-%EB%B3%BC%EC%BA%94%EB%94%94-12g-%EC%BA%94%EB%94%94%EA%B1%B4-%EC%9E%A5%EB%82%9C%EA%B0%90-%EC%86%8C%EB%B9%84%EA%B8%B0%ED%95%9C-261002/15244/category/28/display/1/"
+      },
+      "howTo": ["까까무카 웹사이트에서 상품 구매"],
+      "caution": ["소비기한은 2026년 10월 2일까지입니다."],
+      "tags": ["소비기한임박", "캔디", "장난감", "할인"],
+      "source": {
+        "name": "까까무카 소비기한 임박",
+        "url": "https://kakamuka.com/product/%EC%84%B8%EC%9D%BC-%EB%93%9C%EB%9E%98%EA%B3%A4-%EC%BD%9C%EB%9D%BC%ED%96%A5-%EB%B3%BC%EC%BA%94%EB%94%94-12g-%EC%BA%94%EB%94%94%EA%B1%B4-%EC%9E%A5%EB%82%9C%EA%B0%90-%EC%86%8C%EB%B9%84%EA%B8%B0%ED%95%9C-261002/15244/category/28/display/1/",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-09-05T15:08:34.985Z"
+      }
+    },
+    {
+      "id": "dl_kakamuka-nearexpiry_eb04ce54cdac589d",
+      "slug": "kakamuka-nearexpiry-category-display-de390f48",
+      "title": "드래곤 콜라향 볼캔디 12g x 20개 (1통) 임박 세일",
+      "summary": "소비기한 임박 드래곤 콜라향 볼캔디 1통을 2,100원에 할인 판매",
+      "description": "소비기한이 2026년 10월 2일까지인 드래곤 콜라향 볼캔디 12g x 20개(1통)를 정가 16,000원에서 할인된 2,100원에 판매합니다.",
+      "brand": {
+        "name": "까까무카"
+      },
+      "category": "food",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "original": 16000,
+        "final": 2100,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-09-06T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "benefit": {
+        "amount": 13900,
+        "isMax": false
+      },
+      "link": {
+        "url": "https://kakamuka.com/product/%EC%84%B8%EC%9D%BC-%EB%93%9C%EB%9E%98%EA%B3%A4-%EC%BD%9C%EB%9D%BC%ED%96%A5-%EB%B3%BC%EC%BA%94%EB%94%94-12g-x-20%EA%B0%9C-1%ED%86%B5-%EC%86%8C%EB%B9%84%EA%B8%B0%ED%95%9C-261002/15245/category/28/display/1/",
+        "label": "구매하러 가기"
+      },
+      "howTo": [
+        "상세 페이지에 접속합니다.",
+        "상품을 장바구니에 담거나 바로 구매하기를 눌러 결제를 진행합니다."
+      ],
+      "caution": [
+        "소비기한이 2026년 10월 2일까지인 임박 상품입니다. 구매 시 참고하시기 바랍니다.",
+        "재고 소진 시 예고 없이 판매가 종료될 수 있습니다."
+      ],
+      "tags": ["드래곤볼캔디", "콜라향캔디", "임박세일", "까까무카", "할인"],
+      "source": {
+        "name": "까까무카 소비기한 임박",
+        "url": "https://kakamuka.com/product/%EC%84%B8%EC%9D%BC-%EB%93%9C%EB%9E%98%EA%B3%A4-%EC%BD%9C%EB%9D%BC%ED%96%A5-%EB%B3%BC%EC%BA%94%EB%94%94-12g-x-20%EA%B0%9C-1%ED%86%B5-%EC%86%8C%EB%B9%84%EA%B8%B0%ED%95%9C-261002/15245/category/28/display/1/",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-09-05T15:08:34.985Z"
+      }
+    },
+    {
+      "id": "dl_kakamuka-nearexpiry_f53eb21cd4bbb454",
+      "slug": "kakamuka-nearexpiry-category-display-6da7b2b8",
+      "title": "바다소리 황홀태 60g",
+      "summary": "바다소리 황홀태 60g 임박 세일 (5,000원 -> 1,900원)",
+      "description": "소비기한(2026.09.22) 임박 상품으로 바다소리 황홀태 60g을 정가 5,000원에서 할인된 1,900원에 판매합니다.",
+      "brand": {
+        "name": "바다소리"
+      },
+      "category": "food",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "original": 5000,
+        "final": 1900,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-09-06T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "benefit": {
+        "amount": 3100,
+        "isMax": false
+      },
+      "link": {
+        "url": "https://kakamuka.com/product/%EC%84%B8%EC%9D%BC-%EB%B0%94%EB%8B%A4%EC%86%8C%EB%A6%AC-%ED%99%A9%ED%99%80%ED%83%9C-60g-%EC%86%8C%EB%B9%84%EA%B8%B0%ED%95%9C-260922-%EA%B3%A0%EB%8B%A8%EB%B0%B1-%EC%98%81%EC%96%91%EC%95%88%EC%A3%BC/15312/category/28/display/1/",
+        "label": "구매하러 가기"
+      },
+      "howTo": ["상세 링크로 접속하여 상품을 구매합니다."],
+      "caution": [
+        "소비기한(2026년 9월 22일)이 임박한 할인 상품입니다.",
+        "재고 소진 시 조기 종료될 수 있습니다."
+      ],
+      "tags": ["바다소리", "황홀태", "먹태", "안주", "임박세일", "까까무카"],
+      "source": {
+        "name": "까까무카 소비기한 임박",
+        "url": "https://kakamuka.com/product/%EC%84%B8%EC%9D%BC-%EB%B0%94%EB%8B%A4%EC%86%8C%EB%A6%AC-%ED%99%A9%ED%99%80%ED%83%9C-60g-%EC%86%8C%EB%B9%84%EA%B8%B0%ED%95%9C-260922-%EA%B3%A0%EB%8B%A8%EB%B0%B1-%EC%98%81%EC%96%91%EC%95%88%EC%A3%BC/15312/category/28/display/1/",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-09-05T15:08:34.985Z"
+      }
+    },
+    {
+      "id": "dl_megagtv-refurb_c676afb30bcc5f49",
+      "slug": "megagtv-refurb-product-detail-html-18f1210d",
+      "title": "삼성TV 85TU7000 85인치 4K UHD 스마트TV 할인",
+      "summary": "삼성 85인치 4K UHD 스마트TV 리퍼 제품 할인 판매",
+      "description": "소비자가 3,590,000원 상당의 삼성 85인치 스마트TV(85TU7000)를 1,405,000원에 판매합니다.",
+      "brand": {
+        "name": "메가몰"
+      },
+      "category": "shopping",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "original": 3590000,
+        "final": 1405000,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-09-06T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "benefit": {
+        "amount": 2185000,
+        "isMax": false
+      },
+      "link": {
+        "url": "https://megagtv.com/product/detail.html?product_no=275&cate_no=23&display_group=1",
+        "label": "구매하러 가기"
+      },
+      "howTo": [
+        "제공된 링크를 통해 메가몰 상품 페이지에 접속합니다.",
+        "할인된 가격인 1,405,000원에 구매를 진행합니다."
+      ],
+      "caution": [
+        "리퍼 제품 특성상 외관 상태나 보증 조건을 상세 페이지에서 확인 후 구매하시기 바랍니다."
+      ],
+      "tags": ["삼성TV", "85인치TV", "스마트TV", "리퍼가전", "TV할인"],
+      "source": {
+        "name": "메가몰 리퍼 TV",
+        "url": "https://megagtv.com/product/detail.html?product_no=275&cate_no=23&display_group=1",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-09-05T15:08:34.985Z"
+      }
+    },
+    {
+      "id": "dl_megagtv-refurb_d170a039d426fa62",
+      "slug": "megagtv-refurb-product-detail-html-c7ae3f37",
+      "title": "삼성TV 50TU7000 50인치 4K UHD 스마트TV 할인",
+      "summary": "삼성 50인치 4K UHD 스마트TV를 49만원에 구매하세요.",
+      "description": "삼성TV 50TU7000 50인치TV 4K UHD 스마트TV 스탠드 벽걸이 설치 가능",
+      "brand": {
+        "name": "삼성"
+      },
+      "category": "shopping",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "original": 1180000,
+        "final": 490000,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-09-06T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "benefit": {
+        "amount": 690000,
+        "isMax": false
+      },
+      "link": {
+        "url": "https://megagtv.com/product/detail.html?product_no=36&cate_no=23&display_group=1"
+      },
+      "howTo": ["메가몰에서 삼성TV 50TU7000 구매"],
+      "tags": ["삼성", "TV", "50인치", "4K", "UHD", "스마트TV", "가전", "할인"],
+      "source": {
+        "name": "메가몰 리퍼 TV",
+        "url": "https://megagtv.com/product/detail.html?product_no=36&cate_no=23&display_group=1",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
         "method": "llm",
         "confidence": 0.9
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-09-04T18:31:43.340Z"
+        "updatedAt": "2026-09-05T15:08:34.985Z"
+      }
+    },
+    {
+      "id": "dl_megagtv-refurb_f1c28e854a8aaf56",
+      "slug": "megagtv-refurb-product-detail-html-2460fcef",
+      "title": "삼성 75인치 4K UHD 스마트TV 할인 판매",
+      "summary": "삼성 75인치 4K UHD 스마트TV를 865,000원에 구매하세요.",
+      "description": "상품명 : 삼성TV 75TU690T 75인치 4K UHD 스마트TV",
+      "brand": {
+        "name": "삼성"
+      },
+      "category": "shopping",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "original": 2390000,
+        "final": 865000,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-09-06T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "benefit": {
+        "amount": 1525000,
+        "isMax": false
+      },
+      "link": {
+        "url": "https://megagtv.com/product/detail.html?product_no=467&cate_no=23&display_group=1",
+        "label": "상품 페이지"
+      },
+      "howTo": ["상품 페이지에서 구매"],
+      "tags": ["삼성", "TV", "4K", "UHD", "스마트TV", "가전", "할인"],
+      "source": {
+        "name": "메가몰 리퍼 TV",
+        "url": "https://megagtv.com/product/detail.html?product_no=467&cate_no=23&display_group=1",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-09-05T15:08:34.985Z"
+      }
+    },
+    {
+      "id": "dl_megagtv-refurb_fc37256cf03b9fa4",
+      "slug": "megagtv-refurb-product-detail-html-88d2362b",
+      "title": "LG 43인치 4K UHD 스마트TV 46만원 판매",
+      "summary": "LG 43UQ9000 43인치 4K UHD 스마트TV를 46만원에 구매하세요.",
+      "description": "LGTV 43UQ9000 43인치 4K UHD 스마트TV 스탠드 벽걸이 가능",
+      "brand": {
+        "name": "LG"
+      },
+      "category": "shopping",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "original": 1250000,
+        "final": 460000,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-09-06T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "benefit": {
+        "amount": 790000,
+        "isMax": false
+      },
+      "link": {
+        "url": "https://megagtv.com/product/detail.html?product_no=329&cate_no=23&display_group=1",
+        "label": "상품 페이지"
+      },
+      "howTo": ["메가몰 상품 페이지에서 구매"],
+      "tags": ["LG", "TV", "스마트TV", "4K", "UHD", "리퍼"],
+      "source": {
+        "name": "메가몰 리퍼 TV",
+        "url": "https://megagtv.com/product/detail.html?product_no=329&cate_no=23&display_group=1",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-09-05T15:08:34.985Z"
       }
     },
     {
@@ -862,6 +1241,59 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-09-01T15:34:09.144Z"
+      }
+    },
+    {
+      "id": "dl_ppomppu-coupon_296ccbc77a93b344",
+      "slug": "ppomppu-coupon-zboard-view-php-e3147fa1",
+      "title": "[페이북] 미션 사이트 보기 참여 시 총 40원 적립",
+      "summary": "페이북 앱에서 키움 및 CJ더마켓 미션 참여 시 페이북 머니 총 40원 적립",
+      "description": "페이북 혜택 탭의 참여미션에서 키움 미션 3개(각 10원)와 CJ더마켓 미션 1개(10원)를 완료하고 총 40원을 적립할 수 있습니다.",
+      "brand": {
+        "name": "페이북"
+      },
+      "category": "app",
+      "dealType": "point",
+      "difficulty": "easy",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-09-06T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "benefit": {
+        "amount": 40,
+        "isMax": false
+      },
+      "link": {
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=118163",
+        "label": "원문 보기"
+      },
+      "howTo": [
+        "페이북 앱을 실행합니다.",
+        "혜택 탭 -> 참여미션 -> 참여적립 -> 참여하기 탭으로 이동합니다.",
+        "키움 미션 3개(각 10원)와 CJ더마켓 미션(10원)을 찾아 참여합니다."
+      ],
+      "caution": [
+        "CJ더마켓 앱이 설치되어 있지 않은 경우, 앱스토어 또는 플레이스토어 설치 화면에서 스크롤을 내리면 참여가 인정될 수 있습니다."
+      ],
+      "tags": ["페이북", "앱테크", "포인트적립", "사이트보기", "페이북머니"],
+      "source": {
+        "name": "뽐뿌 쿠폰게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=118163",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-09-05T15:08:34.985Z"
       }
     },
     {
@@ -1177,9 +1609,9 @@
     {
       "id": "dl_ppomppu-coupon_84ed2f4330fec4cd",
       "slug": "ppomppu-coupon-zboard-view-php-52a22d49",
-      "title": "[네이버페이] 결제홈 스크롤 및 클릭 적립 (최대 18원+)",
-      "summary": "네이버페이 결제홈 스크롤 15초 보기 및 클릭으로 네이버페이 포인트 적립",
-      "description": "네이버페이 결제홈에서 15초 동안 스크롤을 하면 10원을 적립받을 수 있으며, 제공된 링크들을 클릭하여 추가 포인트를 적립할 수 있습니다.",
+      "title": "네이버페이 결제홈 15초 스크롤 10원 적립",
+      "summary": "네이버페이 결제홈에서 15초 스크롤하고 10원 적립",
+      "description": "네이버페이 결제홈 하단을 위아래로 15초 스크롤하면 10원 적립. 계정당 월 5회까지 가능하며, 일부 계정은 참여 불가.",
       "brand": {
         "name": "네이버페이"
       },
@@ -1191,37 +1623,35 @@
         "currency": "KRW"
       },
       "limit": {
-        "firstComeFirstServed": false
+        "firstComeFirstServed": false,
+        "perPersonLimit": 5
       },
       "period": {
-        "startAt": "2026-09-02T00:00:00+09:00",
+        "startAt": "2026-09-01T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
       },
+      "benefit": {
+        "amount": 10,
+        "isMax": false
+      },
       "link": {
         "url": "https://new-m.pay.naver.com/historybenefit/home",
-        "label": "결제홈 적립 바로가기"
+        "label": "결제홈 바로가기"
       },
-      "howTo": [
-        "결제홈 링크에 접속하여 하단 위아래 스크롤을 15초 동안 진행하여 10원을 적립합니다. (월 최대 5회)",
-        "Npay 링크에 접속하여 화면 중앙 약간 아래의 적립 버튼을 클릭하여 3원을 적립합니다.",
-        "제공된 클릭 적립 링크들을 각각 클릭하여 포인트를 추가로 적립합니다."
-      ],
-      "caution": [
-        "계정에 따라 적립이 되지 않거나 버튼이 뜨지 않을 수 있습니다.",
-        "결제홈 스크롤 적립은 계정당 월 5회까지만 가능합니다."
-      ],
-      "tags": ["네이버페이", "네페", "클릭적립", "앱테크", "포인트적립"],
+      "howTo": ["네이버페이 결제홈 접속", "하단을 위아래로 15초 스크롤"],
+      "caution": ["계정당 월 5회까지만 적립", "일부 계정은 참여 불가"],
+      "tags": ["네이버페이", "포인트", "앱테크", "스크롤"],
       "source": {
         "name": "뽐뿌 쿠폰게시판",
-        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=118027",
-        "collectedAt": "2026-09-01T15:23:37.310Z",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=118171",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
         "method": "llm",
         "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-09-01T15:23:37.310Z"
+        "updatedAt": "2026-09-05T15:08:34.985Z"
       }
     },
     {
@@ -1422,6 +1852,60 @@
       }
     },
     {
+      "id": "dl_ppomppu-coupon_c47a84de1802fbb1",
+      "slug": "ppomppu-coupon-zboard-view-php-99df0108",
+      "title": "[네이버페이] 클릭 적립 5원",
+      "summary": "클릭만 해도 네이버페이 포인트 5원 즉시 적립",
+      "description": "네이버페이 클릭적립 이벤트 페이지에 접속하여 클릭하면 5원 포인트가 즉시 적립됩니다.",
+      "brand": {
+        "name": "네이버페이"
+      },
+      "category": "finance",
+      "dealType": "point",
+      "difficulty": "easy",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false,
+        "perPersonLimit": 1
+      },
+      "period": {
+        "startAt": "2026-09-06T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "benefit": {
+        "amount": 5,
+        "isMax": false
+      },
+      "link": {
+        "url": "https://campaign2.naver.com/npay/v2/click-point/?eventId=cr_2026090107_2609_0906",
+        "label": "적립하러 가기"
+      },
+      "howTo": [
+        "제공된 링크를 클릭하여 네이버페이 이벤트 페이지로 이동합니다.",
+        "페이지 내에서 클릭하여 5원 포인트를 즉시 적립받습니다."
+      ],
+      "caution": [
+        "네이버페이 계정당 1회만 참여 가능합니다.",
+        "예산 소진 시 조기 종료될 수 있습니다."
+      ],
+      "tags": ["네이버페이", "클릭적립", "앱테크", "공짜포인트"],
+      "source": {
+        "name": "뽐뿌 쿠폰게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=118175",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
+        "method": "llm",
+        "confidence": 1
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-09-05T15:08:34.985Z"
+      }
+    },
+    {
       "id": "dl_ppomppu-coupon_c5d786041e9751b3",
       "slug": "ppomppu-coupon-zboard-view-php-2d4235a3",
       "title": "네이버페이 클릭 포인트 총 27원 적립",
@@ -1471,6 +1955,55 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-09-04T18:31:43.340Z"
+      }
+    },
+    {
+      "id": "dl_ppomppu-coupon_f6ed1eac7a1c894d",
+      "slug": "ppomppu-coupon-zboard-view-php-14d5f982",
+      "title": "네이버페이 매일 브랜드뽑기 참여하고 10원 포인트 적립",
+      "summary": "매일 14시 오픈하는 네이버페이 브랜드뽑기에서 클릭하고 10원 포인트 적립",
+      "description": "네이버페이 브랜드뽑기에 매일 14시부터 참여할 수 있습니다. 빨간 문구가 보일 때 클릭하면 네이버페이 포인트 10원이 추가 적립됩니다.",
+      "brand": {
+        "name": "네이버페이"
+      },
+      "category": "finance",
+      "dealType": "point",
+      "difficulty": "easy",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-09-06T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "benefit": {
+        "amount": 10,
+        "isMax": false
+      },
+      "link": {
+        "url": "https://campaign2.naver.com/npay/branddraw/?from=pointtab",
+        "label": "참여하기"
+      },
+      "howTo": [
+        "매일 14시에 네이버페이 브랜드뽑기 페이지에 접속합니다.",
+        "빨간 문구가 보일 때 클릭하여 포인트를 적립합니다."
+      ],
+      "tags": ["네이버페이", "포인트", "앱테크", "무료", "매일"],
+      "source": {
+        "name": "뽐뿌 쿠폰게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=118170",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-09-05T15:08:34.985Z"
       }
     },
     {
@@ -1963,6 +2496,63 @@
       }
     },
     {
+      "id": "dl_ppomppu-hot_883d61a7afaf15e0",
+      "slug": "ppomppu-hot-zboard-view-php-a4881474",
+      "title": "롯데온 허시파피 남성 슈즈 63,360원 구매 및 후기 작성 시 2,000원 적립",
+      "summary": "허시파피 남성 소가죽 슈즈를 63,360원에 구매하고, 후기 작성 시 2,000원 추가 적립 받으세요.",
+      "description": "롯데온에서 허시파피 남성 소가죽 비즈니스 캐주얼 슈즈를 63,360원에 구매할 수 있습니다. 구매 후 후기를 작성하면 2,000원이 추가 적립됩니다. 무료 교환 및 반품이 가능합니다.",
+      "brand": {
+        "name": "롯데온"
+      },
+      "category": "shopping",
+      "dealType": "discount",
+      "difficulty": "normal",
+      "price": {
+        "final": 63360,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-09-06T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "benefit": {
+        "amount": 2000,
+        "isMax": false
+      },
+      "link": {
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=731929",
+        "label": "혜택 확인하기"
+      },
+      "howTo": [
+        "롯데온에서 허시파피 남성 소가죽 비즈니스 캐주얼 슈즈 63,360원에 구매",
+        "구매 후 후기 작성"
+      ],
+      "tags": [
+        "롯데온",
+        "허시파피",
+        "남성슈즈",
+        "소가죽",
+        "비즈니스캐주얼",
+        "포인트적립",
+        "리뷰이벤트"
+      ],
+      "source": {
+        "name": "뽐뿌 뽐뿌게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=731929",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-09-05T15:08:34.985Z"
+      }
+    },
+    {
       "id": "dl_ppomppu-hot_8ce4eda6d7862b83",
       "slug": "ppomppu-hot-zboard-view-php-46e873a3",
       "title": "오늘의집 까먹는 통 마카다미아 250g x 2세트 할인",
@@ -2211,6 +2801,187 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-09-01T15:23:37.310Z"
+      }
+    },
+    {
+      "id": "dl_ppomppu-hot_d4285074801b7b69",
+      "slug": "ppomppu-hot-zboard-view-php-8c86c241",
+      "title": "[롯데온] 국내산 한우 1++등급 보섭살 800g 할인",
+      "summary": "롯데온에서 국내산 한우 1++등급 보섭살 800g을 26,940원에 구매 가능",
+      "description": "쿠폰 적용 시 국내산 한우 1++등급 보섭살 800g을 26,940원에 구매 가능합니다. 온누리상품권으로 결제 시 체감 가격이 더 내려갑니다.",
+      "brand": {
+        "name": "롯데온"
+      },
+      "category": "shopping",
+      "dealType": "discount",
+      "difficulty": "normal",
+      "price": {
+        "final": 26940,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-09-06T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=731934",
+        "label": "혜택 확인하기"
+      },
+      "howTo": ["롯데온에서 쿠폰 적용 후 구매", "온누리상품권으로 결제 시 추가 할인"],
+      "tags": ["롯데온", "한우", "소고기", "보섭살", "할인", "온누리상품권"],
+      "source": {
+        "name": "뽐뿌 뽐뿌게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=731934",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
+        "method": "llm",
+        "confidence": 0.8
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-09-05T15:08:34.985Z"
+      }
+    },
+    {
+      "id": "dl_ppomppu-hot_e72a982d5cf10925",
+      "slug": "ppomppu-hot-zboard-view-php-c5d172f5",
+      "title": "[롯데온] 타미힐피거 포플린 스트라이프 셔츠",
+      "summary": "타미힐피거 아시안핏 포플린 스트라이프 셔츠 79,920원 무료배송",
+      "description": "병행수입이 아닌 아시안핏 공식 제품으로 핏이 잘 맞는 타미힐피거 포플린 스트라이프 셔츠를 최저가에 판매합니다.",
+      "brand": {
+        "name": "롯데온"
+      },
+      "category": "shopping",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "final": 79920,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-09-06T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=731935",
+        "label": "구매하러 가기"
+      },
+      "howTo": [
+        "원문 링크를 통해 롯데온 판매 페이지로 이동합니다.",
+        "할인 적용 여부를 확인하고 79,920원에 구매합니다."
+      ],
+      "caution": ["재고 상황에 따라 가격이 변동되거나 조기 품절될 수 있습니다."],
+      "tags": ["타미힐피거", "셔츠", "롯데온", "스트라이프셔츠", "아시안핏"],
+      "source": {
+        "name": "뽐뿌 뽐뿌게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=731935",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-09-05T15:08:34.985Z"
+      }
+    },
+    {
+      "id": "dl_ppomppu-hot_f70176803fbbed53",
+      "slug": "ppomppu-hot-zboard-view-php-e94a6153",
+      "title": "[이랜드몰] 시그니처 패치 컬러블럭 후드집업",
+      "summary": "15% 쿠폰 적용가 26,000원 무료배송",
+      "description": "블랙, 버건디, 네이비 3가지 컬러로 선택 가능한 시그니처 패치 컬러블럭 후드집업입니다. 청바지나 조거팬츠에 편하게 매치하기 좋습니다.",
+      "brand": {
+        "name": "이랜드몰"
+      },
+      "category": "shopping",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "final": 26000,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-09-06T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=731943",
+        "label": "구매하러 가기"
+      },
+      "howTo": [
+        "이랜드몰 상품 페이지에 접속합니다.",
+        "15% 쿠폰을 다운로드하여 적용합니다.",
+        "할인가 26,000원에 구매합니다."
+      ],
+      "tags": ["이랜드몰", "후드집업", "의류", "할인"],
+      "source": {
+        "name": "뽐뿌 뽐뿌게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=731943",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-09-05T15:08:34.985Z"
+      }
+    },
+    {
+      "id": "dl_ruliweb-market_02cb816a14cef2a5",
+      "slug": "ruliweb-market-board-read-f3db5196",
+      "title": "오늘의집 신상 찰떡아이스 2종 MIX 6종구성",
+      "summary": "오늘의집에서 찰떡아이스 2종 MIX 6종구성을 7% 쿠폰 적용 시 21,515원에 구매",
+      "description": "옵션1번으로 와 바닐라 4개 + 월드콘 바닐라 4개, 나머지 찰떡아이스 4종류로 각 4개씩 구성되어 있습니다.",
+      "brand": {
+        "name": "오늘의집"
+      },
+      "category": "food",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "original": 23134,
+        "final": 21515,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-09-06T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "benefit": {
+        "amount": 1619,
+        "isMax": false
+      },
+      "link": {
+        "url": "https://store.ohou.se/today_deals?activeIndex=2",
+        "label": "7% 쿠폰받고 적용하기"
+      },
+      "howTo": ["제공된 링크에서 7% 쿠폰을 받고 적용하여 구매"],
+      "tags": ["오늘의집", "찰떡아이스", "아이스크림", "할인", "쿠폰"],
+      "source": {
+        "name": "루리웹 예판·핫딜",
+        "url": "https://bbs.ruliweb.com/market/board/1020/read/106970",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-09-05T15:08:34.985Z"
       }
     },
     {
@@ -2544,6 +3315,159 @@
       }
     },
     {
+      "id": "dl_ruliweb-market_741e47f0eb6d0ba8",
+      "slug": "ruliweb-market-board-read-13077f74",
+      "title": "[지마켓] 지포스 RTX 5080 그래픽카드 특가 모음",
+      "summary": "지마켓에서 쿠폰 및 카드 할인이 적용된 RTX 5080 그래픽카드 특가 판매 및 게임 코드 등 사은품 증정",
+      "description": "지마켓에서 지포스 RTX 5080 그래픽카드 특가 행사를 진행합니다. 쿠폰과 카드 할인이 적용된 가격이며, 공통 사은품으로 '컨트롤 레조넌스' 게임 코드를 증정합니다. 유통사별로 스팀월렛, 네이버페이 등의 추가 증정 혜택이 있습니다. 페이북 경유 시 2% 적립 및 지마켓 멤버십 추가 적립이 가능합니다.",
+      "brand": {
+        "name": "지마켓"
+      },
+      "category": "shopping",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "final": 2138650,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": true
+      },
+      "period": {
+        "startAt": "2026-09-06T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://item.gmarket.co.kr/Item?goodsCode=4671990062",
+        "label": "PALIT RTX 5080 구매하기"
+      },
+      "howTo": [
+        "지마켓 상품 페이지에 접속합니다.",
+        "쿠폰 및 카드 할인을 적용하여 구매합니다.",
+        "페이북 경유 시 2% 추가 적립 혜택을 받습니다.",
+        "구매 후 유통사별 사은품(게임 코드, 스팀월렛, 네이버페이 등) 신청 방법을 확인하여 신청합니다."
+      ],
+      "caution": [
+        "카드 할인은 특정 카드사에 한해 적용될 수 있습니다.",
+        "일부 사은품(스팀월렛 등)은 선착순 증정으로 조기 종료될 수 있습니다.",
+        "유통사별로 증정 이벤트 조건 및 대상이 다를 수 있으므로 상세 페이지를 확인하시기 바랍니다."
+      ],
+      "tags": [
+        "지포스",
+        "RTX5080",
+        "그래픽카드",
+        "지마켓",
+        "할인",
+        "게임코드",
+        "스팀월렛",
+        "네이버페이"
+      ],
+      "source": {
+        "name": "루리웹 예판·핫딜",
+        "url": "https://bbs.ruliweb.com/market/board/1020/read/106965",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-09-05T15:08:34.985Z"
+      }
+    },
+    {
+      "id": "dl_ruliweb-market_75134c797cee1f70",
+      "slug": "ruliweb-market-board-read-94c6ce82",
+      "title": "[롯데온] 썬키스트 제로 소다 355ml 24+24개",
+      "summary": "썬키스트 제로 소다 355ml 48개 구성을 21,110원 무료배송에 판매",
+      "description": "썬키스트 제로 소다 355ml 24+24개(총 48개) 구성입니다. 오렌지, 자몽, 복숭아, 자두 중 선택하여 구매할 수 있습니다.",
+      "brand": {
+        "name": "롯데온"
+      },
+      "category": "food",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "final": 21110,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-09-06T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://bbs.ruliweb.com/market/board/1020/read/106963",
+        "label": "딜 확인하기"
+      },
+      "howTo": [
+        "제공된 링크를 통해 롯데온 판매 페이지로 이동합니다.",
+        "오렌지, 자몽, 복숭아, 자두 중 원하는 맛을 선택하여 구매를 진행합니다."
+      ],
+      "tags": ["썬키스트", "제로소다", "탄산음료", "롯데온", "핫딜"],
+      "source": {
+        "name": "루리웹 예판·핫딜",
+        "url": "https://bbs.ruliweb.com/market/board/1020/read/106963",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-09-05T15:08:34.985Z"
+      }
+    },
+    {
+      "id": "dl_ruliweb-market_95cdcd2aeb9877e1",
+      "slug": "ruliweb-market-board-read-49566185",
+      "title": "파스쿠찌 모바일상품권 3만원권 20% 할인",
+      "summary": "파스쿠찌 모바일상품권 3만원권을 23,800원에 구매하세요.",
+      "description": "잔액관리형 모바일상품권이며, 유효기간은 구매일로부터 93일입니다.",
+      "brand": {
+        "name": "파스쿠찌"
+      },
+      "category": "cafe",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "original": 30000,
+        "final": 23800,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-09-06T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "benefit": {
+        "amount": 6200,
+        "isMax": false
+      },
+      "link": {
+        "url": "https://bbs.ruliweb.com/market/board/1020/read/106962"
+      },
+      "howTo": ["11번가에서 파스쿠찌 모바일상품권 3만원권 구매"],
+      "caution": ["잔액관리형 상품권입니다.", "유효기간은 구매일로부터 93일입니다."],
+      "tags": ["파스쿠찌", "모바일상품권", "할인", "11번가"],
+      "source": {
+        "name": "루리웹 예판·핫딜",
+        "url": "https://bbs.ruliweb.com/market/board/1020/read/106962",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-09-05T15:08:34.985Z"
+      }
+    },
+    {
       "id": "dl_ruliweb-market_9f03651565ca1de9",
       "slug": "ruliweb-market-board-read-8e42b71e",
       "title": "[롯데온] 닌텐도 스위치 파이어엠블렘 다그단 에디션",
@@ -2772,6 +3696,198 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-09-04T18:31:43.340Z"
+      }
+    },
+    {
+      "id": "dl_steam-specials_2457244406300dc3",
+      "slug": "steam-specials-app-bodycam-09099f36",
+      "title": "Steam Bodycam 20% 할인",
+      "summary": "Steam에서 게임 Bodycam을 20% 할인된 30,000원에 구매할 수 있습니다.",
+      "description": "Steam 특별 할인을 통해 Bodycam을 정가 37,500원에서 20% 할인된 30,000원에 판매합니다.",
+      "brand": {
+        "name": "Steam"
+      },
+      "category": "culture",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "original": 37500,
+        "final": 30000,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-09-06T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "benefit": {
+        "amount": 7500,
+        "isMax": false
+      },
+      "link": {
+        "url": "https://store.steampowered.com/app/2406770/Bodycam/?snr=1_7_7_2300_150_1",
+        "label": "Steam에서 보기"
+      },
+      "howTo": ["Steam 상점 페이지에 접속합니다.", "Bodycam을 장바구니에 담고 결제를 진행합니다."],
+      "tags": ["Steam", "스팀", "Bodycam", "바디캠", "게임할인", "PC게임"],
+      "source": {
+        "name": "Steam 특별 할인",
+        "url": "https://store.steampowered.com/app/2406770/Bodycam/?snr=1_7_7_2300_150_1",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-09-05T15:08:34.985Z"
+      }
+    },
+    {
+      "id": "dl_steam-specials_34e81d117c1ea68c",
+      "slug": "steam-specials-app-red-dead-redemption-2-0a857c7e",
+      "title": "Red Dead Redemption 2 75% 할인",
+      "summary": "스팀에서 Red Dead Redemption 2를 75% 할인된 가격에 구매하세요.",
+      "description": "Red Dead Redemption 2가 정가 73,000원에서 75% 할인된 18,250원에 판매됩니다.",
+      "brand": {
+        "name": "Steam"
+      },
+      "category": "culture",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "original": 73000,
+        "final": 18250,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-09-06T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "benefit": {
+        "amount": 54750,
+        "isMax": false
+      },
+      "link": {
+        "url": "https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/?snr=1_7_7_2300_150_1",
+        "label": "할인 바로가기"
+      },
+      "howTo": ["Steam 상점 페이지에서 Red Dead Redemption 2 구매"],
+      "tags": ["스팀", "게임", "할인", "Red Dead Redemption 2"],
+      "source": {
+        "name": "Steam 특별 할인",
+        "url": "https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/?snr=1_7_7_2300_150_1",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-09-05T15:08:34.985Z"
+      }
+    },
+    {
+      "id": "dl_steam-specials_55f3c8fd6c9cc9ca",
+      "slug": "steam-specials-app-warhammer-40000-space-marine-2-31394b58",
+      "title": "Steam Warhammer 40,000: Space Marine 2 75% 할인",
+      "summary": "Warhammer 40,000: Space Marine 2 75% 할인 특가",
+      "description": "Steam에서 Warhammer 40,000: Space Marine 2를 75% 할인된 가격 17,450원에 구매할 수 있습니다.",
+      "brand": {
+        "name": "Steam"
+      },
+      "category": "culture",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "original": 69800,
+        "final": 17450,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-09-06T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "benefit": {
+        "amount": 52350,
+        "isMax": false
+      },
+      "link": {
+        "url": "https://store.steampowered.com/app/2183900/Warhammer_40000_Space_Marine_2/?snr=1_7_7_2300_150_1",
+        "label": "Steam에서 구매하기"
+      },
+      "howTo": [
+        "Steam 상점 페이지에 접속합니다.",
+        "Warhammer 40,000: Space Marine 2를 할인된 가격에 구매합니다."
+      ],
+      "tags": ["Steam", "스팀", "게임", "스페이스마린2", "할인"],
+      "source": {
+        "name": "Steam 특별 할인",
+        "url": "https://store.steampowered.com/app/2183900/Warhammer_40000_Space_Marine_2/?snr=1_7_7_2300_150_1",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-09-05T15:08:34.985Z"
+      }
+    },
+    {
+      "id": "dl_steam-specials_9859f42455882c42",
+      "slug": "steam-specials-app-enhanced-4829b287",
+      "title": "붉은사막 Enhanced 20% 할인",
+      "summary": "붉은사막 Enhanced 버전을 20% 할인된 가격에 구매할 수 있습니다.",
+      "description": "스팀에서 붉은사막 Enhanced 버전을 정가 79,800원에서 20% 할인된 63,840원에 판매 중입니다.",
+      "brand": {
+        "name": "스팀 (Steam)"
+      },
+      "category": "culture",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "original": 79800,
+        "final": 63840,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-09-06T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "benefit": {
+        "amount": 15960,
+        "isMax": false
+      },
+      "link": {
+        "url": "https://store.steampowered.com/app/3321460/_Enhanced/?snr=1_7_7_2300_150_1",
+        "label": "스팀에서 보기"
+      },
+      "howTo": ["스팀 상점 페이지에 접속합니다.", "장바구니에 담고 결제를 진행합니다."],
+      "caution": ["할인 기간이 명시되어 있지 않으므로 조기 종료될 수 있습니다."],
+      "tags": ["붉은사막", "스팀", "게임할인", "스팀할인", "붉은사막Enhanced"],
+      "source": {
+        "name": "Steam 특별 할인",
+        "url": "https://store.steampowered.com/app/3321460/_Enhanced/?snr=1_7_7_2300_150_1",
+        "collectedAt": "2026-09-05T15:08:34.985Z",
+        "method": "llm",
+        "confidence": 0.85
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-09-05T15:08:34.985Z"
       }
     }
   ]

@@ -83,6 +83,44 @@
       "categoryHint": "finance"
     },
     {
+      "id": "steam-specials",
+      "name": "Steam 특별 할인",
+      "kind": "html",
+      "url": "https://store.steampowered.com/search/?specials=1&cc=kr&l=koreana",
+      "enabled": true,
+      "maxItems": 8,
+      "selectors": {
+        "item": "a.search_result_row"
+      },
+      "categoryHint": "culture"
+    },
+    {
+      "id": "kakamuka-nearexpiry",
+      "name": "까까무카 소비기한 임박",
+      "kind": "html",
+      "url": "https://kakamuka.com/category/%EC%86%8C%EB%B9%84%EA%B8%B0%ED%95%9C-%EC%9E%84%EB%B0%95%EC%83%81%ED%92%88/28/",
+      "enabled": true,
+      "maxItems": 8,
+      "selectors": {
+        "item": ".xans-product-listnormal ul.prdList > li[data-price]",
+        "link": "p.name > a"
+      },
+      "categoryHint": "food"
+    },
+    {
+      "id": "megagtv-refurb",
+      "name": "메가몰 리퍼 TV",
+      "kind": "html",
+      "url": "https://megagtv.com/product/list.html?cate_no=23",
+      "enabled": true,
+      "maxItems": 6,
+      "selectors": {
+        "item": ".xans-product-normalpackage ul.prdList > li[id^=\"anchorBoxId_\"]",
+        "link": "p.name a"
+      },
+      "categoryHint": "shopping"
+    },
+    {
       "id": "eomisae-fs",
       "name": "어미새 인기정보",
       "kind": "html",

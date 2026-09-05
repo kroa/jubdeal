@@ -214,14 +214,28 @@ export const htmlAdapter: SourceAdapter = {
         ? normalizeWhitespace(node.find(selectors.title).first().text())
         : normalizeWhitespace(anchor.text());
 
+      /*
+      상세를 열지 말지.
+
+      `selectors.detail` 이 없으면 목록 텍스트만 씁니다.
+      쇼핑몰 목록은 상품명·정가·판매가가 이미 한 줄에 다 있어
+      상세를 여는 만큼 요청 수와 대기 시간(항목당 3~5초)만 늘어납니다.
+      20건짜리 목록이면 상세 20회 = 1분을 그냥 버립니다.
+      게시판처럼 본문을 읽어야 하는 소스만 detail 을 지정하세요.
+    */
       let text: string;
-      budget -= 1;
-      try {
-        const detailHtml = await ctx.fetchText(detailUrl);
-        text = htmlToText(detailHtml, selectors.detail);
-      } catch (error) {
-        ctx.log(`[${source.id}] 상세 페이지 실패, 건너뜁니다: ${detailUrl} — ${String(error)}`);
-        continue;
+
+      if (!selectors.detail) {
+        text = normalizeWhitespace($(element).text());
+      } else {
+        budget -= 1;
+        try {
+          const detailHtml = await ctx.fetchText(detailUrl);
+          text = htmlToText(detailHtml, selectors.detail);
+        } catch (error) {
+          ctx.log(`[${source.id}] 상세 페이지 실패, 건너뜁니다: ${detailUrl} — ${String(error)}`);
+          continue;
+        }
       }
 
       if (text.length < 40) {
