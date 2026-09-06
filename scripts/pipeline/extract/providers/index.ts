@@ -44,10 +44,19 @@ const COOLDOWN_MS: Record<string, number> = {
 };
 
 /** 한 요청에서 쿨다운을 기다리는 최대 횟수 */
-const MAX_COOLDOWN_WAITS = 2;
+const MAX_COOLDOWN_WAITS = 1;
 
-/** 한 번에 기다릴 수 있는 최대 시간. 이보다 오래 걸리면 포기합니다. */
-const MAX_WAIT_MS = 65_000;
+/**
+ * 한 번에 기다릴 수 있는 최대 시간.
+ *
+ * 짧게 잡은 이유: 이 대기는 **항목마다** 일어납니다. 60초까지 기다리게 두면
+ * 한도가 계속 차 있을 때 100건이 100분이 됩니다.
+ *
+ * 대신 기다리지 않고 넘어가도 손해가 크지 않습니다. 파이프라인은 항목을
+ * 하나씩 처리하므로 그동안 시간이 흐르고, 쿨다운이 끝나면 다음 항목부터
+ * 저절로 다시 씁니다. 잃는 것은 쿨다운이 도는 동안의 몇 건뿐입니다.
+ */
+const MAX_WAIT_MS = 25_000;
 
 export class ProviderChain implements LlmProvider {
   readonly name = 'chain';

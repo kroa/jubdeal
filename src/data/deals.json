@@ -48,13 +48,7 @@
         "최종 혜택 수령 후 12개월 이내 탈회 시 혜택 금액이 청구되거나 자동 출금될 수 있음",
         "상품권, 선불충전, 후불교통, 단기/장기카드대출, 연회비 등은 실적 금액에서 제외"
       ],
-      "tags": [
-        "신한카드",
-        "카드이벤트",
-        "캐시백",
-        "신용카드발급",
-        "아정당"
-      ],
+      "tags": ["신한카드", "카드이벤트", "캐시백", "신용카드발급", "아정당"],
       "source": {
         "name": "아정당 카드 이벤트",
         "url": "https://www.ajd.co.kr/card/event/detail/348",
@@ -176,13 +170,7 @@
         "2022년 1월 1일 이후 삼성카드의 다른 이벤트 혜택을 받은 경우 대상에서 제외됩니다.",
         "혜택 제공일(2026.11.18 이후)로부터 12개월 이내 탈회 시 제공된 혜택이 청구될 수 있습니다."
       ],
-      "tags": [
-        "삼성카드",
-        "신용카드",
-        "캐시백",
-        "카드이벤트",
-        "모니모"
-      ],
+      "tags": ["삼성카드", "신용카드", "캐시백", "카드이벤트", "모니모"],
       "source": {
         "name": "아정당 카드 이벤트",
         "url": "https://www.ajd.co.kr/card/event/detail/341",
@@ -239,12 +227,7 @@
         "온라인 채널이 아닌 오프라인 채널 및 고객센터를 통해 대상 카드를 보유한 경우 혜택 제외",
         "누적 이용 금액 합산 제외 항목: 승인 취소, 부분 취소, 환불, 장기/단기카드대출, 연회비, 제수수료, 이자, 상품권 등 현금성 유가증권 구매 및 선불 카드 구매·충전 금액, 국제브랜드 수수료 및 해외 이용 수수료, 현장 할인 금액"
       ],
-      "tags": [
-        "현대카드",
-        "캐시백",
-        "카드발급",
-        "에너지플러스"
-      ],
+      "tags": ["현대카드", "캐시백", "카드발급", "에너지플러스"],
       "source": {
         "name": "아정당 카드 이벤트",
         "url": "https://www.ajd.co.kr/card/event/detail/337",
@@ -288,12 +271,7 @@
       "link": {
         "url": "https://www.card-gorilla.com/event/detail/3"
       },
-      "tags": [
-        "KB국민카드",
-        "신용카드",
-        "캐시백",
-        "카드발급"
-      ],
+      "tags": ["KB국민카드", "신용카드", "캐시백", "카드발급"],
       "source": {
         "name": "카드고릴라 카드 이벤트",
         "url": "https://www.card-gorilla.com/event/detail/3",
@@ -338,17 +316,9 @@
         "url": "https://www.card-gorilla.com/event/detail/1",
         "label": "자세히 보기"
       },
-      "howTo": [
-        "카드 신청"
-      ],
-      "caution": [
-        "원문에 참여 방법 및 일정이 명시되지 않음"
-      ],
-      "tags": [
-        "삼성카드",
-        "iD SELECT UP",
-        "cashback"
-      ],
+      "howTo": ["카드 신청"],
+      "caution": ["원문에 참여 방법 및 일정이 명시되지 않음"],
+      "tags": ["삼성카드", "iD SELECT UP", "cashback"],
       "source": {
         "name": "카드고릴라 카드 이벤트",
         "url": "https://www.card-gorilla.com/event/detail/1",
@@ -393,14 +363,8 @@
         "url": "https://www.card-gorilla.com/event/detail/7",
         "label": "카드고릴라에서 자세히 보기"
       },
-      "howTo": [
-        "카드 발급 및 사용"
-      ],
-      "tags": [
-        "카드",
-        "캐시백",
-        "신규 발급"
-      ],
+      "howTo": ["카드 발급 및 사용"],
+      "tags": ["카드", "캐시백", "신규 발급"],
       "source": {
         "name": "카드고릴라 카드 이벤트",
         "url": "https://www.card-gorilla.com/event/detail/7",
@@ -445,20 +409,9 @@
         "url": "https://www.card-gorilla.com/event/detail/2",
         "label": "카드 이벤트 확인하기"
       },
-      "howTo": [
-        "이벤트 페이지에서 대상 신한카드 신청 및 발급",
-        "이벤트 조건에 맞춰 카드 이용"
-      ],
-      "caution": [
-        "카드 상품별 혜택 금액 및 상세 제공 조건이 상이할 수 있습니다."
-      ],
-      "tags": [
-        "신한카드",
-        "카드고릴라",
-        "신용카드",
-        "캐시백",
-        "카드발급이벤트"
-      ],
+      "howTo": ["이벤트 페이지에서 대상 신한카드 신청 및 발급", "이벤트 조건에 맞춰 카드 이용"],
+      "caution": ["카드 상품별 혜택 금액 및 상세 제공 조건이 상이할 수 있습니다."],
+      "tags": ["신한카드", "카드고릴라", "신용카드", "캐시백", "카드발급이벤트"],
       "source": {
         "name": "카드고릴라 카드 이벤트",
         "url": "https://www.card-gorilla.com/event/detail/2",
@@ -504,21 +457,14 @@
         "url": "https://www.uplusmvno.com/plan/plan-list/detail?mvnopPpId=CP0000004551&mvnopPtnId=PC0000000020",
         "label": "A모바일 요금제 상세 보기"
       },
-      "howTo": [
-        "원문의 링크에서 요금제 가입 절차 진행"
-      ],
+      "howTo": ["원문의 링크에서 요금제 가입 절차 진행"],
       "caution": [
         "종료일 미상",
         "ropol 가입 당월 추가 데이터 10GB 미제공, 익월부터 매월 첫 번째 평일 오후 지급",
         "월 중간 가입 시 기본 데이터 10GB 일할 계산",
         "eSIM 재발급 시 1회당 2,750원"
       ],
-      "tags": [
-        "알폰",
-        "U+망",
-        "10GB",
-        "1,000원 이하"
-      ],
+      "tags": ["알폰", "U+망", "10GB", "1,000원 이하"],
       "source": {
         "name": "클리앙 알뜰구매",
         "url": "https://www.clien.net/service/board/jirum/19256696",
@@ -563,18 +509,8 @@
       "link": {
         "url": "https://www.clien.net/service/board/jirum/19257949"
       },
-      "howTo": [
-        "프리메라 맨 오가니언스 2종 세트 구매",
-        "포인트 적립"
-      ],
-      "tags": [
-        "프리메라",
-        "맨 오가니언스",
-        "2종 세트",
-        "남성 화장품",
-        "스킨케어",
-        "포인트 적립"
-      ],
+      "howTo": ["프리메라 맨 오가니언스 2종 세트 구매", "포인트 적립"],
+      "tags": ["프리메라", "맨 오가니언스", "2종 세트", "남성 화장품", "스킨케어", "포인트 적립"],
       "source": {
         "name": "클리앙 알뜰구매",
         "url": "https://www.clien.net/service/board/jirum/19257949",
@@ -619,21 +555,9 @@
         "url": "https://www.musinsa.com/products/4486573",
         "label": "구매 링크"
       },
-      "howTo": [
-        "상품 링크 접속",
-        "FW 신상 30% 쿠폰 적용 후 구매"
-      ],
-      "caution": [
-        "등급 및 적립금에 따라 추가 할인 가능",
-        "30% 쿠폰은 다른 상품에도 적용 가능"
-      ],
-      "tags": [
-        "무신사",
-        "LEE",
-        "패딩머플러",
-        "할인",
-        "패션"
-      ],
+      "howTo": ["상품 링크 접속", "FW 신상 30% 쿠폰 적용 후 구매"],
+      "caution": ["등급 및 적립금에 따라 추가 할인 가능", "30% 쿠폰은 다른 상품에도 적용 가능"],
+      "tags": ["무신사", "LEE", "패딩머플러", "할인", "패션"],
       "source": {
         "name": "클리앙 알뜰구매",
         "url": "https://www.clien.net/service/board/jirum/19258187",
@@ -686,14 +610,7 @@
         "체감가 99만 원은 추가 할인 및 상품권 혜택이 모두 적용된 기준일 수 있습니다.",
         "판매 조건 및 가격은 판매처 사정에 따라 변경될 수 있습니다."
       ],
-      "tags": [
-        "삼성전자",
-        "TV",
-        "65인치",
-        "MiniLED",
-        "가전",
-        "특가"
-      ],
+      "tags": ["삼성전자", "TV", "65인치", "MiniLED", "가전", "특가"],
       "source": {
         "name": "클리앙 알뜰구매",
         "url": "https://www.clien.net/service/board/jirum/19257976",
@@ -734,20 +651,12 @@
         "url": "https://m.e-himart.co.kr/app/goods/goodsDetail?goodsNo=0060970556",
         "label": "구매하러 가기"
       },
-      "howTo": [
-        "구매 링크로 이동하여 상품을 구매합니다."
-      ],
+      "howTo": ["구매 링크로 이동하여 상품을 구매합니다."],
       "caution": [
         "가격 오류 가능성이 있어 주문 취소될 수 있습니다.",
         "재고 소진 시 조기 종료될 수 있습니다."
       ],
-      "tags": [
-        "하이마트",
-        "쿠쿠",
-        "하이라이트",
-        "특가",
-        "무료배송"
-      ],
+      "tags": ["하이마트", "쿠쿠", "하이라이트", "특가", "무료배송"],
       "source": {
         "name": "클리앙 알뜰구매",
         "url": "https://www.clien.net/service/board/jirum/19258458",
@@ -790,13 +699,7 @@
       "howTo": [
         "구글 플레이 스토어에서 'Autumn Frame'으로 검색하거나 아래 링크에서 다운로드합니다."
       ],
-      "tags": [
-        "WearOS",
-        "워치페이스",
-        "일시무료",
-        "가을",
-        "할로윈"
-      ],
+      "tags": ["WearOS", "워치페이스", "일시무료", "가을", "할로윈"],
       "source": {
         "name": "클리앙 알뜰구매",
         "url": "https://www.clien.net/service/board/jirum/19258362",
@@ -836,15 +739,8 @@
         "url": "https://play.google.com/store/apps/dev?id=9082158258460846757",
         "label": "다운로드"
       },
-      "howTo": [
-        "제공된 링크를 통해 Google Play 스토어에서 워치 페이스 다운로드"
-      ],
-      "tags": [
-        "WearOS",
-        "워치페이스",
-        "무료앱",
-        "앱테크"
-      ],
+      "howTo": ["제공된 링크를 통해 Google Play 스토어에서 워치 페이스 다운로드"],
+      "tags": ["WearOS", "워치페이스", "무료앱", "앱테크"],
       "source": {
         "name": "클리앙 알뜰구매",
         "url": "https://www.clien.net/service/board/jirum/19258942",
@@ -885,17 +781,8 @@
         "url": "https://smartstore.naver.com/oud_fitness/products/11843500770",
         "label": "구매하기"
       },
-      "howTo": [
-        "네이버 스마트스토어에서 필라 배드민턴채 구매"
-      ],
-      "tags": [
-        "필라",
-        "배드민턴",
-        "라켓",
-        "스포츠",
-        "네이버",
-        "무료배송"
-      ],
+      "howTo": ["네이버 스마트스토어에서 필라 배드민턴채 구매"],
+      "tags": ["필라", "배드민턴", "라켓", "스포츠", "네이버", "무료배송"],
       "source": {
         "name": "클리앙 알뜰구매",
         "url": "https://www.clien.net/service/board/jirum/19258223",
@@ -934,17 +821,8 @@
       "link": {
         "url": "https://www.dealbada.com/bbs/board.php?bo_table=event_free&amp;wr_id=27104"
       },
-      "howTo": [
-        "광안리해수욕장 특설무대 직접 방문"
-      ],
-      "tags": [
-        "무료",
-        "콘서트",
-        "축제",
-        "부산",
-        "광안리",
-        "청년의날"
-      ],
+      "howTo": ["광안리해수욕장 특설무대 직접 방문"],
+      "tags": ["무료", "콘서트", "축제", "부산", "광안리", "청년의날"],
       "source": {
         "name": "딜바다 무료이벤트",
         "url": "https://www.dealbada.com/bbs/board.php?bo_table=event_free&amp;wr_id=27104",
@@ -989,13 +867,7 @@
         "url": "https://kakamuka.com/product/%EC%84%B8%EC%9D%BC-%EC%98%A4%EB%A6%AC%EC%98%A8-%EB%AC%B4%EB%9A%9D%EB%9A%9D-%EA%B0%90%EC%9E%90%EC%B9%A9-106g-%ED%86%B5%ED%9B%84%EC%B6%94-%EC%86%8C%EA%B8%88%EB%A7%9B-%EC%86%8C%EB%B9%84%EA%B8%B0%ED%95%9C-260928/15506/category/28/display/1/",
         "label": "까까무카에서 상품 확인"
       },
-      "tags": [
-        "감자Ship",
-        "오리온",
-        "세일",
-        "소금 맛",
-        "통후추"
-      ],
+      "tags": ["감자Ship", "오리온", "세일", "소금 맛", "통후추"],
       "source": {
         "name": "까까무카 소비기한 임박",
         "url": "https://kakamuka.com/product/%EC%84%B8%EC%9D%BC-%EC%98%A4%EB%A6%AC%EC%98%A8-%EB%AC%B4%EB%9A%9D%EB%9A%9D-%EA%B0%90%EC%9E%90%EC%B9%A9-106g-%ED%86%B5%ED%9B%84%EC%B6%94-%EC%86%8C%EA%B8%88%EB%A7%9B-%EC%86%8C%EB%B9%84%EA%B8%B0%ED%95%9C-260928/15506/category/28/display/1/",
@@ -1039,18 +911,9 @@
       "link": {
         "url": "https://kakamuka.com/product/%EC%84%B8%EC%9D%BC-%EB%93%9C%EB%9E%98%EA%B3%A4-%EC%BD%9C%EB%9D%BC%ED%96%A5-%EB%B3%BC%EC%BA%94%EB%94%94-12g-%EC%BA%94%EB%94%94%EA%B1%B4-%EC%9E%A5%EB%82%9C%EA%B0%90-%EC%86%8C%EB%B9%84%EA%B8%B0%ED%95%9C-261002/15244/category/28/display/1/"
       },
-      "howTo": [
-        "까까무카 웹사이트에서 상품 구매"
-      ],
-      "caution": [
-        "소비기한은 2026년 10월 2일까지입니다."
-      ],
-      "tags": [
-        "소비기한임박",
-        "캔디",
-        "장난감",
-        "할인"
-      ],
+      "howTo": ["까까무카 웹사이트에서 상품 구매"],
+      "caution": ["소비기한은 2026년 10월 2일까지입니다."],
+      "tags": ["소비기한임박", "캔디", "장난감", "할인"],
       "source": {
         "name": "까까무카 소비기한 임박",
         "url": "https://kakamuka.com/product/%EC%84%B8%EC%9D%BC-%EB%93%9C%EB%9E%98%EA%B3%A4-%EC%BD%9C%EB%9D%BC%ED%96%A5-%EB%B3%BC%EC%BA%94%EB%94%94-12g-%EC%BA%94%EB%94%94%EA%B1%B4-%EC%9E%A5%EB%82%9C%EA%B0%90-%EC%86%8C%EB%B9%84%EA%B8%B0%ED%95%9C-261002/15244/category/28/display/1/",
@@ -1104,13 +967,7 @@
         "소비기한이 2026년 10월 2일까지인 임박 상품입니다. 구매 시 참고하시기 바랍니다.",
         "재고 소진 시 예고 없이 판매가 종료될 수 있습니다."
       ],
-      "tags": [
-        "드래곤볼캔디",
-        "콜라향캔디",
-        "임박세일",
-        "까까무카",
-        "할인"
-      ],
+      "tags": ["드래곤볼캔디", "콜라향캔디", "임박세일", "까까무카", "할인"],
       "source": {
         "name": "까까무카 소비기한 임박",
         "url": "https://kakamuka.com/product/%EC%84%B8%EC%9D%BC-%EB%93%9C%EB%9E%98%EA%B3%A4-%EC%BD%9C%EB%9D%BC%ED%96%A5-%EB%B3%BC%EC%BA%94%EB%94%94-12g-x-20%EA%B0%9C-1%ED%86%B5-%EC%86%8C%EB%B9%84%EA%B8%B0%ED%95%9C-261002/15245/category/28/display/1/",
@@ -1155,12 +1012,7 @@
         "url": "https://kakamuka.com/product/%EC%84%B8%EC%9D%BC-%EB%B0%94%EB%8B%A4%EC%86%8C%EB%A6%AC-%ED%99%A9%ED%99%80%ED%83%9C-60g-%EC%86%8C%EB%B9%84%EA%B8%B0%ED%95%9C-260922-%EA%B3%A0%EB%8B%A8%EB%B0%B1-%EC%98%81%EC%96%91%EC%95%88%EC%A3%BC/15312/category/28/display/1/",
         "label": "구매하기"
       },
-      "tags": [
-        "소비기한 임박",
-        "할인",
-        "영양안주",
-        "해산물"
-      ],
+      "tags": ["소비기한 임박", "할인", "영양안주", "해산물"],
       "source": {
         "name": "까까무카 소비기한 임박",
         "url": "https://kakamuka.com/product/%EC%84%B8%EC%9D%BC-%EB%B0%94%EB%8B%A4%EC%86%8C%EB%A6%AC-%ED%99%A9%ED%99%80%ED%83%9C-60g-%EC%86%8C%EB%B9%84%EA%B8%B0%ED%95%9C-260922-%EA%B3%A0%EB%8B%A8%EB%B0%B1-%EC%98%81%EC%96%91%EC%95%88%EC%A3%BC/15312/category/28/display/1/",
@@ -1213,13 +1065,7 @@
       "caution": [
         "리퍼 제품 특성상 외관 상태나 보증 조건을 상세 페이지에서 확인 후 구매하시기 바랍니다."
       ],
-      "tags": [
-        "삼성TV",
-        "85인치TV",
-        "스마트TV",
-        "리퍼가전",
-        "TV할인"
-      ],
+      "tags": ["삼성TV", "85인치TV", "스마트TV", "리퍼가전", "TV할인"],
       "source": {
         "name": "메가몰 리퍼 TV",
         "url": "https://megagtv.com/product/detail.html?product_no=275&cate_no=23&display_group=1",
@@ -1265,16 +1111,8 @@
         "url": "https://megagtv.com/product/detail.html?product_no=36&cate_no=23&display_group=1",
         "label": "구매하기"
       },
-      "howTo": [
-        "메가몰 리퍼 TV 상품 페이지에서 구매"
-      ],
-      "tags": [
-        "TV",
-        "스마트TV",
-        "4K UHD",
-        "삼성",
-        "할인"
-      ],
+      "howTo": ["메가몰 리퍼 TV 상품 페이지에서 구매"],
+      "tags": ["TV", "스마트TV", "4K UHD", "삼성", "할인"],
       "source": {
         "name": "메가몰 리퍼 TV",
         "url": "https://megagtv.com/product/detail.html?product_no=36&cate_no=23&display_group=1",
@@ -1320,20 +1158,11 @@
         "url": "https://megagtv.com/product/detail.html?product_no=467&cate_no=23&display_group=1",
         "label": "상품 보기"
       },
-      "howTo": [
-        "메가몰 리퍼 TV 상품 페이지에서 구매"
-      ],
+      "howTo": ["메가몰 리퍼 TV 상품 페이지에서 구매"],
       "caution": [
         "이 정보는 2026-09-06 기준 확인된东西이며, 실제와 다를 수 있습니다. 원문에 종료일·수량·참여방법이 없음"
       ],
-      "tags": [
-        "TV",
-        "스마트TV",
-        "75인치",
-        "4K",
-        "삼성",
-        "가전"
-      ],
+      "tags": ["TV", "스마트TV", "75인치", "4K", "삼성", "가전"],
       "source": {
         "name": "메가몰 리퍼 TV",
         "url": "https://megagtv.com/product/detail.html?product_no=467&cate_no=23&display_group=1",
@@ -1379,17 +1208,8 @@
         "url": "https://megagtv.com/product/detail.html?product_no=329&cate_no=23&display_group=1",
         "label": "상품 페이지"
       },
-      "howTo": [
-        "메가몰 상품 페이지에서 구매"
-      ],
-      "tags": [
-        "LG",
-        "TV",
-        "스마트TV",
-        "4K",
-        "UHD",
-        "리퍼"
-      ],
+      "howTo": ["메가몰 상품 페이지에서 구매"],
+      "tags": ["LG", "TV", "스마트TV", "4K", "UHD", "리퍼"],
       "source": {
         "name": "메가몰 리퍼 TV",
         "url": "https://megagtv.com/product/detail.html?product_no=329&cate_no=23&display_group=1",
@@ -1434,12 +1254,7 @@
       "link": {
         "url": "https://www.museum.go.kr/MUSEUM/contents/M0403010000.do?schM=view&type=type1&typeCode=culture&showId=3488404"
       },
-      "tags": [
-        "무료",
-        "문화",
-        "공연",
-        "박물관"
-      ],
+      "tags": ["무료", "문화", "공연", "박물관"],
       "source": {
         "name": "국립중앙박물관 공연·행사",
         "url": "https://www.museum.go.kr/MUSEUM/contents/M0403010000.do?schM=view&type=type1&typeCode=culture&showId=3488404",
@@ -1480,17 +1295,8 @@
         "url": "https://campaign2.naver.com/npay/v2/click-point/?eventId=cr_2026090111_2609_1137",
         "label": "15원 받기"
       },
-      "howTo": [
-        "제공된 링크를 통해 네이버페이 현대카드 이벤트에 참여"
-      ],
-      "tags": [
-        "네이버페이",
-        "현대카드",
-        "15원",
-        "클릭",
-        "포인트",
-        "앱테크"
-      ],
+      "howTo": ["제공된 링크를 통해 네이버페이 현대카드 이벤트에 참여"],
+      "tags": ["네이버페이", "현대카드", "15원", "클릭", "포인트", "앱테크"],
       "source": {
         "name": "뽐뿌 쿠폰게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=118026",
@@ -1541,15 +1347,7 @@
         "선착순 10만명 한정",
         "네이버페이 쿠폰은 2026년 10월 25일까지 등록 필요"
       ],
-      "tags": [
-        "신한은행",
-        "슈퍼SOL",
-        "네이버페이",
-        "앱테크",
-        "금융",
-        "신규가입",
-        "무료"
-      ],
+      "tags": ["신한은행", "슈퍼SOL", "네이버페이", "앱테크", "금융", "신규가입", "무료"],
       "source": {
         "name": "뽐뿌 쿠폰게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=118019",
@@ -1589,15 +1387,8 @@
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=118033",
         "label": "原문보기"
       },
-      "howTo": [
-        "KB스타뱅킹 앱에서 스타퀴즈에 접속하여 정답 '1번 5월'을 선택한다."
-      ],
-      "tags": [
-        "KB스타뱅킹",
-        "스타퀴즈",
-        "포인트",
-        "정답"
-      ],
+      "howTo": ["KB스타뱅킹 앱에서 스타퀴즈에 접속하여 정답 '1번 5월'을 선택한다."],
+      "tags": ["KB스타뱅킹", "스타퀴즈", "포인트", "정답"],
       "source": {
         "name": "뽐뿌 쿠폰게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=118033",
@@ -1650,13 +1441,7 @@
       "caution": [
         "CJ더마켓 앱이 설치되어 있지 않은 경우, 앱스토어 또는 플레이스토어 설치 화면에서 스크롤을 내리면 참여가 인정될 수 있습니다."
       ],
-      "tags": [
-        "페이북",
-        "앱테크",
-        "포인트적립",
-        "사이트보기",
-        "페이북머니"
-      ],
+      "tags": ["페이북", "앱테크", "포인트적립", "사이트보기", "페이북머니"],
       "source": {
         "name": "뽐뿌 쿠폰게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=118163",
@@ -1697,19 +1482,8 @@
         "url": "https://mbp.hanabank.com/oneqplus.jsp?MENUM/mbp/resource/html/BCUS/BCUS13/BCUS1392078.html",
         "label": "하나원큐 앱 바로가기"
       },
-      "howTo": [
-        "하나원큐 앱 접속",
-        "슬기로운 금융생활 OX 퀴즈 참여",
-        "정답 X 선택"
-      ],
-      "tags": [
-        "하나원큐",
-        "하나은행",
-        "OX퀴즈",
-        "캐시",
-        "금융",
-        "앱테크"
-      ],
+      "howTo": ["하나원큐 앱 접속", "슬기로운 금융생활 OX 퀴즈 참여", "정답 X 선택"],
+      "tags": ["하나원큐", "하나은행", "OX퀴즈", "캐시", "금융", "앱테크"],
       "source": {
         "name": "뽐뿌 쿠폰게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=118157",
@@ -1750,17 +1524,8 @@
         "url": "https://oqf.hanabank.com/oqf/oneqfirst.jsp?screenId=LFNL0401001501-",
         "label": "퀴즈 참여하기"
       },
-      "howTo": [
-        "제공된 링크로 접속합니다.",
-        "퀴즈 정답 '1. 전북 vs 포항'을 입력합니다."
-      ],
-      "tags": [
-        "하나원큐",
-        "퀴즈",
-        "축구",
-        "정답",
-        "이벤트"
-      ],
+      "howTo": ["제공된 링크로 접속합니다.", "퀴즈 정답 '1. 전북 vs 포항'을 입력합니다."],
+      "tags": ["하나원큐", "퀴즈", "축구", "정답", "이벤트"],
       "source": {
         "name": "뽐뿌 쿠폰게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=118156",
@@ -1805,15 +1570,7 @@
         "url": "https://external-token.pay.naver.com/entry/pincrux?gd=ab8e18ef4ebebeddc0b3152ce9c9006e14fc05242e3fc9ce32246ea6a9543074",
         "label": "네이버 페이 응모"
       },
-      "tags": [
-        "네이버",
-        "쇼핑라이브",
-        "적립",
-        "KB Pay",
-        "퀴즈",
-        "오늘의 퀴즈",
-        "9/6"
-      ],
+      "tags": ["네이버", "쇼핑라이브", "적립", "KB Pay", "퀴즈", "오늘의 퀴즈", "9/6"],
       "source": {
         "name": "뽐뿌 쿠폰게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=118194",
@@ -1853,16 +1610,8 @@
       "link": {
         "url": "https://campaign2.naver.com/npay/v2/click-point/?eventId=cr_2026090108_2609_1247"
       },
-      "howTo": [
-        "제공된 링크를 클릭하여 15원 적립 챌린지에 참여합니다."
-      ],
-      "tags": [
-        "네이버페이",
-        "포인트",
-        "적립",
-        "챌린지",
-        "무료"
-      ],
+      "howTo": ["제공된 링크를 클릭하여 15원 적립 챌린지에 참여합니다."],
+      "tags": ["네이버페이", "포인트", "적립", "챌린지", "무료"],
       "source": {
         "name": "뽐뿌 쿠폰게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=118024",
@@ -1907,16 +1656,8 @@
         "'두근두근 1등 찍기' 이벤트 페이지로 이동합니다.",
         "팀플전에 참여하여 투표를 진행합니다."
       ],
-      "caution": [
-        "이벤트 참여 조건 및 상세 혜택은 토스 앱 내에서 확인해 주세요."
-      ],
-      "tags": [
-        "토스",
-        "두근두근1등찍기",
-        "팀플전",
-        "앱테크",
-        "토스이벤트"
-      ],
+      "caution": ["이벤트 참여 조건 및 상세 혜택은 토스 앱 내에서 확인해 주세요."],
+      "tags": ["토스", "두근두근1등찍기", "팀플전", "앱테크", "토스이벤트"],
       "source": {
         "name": "뽐뿌 쿠폰게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=118035",
@@ -1957,14 +1698,8 @@
         "url": "https://nsol.shinhan.com/link.html?pr_id=CO0101S0010F01",
         "label": "신한솔 야구상식 쏠퀴즈 바로가기"
       },
-      "howTo": [
-        "링크 접속 -> 야구상식 쏠퀴즈 접속 -> 정답('LA 다저스') 입력"
-      ],
-      "tags": [
-        "quiz",
-        "sopick",
-        "shinhan"
-      ],
+      "howTo": ["링크 접속 -> 야구상식 쏠퀴즈 접속 -> 정답('LA 다저스') 입력"],
+      "tags": ["quiz", "sopick", "shinhan"],
       "source": {
         "name": "뽐뿌 쿠폰게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=118032",
@@ -2016,14 +1751,7 @@
         "페이펫 키우기는 네이버페이 앱 전용이며, 피드코인은 네이버 앱 전용입니다.",
         "네이버라운지 이벤트는 작성일 기준 마지막 날입니다."
       ],
-      "tags": [
-        "네이버페이",
-        "네페",
-        "앱테크",
-        "포인트적립",
-        "퀴즈",
-        "라이브예고"
-      ],
+      "tags": ["네이버페이", "네페", "앱테크", "포인트적립", "퀴즈", "라이브예고"],
       "source": {
         "name": "뽐뿌 쿠폰게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=118028",
@@ -2069,20 +1797,9 @@
         "url": "https://new-m.pay.naver.com/historybenefit/home",
         "label": "결제홈 바로가기"
       },
-      "howTo": [
-        "네이버페이 결제홈 접속",
-        "하단을 위아래로 15초 스크롤"
-      ],
-      "caution": [
-        "계정당 월 5회까지만 적립",
-        "일부 계정은 참여 불가"
-      ],
-      "tags": [
-        "네이버페이",
-        "포인트",
-        "앱테크",
-        "스크롤"
-      ],
+      "howTo": ["네이버페이 결제홈 접속", "하단을 위아래로 15초 스크롤"],
+      "caution": ["계정당 월 5회까지만 적립", "일부 계정은 참여 불가"],
+      "tags": ["네이버페이", "포인트", "앱테크", "스크롤"],
       "source": {
         "name": "뽐뿌 쿠폰게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=118171",
@@ -2136,12 +1853,7 @@
         "한도 소진 시 조기 종료될 수 있습니다.",
         "네이버페이 로그인 상태에서 참여 가능합니다."
       ],
-      "tags": [
-        "네이버페이",
-        "클릭적립",
-        "KB손해보험",
-        "앱테크"
-      ],
+      "tags": ["네이버페이", "클릭적립", "KB손해보험", "앱테크"],
       "source": {
         "name": "뽐뿌 쿠폰게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=118146",
@@ -2194,12 +1906,7 @@
       "caution": [
         "CJ더마켓 앱이 없는 경우, 앱스토어 또는 플레이스토어의 앱 설치 화면에서 스크롤을 내리면 참여가 인정됩니다."
       ],
-      "tags": [
-        "페이북",
-        "앱테크",
-        "포인트적립",
-        "사이트보기"
-      ],
+      "tags": ["페이북", "앱테크", "포인트적립", "사이트보기"],
       "source": {
         "name": "뽐뿌 쿠폰게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=118195",
@@ -2244,11 +1951,7 @@
         "주어진 링크로 이동하여 정답을 입력합니다.",
         "정답 입력 전 반드시 댓글 분위기를 확인하세요."
       ],
-      "tags": [
-        "quiz",
-        "gift certificate",
-        "shinhan play"
-      ],
+      "tags": ["quiz", "gift certificate", "shinhan play"],
       "source": {
         "name": "뽐뿌 쿠폰게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=118031",
@@ -2299,13 +2002,7 @@
         "구독류 미션의 경우 선착순 마감되거나 시간대가 변경될 수 있습니다.",
         "일부 미션은 특정 시간(오전 10시, 11시 등)에 오픈됩니다."
       ],
-      "tags": [
-        "네이버페이",
-        "앱테크",
-        "포인트적립",
-        "인스타팔로우",
-        "유튜브구독"
-      ],
+      "tags": ["네이버페이", "앱테크", "포인트적립", "인스타팔로우", "유튜브구독"],
       "source": {
         "name": "뽐뿌 쿠폰게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=118029",
@@ -2351,17 +2048,8 @@
         "'매일 용돈 받기' 버즈빌 미션에서 CJ맥플랜 퀴즈 참여",
         "정답 '맥식이섬유' 입력"
       ],
-      "caution": [
-        "카카오페이에서는 확인되지 않을 수 있습니다."
-      ],
-      "tags": [
-        "카카오뱅크",
-        "버즈빌",
-        "퀴즈",
-        "용돈",
-        "CJ맥플랜",
-        "13원"
-      ],
+      "caution": ["카카오페이에서는 확인되지 않을 수 있습니다."],
+      "tags": ["카카오뱅크", "버즈빌", "퀴즈", "용돈", "CJ맥플랜", "13원"],
       "source": {
         "name": "뽐뿌 쿠폰게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=118021",
@@ -2407,22 +2095,9 @@
         "url": "https://kakaobank.onelink.me/0qMi/jcwk0sbz",
         "label": "카카오뱅크 앱으로 이동"
       },
-      "howTo": [
-        "카카오뱅크 앱 접속",
-        "키워드 퀴즈 클릭",
-        "정답 확인 및 제출"
-      ],
-      "caution": [
-        "매일 1회 한도",
-        "오후 1시부터 19시 59분까지",
-        "정답은 앱 내에서 확인 가능"
-      ],
-      "tags": [
-        "카카오뱅크",
-        "캐시백",
-        "퀴즈",
-        "이벤트"
-      ],
+      "howTo": ["카카오뱅크 앱 접속", "키워드 퀴즈 클릭", "정답 확인 및 제출"],
+      "caution": ["매일 1회 한도", "오후 1시부터 19시 59분까지", "정답은 앱 내에서 확인 가능"],
+      "tags": ["카카오뱅크", "캐시백", "퀴즈", "이벤트"],
       "source": {
         "name": "뽐뿌 쿠폰게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=118196",
@@ -2476,12 +2151,7 @@
         "네이버페이 계정당 1회만 참여 가능합니다.",
         "예산 소진 시 조기 종료될 수 있습니다."
       ],
-      "tags": [
-        "네이버페이",
-        "클릭적립",
-        "앱테크",
-        "공짜포인트"
-      ],
+      "tags": ["네이버페이", "클릭적립", "앱테크", "공짜포인트"],
       "source": {
         "name": "뽐뿌 쿠폰게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=118175",
@@ -2532,16 +2202,8 @@
         "본문에 나열된 네이버페이 적립 링크들을 차례대로 클릭합니다.",
         "네이버페이 포인트가 즉시 적립되는 것을 확인합니다."
       ],
-      "caution": [
-        "이미 참여한 이벤트이거나 예산 소진 시 적립이 되지 않을 수 있습니다."
-      ],
-      "tags": [
-        "네이버페이",
-        "앱테크",
-        "포인트적립",
-        "클릭적립",
-        "네이버페이포인트"
-      ],
+      "caution": ["이미 참여한 이벤트이거나 예산 소진 시 적립이 되지 않을 수 있습니다."],
+      "tags": ["네이버페이", "앱테크", "포인트적립", "클릭적립", "네이버페이포인트"],
       "source": {
         "name": "뽐뿌 쿠폰게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=118153",
@@ -2590,13 +2252,7 @@
         "매일 14시에 네이버페이 브랜드뽑기 페이지에 접속합니다.",
         "빨간 문구가 보일 때 클릭하여 포인트를 적립합니다."
       ],
-      "tags": [
-        "네이버페이",
-        "포인트",
-        "앱테크",
-        "무료",
-        "매일"
-      ],
+      "tags": ["네이버페이", "포인트", "앱테크", "무료", "매일"],
       "source": {
         "name": "뽐뿌 쿠폰게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=118170",
@@ -2647,14 +2303,7 @@
         "팔도감 링크를 타고 이동",
         "토스페이 결제를 통해 25% 할인 + 6.1% 추가 적립 적용받기"
       ],
-      "tags": [
-        "팔도감",
-        "토스페이",
-        "릴레이게시판",
-        "大米",
-        "ry",
-        "link"
-      ],
+      "tags": ["팔도감", "토스페이", "릴레이게시판", "大米", "ry", "link"],
       "source": {
         "name": "뽐뿌 뽐뿌게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=730937",
@@ -2694,15 +2343,8 @@
       "link": {
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=731782"
       },
-      "howTo": [
-        "지마켓에서 락토바이오틱스맥스 프로바이오틱스 유산균 4개월분 구매"
-      ],
-      "tags": [
-        "유산균",
-        "프로바이오틱스",
-        "건강기능식품",
-        "지마켓"
-      ],
+      "howTo": ["지마켓에서 락토바이오틱스맥스 프로바이오틱스 유산균 4개월분 구매"],
+      "tags": ["유산균", "프로바이오틱스", "건강기능식품", "지마켓"],
       "source": {
         "name": "뽐뿌 뽐뿌게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=731782",
@@ -2746,14 +2388,7 @@
         "11번가에서 보디가드 남성 순면 트렁크 5매 구매",
         "3만원 이상 구매 시 1,000원 추가 할인 적용"
       ],
-      "tags": [
-        "11번가",
-        "보디가드",
-        "트렁크",
-        "속옷",
-        "남성",
-        "할인"
-      ],
+      "tags": ["11번가", "보디가드", "트렁크", "속옷", "남성", "할인"],
       "source": {
         "name": "뽐뿌 뽐뿌게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=731777",
@@ -2799,14 +2434,7 @@
         "'팔도감' 검색 후 쿠폰 다운로드",
         "쿠폰 적용 후 팔도감 앱에서 순천농협 새청무 10kg 구매"
       ],
-      "tags": [
-        "쌀",
-        "새청무",
-        "팔도감",
-        "토스페이",
-        "할인",
-        "앱전용"
-      ],
+      "tags": ["쌀", "새청무", "팔도감", "토스페이", "할인", "앱전용"],
       "source": {
         "name": "뽐뿌 뽐뿌게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=730931",
@@ -2847,13 +2475,7 @@
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=730936",
         "label": "옥션"
       },
-      "tags": [
-        "리츠",
-        "크래커",
-        "옥션",
-        "정품",
-        "증정"
-      ],
+      "tags": ["리츠", "크래커", "옥션", "정품", "증정"],
       "source": {
         "name": "뽐뿌 뽐뿌게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=730936",
@@ -2898,13 +2520,7 @@
         "안데스 딥스킨 생연어 1kg 상품 선택",
         "토스페이로 결제 시 25% 추가 할인 및 3% 쿠폰 적용"
       ],
-      "tags": [
-        "연어",
-        "팔도감",
-        "토스페이",
-        "할인",
-        "생연어"
-      ],
+      "tags": ["연어", "팔도감", "토스페이", "할인", "생연어"],
       "source": {
         "name": "뽐뿌 뽐뿌게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=730925",
@@ -2944,21 +2560,12 @@
       "link": {
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=730927"
       },
-      "howTo": [
-        "롯데온에서 구매"
-      ],
+      "howTo": ["롯데온에서 구매"],
       "caution": [
         "여자 사이즈는 재고가 적을 수 있습니다",
         "남자 그레이 110 사이즈는 재고가 없습니다"
       ],
-      "tags": [
-        "롯데온",
-        "후드",
-        "트레이닝세트",
-        "의류",
-        "패션",
-        "무료배송"
-      ],
+      "tags": ["롯데온", "후드", "트레이닝세트", "의류", "패션", "무료배송"],
       "source": {
         "name": "뽐뿌 뽐뿌게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=730927",
@@ -2998,16 +2605,8 @@
       "link": {
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=730924"
       },
-      "howTo": [
-        "G마켓에서 전기구이 몸통 오징어 구매"
-      ],
-      "tags": [
-        "오징어",
-        "전기구이",
-        "G마켓",
-        "무료배송",
-        "젤리"
-      ],
+      "howTo": ["G마켓에서 전기구이 몸통 오징어 구매"],
+      "tags": ["오징어", "전기구이", "G마켓", "무료배송", "젤리"],
       "source": {
         "name": "뽐뿌 뽐뿌게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=730924",
@@ -3047,16 +2646,8 @@
       "link": {
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=732017"
       },
-      "howTo": [
-        "롯데온에서 프로쉬 독일 식기세척기세제 미니 50개입 3개 구매"
-      ],
-      "tags": [
-        "롯데온",
-        "프로쉬",
-        "식기세척기세제",
-        "섬유유연제",
-        "증정"
-      ],
+      "howTo": ["롯데온에서 프로쉬 독일 식기세척기세제 미니 50개입 3개 구매"],
+      "tags": ["롯데온", "프로쉬", "식기세척기세제", "섬유유연제", "증정"],
       "source": {
         "name": "뽐뿌 뽐뿌게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=732017",
@@ -3102,18 +2693,8 @@
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=730930",
         "label": "자세히 보기"
       },
-      "howTo": [
-        "오늘의집에서 홍로 사과 4kg 2세트 구매"
-      ],
-      "tags": [
-        "오늘의집",
-        "홍로사과",
-        "사과",
-        "과일",
-        "할인",
-        "증정",
-        "무료배송"
-      ],
+      "howTo": ["오늘의집에서 홍로 사과 4kg 2세트 구매"],
+      "tags": ["오늘의집", "홍로사과", "사과", "과일", "할인", "증정", "무료배송"],
       "source": {
         "name": "뽐뿌 뽐뿌게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=730930",
@@ -3153,15 +2734,8 @@
       "link": {
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=731780"
       },
-      "howTo": [
-        "G마켓에서 쿠폰 적용 후 구매"
-      ],
-      "tags": [
-        "고구마",
-        "해남",
-        "G마켓",
-        "무료배송"
-      ],
+      "howTo": ["G마켓에서 쿠폰 적용 후 구매"],
+      "tags": ["고구마", "해남", "G마켓", "무료배송"],
       "source": {
         "name": "뽐뿌 뽐뿌게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=731780",
@@ -3207,16 +2781,8 @@
         "한가위빅세일 쿠폰을 다운로드하여 적용합니다.",
         "할인가 29,900원 및 무료배송 혜택을 확인하고 결제합니다."
       ],
-      "caution": [
-        "한가위빅세일 쿠폰 적용 가능 여부 및 기간을 확인하시기 바랍니다."
-      ],
-      "tags": [
-        "녹용홍삼",
-        "홍삼스틱",
-        "고려홍삼중앙회",
-        "옥션",
-        "한가위빅세일"
-      ],
+      "caution": ["한가위빅세일 쿠폰 적용 가능 여부 및 기간을 확인하시기 바랍니다."],
+      "tags": ["녹용홍삼", "홍삼스틱", "고려홍삼중앙회", "옥션", "한가위빅세일"],
       "source": {
         "name": "뽐뿌 뽐뿌게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=731779",
@@ -3314,15 +2880,8 @@
         "url": "https://store.ohou.se/today_deals?activeIndex=2",
         "label": "구매하기"
       },
-      "howTo": [
-        "제공된 링크에서 쿠폰을 받고 적용하여 구매"
-      ],
-      "tags": [
-        "마카다미아",
-        "견과류",
-        "오늘의집",
-        "할인"
-      ],
+      "howTo": ["제공된 링크에서 쿠폰을 받고 적용하여 구매"],
+      "tags": ["마카다미아", "견과류", "오늘의집", "할인"],
       "source": {
         "name": "뽐뿌 뽐뿌게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=730929",
@@ -3362,18 +2921,8 @@
       "link": {
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=730923"
       },
-      "howTo": [
-        "지그재그 앱/웹에서 20% 카테고리 쿠폰과 7% 중복 쿠폰을 다운로드 후 적용하여 구매"
-      ],
-      "tags": [
-        "지그재그",
-        "리슬립",
-        "탈취제",
-        "고체탈취제",
-        "할인",
-        "쿠폰",
-        "무료배송"
-      ],
+      "howTo": ["지그재그 앱/웹에서 20% 카테고리 쿠폰과 7% 중복 쿠폰을 다운로드 후 적용하여 구매"],
+      "tags": ["지그재그", "리슬립", "탈취제", "고체탈취제", "할인", "쿠폰", "무료배송"],
       "source": {
         "name": "뽐뿌 뽐뿌게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=730923",
@@ -3413,12 +2962,7 @@
       "link": {
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=730926"
       },
-      "tags": [
-        "식기건조대",
-        "주방용품",
-        "오늘의집",
-        "스텐"
-      ],
+      "tags": ["식기건조대", "주방용품", "오늘의집", "스텐"],
       "source": {
         "name": "뽐뿌 뽐뿌게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=730926",
@@ -3459,16 +3003,8 @@
       "link": {
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=730939"
       },
-      "howTo": [
-        "옥션에서 두부 어묵바 5팩 구매"
-      ],
-      "tags": [
-        "두부어묵바",
-        "어묵",
-        "간식",
-        "무료배송",
-        "옥션"
-      ],
+      "howTo": ["옥션에서 두부 어묵바 5팩 구매"],
+      "tags": ["두부어묵바", "어묵", "간식", "무료배송", "옥션"],
       "source": {
         "name": "뽐뿌 뽐뿌게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=730939",
@@ -3514,13 +3050,7 @@
         "스팸 클래식 340g 5개 + 라이트 340g 5개 상품을 장바구니에 담습니다.",
         "결제 단계에서 다운로드한 쿠폰을 적용하고 카카오페이로 결제합니다."
       ],
-      "tags": [
-        "스팸",
-        "오늘의집",
-        "오세일",
-        "카카오페이",
-        "할인"
-      ],
+      "tags": ["스팸", "오늘의집", "오세일", "카카오페이", "할인"],
       "source": {
         "name": "뽐뿌 뽐뿌게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=731775",
@@ -3560,12 +3090,7 @@
       "link": {
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=730928"
       },
-      "tags": [
-        "오메가3",
-        "영양제",
-        "건강식품",
-        "옥션"
-      ],
+      "tags": ["오메가3", "영양제", "건강식품", "옥션"],
       "source": {
         "name": "뽐뿌 뽐뿌게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=730928",
@@ -3606,18 +3131,8 @@
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=731934",
         "label": "혜택 확인하기"
       },
-      "howTo": [
-        "롯데온에서 쿠폰 적용 후 구매",
-        "온누리상품권으로 결제 시 추가 할인"
-      ],
-      "tags": [
-        "롯데온",
-        "한우",
-        "소고기",
-        "보섭살",
-        "할인",
-        "온누리상품권"
-      ],
+      "howTo": ["롯데온에서 쿠폰 적용 후 구매", "온누리상품권으로 결제 시 추가 할인"],
+      "tags": ["롯데온", "한우", "소고기", "보섭살", "할인", "온누리상품권"],
       "source": {
         "name": "뽐뿌 뽐뿌게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=731934",
@@ -3658,13 +3173,7 @@
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=732026",
         "label": "네이버에서 확인하기"
       },
-      "tags": [
-        "한우",
-        "등심",
-        "냉장",
-        "네이버",
-        "농협"
-      ],
+      "tags": ["한우", "등심", "냉장", "네이버", "농협"],
       "source": {
         "name": "뽐뿌 뽐뿌게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=732026",
@@ -3709,16 +3218,8 @@
         "원문 링크를 통해 롯데온 판매 페이지로 이동합니다.",
         "할인 적용 여부를 확인하고 79,920원에 구매합니다."
       ],
-      "caution": [
-        "재고 상황에 따라 가격이 변동되거나 조기 품절될 수 있습니다."
-      ],
-      "tags": [
-        "타미힐피거",
-        "셔츠",
-        "롯데온",
-        "스트라이프셔츠",
-        "아시안핏"
-      ],
+      "caution": ["재고 상황에 따라 가격이 변동되거나 조기 품절될 수 있습니다."],
+      "tags": ["타미힐피거", "셔츠", "롯데온", "스트라이프셔츠", "아시안핏"],
       "source": {
         "name": "뽐뿌 뽐뿌게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=731935",
@@ -3764,12 +3265,7 @@
         "15% 쿠폰을 다운로드하여 적용합니다.",
         "할인가 26,000원에 구매합니다."
       ],
-      "tags": [
-        "이랜드몰",
-        "후드집업",
-        "의류",
-        "할인"
-      ],
+      "tags": ["이랜드몰", "후드집업", "의류", "할인"],
       "source": {
         "name": "뽐뿌 뽐뿌게시판",
         "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=731943",
@@ -3815,16 +3311,8 @@
         "url": "https://store.ohou.se/today_deals?activeIndex=2",
         "label": "7% 쿠폰받고 적용하기"
       },
-      "howTo": [
-        "제공된 링크에서 7% 쿠폰을 받고 적용하여 구매"
-      ],
-      "tags": [
-        "오늘의집",
-        "찰떡아이스",
-        "아이스크림",
-        "할인",
-        "쿠폰"
-      ],
+      "howTo": ["제공된 링크에서 7% 쿠폰을 받고 적용하여 구매"],
+      "tags": ["오늘의집", "찰떡아이스", "아이스크림", "할인", "쿠폰"],
       "source": {
         "name": "루리웹 예판·핫딜",
         "url": "https://bbs.ruliweb.com/market/board/1020/read/106970",
@@ -3869,20 +3357,9 @@
         "url": "https://store.steampowered.com/bundle/68125/MEGAMAN_COMPLETE_PACK/",
         "label": "스팀 상점 페이지"
       },
-      "howTo": [
-        "스팀 상점 페이지에서 메가맨 컴플리트 팩 구매"
-      ],
-      "caution": [
-        "가지고 있는 게임은 제외하고 계산됩니다."
-      ],
-      "tags": [
-        "스팀",
-        "메가맨",
-        "게임",
-        "할인",
-        "번들",
-        "컴플리트팩"
-      ],
+      "howTo": ["스팀 상점 페이지에서 메가맨 컴플리트 팩 구매"],
+      "caution": ["가지고 있는 게임은 제외하고 계산됩니다."],
+      "tags": ["스팀", "메가맨", "게임", "할인", "번들", "컴플리트팩"],
       "source": {
         "name": "루리웹 예판·핫딜",
         "url": "https://bbs.ruliweb.com/market/board/1020/read/106953",
@@ -3923,9 +3400,7 @@
         "url": "https://shopping.naver.com/festa/onsale/food/6a8d6294d1abf101e2782874",
         "label": "네이버 쇼핑 쿠폰"
       },
-      "howTo": [
-        "네이버 쇼핑에서 쿠폰 적용 및 멤버십 할인으로 구매"
-      ],
+      "howTo": ["네이버 쇼핑에서 쿠폰 적용 및 멤버십 할인으로 구매"],
       "tags": [
         "네이버",
         "페psi제로",
@@ -3980,12 +3455,7 @@
         "제공된 링크를 클릭하여 네이버페이 포인트 적립 페이지로 이동",
         "페이지 내에서 15원 포인트 적립 버튼 클릭"
       ],
-      "tags": [
-        "네이버페이",
-        "포인트",
-        "클릭적립",
-        "15원"
-      ],
+      "tags": ["네이버페이", "포인트", "클릭적립", "15원"],
       "source": {
         "name": "루리웹 예판·핫딜",
         "url": "https://bbs.ruliweb.com/market/board/1020/read/106855",
@@ -4026,15 +3496,8 @@
         "url": "https://gamewoori.com/product/detail.html?product_no=19382",
         "label": "예약 구매 페이지"
       },
-      "howTo": [
-        "2026년 9월 5일 오후 3시부터 겜우리 등 온라인/오프라인 판매처에서 예약 구매"
-      ],
-      "tags": [
-        "닌텐도 스위치",
-        "아르티스 임팩트",
-        "게임",
-        "예약판매"
-      ],
+      "howTo": ["2026년 9월 5일 오후 3시부터 겜우리 등 온라인/오프라인 판매처에서 예약 구매"],
+      "tags": ["닌텐도 스위치", "아르티스 임팩트", "게임", "예약판매"],
       "source": {
         "name": "루리웹 예판·핫딜",
         "url": "https://bbs.ruliweb.com/market/board/1020/read/106943",
@@ -4079,14 +3542,8 @@
         "url": "https://bbs.ruliweb.com/market/board/1020/read/106975",
         "label": "구매하기"
       },
-      "howTo": [
-        "롯데온에서 아몬드브리즈 6종 190ml 48팩을 구매한다."
-      ],
-      "tags": [
-        "식음료",
-        "무료증정",
-        "롯데온"
-      ],
+      "howTo": ["롯데온에서 아몬드브리즈 6종 190ml 48팩을 구매한다."],
+      "tags": ["식음료", "무료증정", "롯데온"],
       "source": {
         "name": "루리웹 예판·핫딜",
         "url": "https://bbs.ruliweb.com/market/board/1020/read/106975",
@@ -4127,22 +3584,12 @@
         "url": "https://point.pay.naver.com/pc/main",
         "label": "모든 혜택 보러가기"
       },
-      "howTo": [
-        "각 혜택별 링크를 통해 접속하여 미션 수행 또는 페이지 방문"
-      ],
+      "howTo": ["각 혜택별 링크를 통해 접속하여 미션 수행 또는 페이지 방문"],
       "caution": [
         "일부 혜택은 매일 자정, 10시, 14시 등 특정 시간에 초기화됩니다.",
         "일부 혜택은 월별 참여 제한이 있을 수 있습니다."
       ],
-      "tags": [
-        "네이버페이",
-        "포인트",
-        "앱테크",
-        "클릭적립",
-        "퀴즈",
-        "방문적립",
-        "무료"
-      ],
+      "tags": ["네이버페이", "포인트", "앱테크", "클릭적립", "퀴즈", "방문적립", "무료"],
       "source": {
         "name": "루리웹 예판·핫딜",
         "url": "https://bbs.ruliweb.com/market/board/1020/read/106860",
@@ -4241,13 +3688,7 @@
       "howTo": [
         "반다이몰 웹사이트에서 기동전사 건담 G프레임 FA 데스티니 건담을 71,400원에 예약 구매합니다."
       ],
-      "tags": [
-        "건담",
-        "프라모델",
-        "반다이",
-        "예약판매",
-        "피규어"
-      ],
+      "tags": ["건담", "프라모델", "반다이", "예약판매", "피규어"],
       "source": {
         "name": "루리웹 예판·핫딜",
         "url": "https://bbs.ruliweb.com/market/board/1020/read/106945",
@@ -4353,13 +3794,7 @@
         "제공된 링크를 통해 롯데온 판매 페이지로 이동합니다.",
         "오렌지, 자몽, 복숭아, 자두 중 원하는 맛을 선택하여 구매를 진행합니다."
       ],
-      "tags": [
-        "썬키스트",
-        "제로소다",
-        "탄산음료",
-        "롯데온",
-        "핫딜"
-      ],
+      "tags": ["썬키스트", "제로소다", "탄산음료", "롯데온", "핫딜"],
       "source": {
         "name": "루리웹 예판·핫딜",
         "url": "https://bbs.ruliweb.com/market/board/1020/read/106963",
@@ -4404,19 +3839,9 @@
       "link": {
         "url": "https://bbs.ruliweb.com/market/board/1020/read/106962"
       },
-      "howTo": [
-        "11번가에서 파스쿠찌 모바일상품권 3만원권 구매"
-      ],
-      "caution": [
-        "잔액관리형 상품권입니다.",
-        "유효기간은 구매일로부터 93일입니다."
-      ],
-      "tags": [
-        "파스쿠찌",
-        "모바일상품권",
-        "할인",
-        "11번가"
-      ],
+      "howTo": ["11번가에서 파스쿠찌 모바일상품권 3만원권 구매"],
+      "caution": ["잔액관리형 상품권입니다.", "유효기간은 구매일로부터 93일입니다."],
+      "tags": ["파스쿠찌", "모바일상품권", "할인", "11번가"],
       "source": {
         "name": "루리웹 예판·핫딜",
         "url": "https://bbs.ruliweb.com/market/board/1020/read/106962",
@@ -4458,21 +3883,9 @@
         "url": "https://www.lotteon.com/p/product/LO2746288347?mall_no=1&ch_no=101627&ch_dtl_no=1055027&ch_mem_no=298042074nW7ra6a96913a1b",
         "label": "구매하러 가기"
       },
-      "howTo": [
-        "구매 링크로 접속합니다.",
-        "옵션 및 수량을 확인한 후 결제를 진행합니다."
-      ],
-      "caution": [
-        "한정 수량(3개)으로 조기 품절될 수 있습니다."
-      ],
-      "tags": [
-        "닌텐도스위치",
-        "파이어엠블렘",
-        "다그단에디션",
-        "롯데온",
-        "게임기",
-        "타이틀"
-      ],
+      "howTo": ["구매 링크로 접속합니다.", "옵션 및 수량을 확인한 후 결제를 진행합니다."],
+      "caution": ["한정 수량(3개)으로 조기 품절될 수 있습니다."],
+      "tags": ["닌텐도스위치", "파이어엠블렘", "다그단에디션", "롯데온", "게임기", "타이틀"],
       "source": {
         "name": "루리웹 예판·핫딜",
         "url": "https://bbs.ruliweb.com/market/board/1020/read/106851",
@@ -4513,16 +3926,8 @@
         "url": "https://gamewoori.com/product/detail.html?product_no=19381",
         "label": "예약 구매하기"
       },
-      "howTo": [
-        "겜우리 웹사이트에 접속하여 PS5 사일런트 힐 타운폴 예약 구매"
-      ],
-      "tags": [
-        "PS5",
-        "사일런트힐",
-        "게임",
-        "예약판매",
-        "겜우리"
-      ],
+      "howTo": ["겜우리 웹사이트에 접속하여 PS5 사일런트 힐 타운폴 예약 구매"],
+      "tags": ["PS5", "사일런트힐", "게임", "예약판매", "겜우리"],
       "source": {
         "name": "루리웹 예판·핫딜",
         "url": "https://bbs.ruliweb.com/market/board/1020/read/106942",
@@ -4562,19 +3967,8 @@
         "url": "https://www.joytel.co.kr/rateplan_view.do?&no=586",
         "label": "요금제 상세 보기"
       },
-      "howTo": [
-        "조이텔 웹사이트에서 해당 요금제 가입"
-      ],
-      "tags": [
-        "조이텔",
-        "알뜰폰",
-        "요금제",
-        "990원",
-        "평생",
-        "데이터",
-        "통화",
-        "문자"
-      ],
+      "howTo": ["조이텔 웹사이트에서 해당 요금제 가입"],
+      "tags": ["조이텔", "알뜰폰", "요금제", "990원", "평생", "데이터", "통화", "문자"],
       "source": {
         "name": "루리웹 예판·핫딜",
         "url": "https://bbs.ruliweb.com/market/board/1020/read/106852",
@@ -4623,17 +4017,8 @@
         "귀무자 검의길 PC 디럭스 에디션을 10% 할인된 가격으로 구매합니다.",
         "네이버페이 결제를 통해 최대 23,308원 적립 혜택을 받습니다."
       ],
-      "caution": [
-        "일반판은 품절입니다."
-      ],
-      "tags": [
-        "PC게임",
-        "귀무자",
-        "디럭스",
-        "할인",
-        "네이버페이",
-        "적립"
-      ],
+      "caution": ["일반판은 품절입니다."],
+      "tags": ["PC게임", "귀무자", "디럭스", "할인", "네이버페이", "적립"],
       "source": {
         "name": "루리웹 예판·핫딜",
         "url": "https://bbs.ruliweb.com/market/board/1020/read/106854",
@@ -4687,14 +4072,7 @@
       "caution": [
         "기존 구매자는 할인된 차액을 네이버 포인트로 보상받을 수 있으므로 별도 신청이 필요합니다."
       ],
-      "tags": [
-        "하늘의궤적",
-        "스팀",
-        "인벤",
-        "예약구매",
-        "네이버포인트",
-        "게임할인"
-      ],
+      "tags": ["하늘의궤적", "스팀", "인벤", "예약구매", "네이버포인트", "게임할인"],
       "source": {
         "name": "루리웹 예판·핫딜",
         "url": "https://bbs.ruliweb.com/market/board/1020/read/106951",
@@ -4705,63 +4083,6 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-09-04T18:31:43.340Z"
-      }
-    },
-    {
-      "id": "dl_seoul-culture-free_97b4727a453e0842",
-      "slug": "seoul-culture-free-cultureevent-view-do-f77a83a0",
-      "title": "2026 청계천박물관 개관기념일 문화행사",
-      "summary": "청계천박물관 개관기념일 기념 문화행사. 현악3중주 공연과 체험 프로그램이 진행되며, 모두referenced가 가능합니다.",
-      "description": "2026 청계천박물관 개관기념일 문화행사. 바이올린·비올라·/actions 현악 3중주 그룹 '청춘유수' 공연과 체험 프로그램(가을 풍경 종 만들기, 펠트 꽃병 만들기)이 진행됩니다. 모두referenced가 가능하며, 사전 예약 또는 현장 접수로 참여 가능합니다.",
-      "brand": {
-        "name": "청계천박물관"
-      },
-      "category": "culture",
-      "dealType": "free",
-      "difficulty": "normal",
-      "price": {
-        "final": 0,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": true,
-        "quantity": 200,
-        "perPersonLimit": 4
-      },
-      "period": {
-        "startAt": "2026-09-19T00:00:00+09:00",
-        "endAt": "2026-09-19T23:59:59+09:00"
-      },
-      "link": {
-        "url": "http://yeyak.seoul.go.kr/",
-        "label": "공공서비스 예약"
-      },
-      "howTo": [
-        "서울시 공공서비스예약 사이트(yeyak.seoul.go.kr)에서 사전 예약 (9월 1일 14:00 ~ 9월 13일 23:59, 1인 4매 신청 가능)",
-        "체험 프로그램은 당일 현장 접수 진행 (선착순 200명)"
-      ],
-      "caution": [
-        "체험 프로그램은 당일 현장 접수 선착순 200명으로 조기 마감 가능",
-        "공연 프로그램은 사전 예약 필요 (9월 1일~13일, 1인 4매 가능)",
-        "예약 확정 후 참석 불가 시 반드시 연락 주시기 바랍니다."
-      ],
-      "tags": [
-        "무료",
-        "체험",
-        "공연",
-        "가족",
-        "친구"
-      ],
-      "source": {
-        "name": "서울문화포털 문화행사",
-        "url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159379&menuNo=200008",
-        "collectedAt": "2026-09-06T04:36:38.420Z",
-        "method": "llm",
-        "confidence": 0.9
-      },
-      "meta": {
-        "verified": false,
-        "updatedAt": "2026-09-06T04:36:38.420Z"
       }
     },
     {
@@ -4806,13 +4127,7 @@
         "현장 촬영可能发生, 신청 시 동의 간주",
         "불참 시 차후 프로그램 참여 제한 가능"
       ],
-      "tags": [
-        "무료",
-        "체험",
-        "교육",
-        "북tok",
-        "그림책"
-      ],
+      "tags": ["무료", "체험", "교육", "북tok", "그림책"],
       "source": {
         "name": "서울문화포털 문화행사",
         "url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159378&menuNo=200008",
@@ -4858,18 +4173,8 @@
         "url": "https://store.steampowered.com/app/2406770/Bodycam/?snr=1_7_7_2300_150_1",
         "label": "Steam에서 보기"
       },
-      "howTo": [
-        "Steam 상점 페이지에 접속합니다.",
-        "Bodycam을 장바구니에 담고 결제를 진행합니다."
-      ],
-      "tags": [
-        "Steam",
-        "스팀",
-        "Bodycam",
-        "바디캠",
-        "게임할인",
-        "PC게임"
-      ],
+      "howTo": ["Steam 상점 페이지에 접속합니다.", "Bodycam을 장바구니에 담고 결제를 진행합니다."],
+      "tags": ["Steam", "스팀", "Bodycam", "바디캠", "게임할인", "PC게임"],
       "source": {
         "name": "Steam 특별 할인",
         "url": "https://store.steampowered.com/app/2406770/Bodycam/?snr=1_7_7_2300_150_1",
@@ -4915,15 +4220,8 @@
         "url": "https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/?snr=1_7_7_2300_150_1",
         "label": "할인 바로가기"
       },
-      "howTo": [
-        "Steam 상점 페이지에서 Red Dead Redemption 2 구매"
-      ],
-      "tags": [
-        "스팀",
-        "게임",
-        "할인",
-        "Red Dead Redemption 2"
-      ],
+      "howTo": ["Steam 상점 페이지에서 Red Dead Redemption 2 구매"],
+      "tags": ["스팀", "게임", "할인", "Red Dead Redemption 2"],
       "source": {
         "name": "Steam 특별 할인",
         "url": "https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/?snr=1_7_7_2300_150_1",
@@ -4969,14 +4267,8 @@
         "url": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V/?snr=1_7_7_2300_150_1",
         "label": "Steam 특별 할인"
       },
-      "howTo": [
-        "Steam 스토어에서 상품을 구매합니다."
-      ],
-      "tags": [
-        "Steam",
-        "게임",
-        "할인"
-      ],
+      "howTo": ["Steam 스토어에서 상품을 구매합니다."],
+      "tags": ["Steam", "게임", "할인"],
       "source": {
         "name": "Steam 특별 할인",
         "url": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V/?snr=1_7_7_2300_150_1",
@@ -5029,13 +4321,7 @@
       "caution": [
         "할인 정보가 2024년 9월 9일 시점의 것이라 현재(2026년 9월 6일) 적용될 수 있는 혜택이 아닐 수 있음"
       ],
-      "tags": [
-        "Steam",
-        "게임",
-        "할인",
-        "Warhammer 40,000: Space Marine 2",
-        "스페이스 마린 2"
-      ],
+      "tags": ["Steam", "게임", "할인", "Warhammer 40,000: Space Marine 2", "스페이스 마린 2"],
       "source": {
         "name": "Steam 특별 할인",
         "url": "https://store.steampowered.com/app/2183900/Warhammer_40000_Space_Marine_2/?snr=1_7_7_2300_150_1",
@@ -5081,20 +4367,9 @@
         "url": "https://store.steampowered.com/app/3321460/_Enhanced/?snr=1_7_7_2300_150_1",
         "label": "스팀에서 보기"
       },
-      "howTo": [
-        "스팀 상점 페이지에 접속합니다.",
-        "장바구니에 담고 결제를 진행합니다."
-      ],
-      "caution": [
-        "할인 기간이 명시되어 있지 않으므로 조기 종료될 수 있습니다."
-      ],
-      "tags": [
-        "붉은사막",
-        "스팀",
-        "게임할인",
-        "스팀할인",
-        "붉은사막Enhanced"
-      ],
+      "howTo": ["스팀 상점 페이지에 접속합니다.", "장바구니에 담고 결제를 진행합니다."],
+      "caution": ["할인 기간이 명시되어 있지 않으므로 조기 종료될 수 있습니다."],
+      "tags": ["붉은사막", "스팀", "게임할인", "스팀할인", "붉은사막Enhanced"],
       "source": {
         "name": "Steam 특별 할인",
         "url": "https://store.steampowered.com/app/3321460/_Enhanced/?snr=1_7_7_2300_150_1",

@@ -252,7 +252,12 @@ describe('쿨다운 — 한도는 기다리면 풀린다', () => {
     };
   }
 
-  it('한도로 막혀도 쿨다운 뒤 같은 프로바이더를 다시 쓴다', async () => {
+  it('한도로 막힌 뒤에도 쿨다운이 지나면 다음 항목에서 다시 쓴다', async () => {
+    /*
+      실제 회복 경로입니다. quota 쿨다운(60초)은 한 번에 기다릴 수 있는
+      한도(25초)보다 길어 그 자리에서는 기다리지 않습니다. 대신 파이프라인이
+      다음 항목들을 처리하는 동안 시간이 흐르고, 쿨다운이 끝나면 저절로 돌아옵니다.
+    */
     const clock = fakeClock();
     let calls = 0;
     const gemini = stub('gemini', async () => {
@@ -263,9 +268,31 @@ describe('쿨다운 — 한도는 기다리면 풀린다', () => {
 
     const chain = new ProviderChain([gemini], () => {}, clock.now, clock.sleep);
 
+    // 첫 항목은 실패합니다. 기다리지 않고 바로 넘어갑니다.
+    await expect(chain.complete(REQUEST)).rejects.toThrow('사용 가능한 프로바이더가 없습니다');
+    expect(clock.waits).toEqual([]);
+
+    // 그 사이 다른 항목을 처리하느라 시간이 흘렀습니다.
+    await clock.sleep(61_000);
+
     await expect(chain.complete(REQUEST)).resolves.toMatchObject({ text: '{}' });
     expect(calls).toBe(2);
-    expect(clock.waits).toEqual([60_000]);
+  });
+
+  it('짧은 쿨다운이면 그 자리에서 기다렸다 다시 쓴다', async () => {
+    const clock = fakeClock();
+    let calls = 0;
+    const gemini = stub('gemini', async () => {
+      calls += 1;
+      if (calls === 1) throw new ProviderUnavailableError('gemini', 'busy', '503 붐빔');
+      return { text: '{}', usage: null };
+    });
+
+    const chain = new ProviderChain([gemini], () => {}, clock.now, clock.sleep);
+
+    await expect(chain.complete(REQUEST)).resolves.toMatchObject({ text: '{}' });
+    expect(calls).toBe(2);
+    expect(clock.waits).toEqual([20_000]);
   });
 
   it('인증 실패는 기다려도 안 고쳐지니 곧바로 포기한다', async () => {
@@ -311,7 +338,7 @@ describe('쿨다운 — 한도는 기다리면 풀린다', () => {
     const chain = new ProviderChain([gemini], () => {}, clock.now, clock.sleep);
 
     await expect(chain.complete(REQUEST)).rejects.toThrow('사용 가능한 프로바이더가 없습니다');
-    expect(clock.waits.length).toBeLessThanOrEqual(2);
+    expect(clock.waits.length).toBeLessThanOrEqual(1);
   });
 
   it('쿨다운이 끝난 프로바이더는 보고에서 빠진다', async () => {

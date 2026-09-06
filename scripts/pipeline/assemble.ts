@@ -286,12 +286,25 @@ function pickLinkUrl(fromModel: string | null, fallback: string, sourceText: str
     return fallback;
   }
 
-  if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') return fallback;
+  /*
+    https 만 받습니다. 우리가 원문에서 직접 얻은 주소는 이미 https 라
+    http 가 나왔다는 것은 모델이 손댔다는 뜻입니다. 화면에 그대로 나가면
+    "외부 링크는 모두 https" 규칙도 깨집니다.
+  */
+  if (parsed.protocol !== 'https:') return fallback;
+
+  /*
+    경로 없는 루트 주소는 근거가 될 수 없습니다.
+    호스트만 대조하게 되어 본문에 사이트 이름이 한 번 스치기만 해도 통과합니다.
+    실제로 서울문화포털 행사 글이 본문에 예약 사이트를 언급했다는 이유로
+    링크가 `http://yeyak.seoul.go.kr/` 로 바뀌어 나갔습니다.
+  */
+  const path = parsed.pathname.replace(/\/$/, '');
+  if (path === '') return fallback;
 
   // 원문이 같은 주소를 담고 있는지 확인합니다.
   // 프로토콜·트래킹 파라미터가 다를 수 있어 호스트+경로로 대조합니다.
-  const needle = `${parsed.host}${parsed.pathname}`.replace(/\/$/, '');
-  if (needle !== '' && sourceText.includes(needle)) return fromModel;
+  if (sourceText.includes(`${parsed.host}${path}`)) return fromModel;
 
   return fallback;
 }
