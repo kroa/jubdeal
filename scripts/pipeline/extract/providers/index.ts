@@ -18,17 +18,49 @@ import {
  *   그런 것까지 폴백하면 같은 실패를 두 번 하며 비용만 두 배가 됩니다.
  *   요금제 한도·인증·연결 문제일 때만 넘어갑니다.
  *
- * 한 번 "쓸 수 없다"고 판정된 프로바이더는 그 실행 동안 다시 시도하지 않습니다.
- * 매 건마다 한도 초과를 다시 확인하는 것은 시간 낭비입니다.
+ * 배제는 **사유에 따라 기한이 다릅니다.**
+ *
+ * 처음에는 한 번 막힌 프로바이더를 그 실행 내내 배제했습니다.
+ * "매 건마다 한도를 다시 확인하는 건 시간 낭비"라고 봤는데, 분당 한도에서는
+ * 이 판단이 틀렸습니다. 실측에서 107건을 수집하고 5건만 추출했습니다 —
+ * Gemini 가 분당 한도에 걸려 배제된 뒤 8초 만에 회복됐는데도
+ * 남은 100건을 전부 `api_error` 로 버렸습니다.
+ *
+ * 키가 없거나 인증이 틀린 것은 기다려도 안 고쳐지니 영구 배제입니다.
+ * 한도·붐빔은 기다리면 풀리니 쿨다운만 겁니다.
  */
+/**
+ * 사유별 쿨다운.
+ *
+ * 한도는 분 단위로 리셋되는 경우가 많아 1분이면 대개 풀립니다.
+ * 붐빔·연결 문제는 더 짧게 잡아도 됩니다.
+ */
+const COOLDOWN_MS: Record<string, number> = {
+  not_configured: Infinity,
+  auth: Infinity,
+  quota: 60_000,
+  unavailable: 20_000,
+  busy: 20_000,
+};
+
+/** 한 요청에서 쿨다운을 기다리는 최대 횟수 */
+const MAX_COOLDOWN_WAITS = 2;
+
+/** 한 번에 기다릴 수 있는 최대 시간. 이보다 오래 걸리면 포기합니다. */
+const MAX_WAIT_MS = 65_000;
+
 export class ProviderChain implements LlmProvider {
   readonly name = 'chain';
 
-  private readonly disabled = new Set<string>();
+  /** 프로바이더 이름 → 다시 시도해도 되는 시각(ms). `Infinity` 는 영구 배제 */
+  private readonly retryAt = new Map<string, number>();
 
   constructor(
     private readonly providers: LlmProvider[],
     private readonly log: (message: string) => void = () => {},
+    private readonly now: () => number = () => Date.now(),
+    private readonly sleep: (ms: number) => Promise<void> = (ms) =>
+      new Promise((resolve) => setTimeout(resolve, ms)),
   ) {
     if (providers.length === 0) throw new Error('프로바이더가 하나도 없습니다.');
   }
@@ -43,18 +75,36 @@ export class ProviderChain implements LlmProvider {
   async complete(request: LlmRequest): Promise<LlmResponse> {
     const failures: string[] = [];
 
-    for (const provider of this.providers) {
-      if (this.disabled.has(provider.name)) continue;
+    /*
+      한 바퀴를 다 돌아 아무도 못 쓰면, 쿨다운이 가장 먼저 끝나는 프로바이더를
+      기다렸다가 한 번 더 돕니다. 기다려서 될 일이 아니면(전부 영구 배제)
+      즉시 포기합니다.
+    */
+    for (let attempt = 0; ; attempt += 1) {
+      for (const provider of this.providers) {
+        if (this.blockedUntil(provider.name) > this.now()) continue;
 
-      try {
-        return await provider.complete(request);
-      } catch (error) {
-        if (!(error instanceof ProviderUnavailableError)) throw error;
+        try {
+          return await provider.complete(request);
+        } catch (error) {
+          if (!(error instanceof ProviderUnavailableError)) throw error;
 
-        this.disabled.add(provider.name);
-        failures.push(error.message);
-        this.log(`${provider.name} 사용 불가 (${error.reason}) — 다음 프로바이더로 넘어갑니다.`);
+          const cooldown = COOLDOWN_MS[error.reason] ?? Infinity;
+          this.retryAt.set(provider.name, this.now() + cooldown);
+          failures.push(error.message);
+          this.log(
+            cooldown === Infinity
+              ? `${provider.name} 사용 불가 (${error.reason}) — 이번 실행에서 제외합니다.`
+              : `${provider.name} 사용 불가 (${error.reason}) — ${cooldown / 1000}초 뒤 다시 시도합니다.`,
+          );
+        }
       }
+
+      const waitMs = this.msUntilAnyFree();
+      if (attempt >= MAX_COOLDOWN_WAITS || waitMs === null || waitMs > MAX_WAIT_MS) break;
+
+      this.log(`모든 프로바이더가 쉬는 중입니다. ${Math.ceil(waitMs / 1000)}초 기다립니다.`);
+      await this.sleep(waitMs);
     }
 
     throw new ProviderUnavailableError(
@@ -64,9 +114,25 @@ export class ProviderChain implements LlmProvider {
     );
   }
 
-  /** 보고용: 이번 실행에서 배제된 프로바이더 */
+  private blockedUntil(name: string): number {
+    return this.retryAt.get(name) ?? 0;
+  }
+
+  /** 가장 이른 쿨다운이 풀릴 때까지 남은 시간. 전부 영구 배제면 null */
+  private msUntilAnyFree(): number | null {
+    let earliest = Infinity;
+    for (const provider of this.providers) {
+      const at = this.blockedUntil(provider.name);
+      if (at < earliest) earliest = at;
+    }
+    if (earliest === Infinity) return null;
+    return Math.max(0, earliest - this.now());
+  }
+
+  /** 보고용: 지금 쓸 수 없는 프로바이더 */
   get disabledProviders(): string[] {
-    return [...this.disabled];
+    const now = this.now();
+    return this.providers.map((p) => p.name).filter((name) => this.blockedUntil(name) > now);
   }
 }
 

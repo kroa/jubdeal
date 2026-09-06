@@ -1,8 +1,16 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { createProvider, parseProviderModes } from '@pipeline/extract/providers/index';
+import {
+  ProviderChain,
+  createProvider,
+  parseProviderModes,
+} from '@pipeline/extract/providers/index';
 import { GeminiProvider } from '@pipeline/extract/providers/gemini';
 import { OpenRouterProvider } from '@pipeline/extract/providers/openrouter';
-import type { LlmRequest } from '@pipeline/extract/providers/types';
+import {
+  ProviderUnavailableError,
+  type LlmProvider,
+  type LlmRequest,
+} from '@pipeline/extract/providers/types';
 
 /**
  * 프로바이더 체인 구성과 일시 오류 분류
@@ -211,5 +219,112 @@ describe('OpenRouter 모델 선택', () => {
 
     expect(tried[0]).toBe('busy/one:free');
     expect(out.provider).toContain('alive/two:free');
+  });
+});
+
+describe('쿨다운 — 한도는 기다리면 풀린다', () => {
+  /*
+    한 번 막힌 프로바이더를 실행 내내 배제했더니, 실측에서 107건을 수집하고
+    5건만 추출했습니다. Gemini 가 분당 한도로 빠진 뒤 8초 만에 회복됐는데도
+    남은 100건을 전부 api_error 로 버렸습니다.
+  */
+  const REQUEST = { system: 's', user: 'u' } as unknown as LlmRequest;
+
+  function stub(name: string, behavior: () => Promise<unknown>): LlmProvider {
+    return {
+      name,
+      isConfigured: async () => true,
+      complete: behavior as LlmProvider['complete'],
+    } as LlmProvider;
+  }
+
+  /** 가짜 시계 — 대기 요청이 오면 그만큼 시각을 앞당깁니다. */
+  function fakeClock() {
+    let t = 1_000;
+    const waits: number[] = [];
+    return {
+      waits,
+      now: () => t,
+      sleep: async (ms: number) => {
+        waits.push(ms);
+        t += ms;
+      },
+    };
+  }
+
+  it('한도로 막혀도 쿨다운 뒤 같은 프로바이더를 다시 쓴다', async () => {
+    const clock = fakeClock();
+    let calls = 0;
+    const gemini = stub('gemini', async () => {
+      calls += 1;
+      if (calls === 1) throw new ProviderUnavailableError('gemini', 'quota', '분당 한도');
+      return { text: '{}', usage: null };
+    });
+
+    const chain = new ProviderChain([gemini], () => {}, clock.now, clock.sleep);
+
+    await expect(chain.complete(REQUEST)).resolves.toMatchObject({ text: '{}' });
+    expect(calls).toBe(2);
+    expect(clock.waits).toEqual([60_000]);
+  });
+
+  it('인증 실패는 기다려도 안 고쳐지니 곧바로 포기한다', async () => {
+    const clock = fakeClock();
+    let calls = 0;
+    const openrouter = stub('openrouter', async () => {
+      calls += 1;
+      throw new ProviderUnavailableError('openrouter', 'auth', '인증 실패 (403)');
+    });
+
+    const chain = new ProviderChain([openrouter], () => {}, clock.now, clock.sleep);
+
+    await expect(chain.complete(REQUEST)).rejects.toThrow('사용 가능한 프로바이더가 없습니다');
+    expect(calls).toBe(1);
+    expect(clock.waits).toEqual([]);
+  });
+
+  it('영구 배제와 한도가 섞이면 한도 쪽만 기다린다', async () => {
+    const clock = fakeClock();
+    let geminiCalls = 0;
+    const openrouter = stub('openrouter', async () => {
+      throw new ProviderUnavailableError('openrouter', 'auth', '인증 실패');
+    });
+    const gemini = stub('gemini', async () => {
+      geminiCalls += 1;
+      if (geminiCalls === 1) throw new ProviderUnavailableError('gemini', 'busy', '503');
+      return { text: 'ok', usage: null };
+    });
+
+    const chain = new ProviderChain([openrouter, gemini], () => {}, clock.now, clock.sleep);
+
+    await expect(chain.complete(REQUEST)).resolves.toMatchObject({ text: 'ok' });
+    // busy 는 20초, auth 는 영구. 20초만 기다려야 합니다.
+    expect(clock.waits).toEqual([20_000]);
+  });
+
+  it('끝없이 기다리지는 않는다', async () => {
+    const clock = fakeClock();
+    const gemini = stub('gemini', async () => {
+      throw new ProviderUnavailableError('gemini', 'quota', '한도');
+    });
+
+    const chain = new ProviderChain([gemini], () => {}, clock.now, clock.sleep);
+
+    await expect(chain.complete(REQUEST)).rejects.toThrow('사용 가능한 프로바이더가 없습니다');
+    expect(clock.waits.length).toBeLessThanOrEqual(2);
+  });
+
+  it('쿨다운이 끝난 프로바이더는 보고에서 빠진다', async () => {
+    const clock = fakeClock();
+    const gemini = stub('gemini', async () => {
+      throw new ProviderUnavailableError('gemini', 'quota', '한도');
+    });
+    const chain = new ProviderChain([gemini], () => {}, clock.now, clock.sleep);
+
+    await expect(chain.complete(REQUEST)).rejects.toThrow();
+    expect(chain.disabledProviders).toEqual(['gemini']);
+
+    await clock.sleep(61_000);
+    expect(chain.disabledProviders).toEqual([]);
   });
 });
