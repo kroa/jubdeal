@@ -9,6 +9,7 @@ import {
   formatReport,
   guessAmount,
   guessDiscountRate,
+  looksFree,
   runPipeline,
   shareAcrossSources,
 } from '@pipeline/run';
@@ -809,5 +810,83 @@ describe('반값 상품을 먼저 처리한다', () => {
     );
 
     expect(picked[0]?.title).toBe('최대 85만원 캐시백');
+  });
+});
+
+describe('완전 무료 판정', () => {
+  it('무료 표현을 잡는다', () => {
+    expect(looksFree('[iOS] Widgetik 홈 화면 위젯 일시 무료')).toBe(true);
+    expect(looksFree('에픽게임즈 이번주 무료게임')).toBe(true);
+    expect(looksFree('스타벅스 아메리카노 공짜 쿠폰')).toBe(true);
+    expect(looksFree('Free Game of the Week')).toBe(true);
+    expect(looksFree('100% 무료 배포')).toBe(true);
+  });
+
+  it('"100% 당첨" 같은 표현은 무료가 아니다', () => {
+    // 100% 는 신호로 쓰지 않습니다. "100% 무료"는 이미 "무료"가 잡고,
+    // 당첨 룰렛까지 끌어와 진짜 무료를 밀어냅니다.
+    expect(looksFree('신한 슈퍼SOL 100% 당첨 룰렛 이벤트')).toBe(false);
+    expect(looksFree('100% 페이백 이벤트')).toBe(false);
+  });
+
+  it('"무료배송"은 상품이 공짜라는 뜻이 아니다', () => {
+    /*
+      핫딜 제목에 "무배"·"무료배송"이 매우 흔합니다.
+      이걸 무료로 세면 목록의 절반이 최우선 층으로 올라가 진짜 무료가 묻힙니다.
+    */
+    expect(looksFree('네이버 국내산 닭발 300g 3팩 (14,500원/무료배송)')).toBe(false);
+    expect(looksFree('대원샵 균일가 10,000원 무배')).toBe(false);
+    expect(looksFree('배송비 무료 이벤트')).toBe(false);
+  });
+
+  it('무료 표현이 없으면 false', () => {
+    expect(looksFree('KB국민카드 최대 85만원 캐시백')).toBe(false);
+    expect(looksFree('삼성 75인치 TV 64% 할인')).toBe(false);
+    expect(looksFree(undefined)).toBe(false);
+  });
+});
+
+describe('무료가 우선순위에서 밀리지 않는다', () => {
+  function item(title: string, i: number): RawItem {
+    return {
+      sourceId: 'board',
+      sourceName: '게시판',
+      url: `https://board.test/${i}`,
+      title,
+      text: '본문',
+      collectedAt: '2026-09-06T00:00:00+09:00',
+    };
+  }
+
+  it('금액이 큰 항목보다 무료를 먼저 태운다', () => {
+    /*
+      무료는 금액이 0 이고 할인율도 안 잡혀 우선순위 최하위였습니다.
+      그래서 82건을 모으고도 dealType 이 free 인 것이 0건이었습니다.
+      "줍딜"의 핵심 컨셉인데 한 건도 못 담았습니다.
+    */
+    const picked = shareAcrossSources(
+      [item('KB국민카드 5종 최대 85만원 캐시백', 0), item('[iOS] Widgetik 위젯 앱 일시 무료', 1)],
+      1,
+    );
+
+    expect(picked[0]?.title).toContain('무료');
+  });
+
+  it('반값 상품보다도 무료가 먼저다', () => {
+    const picked = shareAcrossSources(
+      [item('무신사 패딩 82% 할인', 0), item('에픽게임즈 무료게임 배포', 1)],
+      1,
+    );
+
+    expect(picked[0]?.title).toContain('무료게임');
+  });
+
+  it('무료끼리는 금액이 큰 것부터', () => {
+    const picked = shareAcrossSources(
+      [item('앱 무료 배포', 0), item('30만원 상당 무료 증정', 1)],
+      2,
+    );
+
+    expect(picked[0]?.title).toContain('30만원');
   });
 });

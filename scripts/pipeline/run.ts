@@ -233,6 +233,35 @@ export async function runPipeline(options: RunOptions): Promise<PipelineReport> 
 }
 
 /**
+ * 제목이 "완전 무료"를 말하는지. **우선순위 결정에만** 씁니다.
+ *
+ * 무료 항목은 금액이 0 이고 할인율도 잡히지 않습니다
+ * (100% 는 할인이 아니라 증정이라 guessDiscountRate 가 일부러 뺍니다).
+ * 두 신호가 모두 없으니 **우선순위 최하위로 밀립니다.**
+ * 정작 "줍딜"의 핵심 컨셉인데, 82건을 모으고도 dealType 이 free 인 것이
+ * 0건이었습니다. 값을 매길 수 없으니 별도의 층으로 올립니다.
+ */
+export function looksFree(title: string | undefined): boolean {
+  if (!title) return false;
+
+  // "무료배송"은 상품 자체가 공짜라는 뜻이 아닙니다.
+  const stripped = title.replace(/무료\s*배송|무배|배송비\s*무료/g, '');
+
+  /*
+    "0원" 앞에 숫자가 붙으면 안 됩니다. 그냥 `0\s*원` 으로 두면
+    "14,500원"의 끝자리 "0원"이 걸려 핫딜 절반이 무료로 분류됩니다.
+
+    "100%" 는 신호로 쓰지 않습니다. "100% 무료"는 이미 "무료"가 잡고,
+    "100% 당첨 룰렛"처럼 무료가 아닌 것까지 끌어옵니다
+    (실제로 신한 슈퍼SOL 룰렛이 무료로 분류돼 1순위로 올라왔습니다).
+
+    "무상"도 넣습니다. 일부 모델이 "무료" 대신 쓰는 말이라
+    빠뜨리면 진짜 무료 항목을 놓칩니다.
+  */
+  return /무료|무상|공짜|(?<![\d,])0\s*원|\bfree\b/i.test(stripped);
+}
+
+/**
  * 제목에서 할인율을 어림잡습니다. **우선순위 결정에만** 씁니다.
  *
  * "82% 할인" → 82, "반값" → 50, "1+1" → 50
@@ -343,10 +372,26 @@ export function shareAcrossSources(items: RawItem[], limit: number): RawItem[] {
         (예: "무신사 패딩 82% 할인") guessAmount 가 0 을 돌려주고,
         상한만 큰 카드 이벤트에 자리를 뺏깁니다.
       */
-      const deep = (item: RawItem) => Number(guessDiscountRate(item.title) >= DEEP_DISCOUNT_RATE);
+      /*
+        층을 나눠 봅니다.
 
-      const byDeep = deep(b) - deep(a);
-      if (byDeep !== 0) return byDeep;
+          2층: 완전 무료 — 줍딜의 핵심 컨셉인데 값이 0 이라 밀렸습니다.
+          1층: 반값 이하 — 사용자가 명시적으로 원한 것.
+          0층: 나머지, 금액 순.
+
+        무료와 고할인을 금액과 같은 축에 놓으면 둘 다 굶습니다.
+        무료는 금액이 0 이고, 할인 상품은 제목에 판매가만 적히거나 아예
+        금액이 없어(예: "무신사 패딩 82% 할인") 0 으로 취급되기 때문입니다.
+        실제로 82건을 모았는데 dealType 이 free 인 것이 0건이었습니다.
+      */
+      const tier = (item: RawItem) => {
+        if (looksFree(item.title)) return 2;
+        if (guessDiscountRate(item.title) >= DEEP_DISCOUNT_RATE) return 1;
+        return 0;
+      };
+
+      const byTier = tier(b) - tier(a);
+      if (byTier !== 0) return byTier;
 
       return guessAmount(b.title) - guessAmount(a.title);
     });
