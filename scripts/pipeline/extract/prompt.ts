@@ -137,7 +137,11 @@ ${bulletList(DIFFICULTY_DESCRIPTIONS as Record<DealDifficulty, string>)}
 ## 문체
 
 title 과 summary 는 정보 전달에 집중하세요.
-"놓치면 후회!", "역대급" 같은 광고 문구는 제거하고 사실만 남기세요.`;
+"놓치면 후회!", "역대급" 같은 광고 문구는 제거하고 사실만 남기세요.
+
+**한국어로만 쓰세요.** 한자나 중국어 단어를 섞지 마세요.
+"무료"를 "免费"로, "할인"을 "折扣"로 쓰면 안 됩니다.
+원문에 한자가 있어도 한국어로 옮겨 쓰세요.`;
 
 /** 요청마다 달라지는 부분 (캐시 경계 뒤) */
 export function buildExtractionUserMessage(
