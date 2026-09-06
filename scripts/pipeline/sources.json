@@ -142,6 +142,59 @@
       "url": "scripts/pipeline/fixtures/sample.json",
       "enabled": false,
       "maxItems": 5
+    },
+    {
+      "id": "dealbada-free",
+      "name": "딜바다 무료이벤트",
+      "kind": "rss",
+      "url": "https://www.dealbada.com/bbs/rss.php?bo_table=event_free",
+      "enabled": true,
+      "maxItems": 8,
+      "categoryHint": "etc"
+    },
+    {
+      "id": "arca-hotdeal-sw",
+      "name": "아카라이브 핫딜 SW·게임",
+      "kind": "html",
+      "url": "https://arca.live/b/hotdeal?category=sw",
+      "enabled": true,
+      "maxItems": 8,
+      "selectors": {
+        "item": "div.vrow.hybrid",
+        "link": "a.title.hybrid-title",
+        "title": "a.title.hybrid-title",
+        "detail": ".article-body"
+      },
+      "categoryHint": "app",
+      "stripParams": ["category", "p"]
+    },
+    {
+      "id": "seoul-culture-free",
+      "name": "서울문화포털 문화행사",
+      "kind": "html",
+      "url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/list.do?menuNo=200008",
+      "enabled": true,
+      "maxItems": 8,
+      "selectors": {
+        "item": "li.filter-NEW.item",
+        "link": "a[href*=\"cultureEvent/view.do?cultcode=\"]",
+        "detail": ".event-detail"
+      },
+      "categoryHint": "culture"
+    },
+    {
+      "id": "museum-culture-free",
+      "name": "국립중앙박물관 공연·행사",
+      "kind": "html",
+      "url": "https://www.museum.go.kr/MUSEUM/contents/M0403010000.do?schM=list&type=type1&typeCode=culture",
+      "enabled": true,
+      "maxItems": 6,
+      "selectors": {
+        "item": "ul.show-list > li",
+        "link": "a"
+      },
+      "categoryHint": "culture",
+      "stripParams": ["cp"]
     }
   ]
 }
