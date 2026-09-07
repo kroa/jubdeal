@@ -93,6 +93,8 @@ export class OpenRouterProvider implements LlmProvider {
   private readonly noStructuredOutput = new Set<string>();
   /** 마지막으로 성공한 모델 — 다음 요청에서 먼저 시도합니다 */
   private preferred: string | null = null;
+  /** 품질 문제로 이번 실행에서 그만 쓰기로 한 모델 */
+  private readonly banned = new Set<string>();
   private discovered: string[] | null = null;
   /** /models 응답 캐시. 탐색과 유료 차단이 함께 씁니다. */
   private catalogue: Map<string, ModelInfo> | null | undefined;
@@ -274,12 +276,25 @@ export class OpenRouterProvider implements LlmProvider {
       탐색은 유료 모델을 걸러내므로 요금이 새어 나갈 여지는 없습니다.
     */
     const discovered = await this.discoverFreeModels();
-    const ordered = configured.length > 0 ? [...configured, ...discovered] : discovered;
+    const all = configured.length > 0 ? [...configured, ...discovered] : discovered;
+    const ordered = all.filter((model) => !this.banned.has(model));
 
-    if (this.preferred) {
+    if (this.preferred && !this.banned.has(this.preferred)) {
       return dedupe([this.preferred, ...ordered.filter((model) => model !== this.preferred)]);
     }
     return dedupe(ordered);
+  }
+
+  /**
+   * 이 모델은 그만 씁니다.
+   *
+   * 한국어에 중국어를 섞어 내는 모델이 있어 추출기가 결과를 버리는데,
+   * "마지막 성공 모델"로 캐시되어 있으면 다음 항목에서도 같은 모델이
+   * 다시 뽑힙니다. 실제로 한 소스에서 3건 중 2건이 이렇게 날아갔습니다.
+   */
+  banModel(model: string): void {
+    this.banned.add(model);
+    if (this.preferred === model) this.preferred = null;
   }
 
   /**

@@ -8,7 +8,11 @@ import {
   parseJsonLoosely,
   parseModelList,
 } from '@pipeline/extract/providers/openrouter';
-import { findCjkIdeographs, isBrandGrounded } from '@pipeline/extract/extract';
+import {
+  findCjkIdeographs,
+  isBrandGrounded,
+  modelFromProviderLabel,
+} from '@pipeline/extract/extract';
 import type { LlmRequest } from '@pipeline/extract/providers/types';
 
 const REQUEST: LlmRequest = {
@@ -840,9 +844,67 @@ describe('브랜드 근거 검사', () => {
     expect(isBrandGrounded('S', '전혀 다른 내용')).toBe(true);
   });
 
+  it('브랜드가 제목에만 있어도 통과해야 한다', () => {
+    /*
+      본문만 대조했더니 딜바다 핫딜이 전멸했습니다. 그쪽은 브랜드가
+      제목에만 있고 본문은 84자짜리 한 줄이라 브랜드가 안 나옵니다.
+      호출부에서 제목과 본문을 합쳐 넘깁니다.
+    */
+    const 제목 = '[지마켓라이브] 1++등급 소고기 구이용 한우 다온 선물 세트 (116,100원/무료)';
+    const 본문 = '한가위빅세일 쿠폰 적용 시 최종가 116,100원입니다';
+
+    expect(isBrandGrounded('지마켓라이브', 본문)).toBe(false);
+    expect(
+      isBrandGrounded(
+        '지마켓라이브',
+        `${제목}
+${본문}`,
+      ),
+    ).toBe(true);
+  });
+
   it('공백을 지우면 없던 말이 생기므로 지우지 않는다', () => {
     // "코스트코 웨이브" → "코스트코웨이브" 로 붙이면 그 안에서 "코웨이"가
     // 매칭됩니다. 정확히 막으려던 그 브랜드입니다.
     expect(isBrandGrounded('코웨이', '코스트코 웨이브 이용권')).toBe(false);
+  });
+});
+
+describe('한자를 섞는 모델 배제', () => {
+  it('프로바이더 라벨에서 모델 이름을 뽑는다', () => {
+    /*
+      모델 이름 자체에 콜론이 들어갑니다(:free 접미사).
+      마지막 콜론에서 자르면 ":free" 만 남아 배제가 빗나갑니다.
+    */
+    expect(modelFromProviderLabel('openrouter:dots-studio/dots-3-note-preview:free')).toBe(
+      'dots-studio/dots-3-note-preview:free',
+    );
+    expect(modelFromProviderLabel('gemini:gemini-3.7-flash')).toBe('gemini-3.7-flash');
+    expect(modelFromProviderLabel('claude-cli')).toBeNull();
+    expect(modelFromProviderLabel('openrouter:')).toBeNull();
+  });
+
+  it('배제한 모델은 다음 시도에서 빠진다', async () => {
+    /*
+      한자를 섞는 모델은 호출이 성공하므로 한도·오류 경로로는 안 빠집니다.
+      게다가 성공한 모델은 "마지막 성공 모델"로 캐시되어 다음 항목에서도
+      다시 뽑힙니다. 실제로 한 소스에서 3건 중 2건이 이렇게 날아갔습니다.
+    */
+    const { impl, calls } = makeFetch(() => chatOk({ value: 1 }));
+    const provider = new OpenRouterProvider({
+      apiKey: 'k',
+      freeModels: ['bad:free', 'good:free'],
+      fetchImpl: impl,
+    });
+
+    const first = await provider.complete(REQUEST);
+    expect(first.provider).toBe('openrouter:bad:free');
+
+    provider.banModel('bad:free');
+    calls.length = 0;
+
+    const second = await provider.complete(REQUEST);
+    expect(chatModels(calls)).not.toContain('bad:free');
+    expect(second.provider).toBe('openrouter:good:free');
   });
 });

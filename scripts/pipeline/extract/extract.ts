@@ -141,6 +141,21 @@ function normalizeForMatch(value: string): string {
     .trim();
 }
 
+/**
+ * `"openrouter:dots-studio/dots-3-note-preview:free"` → 모델 이름만.
+ *
+ * 응답의 `provider` 는 `프로바이더:모델` 형태입니다. 모델 이름 자체에도
+ * 콜론이 들어가므로(`:free` 접미사) **첫 번째 콜론에서만** 자릅니다.
+ * 프로바이더 이름만 있고 모델이 없으면 null 입니다.
+ */
+export function modelFromProviderLabel(label: string): string | null {
+  const at = label.indexOf(':');
+  if (at < 0) return null;
+
+  const model = label.slice(at + 1).trim();
+  return model === '' ? null : model;
+}
+
 export class DealExtractor {
   private readonly provider: LlmProvider;
   private readonly threshold: number;
@@ -205,6 +220,22 @@ export class DealExtractor {
     // 사용자에게 그대로 노출되는 필드에 한자가 섞이지 않았는지 확인합니다.
     const foreign = findCjkIdeographs(`${value.title} ${value.summary}`);
     if (foreign.length > 0) {
+      /*
+        이 모델은 이번 실행에서 그만 씁니다.
+
+        프롬프트에 "한국어로만 쓰세요"를 넣고 예시까지 들었는데도 같은 모델이
+        계속 섞었습니다(`免费`, `参免费`, `生态公园入场`). 게다가 성공한 모델은
+        "마지막 성공 모델"로 캐시되어 다음 항목에서도 다시 뽑힙니다 —
+        한 소스에서 3건 중 2건이 이렇게 날아갔습니다.
+
+        배제하지 않으면 남은 항목이 계속 같은 방식으로 버려집니다.
+      */
+      const model = modelFromProviderLabel(response.provider);
+      if (model !== null) {
+        this.provider.banModel?.(model);
+        this.log(`${model} 이 한국어에 한자를 섞어 이번 실행에서 제외합니다.`);
+      }
+
       return {
         ok: false,
         reason: 'low_confidence',
@@ -216,8 +247,14 @@ export class DealExtractor {
       };
     }
 
-    // 원문에 없는 브랜드를 말했다면 다른 문서의 내용이 섞인 것입니다.
-    if (!isBrandGrounded(value.brandName, item.text)) {
+    /*
+      원문에 없는 브랜드를 말했다면 다른 문서의 내용이 섞인 것입니다.
+
+      **제목도 원문입니다.** 처음에 본문만 봤더니 딜바다 핫딜이 전멸했습니다.
+      그쪽은 브랜드가 제목에만 있고("[지마켓라이브] 1++등급 한우 선물세트")
+      본문은 84자짜리 한 줄이라 브랜드가 안 나옵니다.
+    */
+    if (!isBrandGrounded(value.brandName, `${item.title ?? ''}\n${item.text}`)) {
       return {
         ok: false,
         reason: 'low_confidence',

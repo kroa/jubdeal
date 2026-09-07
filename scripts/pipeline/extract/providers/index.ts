@@ -123,6 +123,11 @@ export class ProviderChain implements LlmProvider {
     );
   }
 
+  /** 하위 프로바이더 중 이 모델을 다룰 수 있는 쪽에 전달합니다. */
+  banModel(model: string): void {
+    for (const provider of this.providers) provider.banModel?.(model);
+  }
+
   private blockedUntil(name: string): number {
     return this.retryAt.get(name) ?? 0;
   }

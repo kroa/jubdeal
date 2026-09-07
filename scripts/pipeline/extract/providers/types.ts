@@ -42,6 +42,17 @@ export interface LlmProvider {
   /** 이 프로바이더를 쓸 수 있는 상태인지 (설정·바이너리 존재 등) */
   isConfigured(): Promise<boolean>;
   complete(request: LlmRequest): Promise<LlmResponse>;
+  /**
+   * 이 모델은 결과물이 못 쓸 것이니 이번 실행에서 그만 쓰라는 신호.
+   *
+   * 한도나 오류가 아니라 **응답 품질** 때문에 부릅니다. 한국어에 중국어를
+   * 섞어 내는 모델이 실제로 있었는데(`免费`, `参免费`, `生态公园入场`),
+   * 프롬프트에 "한국어로만 쓰세요"를 넣어도 반복됐습니다. 호출은 성공하고
+   * 스키마도 통과하니 기존 폴백 경로로는 걸러지지 않습니다.
+   *
+   * 모델을 여러 개 돌려 쓰는 프로바이더만 구현하면 됩니다.
+   */
+  banModel?(model: string): void;
 }
 
 /**
