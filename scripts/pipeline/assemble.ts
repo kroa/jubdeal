@@ -318,7 +318,8 @@ function dedupeTags(tags: string[]): string[] {
     if (trimmed === '' || seen.has(trimmed)) continue;
     seen.add(trimmed);
     result.push(trimmed);
-    if (result.length >= 12) break;
+    // 추출 스키마와 같은 상한을 씁니다. 어긋나 있으면 한쪽이 죽은 코드가 됩니다.
+    if (result.length >= 8) break;
   }
 
   return result;

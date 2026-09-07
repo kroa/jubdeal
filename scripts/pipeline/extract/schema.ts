@@ -109,7 +109,22 @@ export const extractedDealSchema = z.object({
 
   howTo: z.array(z.string()).describe('참여 방법 단계. 없으면 빈 배열'),
   caution: z.array(z.string()).describe('주의사항. 없으면 빈 배열'),
-  tags: z.array(z.string()).max(8).describe('검색용 태그'),
+  /*
+    개수를 여기서 막지 않습니다. 조립 단계의 `dedupeTags` 가 8개로 자릅니다.
+
+    `.max(8)` 이었는데, Gemini 로 보내는 스키마에서는 `maxItems` 가 제거됩니다
+    (Gemini 가 이해하지 못하는 키워드라 toGeminiSchema 가 버립니다).
+    그래서 모델은 제한을 모른 채 9개를 내고, 우리는 항목을 통째로 거절했습니다.
+    실제로 아정당 카드 이벤트 한 건이 이렇게 버려졌습니다.
+
+    자르는 쪽을 `.transform` 으로 옮겨 봤지만 Zod 4 는 transform 을
+    JSON Schema 로 표현하지 못합니다("Transforms cannot be represented in
+    JSON Schema") — 이 스키마는 프로바이더에게 보낼 JSON Schema 로도
+    쓰이므로 transform 을 넣을 수 없습니다.
+
+    태그를 하나 더 붙였다고 혜택 정보를 버릴 이유가 없습니다.
+  */
+  tags: z.array(z.string()).describe('검색용 태그. 8개 이하'),
 });
 
 export type ExtractedDeal = z.infer<typeof extractedDealSchema>;

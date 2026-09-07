@@ -152,6 +152,8 @@ ${bulletList(DIFFICULTY_DESCRIPTIONS as Record<DealDifficulty, string>)}
 
 ## 문체
 
+tags 는 **8개 이하**로 적으세요. 더 적어도 잘리기만 하지만, 필요한 만큼만 쓰세요.
+
 title 과 summary 는 정보 전달에 집중하세요.
 "놓치면 후회!", "역대급" 같은 광고 문구는 제거하고 사실만 남기세요.
 
