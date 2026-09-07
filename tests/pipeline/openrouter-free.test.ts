@@ -8,7 +8,7 @@ import {
   parseJsonLoosely,
   parseModelList,
 } from '@pipeline/extract/providers/openrouter';
-import { findCjkIdeographs } from '@pipeline/extract/extract';
+import { findCjkIdeographs, isBrandGrounded } from '@pipeline/extract/extract';
 import type { LlmRequest } from '@pipeline/extract/providers/types';
 
 const REQUEST: LlmRequest = {
@@ -798,5 +798,51 @@ describe('findCjkIdeographs', () => {
 
   it('빈 문자열은 빈 배열', () => {
     expect(findCjkIdeographs('')).toEqual([]);
+  });
+});
+
+describe('브랜드 근거 검사', () => {
+  /*
+    문화포털의 전시 안내(645자, "코웨이"라는 말이 한 번도 없음)를 읽히자
+    모델이 "코웨이 렌탈료 자동이체 시 포인트 적립"을 내놨습니다.
+    스키마도 통과하고 신뢰도 0.95 였습니다.
+
+    링크는 pickLinkUrl 이 원문 대조로 막고 있었지만 브랜드는 아무도
+    보지 않아, 링크가 멀쩡한 채 없는 혜택이 그대로 노출될 수 있었습니다.
+  */
+  const 문화포털본문 =
+    '한눈에 보는 문화정보 전시 갤러리 원 전체연령 [원주 갤러리 원] ' +
+    '유미숙 초대개인전 "어울다-소통" 기간 2026-08-25~2026-09-07 (진행중) 가격 무료';
+
+  it('원문에 흔적조차 없는 브랜드를 잡는다', () => {
+    expect(isBrandGrounded('코웨이', 문화포털본문)).toBe(false);
+    expect(isBrandGrounded('스타벅스', 문화포털본문)).toBe(false);
+  });
+
+  it('원문에 있으면 통과한다', () => {
+    expect(isBrandGrounded('갤러리 원', 문화포털본문)).toBe(true);
+  });
+
+  it('표기가 조금 달라도 통과한다', () => {
+    // 실제로 흔합니다. 여기서 막으면 멀쩡한 카드 이벤트가 전부 사라집니다.
+    expect(isBrandGrounded('KB국민카드', 'KB국민 WE:SH Travel 카드 5종 대상 이벤트')).toBe(true);
+    expect(isBrandGrounded('신한카드', '신한 Discount Plan+ 발급 시')).toBe(true);
+    expect(isBrandGrounded('NH농협카드', 'NH농협 렌탈 제휴카드 2종')).toBe(true);
+  });
+
+  it('기호는 무시한다', () => {
+    expect(isBrandGrounded('11번가', '11번가에서 진행하는 행사')).toBe(true);
+    expect(isBrandGrounded('올리브영', '[올리브영] 세일 안내')).toBe(true);
+  });
+
+  it('한 글자는 판단하지 않는다', () => {
+    // 한 글자로 대조하면 아무 문서에나 걸려 검사가 무의미해집니다.
+    expect(isBrandGrounded('S', '전혀 다른 내용')).toBe(true);
+  });
+
+  it('공백을 지우면 없던 말이 생기므로 지우지 않는다', () => {
+    // "코스트코 웨이브" → "코스트코웨이브" 로 붙이면 그 안에서 "코웨이"가
+    // 매칭됩니다. 정확히 막으려던 그 브랜드입니다.
+    expect(isBrandGrounded('코웨이', '코스트코 웨이브 이용권')).toBe(false);
   });
 });

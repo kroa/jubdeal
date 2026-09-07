@@ -88,6 +88,59 @@ export function findCjkIdeographs(text: string): string[] {
   return [...new Set(text.match(/[一-鿿]/g) ?? [])];
 }
 
+/**
+ * 브랜드명 근거 검사에서 인정하는 최소 접두사 길이.
+ *
+ * 3 으로 뒀더니 "신한카드"가 원문 "신한 Discount Plan+" 를 못 찾았습니다.
+ * 접두사가 "신한카"까지밖에 안 줄어들기 때문입니다. 브랜드 뒤에 "카드"·"몰"
+ * 같은 말을 붙이는 것은 매우 흔해서, 이대로면 멀쩡한 카드 이벤트가 전부
+ * 걸립니다. 목적은 "코웨이"처럼 **원문에 흔적조차 없는** 것을 잡는 것이지
+ * 표기를 엄밀히 대조하는 것이 아닙니다.
+ */
+const BRAND_PREFIX_MIN = 2;
+
+/**
+ * 모델이 말한 브랜드가 **원문에 실제로 나오는지** 봅니다.
+ *
+ * 문화포털의 전시 안내(645자, 코웨이라는 말이 한 번도 없음)를 읽히자
+ * 모델이 "코웨이 렌탈료 자동이체 시 포인트 적립"을 내놨습니다. 스키마도
+ * 통과하고 신뢰도 0.95 였습니다. 직전 요청의 내용이 샌 것으로 보입니다.
+ *
+ * 링크는 이미 `pickLinkUrl` 이 원문 대조로 막고 있었지만, 제목·브랜드는
+ * 아무도 보지 않았습니다. 링크가 멀쩡해도 **엉뚱한 혜택 설명이 그대로
+ * 노출**됩니다. 한자 혼용보다 나쁩니다 — 틀린 글자가 아니라 없는 사실입니다.
+ *
+ * 표기가 조금씩 다른 것은 정상이라("KB국민카드" ↔ 원문 "KB국민"),
+ * 전체가 아니라 **앞에서부터 줄여 본 접두사**가 걸리면 통과시킵니다.
+ */
+export function isBrandGrounded(brandName: string, sourceText: string): boolean {
+  const brand = normalizeForMatch(brandName);
+  if (brand.length < BRAND_PREFIX_MIN) return true; // 너무 짧으면 판단하지 않습니다.
+
+  const haystack = normalizeForMatch(sourceText);
+
+  for (let length = brand.length; length >= BRAND_PREFIX_MIN; length -= 1) {
+    if (haystack.includes(brand.slice(0, length))) return true;
+  }
+
+  return false;
+}
+
+/**
+ * 기호를 걷어내고 소문자로. 표기 흔들림 때문에 빗나가지 않게 합니다.
+ *
+ * **공백은 남깁니다.** 처음엔 함께 지웠는데, 그러면 단어 경계가 사라져
+ * 없던 말이 생깁니다 — "코스트코 웨이브"가 "코스트코웨이브"가 되면서
+ * 그 안에서 "코웨이"가 매칭됐습니다. 정확히 막으려던 그 브랜드입니다.
+ */
+function normalizeForMatch(value: string): string {
+  return value
+    .toLowerCase()
+    .replace(/[()[\]{}·,.'"“”‘’\-_/\\]+/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 export class DealExtractor {
   private readonly provider: LlmProvider;
   private readonly threshold: number;
@@ -158,6 +211,19 @@ export class DealExtractor {
         detail:
           `제목·요약에 한자가 섞였습니다 (${foreign.join('')}). ` +
           '모델이 다른 언어를 섞은 것으로 보입니다. 문구를 확인해 주세요.',
+        candidate: value,
+        usage,
+      };
+    }
+
+    // 원문에 없는 브랜드를 말했다면 다른 문서의 내용이 섞인 것입니다.
+    if (!isBrandGrounded(value.brandName, item.text)) {
+      return {
+        ok: false,
+        reason: 'low_confidence',
+        detail:
+          `브랜드 "${value.brandName}" 가 원문에 없습니다. ` +
+          '다른 문서의 내용이 섞였을 수 있으니 원문과 대조해 주세요.',
         candidate: value,
         usage,
       };

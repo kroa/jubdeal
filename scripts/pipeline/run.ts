@@ -194,6 +194,17 @@ export async function runPipeline(options: RunOptions): Promise<PipelineReport> 
   const merged = mergeDeals(existingFile, assembled, {
     now: options.now,
     pruneAfterDays: options.pruneAfterDays,
+    /*
+      한 소스만 돌릴 때는 주지 않습니다. 그때는 나머지 소스를 아예 돌지 않으므로
+      "지금 켜져 있는 소스"를 판단할 근거가 없고, 넘기면 나머지가 통째로 지워집니다.
+    */
+    ...(options.onlySource
+      ? {}
+      : {
+          activeSourceIds: sourcesFile.sources
+            .filter((source) => source.enabled)
+            .map((source) => source.id),
+        }),
   });
 
   report.added = merged.added.length;
@@ -207,6 +218,9 @@ export async function runPipeline(options: RunOptions): Promise<PipelineReport> 
   if (merged.pruned.length > 0) {
     log(`오래 종료된 ${merged.pruned.length}건을 목록에서 제거했습니다.`);
   }
+  if (merged.droppedFromDisabledSource.length > 0) {
+    log(`꺼진 소스에서 온 ${merged.droppedFromDisabledSource.length}건을 목록에서 제거했습니다.`);
+  }
 
   /* ---------------------------------------------------------------- 5. 기록 */
   // 쓰기 전에 정식 스키마로 다시 검증합니다. 여기서 실패하면 파일을 건드리지 않습니다.
@@ -214,7 +228,7 @@ export async function runPipeline(options: RunOptions): Promise<PipelineReport> 
 
   if (options.write) {
     // 임시 파일에 쓴 뒤 교체합니다. 도중에 죽으면 잘린 JSON 이 남아 빌드가 깨집니다.
-    await writeFileAtomic(options.dealsPath, `${JSON.stringify(merged.file, null, 2)}\n`);
+    await writeFileAtomic(options.dealsPath, await formatJson(merged.file, options.dealsPath));
     log(`deals.json 갱신: ${merged.file.deals.length}건`);
 
     if (review.length > 0) {
@@ -421,6 +435,36 @@ export function shareAcrossSources(items: RawItem[], limit: number): RawItem[] {
 }
 
 /** 임시 파일 + rename 으로 원자적으로 씁니다. */
+/**
+ * 저장소 포맷 규칙에 맞춰 직렬화합니다.
+ *
+ * `JSON.stringify(_, null, 2)` 로 쓰면 prettier 와 어긋납니다. prettier 는
+ * 짧은 배열을 한 줄로 접는데(`"tags": ["신한카드", "캐시백"]`) stringify 는
+ * 늘 펼치기 때문입니다. 그대로 커밋하면 `format:check` 가 깨집니다.
+ *
+ * CI 는 파이프라인 뒤에 `prettier --write` 를 한 번 더 돌려 이걸 덮고 있었지만,
+ * 로컬에서 파이프라인만 돌리면 매번 저장소가 더러워졌습니다. 그 단계를 npm
+ * 스크립트로 묶어 봤더니 이번엔 `npm run collect -- --max-items 34` 의 인자가
+ * 체인의 **마지막 명령(prettier)** 으로 가버려 파이프라인이 그 옵션을 못 받고
+ * 기본값으로 돌았습니다.
+ *
+ * 쓰는 쪽이 규칙을 지키는 것이 맞습니다. prettier 는 이미 devDependency 이고
+ * 이 스크립트는 개발 도구이므로 여기서 직접 부릅니다.
+ */
+async function formatJson(value: unknown, filepath: string): Promise<string> {
+  const raw = `${JSON.stringify(value, null, 2)}\n`;
+
+  try {
+    const prettier = await import('prettier');
+    const config = await prettier.resolveConfig(filepath);
+    return await prettier.format(raw, { ...config, filepath });
+  } catch {
+    // prettier 가 없거나 실패해도 수집 결과를 잃지 않습니다.
+    // 포맷이 어긋나면 CI 의 format:check 가 잡습니다.
+    return raw;
+  }
+}
+
 async function writeFileAtomic(target: string, contents: string): Promise<void> {
   const temporary = `${target}.tmp-${process.pid}`;
   await writeFile(temporary, contents, 'utf8');

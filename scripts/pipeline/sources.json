@@ -196,6 +196,63 @@
       },
       "categoryHint": "culture",
       "stripParams": ["cp"]
+    },
+    {
+      "id": "payco-coupon",
+      "name": "페이코 쿠폰",
+      "kind": "html",
+      "url": "https://coupons.payco.com/coupon-list",
+      "enabled": true,
+      "maxItems": 8,
+      "selectors": {
+        "item": "table.coupon-table tbody tr.coupon-row",
+        "link": "a.btn-goto",
+        "detail": ".event_wrap"
+      },
+      "categoryHint": "shopping"
+    },
+    {
+      "id": "culture-portal-free",
+      "name": "문화포털 문화정보",
+      "kind": "html",
+      "url": "https://www.culture.go.kr/portal/cltInfo/oneCltInfo/list.do?menuNo=200010",
+      "enabled": true,
+      "maxItems": 6,
+      "selectors": {
+        "item": "div.box-thumb",
+        "link": "a[href*=\"oneCltInfoView.do\"]",
+        "detail": "main"
+      },
+      "categoryHint": "culture"
+    },
+    {
+      "id": "ggcf-culture",
+      "name": "경기문화재단 문화행사",
+      "kind": "html",
+      "url": "https://ggc.ggcf.kr/cultureEvents/all?page=0",
+      "enabled": true,
+      "maxItems": 6,
+      "selectors": {
+        "item": "figure.card_box02",
+        "link": "a[href*=\"/cultureEvents/view/\"]",
+        "detail": "div.info_box"
+      },
+      "categoryHint": "culture",
+      "stripParams": ["page"]
+    },
+    {
+      "id": "dealbada-hotdeal",
+      "name": "딜바다 국내핫딜",
+      "kind": "html",
+      "url": "https://www.dealbada.com/bbs/board.php?bo_table=deal_domestic",
+      "enabled": true,
+      "maxItems": 6,
+      "selectors": {
+        "item": "#fboardlist tbody tr:not(.bo_notice)",
+        "link": ".td_subject a",
+        "detail": "#bo_v_con"
+      },
+      "categoryHint": "shopping"
     }
   ]
 }

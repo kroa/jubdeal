@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import type { Deal, DealsFile } from '@/types/deal';
 import { DEAL_SCHEMA_VERSION } from '@/types/deal';
-import { isSameContent, mergeDeals } from '@pipeline/merge';
+import { isSameContent, mergeDeals, sourceIdFromDealId } from '@pipeline/merge';
 
 const NOW = new Date('2026-08-23T12:00:00+09:00');
 
@@ -327,5 +327,67 @@ describe('마감일 미상 항목 정리', () => {
     const result = mergeDeals(fileWith([verified]), [], { now: NOW, pruneAfterDays: 7 });
 
     expect(result.pruned).toHaveLength(0);
+  });
+});
+
+describe('꺼진 소스 정리', () => {
+  /*
+    카드고릴라를 껐는데도 그 소스에서 온 "최대 87/90/74만원" 4건이 목록에
+    그대로 남아 있었습니다. 갱신도 안 되고 사라지지도 않습니다 — 끄기로 한
+    이유가 바로 그 항목들이었는데 말입니다.
+  */
+  const kept = makeDeal({ id: 'dl_ajd-card-event_1111111111111111', slug: 'a' });
+  const dropped = makeDeal({
+    id: 'dl_cardgorilla-event_2d65de8ba06a8150',
+    slug: 'b',
+    link: { url: 'https://www.card-gorilla.com/event/detail/3' },
+  });
+
+  it('켜진 소스 목록을 주면 거기 없는 소스의 항목을 제거한다', () => {
+    const result = mergeDeals(makeFile([kept, dropped]), [], {
+      now: NOW,
+      activeSourceIds: ['ajd-card-event'],
+    });
+
+    expect(result.file.deals.map((d) => d.id)).toEqual([kept.id]);
+    expect(result.droppedFromDisabledSource.map((d) => d.id)).toEqual([dropped.id]);
+  });
+
+  it('목록을 주지 않으면 아무것도 지우지 않는다', () => {
+    // 한 소스만 돌릴 때(--source)는 "지금 켜져 있는 소스"를 알 수 없습니다.
+    // 넘기지 않으면 나머지가 통째로 지워지는 사고가 납니다.
+    const result = mergeDeals(makeFile([kept, dropped]), [], { now: NOW });
+
+    expect(result.file.deals).toHaveLength(2);
+    expect(result.droppedFromDisabledSource).toEqual([]);
+  });
+
+  it('id 형식을 못 읽으면 건드리지 않는다', () => {
+    // 지우는 쪽이 되돌릴 수 없으므로 확신이 없으면 남깁니다.
+    const odd = makeDeal({ id: 'legacy-id-without-prefix', slug: 'c' });
+    const result = mergeDeals(makeFile([odd]), [], {
+      now: NOW,
+      activeSourceIds: ['ajd-card-event'],
+    });
+
+    expect(result.file.deals).toHaveLength(1);
+  });
+
+  it('제거만 있어도 변경으로 본다', () => {
+    // changed 가 false 면 generatedAt 이 안 바뀌고 CI 의 변경 게이트가 닫힙니다.
+    const result = mergeDeals(makeFile([dropped]), [], {
+      now: NOW,
+      activeSourceIds: ['ajd-card-event'],
+    });
+
+    expect(result.file.generatedAt).toBe(NOW.toISOString());
+  });
+
+  it('id 에서 소스 ID 를 되읽는다', () => {
+    expect(sourceIdFromDealId('dl_cardgorilla-event_2d65de8ba06a8150')).toBe('cardgorilla-event');
+    expect(sourceIdFromDealId('dl_ppomppu-coupon_0123456789abcdef')).toBe('ppomppu-coupon');
+    expect(sourceIdFromDealId('legacy-id')).toBeNull();
+    // 해시가 16자리가 아니면 우리 형식이 아닙니다.
+    expect(sourceIdFromDealId('dl_x_abc')).toBeNull();
   });
 });

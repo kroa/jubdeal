@@ -22,6 +22,19 @@ export interface MergeOptions {
   now: Date;
   /** 종료 후 이 일수가 지나면 목록에서 제거합니다. 0이면 제거하지 않습니다. */
   pruneAfterDays?: number;
+  /**
+   * 지금 켜져 있는 소스 ID 목록.
+   *
+   * 주면 **여기 없는 소스에서 온 항목을 제거합니다.** 소스를 껐다는 것은
+   * 더 이상 그 출처를 신뢰하지 않는다는 뜻인데, 이 정리가 없으면 그 항목이
+   * 갱신도 안 되고 사라지지도 않은 채 목록에 남습니다.
+   *
+   * 실제로 카드고릴라를 끈 뒤에도 "최대 87/90/74만원"짜리 4건이 그대로
+   * 남아 있었습니다. 끄기로 한 이유가 바로 그 항목들이었는데 말입니다.
+   *
+   * 한 소스만 돌릴 때(`--source`)는 주지 마세요. 나머지가 통째로 지워집니다.
+   */
+  activeSourceIds?: readonly string[];
 }
 
 export interface MergeResult {
@@ -33,6 +46,20 @@ export interface MergeResult {
   pruned: Deal[];
   /** verified 항목이라 갱신하지 않고 보존한 건 */
   protectedFromOverwrite: Deal[];
+  /** 소스가 꺼져서 제거된 항목 */
+  droppedFromDisabledSource: Deal[];
+}
+
+/**
+ * id 에서 소스 ID 를 되읽습니다.
+ *
+ * id 형식은 `dl_<소스ID>_<16자리 해시>` 입니다(makeStableId).
+ * `source.name` 은 사람이 읽는 이름이라 설정에서 이름을 바꾸면 어긋나므로
+ * 안정적인 id 쪽을 씁니다.
+ */
+export function sourceIdFromDealId(id: string): string | null {
+  const match = /^dl_(.+)_[0-9a-f]{16}$/.exec(id);
+  return match?.[1] ?? null;
 }
 
 const MS_PER_DAY = 24 * 60 * 60 * 1000;
@@ -155,12 +182,28 @@ export function mergeDeals(
     });
   }
 
+  const droppedFromDisabledSource: Deal[] = [];
+  if (options.activeSourceIds) {
+    const active = new Set(options.activeSourceIds);
+    deals = deals.filter((deal) => {
+      const sourceId = sourceIdFromDealId(deal.id);
+      // 형식을 못 읽으면 건드리지 않습니다. 지우는 쪽이 되돌릴 수 없으니까요.
+      if (sourceId === null || active.has(sourceId)) return true;
+      droppedFromDisabledSource.push(deal);
+      return false;
+    });
+  }
+
   // 출력 순서를 안정적으로 유지해 diff 가 읽기 쉽게 합니다.
   deals.sort((a, b) => a.id.localeCompare(b.id));
 
   // 바뀐 게 없으면 generatedAt 도 그대로 둡니다.
   // 무조건 갱신하면 "변경 여부" 게이트가 항상 참이 되어 매일 빈 PR 이 생깁니다.
-  const changed = added.length > 0 || updated.length > 0 || pruned.length > 0;
+  const changed =
+    added.length > 0 ||
+    updated.length > 0 ||
+    pruned.length > 0 ||
+    droppedFromDisabledSource.length > 0;
 
   return {
     file: {
@@ -174,6 +217,7 @@ export function mergeDeals(
     updated,
     unchanged,
     pruned,
+    droppedFromDisabledSource,
     protectedFromOverwrite,
   };
 }

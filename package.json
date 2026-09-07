@@ -23,7 +23,7 @@
     "test:coverage": "vitest run --coverage",
     "verify": "npm run lint && npm run format:check && npm run typecheck && npm run test && npm run build",
     "pipeline": "tsx scripts/pipeline/cli.ts",
-    "collect": "tsx scripts/pipeline/cli.ts --write && prettier --write src/data/deals.json"
+    "collect": "tsx scripts/pipeline/cli.ts --write"
   },
   "dependencies": {
     "@astrojs/react": "^6.0.4",
