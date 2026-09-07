@@ -171,6 +171,43 @@ export function modelFromProviderLabel(label: string): string | null {
  */
 const SCHEMA_FAILURES_BEFORE_BAN = 2;
 
+/**
+ * 필수 필드가 통째로 빠졌는지 (값이 틀린 것과 구분합니다).
+ *
+ * 오류 문구로 판별하려다 틀렸습니다. 빠진 필드가 문자열이면
+ * "expected string, **received undefined**" 지만 enum 이면
+ * "Invalid option: expected one of ..." 라 문구가 아예 다릅니다.
+ * 실제로 dealType 누락이 이 검사를 그대로 빠져나갔습니다.
+ *
+ * 그래서 문구 대신 **응답에서 그 경로의 값을 직접** 봅니다.
+ */
+function hasMissingField(error: z.ZodError, data: unknown): boolean {
+  return error.issues.some((issue) => valueAtPath(data, issue.path) === undefined);
+}
+
+function valueAtPath(data: unknown, path: PropertyKey[]): unknown {
+  let current = data;
+
+  for (const key of path) {
+    if (current === null || typeof current !== 'object') return undefined;
+    current = (current as Record<PropertyKey, unknown>)[key];
+  }
+
+  return current;
+}
+
+function addUsage(a: ExtractionUsage, b: ExtractionUsage): ExtractionUsage {
+  const costUsd =
+    a.costUsd === null && b.costUsd === null ? null : (a.costUsd ?? 0) + (b.costUsd ?? 0);
+
+  return {
+    inputTokens: a.inputTokens + b.inputTokens,
+    outputTokens: a.outputTokens + b.outputTokens,
+    cachedInputTokens: a.cachedInputTokens + b.cachedInputTokens,
+    costUsd,
+  };
+}
+
 export class DealExtractor {
   private readonly provider: LlmProvider;
   private readonly threshold: number;
@@ -184,7 +221,7 @@ export class DealExtractor {
     this.threshold = options.confidenceThreshold ?? DEFAULT_CONFIDENCE_THRESHOLD;
   }
 
-  async extract(item: RawItem, now: Date): Promise<ExtractOutcome> {
+  async extract(item: RawItem, now: Date, isRetry = false): Promise<ExtractOutcome> {
     let response;
 
     try {
@@ -213,7 +250,27 @@ export class DealExtractor {
         .map((issue) => `${issue.path.join('.') || '(root)'}: ${issue.message}`)
         .join('; ');
 
-      this.noteSchemaFailure(response.provider);
+      /*
+        필수 필드를 통째로 빠뜨리는 것은 우연이 아니라 **구조화 출력을 못
+        한다는 신호**입니다. 한 모델이 dealType·brandName·description 을
+        차례로 빼먹으며 소스마다 몇 건씩 날렸습니다. 필드마다 옵셔널로
+        바꾸는 것은 끝이 없고, dealType 처럼 정말 필수인 것도 있습니다.
+
+        그래서 그 모델을 내리고 **같은 항목을 한 번 더** 시도합니다.
+        내리기만 하면 이미 그 항목은 잃은 뒤입니다.
+      */
+      const banned = this.noteSchemaFailure(
+        response.provider,
+        hasMissingField(parsed.error, response.data),
+      );
+
+      if (banned && !isRetry) {
+        this.log('다른 모델로 한 번 더 시도합니다.');
+        const retried = await this.extract(item, now, true);
+
+        // 재시도분의 사용량도 합칩니다. 빠뜨리면 비용 보고가 실제보다 적게 나옵니다.
+        return { ...retried, usage: addUsage(usage, retried.usage) };
+      }
 
       return {
         ok: false,
@@ -302,18 +359,32 @@ export class DealExtractor {
     return { ok: true, value, usage };
   }
 
-  /** 스키마를 반복해서 어기는 모델은 이번 실행에서 내립니다. */
-  private noteSchemaFailure(providerLabel: string): void {
+  /**
+   * 스키마를 어긴 모델을 셈하고, 필요하면 내립니다.
+   *
+   * 필수 필드를 통째로 빠뜨렸으면 **한 번으로 내립니다.** 그런 모델은
+   * 다음 항목에서도 똑같이 합니다. 값 범위를 벗어난 정도는 우연일 수
+   * 있으니 두 번째부터 내립니다.
+   *
+   * @returns 이번 호출에서 모델을 내렸으면 true
+   */
+  private noteSchemaFailure(providerLabel: string, missingField: boolean): boolean {
     const model = modelFromProviderLabel(providerLabel);
-    if (model === null) return;
+    if (model === null) return false;
 
     const count = (this.schemaFailures.get(model) ?? 0) + 1;
     this.schemaFailures.set(model, count);
 
-    if (count === SCHEMA_FAILURES_BEFORE_BAN) {
-      this.provider.banModel?.(model);
-      this.log(`${model} 이 스키마를 ${count}번 어겨 이번 실행에서 제외합니다.`);
-    }
+    const limit = missingField ? 1 : SCHEMA_FAILURES_BEFORE_BAN;
+    if (count !== limit) return false;
+
+    this.provider.banModel?.(model);
+    this.log(
+      missingField
+        ? `${model} 이 필수 항목을 빠뜨려 이번 실행에서 제외합니다.`
+        : `${model} 이 스키마를 ${count}번 어겨 이번 실행에서 제외합니다.`,
+    );
+    return true;
   }
 }
 

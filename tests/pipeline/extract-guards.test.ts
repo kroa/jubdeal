@@ -97,28 +97,23 @@ describe('한자를 섞는 모델은 곧바로 내린다', () => {
   });
 });
 
-describe('스키마를 반복해 어기는 모델을 내린다', () => {
-  it('한 번은 봐주고 두 번째에 제외한다', async () => {
+describe('스키마를 어기는 모델을 내린다', () => {
+  it('스키마를 통째로 지어내면 곧바로 제외한다', async () => {
     /*
-      한 모델이 우리 스키마를 통째로 무시하고 `price`·`shippingCost`·
-      `benefitType` 처럼 그럴듯한 이름을 지어내 다섯 건을 연달아 날렸습니다.
-      다만 긴 본문에서 필드 하나를 흘리는 일은 어느 모델에나 있으므로
-      한 번은 봐줍니다.
+      한 모델이 우리 스키마를 무시하고 `price`·`shippingCost`·`benefitType`
+      처럼 그럴듯한 이름을 지어내 다섯 건을 연달아 날렸습니다.
+      필수 필드가 통째로 없으므로 한 번으로 내립니다.
     */
     const 지어낸스키마 = { title: 'x', price: 1000, shippingCost: 0, benefitType: 'discount' };
     const { provider, banned } = fakeProvider([지어낸스키마]);
     const extractor = new DealExtractor({ provider, log: () => {} });
 
-    const first = await extractor.extract(item(), NOW);
-    expect(first.ok).toBe(false);
-    expect(banned).toEqual([]);
-
-    const second = await extractor.extract(item(), NOW);
-    expect(second.ok).toBe(false);
+    const outcome = await extractor.extract(item(), NOW);
+    expect(outcome.ok).toBe(false);
     expect(banned).toEqual(['bad/model:free']);
   });
 
-  it('세 번째부터는 다시 제외하지 않는다', async () => {
+  it('같은 모델을 몇 번이고 내리지는 않는다', async () => {
     // 같은 모델을 몇 번이고 내리면 로그만 시끄러워집니다.
     const { provider, banned } = fakeProvider([{ title: 'x' }]);
     const extractor = new DealExtractor({ provider, log: () => {} });
@@ -184,5 +179,91 @@ describe('모델이 필드를 빼먹어도 혜택을 버리지 않는다', () =>
     const extractor = new DealExtractor({ provider, log: () => {} });
 
     await expect(extractor.extract(item(), NOW)).resolves.toMatchObject({ ok: true });
+  });
+});
+
+describe('필수 항목을 빠뜨리는 모델은 내리고 다시 시도한다', () => {
+  /*
+    한 모델이 dealType·brandName·description 을 차례로 빼먹으며 소스마다
+    몇 건씩 날렸습니다. 필드마다 옵셔널로 바꾸는 것은 끝이 없고,
+    dealType 처럼 정말 필수인 것도 있습니다.
+
+    내리기만 하면 그 항목은 이미 잃은 뒤라, 같은 항목을 한 번 더 돌립니다.
+  */
+  function twoModelProvider(first: unknown, second: unknown) {
+    const banned: string[] = [];
+    let call = 0;
+
+    const provider: LlmProvider = {
+      name: 'chain',
+      isConfigured: async () => true,
+      complete: async (): Promise<LlmResponse> => {
+        const bad = banned.includes('bad/model:free');
+        call += 1;
+        return {
+          data: bad ? second : first,
+          provider: bad ? 'openrouter:good/model:free' : 'openrouter:bad/model:free',
+          usage: { inputTokens: 10, outputTokens: 5, cachedInputTokens: 0, costUsd: null },
+        } as LlmResponse;
+      },
+      banModel: (model: string) => banned.push(model),
+    };
+
+    return { provider, banned, calls: () => call };
+  }
+
+  it('필수 항목 누락은 한 번으로 내리고 재시도해 살린다', async () => {
+    const 누락 = { ...goodResponse() } as Record<string, unknown>;
+    delete 누락.dealType;
+
+    const { provider, banned, calls } = twoModelProvider(누락, goodResponse());
+    const extractor = new DealExtractor({ provider, log: () => {} });
+
+    const outcome = await extractor.extract(item(), NOW);
+
+    expect(banned).toEqual(['bad/model:free']);
+    expect(calls()).toBe(2);
+    expect(outcome.ok).toBe(true);
+  });
+
+  it('재시도분의 사용량도 합친다', async () => {
+    // 빠뜨리면 비용 보고가 실제보다 적게 나옵니다.
+    const 누락 = { ...goodResponse() } as Record<string, unknown>;
+    delete 누락.dealType;
+
+    const { provider } = twoModelProvider(누락, goodResponse());
+    const extractor = new DealExtractor({ provider, log: () => {} });
+
+    const outcome = await extractor.extract(item(), NOW);
+
+    expect(outcome.usage.inputTokens).toBe(20);
+    expect(outcome.usage.outputTokens).toBe(10);
+  });
+
+  it('재시도는 한 번뿐이다', async () => {
+    // 모든 모델이 같은 결함이면 무한히 돌 수 있습니다.
+    const 누락 = { ...goodResponse() } as Record<string, unknown>;
+    delete 누락.dealType;
+
+    const { provider, calls } = twoModelProvider(누락, 누락);
+    const extractor = new DealExtractor({ provider, log: () => {} });
+
+    const outcome = await extractor.extract(item(), NOW);
+
+    expect(outcome.ok).toBe(false);
+    expect(calls()).toBe(2);
+  });
+
+  it('값이 틀린 정도는 한 번 봐준다', async () => {
+    // 신뢰도 범위를 벗어난 정도는 우연일 수 있습니다.
+    const 범위밖 = { ...goodResponse(), confidence: 1.5 };
+    const { provider, banned } = fakeProvider([범위밖]);
+    const extractor = new DealExtractor({ provider, log: () => {} });
+
+    await extractor.extract(item(), NOW);
+    expect(banned).toEqual([]);
+
+    await extractor.extract(item(), NOW);
+    expect(banned).toEqual(['bad/model:free']);
   });
 });
