@@ -1,6 +1,6 @@
 {
   "schemaVersion": 4,
-  "generatedAt": "2026-09-07T09:47:01.901Z",
+  "generatedAt": "2026-09-07T10:26:30.114Z",
   "deals": [
     {
       "id": "dl_ajd-card-event_3c0d80aed1f556c7",
@@ -852,6 +852,51 @@
       }
     },
     {
+      "id": "dl_culture-portal-free_514244282dc5bf28",
+      "slug": "culture-portal-free-onecltinfo-onecltinfoview-do-c679d9c1",
+      "title": "갤러리 원 유미숙 초대개인전 '어울다-소통' 무료 관람",
+      "summary": "원주 갤러리 원에서 열리는 유미숙 작가 초대개인전 무료 전시",
+      "description": "강원도 원주 갤러리 원에서 유미숙 초대개인전 '어울다-소통'을 무료로 관람할 수 있습니다. 관람 시간은 오전 11시부터 오후 8시까지입니다.",
+      "brand": {
+        "name": "갤러리 원"
+      },
+      "category": "culture",
+      "dealType": "free",
+      "difficulty": "easy",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-25T00:00:00+09:00",
+        "endAt": "2026-09-07T23:59:59+09:00"
+      },
+      "link": {
+        "url": "https://www.culture.go.kr/portal/cltInfo/oneCltInfo/oneCltInfoView.do?pblprfrSn=395974&menuNo=200010&pageIndex=1",
+        "label": "문화포털에서 보기"
+      },
+      "howTo": [
+        "강원도 원주시 갤러리 원(능라동길 59 4층) 방문",
+        "전시 무료 관람 (관람시간 11:00~20:00)"
+      ],
+      "caution": ["공연/전시 일정은 운영사 상황에 따라 변경될 수 있습니다."],
+      "tags": ["갤러리원", "무료전시", "원주전시", "유미숙", "개인전", "문화생활"],
+      "source": {
+        "name": "문화포털 문화정보",
+        "url": "https://www.culture.go.kr/portal/cltInfo/oneCltInfo/oneCltInfoView.do?pblprfrSn=395974&menuNo=200010&pageIndex=1",
+        "collectedAt": "2026-09-07T10:26:30.114Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-09-07T10:26:30.114Z"
+      }
+    },
+    {
       "id": "dl_dealbada-free_abe810d24aee6689",
       "slug": "dealbada-free-bbs-board-php-77385faa",
       "title": "제10회 청년의 날 축제 광안리무료 콘서트 (9월 18~20일)",
@@ -1326,6 +1371,104 @@
       }
     },
     {
+      "id": "dl_payco-coupon_509dcb8086f450f0",
+      "slug": "payco-coupon-event-detail-ecityhy-9b80d87f",
+      "title": "깨끗한나라 초특가전 (10% 할인 + 25% 쿠폰)",
+      "summary": "깨끗한나라 초특가전: 10% 할인(최대 9만원) + 1% 적립, 및 선착순 25% 쿠폰(최대 1만원) 제공. 기간: 2026.09.07 10:00 ~ 09.09 09:59.",
+      "description": "PAYCO 쿠폰에서 깨끗한나라 상품 구매 시 10% 할인(최대 9만원) 및 PAYCO 포인트 결제 시 1% 추가 적립, 그리고 선착순 25% 할인 쿠폰(최대 1만원)을 제공하는 이벤트입니다. 기간은 2026년 9월 7일 10:00부터 9월 9일 09:59까지입니다.",
+      "brand": {
+        "name": "깨끗한나라"
+      },
+      "category": "shopping",
+      "dealType": "discount",
+      "difficulty": "normal",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": true,
+        "perPersonLimit": 1
+      },
+      "period": {
+        "startAt": "2026-09-07T10:00:00+09:00",
+        "endAt": "2026-09-09T09:59:00+09:00"
+      },
+      "link": {
+        "url": "https://coupons.payco.com/event-detail/ecItYHy",
+        "label": "바로가기"
+      },
+      "howTo": [
+        "PAYCO 앱 또는 웹에서 쿠폰 다운로드",
+        "PAYCO 스토어에서 깨끗한나라 상품 선택",
+        "결제 창에서 쿠폰 적용 및 PAYCO 포인트 결제"
+      ],
+      "caution": [
+        "선착순 쿠폰으로 수량 소진 시 조기종료될 수 있습니다.",
+        "PAYCO ID당 기간 내 1장 사용 가능합니다.",
+        "PAYCO 포인트 결제 전용 상품입니다.",
+        "행사일 종료 이후 주문 변경으로 인한 재발급/재사용이 불가합니다."
+      ],
+      "tags": ["payco", "coupon", "cleaning", "household", "discount", "point", "limited"],
+      "source": {
+        "name": "페이코 쿠폰",
+        "url": "https://coupons.payco.com/event-detail/ecItYHy",
+        "collectedAt": "2026-09-07T10:22:21.053Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-09-07T10:22:21.053Z"
+      }
+    },
+    {
+      "id": "dl_payco-coupon_7d14e2ca747bbfd8",
+      "slug": "payco-coupon-event-detail-9q5bb96-ac897e78",
+      "title": "깨끗한나라 초특가전 - PAYCO 포인트 결제 전용 6% 할인 쿠폰",
+      "summary": "PAYCO 포인트 결제 전용 깨끗한나라 쿠폰. 6% 할인(최대 3만원) 및 1% 추가 적립(최대 3만원) 혜택, 선착순 하루 3장 발급.",
+      "description": "PAYCO 포인트 결제 전용 깨끗한나라 쿠폰입니다. 6% 할인(최대 3만원) 및 1% 추가 적립(최대 3만원) 혜택을 제공하며, 선착순으로 하루 3장까지 발급 가능합니다. (이벤트 기간: 2026.09.01 ~ 09.30)",
+      "brand": {
+        "name": ":"
+      },
+      "category": "shopping",
+      "dealType": "coupon",
+      "difficulty": "normal",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": true,
+        "perPersonLimit": 3
+      },
+      "period": {
+        "startAt": "2026-09-01T00:00:00+09:00",
+        "endAt": "2026-09-30T23:59:59+09:00"
+      },
+      "link": {
+        "url": "https://coupons.payco.com/event-detail/9Q5bb96",
+        "label": "바로가기"
+      },
+      "howTo": [
+        "1. 페이코 앱에서 쿠폰 다운로드",
+        "2. 페이코 스토어에서 깨끗한나라 상품 선택",
+        "3. 결제 시 쿠폰 적용 및 페이코 포인트 결제"
+      ],
+      "tags": ["coupon", "깨끗한나라", "payco", "할인", "가전", "清洁", "포인트"],
+      "source": {
+        "name": "페이코 쿠폰",
+        "url": "https://coupons.payco.com/event-detail/9Q5bb96",
+        "collectedAt": "2026-09-07T10:22:21.053Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-09-07T10:22:21.053Z"
+      }
+    },
+    {
       "id": "dl_payco-coupon_b945c4628fcb3f14",
       "slug": "payco-coupon-event-detail-7abhqjl-f84ea0a4",
       "title": "갓바디 안착팬티 26.5% 할인 쿠폰 (PAYCO 포인트 결제 전용)",
@@ -1375,6 +1518,62 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-09-07T09:47:01.901Z"
+      }
+    },
+    {
+      "id": "dl_payco-coupon_fc2fbfafabe63013",
+      "slug": "payco-coupon-event-detail-hq3vbwe-56350010",
+      "title": "아틀리에 나인 17.5% 할인 쿠폰 (최대 10만원)",
+      "summary": "아틀리에 나인 26FW Fall Collection 상품 구매 시 17.5% 할인 쿠폰 (최대 10만원). PAYCO 포인트 결제 전용이며, 1일 3회 발급 가능합니다. 이벤트 기간은 9월 5일 10:00부터 9월 8일 09:59까지입니다.",
+      "description": "아틀리에 나인 26FW Fall Collection 상품 구매 시 17.5% 할인 쿠폰 (최대 10만원 할인). PAYCO 포인트 결제 전용이며, +1% 추가 적립 혜택이 있습니다.",
+      "brand": {
+        "name": "아틀리에 나인"
+      },
+      "category": "shopping",
+      "dealType": "coupon",
+      "difficulty": "easy",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": true,
+        "perPersonLimit": 3
+      },
+      "period": {
+        "startAt": "2026-09-05T10:00:00+09:00",
+        "endAt": "2026-09-08T09:59:00+09:00"
+      },
+      "benefit": {
+        "amount": 100000,
+        "isMax": true
+      },
+      "link": {
+        "url": "https://coupons.payco.com/event-detail/HQ3VBWE",
+        "label": "바로가기"
+      },
+      "howTo": [
+        "Payco 앱에서 쿠폰 다운로드",
+        "아틀리에 나인에서 결제 시 결제 수단으로 [PAYCO] 선택",
+        " coupon 적용 후 결제"
+      ],
+      "caution": [
+        "본 쿠폰은 페이코 ID당 1일 3회 발급 및 사용 가능합니다.",
+        "선착순 한정 수량으로 소진 시 조기종료 될 수 있습니다.",
+        "이벤트 기간 내 사용 가능하며, 행사일 종료 이후 재발급/재사용이 불가합니다.",
+        "PAYCO 포인트 결제 전용 쿠폰입니다."
+      ],
+      "tags": ["coupon", "할인", "페이코", "아틀리에나인", "패션", "포인트결제", "26FW"],
+      "source": {
+        "name": "페이코 쿠폰",
+        "url": "https://coupons.payco.com/event-detail/HQ3VBWE",
+        "collectedAt": "2026-09-07T10:22:21.053Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-09-07T10:22:21.053Z"
       }
     },
     {

@@ -158,3 +158,31 @@ describe('정상 응답은 통과시킨다', () => {
     await expect(extractor.extract(item(), NOW)).resolves.toMatchObject({ ok: false });
   });
 });
+
+describe('모델이 필드를 빼먹어도 혜택을 버리지 않는다', () => {
+  /*
+    "없으면 빈 문자열"이라고 적어 둬도 모델은 필드를 통째로 뺍니다.
+    필수로 두면 그때마다 멀쩡한 혜택이 거절됐습니다 — 한 실행에서
+    description 때문에 5건, brandName 때문에 여러 건이 날아갔습니다.
+  */
+  function withoutFields(...omit: string[]) {
+    const data = goodResponse() as Record<string, unknown>;
+    for (const key of omit) delete data[key];
+    return data;
+  }
+
+  it('description 이 없어도 통과한다', async () => {
+    const { provider } = fakeProvider([withoutFields('description')]);
+    const extractor = new DealExtractor({ provider, log: () => {} });
+
+    await expect(extractor.extract(item(), NOW)).resolves.toMatchObject({ ok: true });
+  });
+
+  it('brandName 이 없어도 통과한다', async () => {
+    // 공공·문화 행사는 주최를 따로 밝히지 않는 글이 흔합니다.
+    const { provider } = fakeProvider([withoutFields('brandName')]);
+    const extractor = new DealExtractor({ provider, log: () => {} });
+
+    await expect(extractor.extract(item(), NOW)).resolves.toMatchObject({ ok: true });
+  });
+});

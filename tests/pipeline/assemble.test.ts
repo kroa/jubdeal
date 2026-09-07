@@ -301,3 +301,27 @@ describe('assembleDeal', () => {
     expect(result.deal.tags).toEqual(['무료', '카페']);
   });
 });
+
+describe('브랜드를 모를 때', () => {
+  it('출처 이름으로 채운다', () => {
+    /*
+      공공·문화 행사는 주최를 따로 밝히지 않는 글이 흔해 모델이 이 필드를
+      빼버립니다. 필수로 두면 그때마다 행사가 거절됐습니다.
+      출처가 곧 주최인 경우가 대부분입니다(경기문화재단, 국립중앙박물관).
+    */
+    const extracted = makeExtracted();
+    delete (extracted as Record<string, unknown>).brandName;
+
+    const result = assembleDeal(extracted, RAW, { now: NOW });
+
+    expect(result.ok).toBe(true);
+    if (result.ok) expect(result.deal.brand.name).toBe('데모 소스');
+  });
+
+  it('빈 문자열도 출처로 대체한다', () => {
+    const result = assembleDeal(makeExtracted({ brandName: '   ' }), RAW, { now: NOW });
+
+    expect(result.ok).toBe(true);
+    if (result.ok) expect(result.deal.brand.name).toBe('데모 소스');
+  });
+});

@@ -177,8 +177,9 @@ export function assembleDeal(
     slug: options.existing?.slug ?? makeSlug(raw.sourceId, raw.url, `${raw.sourceId}:${raw.url}`),
     title: extracted.title.trim(),
     summary: extracted.summary.trim(),
-    ...(extracted.description.trim() ? { description: extracted.description.trim() } : {}),
-    brand: { name: extracted.brandName.trim() },
+    ...(extracted.description?.trim() ? { description: extracted.description.trim() } : {}),
+    // 모델이 주최를 못 찾으면 출처를 씁니다. 공공·문화 행사는 출처가 곧 주최입니다.
+    brand: { name: extracted.brandName?.trim() || raw.sourceName },
     category: extracted.category,
     dealType: extracted.dealType,
     difficulty: extracted.difficulty,

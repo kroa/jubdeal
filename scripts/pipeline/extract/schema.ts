@@ -44,9 +44,25 @@ export const extractedDealSchema = z.object({
 
   title: z.string().max(120).describe('혜택 제목. 원문 제목을 다듬어 간결하게'),
   summary: z.string().max(200).describe('카드에 노출할 한 줄 요약'),
-  description: z.string().describe('상세 설명. 없으면 빈 문자열'),
+  /*
+    없어도 됩니다.
 
-  brandName: z.string().describe('혜택을 제공하는 브랜드/기업명'),
+    "없으면 빈 문자열"이라고 적어 뒀지만 모델은 그냥 필드를 **빼버립니다.**
+    필수로 두면 그때마다 혜택이 통째로 거절됩니다. 실제로 한 실행에서
+    5건이 이렇게 날아갔습니다. 상세 설명이 없는 혜택은 흔하고,
+    조립 단계도 빈 값이면 필드를 안 넣으니 필수일 이유가 없습니다.
+  */
+  description: z.string().optional().describe('상세 설명. 없으면 생략'),
+
+  /*
+    없으면 조립 단계가 소스 이름으로 채웁니다.
+
+    공공·문화 행사는 주최를 따로 밝히지 않는 글이 흔해 모델이 이 필드를
+    통째로 빼버립니다. 필수로 두면 그때마다 행사가 거절됩니다.
+    출처가 곧 주최인 경우가 대부분이라(경기문화재단, 국립중앙박물관)
+    소스 이름이 무난한 대체값입니다.
+  */
+  brandName: z.string().optional().describe('혜택을 제공하는 브랜드/기업명. 모르면 생략'),
 
   category: z.enum(DEAL_CATEGORIES),
   dealType: z.enum(DEAL_TYPES),
