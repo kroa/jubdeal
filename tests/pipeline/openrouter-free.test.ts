@@ -10,8 +10,8 @@ import {
 } from '@pipeline/extract/providers/openrouter';
 import {
   findCjkIdeographs,
-  isBrandGrounded,
   modelFromProviderLabel,
+  titleGroundingRatio,
 } from '@pipeline/extract/extract';
 import type { LlmRequest } from '@pipeline/extract/providers/types';
 
@@ -805,68 +805,69 @@ describe('findCjkIdeographs', () => {
   });
 });
 
-describe('브랜드 근거 검사', () => {
+describe('제목 근거 검사', () => {
   /*
     문화포털의 전시 안내(645자, "코웨이"라는 말이 한 번도 없음)를 읽히자
     모델이 "코웨이 렌탈료 자동이체 시 포인트 적립"을 내놨습니다.
     스키마도 통과하고 신뢰도 0.95 였습니다.
 
-    링크는 pickLinkUrl 이 원문 대조로 막고 있었지만 브랜드는 아무도
-    보지 않아, 링크가 멀쩡한 채 없는 혜택이 그대로 노출될 수 있었습니다.
+    링크는 pickLinkUrl 이 원문 대조로 막고 있었지만 제목은 아무도 보지
+    않아, 링크가 멀쩡한 채 없는 혜택이 그대로 노출될 수 있었습니다.
   */
   const 문화포털본문 =
     '한눈에 보는 문화정보 전시 갤러리 원 전체연령 [원주 갤러리 원] ' +
     '유미숙 초대개인전 "어울다-소통" 기간 2026-08-25~2026-09-07 (진행중) 가격 무료';
 
-  it('원문에 흔적조차 없는 브랜드를 잡는다', () => {
-    expect(isBrandGrounded('코웨이', 문화포털본문)).toBe(false);
-    expect(isBrandGrounded('스타벅스', 문화포털본문)).toBe(false);
+  it('원문에 없는 내용을 지어내면 0 에 가깝다', () => {
+    expect(titleGroundingRatio('코웨이 렌탈료 자동이체 시 포인트 적립', 문화포털본문)).toBeLessThan(
+      0.3,
+    );
   });
 
-  it('원문에 있으면 통과한다', () => {
-    expect(isBrandGrounded('갤러리 원', 문화포털본문)).toBe(true);
+  it('원문에서 나온 제목은 높게 나온다', () => {
+    expect(
+      titleGroundingRatio('[원주 갤러리 원] 유미숙 초대개인전', 문화포털본문),
+    ).toBeGreaterThanOrEqual(0.3);
   });
 
-  it('표기가 조금 달라도 통과한다', () => {
-    // 실제로 흔합니다. 여기서 막으면 멀쩡한 카드 이벤트가 전부 사라집니다.
-    expect(isBrandGrounded('KB국민카드', 'KB국민 WE:SH Travel 카드 5종 대상 이벤트')).toBe(true);
-    expect(isBrandGrounded('신한카드', '신한 Discount Plan+ 발급 시')).toBe(true);
-    expect(isBrandGrounded('NH농협카드', 'NH농협 렌탈 제휴카드 2종')).toBe(true);
-  });
-
-  it('기호는 무시한다', () => {
-    expect(isBrandGrounded('11번가', '11번가에서 진행하는 행사')).toBe(true);
-    expect(isBrandGrounded('올리브영', '[올리브영] 세일 안내')).toBe(true);
-  });
-
-  it('한 글자는 판단하지 않는다', () => {
-    // 한 글자로 대조하면 아무 문서에나 걸려 검사가 무의미해집니다.
-    expect(isBrandGrounded('S', '전혀 다른 내용')).toBe(true);
-  });
-
-  it('브랜드가 제목에만 있어도 통과해야 한다', () => {
+  it('표기 언어가 갈려도 통과한다', () => {
     /*
-      본문만 대조했더니 딜바다 핫딜이 전멸했습니다. 그쪽은 브랜드가
-      제목에만 있고 본문은 84자짜리 한 줄이라 브랜드가 안 나옵니다.
-      호출부에서 제목과 본문을 합쳐 넘깁니다.
+      브랜드 한 단어만 대조했을 때 실제로 났던 오탐들입니다.
+      원문은 "질레트"인데 모델은 "Gillette" 로 적고, 스팀 상품 페이지는
+      로고가 이미지라 본문에 "Steam" 이라는 글자가 아예 없습니다.
+      제목 전체를 보면 나머지 낱말이 다 걸려 통과합니다.
     */
+    const 루리웹 = '[카카오톡]질레트 프로쉴드 면도날8입+핸들+미니젤 (34,110원/무료)';
+    expect(
+      titleGroundingRatio('Gillette 프로쉴드 면도날 8입 핸들 미니젤 34,110원', 루리웹),
+    ).toBeGreaterThanOrEqual(0.3);
+
+    const 스팀 = 'Warhammer 40,000: Space Marine 2 2024년 9월 9일 -75% ₩ 69,800 ₩ 17,450';
+    expect(
+      titleGroundingRatio('Steam Warhammer 40,000: Space Marine 2 75% 할인', 스팀),
+    ).toBeGreaterThanOrEqual(0.3);
+  });
+
+  it('상품명이 목록 제목에만 있어도 통과해야 한다', () => {
+    // 상세 본문만 대조했더니 딜바다 핫딜이 전멸했습니다.
+    // 그쪽은 본문이 84자짜리 한 줄입니다.
     const 제목 = '[지마켓라이브] 1++등급 소고기 구이용 한우 다온 선물 세트 (116,100원/무료)';
     const 본문 = '한가위빅세일 쿠폰 적용 시 최종가 116,100원입니다';
+    const 모델제목 = '지마켓라이브 1++등급 한우 다온 선물세트 116,100원';
 
-    expect(isBrandGrounded('지마켓라이브', 본문)).toBe(false);
+    expect(titleGroundingRatio(모델제목, 본문)).toBeLessThan(0.3);
     expect(
-      isBrandGrounded(
-        '지마켓라이브',
+      titleGroundingRatio(
+        모델제목,
         `${제목}
 ${본문}`,
       ),
-    ).toBe(true);
+    ).toBeGreaterThanOrEqual(0.3);
   });
 
-  it('공백을 지우면 없던 말이 생기므로 지우지 않는다', () => {
-    // "코스트코 웨이브" → "코스트코웨이브" 로 붙이면 그 안에서 "코웨이"가
-    // 매칭됩니다. 정확히 막으려던 그 브랜드입니다.
-    expect(isBrandGrounded('코웨이', '코스트코 웨이브 이용권')).toBe(false);
+  it('제목에 쓸 만한 낱말이 없으면 판단하지 않는다', () => {
+    expect(titleGroundingRatio('', '아무 내용')).toBe(1);
+    expect(titleGroundingRatio('A B', '아무 내용')).toBe(1);
   });
 });
 

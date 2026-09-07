@@ -89,41 +89,46 @@ export function findCjkIdeographs(text: string): string[] {
 }
 
 /**
- * 브랜드명 근거 검사에서 인정하는 최소 접두사 길이.
+ * 제목의 낱말이 이만큼도 원문에 없으면 다른 문서를 읽은 것으로 봅니다.
  *
- * 3 으로 뒀더니 "신한카드"가 원문 "신한 Discount Plan+" 를 못 찾았습니다.
- * 접두사가 "신한카"까지밖에 안 줄어들기 때문입니다. 브랜드 뒤에 "카드"·"몰"
- * 같은 말을 붙이는 것은 매우 흔해서, 이대로면 멀쩡한 카드 이벤트가 전부
- * 걸립니다. 목적은 "코웨이"처럼 **원문에 흔적조차 없는** 것을 잡는 것이지
- * 표기를 엄밀히 대조하는 것이 아닙니다.
+ * 모델은 제목을 그대로 베끼지 않고 다듬어 쓰므로 100% 를 요구할 수 없습니다.
+ * 실측한 값들입니다.
+ *
+ *   "[카카오톡]질레트 프로쉴드 면도날8입+핸들+미니젤 (34,110원/무료)"   1.00
+ *   "Warhammer 40,000: Space Marine 2"                              1.00
+ *   "코웨이 렌탈료 자동이체 시 포인트 적립"  (문화포털 전시 안내)        0.00
+ *
+ * 진짜와 환각 사이가 넓게 벌어져 있어 경계를 낮게 잡아도 충분합니다.
  */
-const BRAND_PREFIX_MIN = 2;
+const TITLE_GROUNDING_MIN = 0.3;
 
 /**
- * 모델이 말한 브랜드가 **원문에 실제로 나오는지** 봅니다.
+ * 모델이 붙인 제목이 **원문에서 나온 것인지** 봅니다.
  *
  * 문화포털의 전시 안내(645자, 코웨이라는 말이 한 번도 없음)를 읽히자
  * 모델이 "코웨이 렌탈료 자동이체 시 포인트 적립"을 내놨습니다. 스키마도
  * 통과하고 신뢰도 0.95 였습니다. 직전 요청의 내용이 샌 것으로 보입니다.
  *
- * 링크는 이미 `pickLinkUrl` 이 원문 대조로 막고 있었지만, 제목·브랜드는
- * 아무도 보지 않았습니다. 링크가 멀쩡해도 **엉뚱한 혜택 설명이 그대로
- * 노출**됩니다. 한자 혼용보다 나쁩니다 — 틀린 글자가 아니라 없는 사실입니다.
+ * 링크는 이미 `pickLinkUrl` 이 원문 대조로 막고 있었지만, 제목은 아무도
+ * 보지 않았습니다. 링크가 멀쩡해도 **엉뚱한 혜택 설명이 그대로 노출**됩니다.
+ * 한자 혼용보다 나쁩니다 — 틀린 글자가 아니라 없는 사실입니다.
  *
- * 표기가 조금씩 다른 것은 정상이라("KB국민카드" ↔ 원문 "KB국민"),
- * 전체가 아니라 **앞에서부터 줄여 본 접두사**가 걸리면 통과시킵니다.
+ * 처음에는 브랜드 한 단어만 대조했는데 표기 언어가 갈리면 그대로 오탐이
+ * 났습니다 — 원문이 "질레트"인데 모델은 "Gillette", 스팀 상품 페이지는
+ * 로고가 이미지라 본문에 "Steam" 이라는 글자가 없습니다. 한 단어에 걸면
+ * 이런 게 전부 걸리므로, **제목 전체에서 원문과 겹치는 비율**을 봅니다.
  */
-export function isBrandGrounded(brandName: string, sourceText: string): boolean {
-  const brand = normalizeForMatch(brandName);
-  if (brand.length < BRAND_PREFIX_MIN) return true; // 너무 짧으면 판단하지 않습니다.
+export function titleGroundingRatio(title: string, sourceText: string): number {
+  const words = normalizeForMatch(title)
+    .split(/[\s+/|]+/)
+    .filter((word) => word.length >= 2);
+
+  if (words.length === 0) return 1; // 판단할 근거가 없으면 통과시킵니다.
 
   const haystack = normalizeForMatch(sourceText);
+  const hits = words.filter((word) => haystack.includes(word)).length;
 
-  for (let length = brand.length; length >= BRAND_PREFIX_MIN; length -= 1) {
-    if (haystack.includes(brand.slice(0, length))) return true;
-  }
-
-  return false;
+  return hits / words.length;
 }
 
 /**
@@ -156,10 +161,22 @@ export function modelFromProviderLabel(label: string): string | null {
   return model === '' ? null : model;
 }
 
+/**
+ * 한 모델이 이만큼 스키마를 어기면 구조화 출력을 못 하는 것으로 봅니다.
+ *
+ * 한 번은 봐줍니다 — 긴 본문에서 필드 하나를 흘리는 일은 어느 모델에나 있습니다.
+ * 두 번째부터는 우연이 아닙니다. 실제로 한 모델이 우리 스키마를 통째로
+ * 무시하고 `price`·`shippingCost`·`benefitType` 처럼 그럴듯한 이름을
+ * 지어내 다섯 건을 연달아 날렸습니다.
+ */
+const SCHEMA_FAILURES_BEFORE_BAN = 2;
+
 export class DealExtractor {
   private readonly provider: LlmProvider;
   private readonly threshold: number;
   private readonly log: (message: string) => void;
+  /** 모델별 스키마 위반 횟수 */
+  private readonly schemaFailures = new Map<string, number>();
 
   constructor(options: ExtractorOptions = {}) {
     this.log = options.log ?? (() => {});
@@ -195,6 +212,8 @@ export class DealExtractor {
       const issues = parsed.error.issues
         .map((issue) => `${issue.path.join('.') || '(root)'}: ${issue.message}`)
         .join('; ');
+
+      this.noteSchemaFailure(response.provider);
 
       return {
         ok: false,
@@ -248,18 +267,19 @@ export class DealExtractor {
     }
 
     /*
-      원문에 없는 브랜드를 말했다면 다른 문서의 내용이 섞인 것입니다.
+      제목이 원문에서 나온 것인지 봅니다.
 
-      **제목도 원문입니다.** 처음에 본문만 봤더니 딜바다 핫딜이 전멸했습니다.
-      그쪽은 브랜드가 제목에만 있고("[지마켓라이브] 1++등급 한우 선물세트")
-      본문은 84자짜리 한 줄이라 브랜드가 안 나옵니다.
+      **목록 제목도 원문입니다.** 상세 본문만 봤더니 딜바다 핫딜이 전멸했습니다.
+      그쪽은 상품명이 제목에만 있고("[지마켓라이브] 1++등급 한우 선물세트")
+      본문은 84자짜리 한 줄입니다.
     */
-    if (!isBrandGrounded(value.brandName, `${item.title ?? ''}\n${item.text}`)) {
+    const grounding = titleGroundingRatio(value.title, `${item.title ?? ''}\n${item.text}`);
+    if (grounding < TITLE_GROUNDING_MIN) {
       return {
         ok: false,
         reason: 'low_confidence',
         detail:
-          `브랜드 "${value.brandName}" 가 원문에 없습니다. ` +
+          `제목의 낱말 중 ${Math.round(grounding * 100)}% 만 원문에 있습니다 ("${value.title}"). ` +
           '다른 문서의 내용이 섞였을 수 있으니 원문과 대조해 주세요.',
         candidate: value,
         usage,
@@ -280,6 +300,20 @@ export class DealExtractor {
       `추출 성공 (${response.provider}, 신뢰도 ${value.confidence.toFixed(2)}): ${value.title}`,
     );
     return { ok: true, value, usage };
+  }
+
+  /** 스키마를 반복해서 어기는 모델은 이번 실행에서 내립니다. */
+  private noteSchemaFailure(providerLabel: string): void {
+    const model = modelFromProviderLabel(providerLabel);
+    if (model === null) return;
+
+    const count = (this.schemaFailures.get(model) ?? 0) + 1;
+    this.schemaFailures.set(model, count);
+
+    if (count === SCHEMA_FAILURES_BEFORE_BAN) {
+      this.provider.banModel?.(model);
+      this.log(`${model} 이 스키마를 ${count}번 어겨 이번 실행에서 제외합니다.`);
+    }
   }
 }
 
