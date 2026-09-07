@@ -18,6 +18,13 @@ export default tseslint.config(
       'coverage/**',
       'node_modules/**',
       '*.d.ts',
+      // 저장소 루트의 일회성 스크립트. .gitignore 와 같은 이유입니다 —
+      // 조사용 탐침 파일이 루트에 남아 lint 를 깨뜨리는 일이 반복됐습니다.
+      // 이 저장소의 스크립트는 scripts/ 아래에 둡니다.
+      // flat config 의 ignores 는 루트 기준이며 `/` 접두사를 쓰지 않습니다.
+      '*.mjs',
+      '*.cjs',
+      '!astro.config.mjs',
     ],
   },
 

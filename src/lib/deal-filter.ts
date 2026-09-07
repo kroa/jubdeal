@@ -91,19 +91,32 @@ function isClosed(deal: DecoratedDeal): boolean {
 
 /** 정렬만 적용합니다. 원본 배열은 변경되지 않습니다. */
 /**
+ * 상한만 알 때 실질 가치로 볼 비율.
+ *
+ * 처음에는 절반(50%)으로 뒀습니다. 근거 없는 값이었고, 실측해 보니
+ * 너무 후했습니다. 기본 금액을 아는 카드 이벤트들의 기본/최대 비율은
+ *
+ *   신한 20만 / 74만    = 27%
+ *   KB국민 18만 / 85만  = 21%
+ *   삼성 16만 / 60.2만  = 27%
+ *
+ * 즉 상한의 4분의 1 남짓입니다. 50% 로 보면 "최대 87만원"짜리가
+ * 43.5만원으로 계산되어, 확정 18만원짜리를 2.4배 차이로 눌렀습니다.
+ */
+const UNKNOWN_BASE_RATIO = 0.25;
+
+/**
  * 줄 세우기에 쓰는 **실질 가치**.
  *
- * 상한(`isMax`)이면 기본 금액을 씁니다. 기본을 모르면 상한을 쓸 수밖에
- * 없지만, 그때도 확정 금액과 나란히 놓으면 과대평가됩니다.
- * 조건을 다 채워야 나오는 숫자이므로 절반으로 봅니다 — 임의의 값이지만,
- * "도달 불가능한 상한이 확정 금액을 이기는" 것보다는 실제에 가깝습니다.
+ * 상한(`isMax`)이면 기본 금액을 씁니다. 기본을 모르면 상한에서 위 비율을
+ * 적용합니다. "도달 불가능한 상한이 확정 금액을 이기는" 것을 막는 것이 목적입니다.
  */
 function realizedBenefit(deal: DecoratedDeal): number {
   const benefit = deal.benefit;
   if (!benefit) return -1;
   if (!benefit.isMax) return benefit.amount;
 
-  return benefit.baseAmount ?? benefit.amount / 2;
+  return benefit.baseAmount ?? benefit.amount * UNKNOWN_BASE_RATIO;
 }
 
 export function applySort(deals: DecoratedDeal[], sort: DealSortKey): DecoratedDeal[] {
@@ -133,9 +146,12 @@ export function applySort(deals: DecoratedDeal[], sort: DealSortKey): DecoratedD
          "줍딜할 만한 게 없다"는 인상을 바로잡을 수 있습니다.)
 
         **상한이 아니라 실질 가치로 줄 세웁니다.**
-        "최대 85만원" 카드 이벤트의 실체는 카드 5종을 전부 발급했을 때의
-        합산이고, 한 장으로 받는 기본은 18만원입니다. 상한으로 정렬하면
-        도달 불가능한 숫자가 목록 위를 차지하고, 확정 16만원짜리가 밀립니다.
+        "최대 85만원" 카드 이벤트를 원문에서 확인해 보면, 카드 5종을 전부
+        발급하라는 뜻이 아니라 그 5종 중 **한 장**을 골라 혜택1~4를 모두
+        달성했을 때의 합입니다. 25만원 쓰고 마케팅에 동의하면 확실히 받는
+        것은 21만원이고, 나머지 64만원은 추가 이용·해외 이용·자동납부를
+        전부 채워야 합니다. 상한으로 정렬하면 이 도달 불가능한 숫자가
+        목록 위를 차지하고, 확정 16만원짜리가 밀립니다.
       */
       return [...deals].sort((a, b) => {
         const byValue = realizedBenefit(b) - realizedBenefit(a);

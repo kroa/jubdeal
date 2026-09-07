@@ -97,6 +97,21 @@ temp/
 *.tmp
 *.bak
 *.orig
+
+# 조사용 일회성 스크립트.
+#
+# 여러 에이전트를 병렬로 돌려 사이트를 조사할 때, 저장소 **루트**에 탐침용
+# 스크립트가 남는 일이 세 번 반복됐습니다. 하나가 lint 도중 사라지면
+# verify 가 ENOENT 로 깨집니다. 이름이 매번 달라(_ml_extract.cjs,
+# probe-tmp.mjs, tmp_pw.mjs, pw_probe2.mjs ...) 접두사를 쫓는 것은
+# 소용이 없었습니다.
+#
+# 이 저장소는 스크립트를 scripts/ 아래에 둡니다. 루트에 있어도 되는
+# 스크립트는 astro.config.mjs 하나뿐이라, 루트만 화이트리스트로 막습니다.
+# 하위 디렉터리는 그대로 추적됩니다.
+/*.mjs
+/*.cjs
+!/astro.config.mjs
 .eslintcache
 .prettiercache
 *.tsbuildinfo

@@ -10,3 +10,8 @@ package-lock.json
 # 벤더 자산 — 스크립트로 생성했고 원본 그대로 두어야 합니다.
 # (포맷하면 unicode-range 목록이 재배치되어 원본 대조가 어려워집니다)
 public/fonts/
+
+# 저장소 루트의 일회성 스크립트 (.gitignore 와 같은 이유)
+/*.mjs
+/*.cjs
+!/astro.config.mjs

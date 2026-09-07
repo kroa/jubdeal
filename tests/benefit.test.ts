@@ -95,6 +95,63 @@ describe('혜택 큰 순 정렬', () => {
     expect(sorted.map((d) => d.id)).toEqual(['있음', '모름']);
   });
 
+  it('기본을 모르는 상한은 4분의 1로 본다', () => {
+    /*
+      처음에는 절반으로 뒀는데 실측해 보니 너무 후했습니다.
+      기본 금액을 아는 카드 이벤트들의 기본/최대 비율은 21~27% 입니다.
+      50% 로 보면 카드고릴라의 "최대 87만원"이 43.5만원으로 계산되어
+      아정당의 확정 18만원짜리를 2.4배 차이로 눌렀습니다.
+      이것이 "모든 카드를 다 신청해야 나오는 혜택만 보인다"는 인상의 원인이었습니다.
+    */
+    const sorted = applySort(
+      [
+        deal('기본모름_최대87만', { amount: 870_000, isMax: true }),
+        deal('확정18만', { amount: 180_000, isMax: false }),
+      ],
+      'benefit',
+    );
+
+    // 87만 * 0.25 = 21.75만 > 18만. 아직은 상한이 앞섭니다.
+    expect(sorted.map((d) => d.id)).toEqual(['기본모름_최대87만', '확정18만']);
+
+    const sorted2 = applySort(
+      [
+        deal('기본모름_최대87만', { amount: 870_000, isMax: true }),
+        deal('확정25만', { amount: 250_000, isMax: false }),
+      ],
+      'benefit',
+    );
+
+    // 확정 25만이 상한 87만을 이깁니다. 절반(43.5만)으로 봤다면 졌습니다.
+    expect(sorted2.map((d) => d.id)).toEqual(['확정25만', '기본모름_최대87만']);
+  });
+
+  it('기본 금액을 알면 그 값으로 줄 세운다', () => {
+    function withBase(
+      id: string,
+      amount: number,
+      isMax: boolean,
+      baseAmount?: number,
+    ): DecoratedDeal {
+      return {
+        id,
+        meta: { verified: false, updatedAt: '2026-09-02T00:00:00.000Z' },
+        benefit: { amount, isMax, ...(baseAmount === undefined ? {} : { baseAmount }) },
+      } as unknown as DecoratedDeal;
+    }
+
+    // 실제 값입니다. KB 85만(기본 21만) vs 삼성 60.2만(기본 16만).
+    const sorted = applySort(
+      [
+        withBase('삼성_기본16만', 602_000, true, 160_000),
+        withBase('KB_기본21만', 850_000, true, 210_000),
+      ],
+      'benefit',
+    );
+
+    expect(sorted.map((d) => d.id)).toEqual(['KB_기본21만', '삼성_기본16만']);
+  });
+
   it('금액이 같으면 확정 금액을 앞에 둔다', () => {
     // "최대 90만원"보다 "90만원"이 사용자에게 더 확실한 값입니다.
     const sorted = applySort(
