@@ -89,6 +89,33 @@ export function findCjkIdeographs(text: string): string[] {
 }
 
 /**
+ * 화면에 그대로 나가는 값을 전부 모읍니다.
+ *
+ * 처음에는 제목과 요약만 봤습니다. 그 사이로 **일곱 건이 새어나가** 배포된
+ * 사이트에 그대로 떴습니다. 가장 눈에 띈 것은 CTA 버튼 문구였습니다.
+ *
+ *   linkLabel    "原帖链接" · "参与链接"   ← 버튼에 큼직하게
+ *   tags         "清洁" · "大米"
+ *   description  "率为"
+ *   caution      "可能发生"
+ *
+ * 노출되는 곳은 하나도 빠짐없이 봐야 합니다. 한 곳이라도 빠뜨리면
+ * 정확히 그 자리로 새어나갑니다.
+ */
+function visibleText(value: ExtractedDeal): string {
+  return [
+    value.title,
+    value.summary,
+    value.description ?? '',
+    value.brandName ?? '',
+    value.linkLabel ?? '',
+    ...value.howTo,
+    ...value.caution,
+    ...value.tags,
+  ].join(' ');
+}
+
+/**
  * 제목의 낱말이 이만큼도 원문에 없으면 다른 문서를 읽은 것으로 봅니다.
  *
  * 모델은 제목을 그대로 베끼지 않고 다듬어 쓰므로 100% 를 요구할 수 없습니다.
@@ -294,7 +321,7 @@ export class DealExtractor {
     }
 
     // 사용자에게 그대로 노출되는 필드에 한자가 섞이지 않았는지 확인합니다.
-    const foreign = findCjkIdeographs(`${value.title} ${value.summary}`);
+    const foreign = findCjkIdeographs(visibleText(value));
     if (foreign.length > 0) {
       /*
         이 모델은 이번 실행에서 그만 씁니다.

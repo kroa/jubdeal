@@ -267,3 +267,54 @@ describe('필수 항목을 빠뜨리는 모델은 내리고 다시 시도한다'
     expect(banned).toEqual(['bad/model:free']);
   });
 });
+
+describe('한자는 노출되는 모든 필드에서 잡는다', () => {
+  /*
+    제목과 요약만 보다가 일곱 건을 놓쳤습니다. 배포된 사이트의 CTA 버튼에
+    "原帖链接" 이 그대로 떠 있었습니다. 노출되는 곳을 하나라도 빠뜨리면
+    정확히 그 자리로 새어나갑니다.
+  */
+  const 노출필드 = [
+    ['linkLabel', '原帖链接'],
+    ['description', '할인率为 26.5%'],
+    ['brandName', '清洁나라'],
+  ] as const;
+
+  for (const [field, bad] of 노출필드) {
+    it(`${field} 에 한자가 있으면 잡는다`, async () => {
+      const { provider, banned } = fakeProvider([{ ...goodResponse(), [field]: bad }]);
+      const extractor = new DealExtractor({ provider, log: () => {} });
+
+      const outcome = await extractor.extract(item(), NOW);
+
+      expect(outcome.ok).toBe(false);
+      expect(banned).toEqual(['bad/model:free']);
+    });
+  }
+
+  it('배열 필드(tags·caution·howTo)도 본다', async () => {
+    for (const field of ['tags', 'caution', 'howTo'] as const) {
+      const { provider } = fakeProvider([{ ...goodResponse(), [field]: ['정상', '大米'] }]);
+      const extractor = new DealExtractor({ provider, log: () => {} });
+
+      const outcome = await extractor.extract(item(), NOW);
+      expect(outcome.ok, `${field} 를 놓쳤습니다`).toBe(false);
+    }
+  });
+
+  it('한국어만 있으면 통과한다', async () => {
+    const { provider } = fakeProvider([
+      {
+        ...goodResponse(),
+        linkLabel: '원문 보기',
+        description: '9월 30일까지',
+        tags: ['스타벅스', '무료'],
+        caution: ['1인 1회'],
+        howTo: ['앱 설치'],
+      },
+    ]);
+    const extractor = new DealExtractor({ provider, log: () => {} });
+
+    await expect(extractor.extract(item(), NOW)).resolves.toMatchObject({ ok: true });
+  });
+});
