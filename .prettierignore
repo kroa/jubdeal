@@ -11,7 +11,21 @@ package-lock.json
 # (포맷하면 unicode-range 목록이 재배치되어 원본 대조가 어려워집니다)
 public/fonts/
 
-# 저장소 루트의 일회성 스크립트 (.gitignore 와 같은 이유)
+# 저장소 루트의 일회성 파일 (.gitignore 와 같은 이유)
 /*.mjs
 /*.cjs
+/*.js
+/*.ts
+/*.json
+/*.html
+/*.htm
+/*.txt
+/*.csv
+/*.xml
 !/astro.config.mjs
+!/eslint.config.js
+!/vitest.config.ts
+!/vitest.setup.ts
+!/package.json
+!/package-lock.json
+!/tsconfig.json

@@ -204,7 +204,15 @@ const STATUS_ORDER: Record<DealStatus, number> = {
  *   1. 참여 가능한 것 우선 (오늘마감 → 진행중 → 오픈예정 → 소진 → 종료)
  *   2. 같은 상태면 featured 우선
  *   3. 마감 임박 순 (남은 일수 적은 순, 상시는 뒤로)
- *   4. 최근 갱신 순
+ *   4. **혜택 큰 순**
+ *   5. 최근 갱신 순
+ *
+ * 4번을 나중에 넣었습니다. 그전에는 값을 전혀 보지 않아서, 마감이 같은
+ * 항목들 사이에서 40원짜리 적립 미션이 수십만원짜리보다 위에 올랐습니다.
+ * "참여할 만한 게 없다"는 인상의 절반은 여기서 왔습니다.
+ *
+ * 마감을 값보다 앞에 두는 것은 그대로입니다 — 오늘 끝나는 것을 놓치면
+ * 값이 커도 소용이 없습니다.
  *
  * 원본 배열을 변경하지 않습니다.
  */
@@ -220,8 +228,29 @@ export function sortDeals(deals: DecoratedDeal[]): DecoratedDeal[] {
       (a.daysLeft ?? Number.MAX_SAFE_INTEGER) - (b.daysLeft ?? Number.MAX_SAFE_INTEGER);
     if (byDeadline !== 0) return byDeadline;
 
+    const byValue = roughValue(b) - roughValue(a);
+    if (byValue !== 0) return byValue;
+
     return Date.parse(b.meta.updatedAt) - Date.parse(a.meta.updatedAt);
   });
+}
+
+/**
+ * 정렬 동점을 가를 때만 쓰는 대략적인 값어치.
+ *
+ * `deal-filter` 의 `realizedBenefit` 과 계산이 겹치지만, 그쪽은 "혜택 큰 순"
+ * 정렬 전용이고 이쪽은 기본 정렬의 마지막 동점 처리라 목적이 다릅니다.
+ * 값을 모르면 0 이라 자연히 뒤로 갑니다.
+ */
+function roughValue(deal: DecoratedDeal): number {
+  const benefit = deal.benefit;
+  if (benefit)
+    return benefit.isMax ? (benefit.baseAmount ?? benefit.amount * 0.25) : benefit.amount;
+
+  const { original, final } = deal.price;
+  if (original !== undefined && original > final) return original - final;
+
+  return 0;
 }
 
 function toTime(input: Date | string | number): number {

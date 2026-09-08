@@ -17,6 +17,15 @@ import type { RawItem } from '@pipeline/types';
 const KST_OFFSET = '+09:00';
 
 /**
+ * 이 금액 미만의 혜택은 목록에 담지 않습니다.
+ *
+ * 15원·13원·40원짜리 적립 미션이 목록을 채우고 있었습니다.
+ * "100원딜"은 지불액이 100원인 것이지 혜택이 100원인 것이 아니라
+ * 이 기준에 걸리지 않습니다.
+ */
+const MIN_BENEFIT_KRW = 1_000;
+
+/**
  * URL 을 정규화합니다.
  * 추적 파라미터나 프래그먼트 때문에 같은 페이지가 다른 id 를 갖지 않도록 합니다.
  */
@@ -169,6 +178,28 @@ export function assembleDeal(
       : toKstIso(extracted.endDate, true);
 
   const benefit = pickBenefit(extracted);
+
+  /*
+    너무 작은 혜택은 담지 않습니다.
+
+    "정말 참여할 만한 게 없다"는 지적을 받고 목록을 재어 보니, 값을 아는
+    48건 중 12건이 1천원 미만이었습니다. 화면에 이런 것들이 올라와 있었습니다.
+
+      네이버페이 15원 받기 / 카카오뱅크 퀴즈 13원 / 페이북 미션 40원
+
+    들이는 수고에 비해 값이 없고, 목록에서 진짜 혜택이 묻힙니다.
+
+    **금액을 아는 것만** 거릅니다. 금액이 안 잡힌 항목(무료 증정, 정가를
+    모르는 할인)은 그대로 둡니다 — 값이 작아서가 아니라 못 읽은 것이라
+    여기서 판단할 수 없습니다.
+  */
+  if (benefit !== null && benefit.amount < MIN_BENEFIT_KRW) {
+    return {
+      ok: false,
+      detail: `혜택이 ${benefit.amount.toLocaleString()}원으로 너무 작습니다 (${MIN_BENEFIT_KRW.toLocaleString()}원 미만).`,
+      candidate: extracted,
+    };
+  }
 
   const linkUrl = pickLinkUrl(extracted.linkUrl, raw.url, raw.text);
 

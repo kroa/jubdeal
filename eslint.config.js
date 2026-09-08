@@ -24,7 +24,12 @@ export default tseslint.config(
       // flat config 의 ignores 는 루트 기준이며 `/` 접두사를 쓰지 않습니다.
       '*.mjs',
       '*.cjs',
+      '*.js',
+      '*.ts',
       '!astro.config.mjs',
+      '!eslint.config.js',
+      '!vitest.config.ts',
+      '!vitest.setup.ts',
     ],
   },
 

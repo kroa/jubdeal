@@ -218,6 +218,67 @@ describe('sortDeals', () => {
     expect(sortDeals([plain, featured]).map((deal) => deal.id)).toEqual(['featured', 'plain']);
   });
 
+  it('마감이 같으면 혜택이 큰 것을 앞에 둔다', () => {
+    /*
+      값을 전혀 보지 않아서, 마감이 같은 항목들 사이에서 40원짜리 적립
+      미션이 수십만원짜리보다 위에 올랐습니다.
+      "참여할 만한 게 없다"는 인상의 절반은 여기서 왔습니다.
+    */
+    const 소액 = makeDecoratedDeal({
+      id: 'small',
+      slug: 'small',
+      period: { endAt: null },
+      benefit: { amount: 40, isMax: false },
+    });
+    const 고액 = makeDecoratedDeal({
+      id: 'big',
+      slug: 'big',
+      period: { endAt: null },
+      benefit: { amount: 210_000, isMax: false },
+    });
+
+    expect(sortDeals([소액, 고액]).map((deal) => deal.id)).toEqual(['big', 'small']);
+  });
+
+  it('상한만 아는 항목은 4분의 1로 쳐서 줄 세운다', () => {
+    // 도달 불가능한 "최대 87만원"이 확정 25만원을 이기면 안 됩니다.
+    const 상한 = makeDecoratedDeal({
+      id: 'max',
+      slug: 'max',
+      period: { endAt: null },
+      benefit: { amount: 870_000, isMax: true },
+    });
+    const 확정 = makeDecoratedDeal({
+      id: 'sure',
+      slug: 'sure',
+      period: { endAt: null },
+      benefit: { amount: 250_000, isMax: false },
+    });
+
+    expect(sortDeals([상한, 확정]).map((deal) => deal.id)).toEqual(['sure', 'max']);
+  });
+
+  it('마감이 값보다 우선이다', () => {
+    // 오늘 끝나는 것을 놓치면 값이 커도 소용이 없습니다.
+    const 오늘마감소액 = makeDecoratedDeal({
+      id: 'today-small',
+      slug: 'today-small',
+      period: { endAt: '2026-08-20T23:59:59+09:00' },
+      benefit: { amount: 3_000, isMax: false },
+    });
+    const 상시고액 = makeDecoratedDeal({
+      id: 'always-big',
+      slug: 'always-big',
+      period: { endAt: null },
+      benefit: { amount: 500_000, isMax: false },
+    });
+
+    expect(sortDeals([상시고액, 오늘마감소액]).map((deal) => deal.id)).toEqual([
+      'today-small',
+      'always-big',
+    ]);
+  });
+
   it('원본 배열을 변경하지 않는다', () => {
     const first = makeDecoratedDeal({ id: 'a', slug: 'a', period: { endAt: null } });
     const second = makeDecoratedDeal({

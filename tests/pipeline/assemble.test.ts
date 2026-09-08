@@ -325,3 +325,56 @@ describe('브랜드를 모를 때', () => {
     if (result.ok) expect(result.deal.brand.name).toBe('데모 소스');
   });
 });
+
+describe('너무 작은 혜택', () => {
+  /*
+    "정말 참여할 만한 게 없다"는 지적을 받고 목록을 재어 보니, 값을 아는
+    48건 중 12건이 1천원 미만이었습니다. 화면에 이런 것들이 올라와 있었습니다.
+
+      네이버페이 15원 받기 / 카카오뱅크 퀴즈 13원 / 페이북 미션 40원
+  */
+  it('1천원 미만이면 담지 않는다', () => {
+    const result = assembleDeal(
+      makeExtracted({ title: '네이버페이 15원 받기', benefitAmount: 15, benefitIsMax: false }),
+      RAW,
+      { now: NOW },
+    );
+
+    expect(result.ok).toBe(false);
+    if (!result.ok) expect(result.detail).toContain('너무 작습니다');
+  });
+
+  it('1천원이면 담는다', () => {
+    const result = assembleDeal(makeExtracted({ benefitAmount: 1_000, benefitIsMax: false }), RAW, {
+      now: NOW,
+    });
+
+    expect(result.ok).toBe(true);
+  });
+
+  it('금액을 모르는 항목은 거르지 않는다', () => {
+    /*
+      값이 작아서가 아니라 못 읽은 것이라 여기서 판단할 수 없습니다.
+      무료 증정이나 정가를 모르는 할인이 여기 해당합니다.
+    */
+    const result = assembleDeal(makeExtracted({ benefitAmount: null }), RAW, { now: NOW });
+
+    expect(result.ok).toBe(true);
+  });
+
+  it('100원딜은 걸리지 않는다', () => {
+    // 지불액이 100원인 것이지 혜택이 100원인 것이 아닙니다.
+    const result = assembleDeal(
+      makeExtracted({
+        title: '스타벅스 아메리카노 100원딜',
+        originalPrice: 4_500,
+        finalPrice: 100,
+        benefitAmount: null,
+      }),
+      RAW,
+      { now: NOW },
+    );
+
+    expect(result.ok).toBe(true);
+  });
+});
