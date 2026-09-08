@@ -253,6 +253,20 @@
         "detail": "#bo_v_con"
       },
       "categoryHint": "shopping"
+    },
+    {
+      "id": "hana-event",
+      "name": "하나은행 이벤트",
+      "kind": "html",
+      "url": "https://m.kebhana.com/cont/event/new/event01/index.jsp",
+      "enabled": true,
+      "maxItems": 6,
+      "selectors": {
+        "item": ".list_event_new ul > li",
+        "link": "a",
+        "detail": "div#contents"
+      },
+      "categoryHint": "finance"
     }
   ]
 }

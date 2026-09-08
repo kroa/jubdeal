@@ -1,6 +1,6 @@
 {
   "schemaVersion": 4,
-  "generatedAt": "2026-09-07T10:26:30.114Z",
+  "generatedAt": "2026-09-08T16:24:07.035Z",
   "deals": [
     {
       "id": "dl_ajd-card-event_3c0d80aed1f556c7",
@@ -934,6 +934,311 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-09-06T04:36:38.420Z"
+      }
+    },
+    {
+      "id": "dl_hana-event_8464aa809cd5c479",
+      "slug": "hana-event-event01-1528399-152465-jsp-93d35dac",
+      "title": "하나은행 9월 모바일 캘린더 이벤트 (랜덤 캐시 및 한정판 데스크 매트 증정)",
+      "summary": "행운의 동전 찾고 최대 1만 원 랜덤 캐시와 한정판 데스크 매트 추첨 기회 받기",
+      "description": "하나원큐 앱에서 행운의 동전을 찾으면 최대 1만 원의 랜덤 캐시를 100% 지급하며, 추첨을 통해 한정판 데스크 매트(100명)와 YES24 5천원 모바일 쿠폰(20명)을 증정합니다.",
+      "brand": {
+        "name": "하나은행"
+      },
+      "category": "finance",
+      "dealType": "point",
+      "difficulty": "normal",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": true,
+        "quantity": 300000,
+        "perPersonLimit": 1
+      },
+      "period": {
+        "startAt": "2026-09-01T00:00:00+09:00",
+        "endAt": "2026-09-27T23:59:59+09:00"
+      },
+      "benefit": {
+        "amount": 10000,
+        "isMax": true,
+        "baseAmount": 2
+      },
+      "link": {
+        "url": "https://m.kebhana.com/cont/event/new/event01/1528399_152465.jsp",
+        "label": "하나원큐에서 응모하기"
+      },
+      "howTo": [
+        "하나원큐 앱 로그인 및 돈통 서비스 가입 확인",
+        "이벤트 페이지에서 [행운의 동전 찾기] 버튼 클릭 (참여 가능 시간: 00:06 ~ 23:30)",
+        "동전을 찾아 즉시 랜덤 캐시 적립 및 보너스 경품 응모 완료"
+      ],
+      "caution": [
+        "만 14세 이상 하나원큐 회원 중 돈통 보유 고객만 참여 가능합니다.",
+        "랜덤 캐시는 매월 선착순 30만 명에게 지급되며 소진 시 지급되지 않습니다.",
+        "특별 혜택(데스크 매트) 당첨자는 2026년 10월 7일 이후 개별 안내 및 배송됩니다.",
+        "경품 배송을 위해 회원 정보의 자택 주소와 연락처를 최신화해야 합니다."
+      ],
+      "tags": [
+        "하나은행",
+        "하나원큐",
+        "랜덤캐시",
+        "데스크매트",
+        "추석이벤트",
+        "모바일캘린더",
+        "돈통",
+        "앱테크"
+      ],
+      "source": {
+        "name": "하나은행 이벤트",
+        "url": "https://m.kebhana.com/cont/event/new/event01/1528399_152465.jsp",
+        "collectedAt": "2026-09-08T16:24:07.035Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-09-08T16:24:07.035Z"
+      }
+    },
+    {
+      "id": "dl_hana-event_878da583d4917e91",
+      "slug": "hana-event-event01-1528525-152465-jsp-f8e1dc7e",
+      "title": "하나은행 미성년자 원픽통장 가입 이벤트",
+      "summary": "미성년자 원픽통장 가입 시 챔피언 키즈카페 이용권 또는 올리브영 2만원권 즉시 증정",
+      "description": "만 19세 미만 미성년자 자녀를 위한 원픽통장 가입 시 챔피언 키즈카페 직영점 통합이용권(최대 3만원 상당) 또는 올리브영 2만원권 중 하나를 즉시 증정합니다. 추가로 영하나 청약바우처 발급 후 청약통장 신규 시 2만 하나머니를 적립해 드립니다.",
+      "brand": {
+        "name": "하나은행"
+      },
+      "category": "finance",
+      "dealType": "free",
+      "difficulty": "normal",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false,
+        "perPersonLimit": 1
+      },
+      "period": {
+        "startAt": "2026-09-03T00:00:00+09:00",
+        "endAt": "2026-12-13T23:59:59+09:00"
+      },
+      "benefit": {
+        "amount": 30000,
+        "isMax": true,
+        "baseAmount": 20000
+      },
+      "link": {
+        "url": "https://m.kebhana.com/cont/event/new/event01/1528525_152465.jsp",
+        "label": "NEW 하나원큐 이벤트 바로가기"
+      },
+      "howTo": [
+        "하나원큐 앱에서 이벤트 페이지 접속 후 원하는 혜택(챔피언 키즈카페 이용권 또는 올리브영 2만원권) 선택",
+        "미성년자 대상 원픽통장 가입 완료",
+        "하나원큐 쿠폰함(MY하나 > 쿠폰함)에서 즉시 제공된 쿠폰 확인"
+      ],
+      "caution": [
+        "만 19세 미만 실명의 개인 대상 1인 1계좌 가입 가능합니다.",
+        "기존 원픽통장 해지 후 재가입 시 이벤트 대상에서 제외됩니다.",
+        "쿠폰 발급 상황에 따라 지급이 다소 지연될 수 있습니다.",
+        "청약바우처 혜택을 받으려면 주택청약종합저축 신규 가입 전에 영하나 청약바우처를 먼저 발급받아야 합니다."
+      ],
+      "tags": [
+        "하나은행",
+        "원픽통장",
+        "미성년자",
+        "파킹통장",
+        "올리브영",
+        "챔피언키즈카페",
+        "청약바우처",
+        "하나원큐"
+      ],
+      "source": {
+        "name": "하나은행 이벤트",
+        "url": "https://m.kebhana.com/cont/event/new/event01/1528525_152465.jsp",
+        "collectedAt": "2026-09-08T16:24:07.035Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-09-08T16:24:07.035Z"
+      }
+    },
+    {
+      "id": "dl_hana-event_c126564b8b4381ef",
+      "slug": "hana-event-event01-1528503-152465-jsp-f67961ee",
+      "title": "하나은행 놀이터 9월 출석체크 이벤트",
+      "summary": "하나원큐 놀이터에서 매일 별도장을 찍고 출석하면 추첨을 통해 900명에게 크리스피크림 도넛 증정",
+      "description": "하나은행 하나원큐 앱의 놀이터에서 매일 별도장 출석체크 시 추첨을 통해 총 900명에게 크리스피크림 도넛 오리지널 글레이즈드 모바일 쿠폰을 제공합니다.",
+      "brand": {
+        "name": "하나은행"
+      },
+      "category": "finance",
+      "dealType": "giveaway",
+      "difficulty": "easy",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false,
+        "quantity": 900
+      },
+      "period": {
+        "startAt": "2026-09-01T00:00:00+09:00",
+        "endAt": "2026-09-30T23:59:59+09:00"
+      },
+      "link": {
+        "url": "https://m.kebhana.com/cont/event/new/event01/1528503_152465.jsp",
+        "label": "하나원큐에서 별도장 찍기"
+      },
+      "howTo": [
+        "하나원큐 앱 접속 후 놀이터 메뉴로 이동",
+        "[오늘의 도장 찍기] 버튼을 3초간 길게 누르기",
+        "별도장이 찍히면 출석 참여 완료 (11일, 21일에는 추가 별도장 지급)"
+      ],
+      "caution": [
+        "만 14세 이상 하나원큐 손님 및 놀이터 구독자 대상",
+        "별도장을 많이 모을수록 당첨 확률 상승",
+        "당첨자 발표는 2026년 10월 16일까지 하나원큐 쿠폰함으로 모바일 쿠폰 개별 지급 예정"
+      ],
+      "tags": [
+        "하나은행",
+        "하나원큐",
+        "놀이터",
+        "출석체크",
+        "크리스피크림도넛",
+        "추첨이벤트",
+        "도넛무료"
+      ],
+      "source": {
+        "name": "하나은행 이벤트",
+        "url": "https://m.kebhana.com/cont/event/new/event01/1528503_152465.jsp",
+        "collectedAt": "2026-09-08T16:24:07.035Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-09-08T16:24:07.035Z"
+      }
+    },
+    {
+      "id": "dl_hana-event_e04c86543d068db0",
+      "slug": "hana-event-event01-1527213-152465-jsp-41031ee6",
+      "title": "하나은행 26년 하반기 신규 가맹점 더블UP 이벤트",
+      "summary": "가맹점 매출대금 첫 입금 시 최대 3만 하나머니 적립",
+      "description": "하나은행으로 카드 가맹점 매출대금을 첫 입금 받는 개인사업자 고객을 대상으로 최대 3만 하나머니를 적립해 드립니다. 첫 입금 시 1.5만 하나머니를 지급하며, 입금 카드사 개수가 5개 이상일 경우 추가로 1.5만 하나머니를 더블 지급합니다.",
+      "brand": {
+        "name": "하나은행"
+      },
+      "category": "finance",
+      "dealType": "point",
+      "difficulty": "hard",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": true,
+        "perPersonLimit": 1
+      },
+      "period": {
+        "startAt": "2026-08-18T00:00:00+09:00",
+        "endAt": "2026-11-30T23:59:59+09:00"
+      },
+      "benefit": {
+        "amount": 30000,
+        "isMax": true,
+        "baseAmount": 15000
+      },
+      "link": {
+        "url": "https://m.kebhana.com/cont/event/new/event01/1527213_152465.jsp",
+        "label": "하나원큐에서 참여하기"
+      },
+      "howTo": [
+        "하나원큐 앱에서 [이벤트 참여하기] 버튼으로 응모하기",
+        "카드 가맹점 매출대금 입금계좌를 하나은행으로 변경하기",
+        "이벤트 기간 내 하나은행 계좌로 카드 가맹점 매출대금 첫 입금 받기"
+      ],
+      "caution": [
+        "26년 1월~26년 6월 입금 이력이 없는 개인사업자 손님 대상입니다.",
+        "총 60백만 하나머니 소진 시 조기 종료될 수 있습니다.",
+        "하나머니 적립 시점(26년 12월 중)까지 하나머니 정상 회원 상태를 유지해야 합니다.",
+        "하나은행의 타 가맹점 이벤트와 중복 적용이 불가합니다."
+      ],
+      "tags": ["하나은행", "개인사업자", "가맹점", "매출대금", "하나머니", "입금계좌"],
+      "source": {
+        "name": "하나은행 이벤트",
+        "url": "https://m.kebhana.com/cont/event/new/event01/1527213_152465.jsp",
+        "collectedAt": "2026-09-08T16:24:07.035Z",
+        "method": "llm",
+        "confidence": 1
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-09-08T16:24:07.035Z"
+      }
+    },
+    {
+      "id": "dl_hana-event_f63404b572efe377",
+      "slug": "hana-event-event01-1528431-152465-jsp-e6c1f201",
+      "title": "하나은행 첫 군 급여이체 시 현금 5만원 증정 이벤트",
+      "summary": "하나원큐에서 응모 후 하나은행 계좌로 첫 군 급여 수령 시 익월 10일 현금 5만원 캐시백 지급",
+      "brand": {
+        "name": "하나은행"
+      },
+      "category": "finance",
+      "dealType": "cashback",
+      "difficulty": "hard",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false,
+        "perPersonLimit": 1
+      },
+      "period": {
+        "startAt": "2026-09-01T00:00:00+09:00",
+        "endAt": "2026-12-31T23:59:59+09:00"
+      },
+      "benefit": {
+        "amount": 50000,
+        "isMax": false
+      },
+      "link": {
+        "url": "https://m.kebhana.com/cont/event/new/event01/1528431_152465.jsp",
+        "label": "하나원큐에서 참여하기"
+      },
+      "howTo": [
+        "이벤트 페이지에서 [신청(응모)하기] 버튼 클릭하여 응모 완료",
+        "하나은행 본인 명의 입출금 통장으로 첫 군 급여 수령 (매월 10일)",
+        "첫 군 급여 이체 익월 10일에 계좌로 현금 5만원 입금 확인"
+      ],
+      "caution": [
+        "군 급여 수령 전 반드시 이벤트 응모를 완료해야 혜택이 제공됩니다.",
+        "국군재정관리단을 통해 입금되는 정기급여만 인정되며, 희망송금 및 각종 수당은 실적에서 제외됩니다.",
+        "응모일 이전 하나은행 계좌로 군 급여를 받은 이력이 없는 손님 대상입니다.",
+        "마케팅 정보 제공 동의가 필요하며, 1인 1회 참여 가능합니다.",
+        "예산 소진 시 조기 종료될 수 있습니다."
+      ],
+      "tags": ["하나은행", "군급여", "나라사랑", "캐시백", "현금증정", "급여이체", "군인"],
+      "source": {
+        "name": "하나은행 이벤트",
+        "url": "https://m.kebhana.com/cont/event/new/event01/1528431_152465.jsp",
+        "collectedAt": "2026-09-08T16:24:07.035Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-09-08T16:24:07.035Z"
       }
     },
     {
