@@ -32,6 +32,24 @@ const DEFAULT_BASE_URL = 'https://generativelanguage.googleapis.com/v1beta';
 const DEFAULT_TIMEOUT_MS = 120_000;
 const MAX_DISCOVERED = 6;
 
+/**
+ * 붐비는(503) 모델을 이만큼 쉬게 둡니다. OpenRouter 쪽과 같은 값입니다.
+ *
+ * 붐빔은 영구 배제 대상이 아니라 건너뛰기만 했는데, 그러면 **항목마다** 다시
+ * 시도합니다. 실측 로그가 이렇습니다.
+ *
+ *   gemini-3.8-flash 사용 불가 (busy) — 다음 모델로 넘어갑니다.
+ *   gemini-3.7-flash 사용 불가 (busy) — 다음 모델로 넘어갑니다.
+ *   gemini 응답: gemini-3.6-flash          ← 세 번째에야 성공
+ *   ...
+ *   gemini-3.6-flash 사용 불가 (busy)
+ *   gemini-3.8-flash 사용 불가 (busy)      ← 또 맨 앞부터
+ *
+ * 최신 모델일수록 종일 붐비는 일이 잦아, 같은 두 모델을 매번 두들기며
+ * 건당 몇 초씩 버리고 있었습니다.
+ */
+const BUSY_COOLDOWN_MS = 20_000;
+
 export interface GeminiOptions {
   apiKey?: string;
   baseUrl?: string;
@@ -124,6 +142,8 @@ export class GeminiProvider implements LlmProvider {
 
   private readonly exhausted = new Set<string>();
   private readonly noSchema = new Set<string>();
+  /** 붐벼서 잠시 쉬는 모델 → 다시 시도해도 되는 시각(ms) */
+  private readonly cooldownUntil = new Map<string, number>();
   private preferred: string | null = null;
   private discovered: string[] | null = null;
 
@@ -163,8 +183,24 @@ export class GeminiProvider implements LlmProvider {
 
     const failures: string[] = [];
 
+    /*
+      쿨다운은 **대안이 있을 때만** 적용합니다.
+
+      쿨다운의 목적은 "붐비는 모델을 건너뛰고 멀쩡한 모델로 가는 것"이지
+      시도 횟수를 줄이는 게 아닙니다. 모델을 하나만 설정한 환경에서 연결이
+      한 번 튀었다고 20초 동안 프로바이더를 통째로 못 쓰게 되면, 고치려던
+      것보다 더 나쁜 상태가 됩니다.
+
+      그래서 쓸 수 있는 모델이 하나도 안 남았으면 쉬는 중이라도 그냥 칩니다.
+    */
+    const now = Date.now();
+    const anyReady = models.some(
+      (model) => !this.exhausted.has(model) && (this.cooldownUntil.get(model) ?? 0) <= now,
+    );
+
     for (const model of models) {
       if (this.exhausted.has(model)) continue;
+      if (anyReady && (this.cooldownUntil.get(model) ?? 0) > now) continue;
 
       try {
         const response = await this.callModel(model, request);
@@ -174,8 +210,13 @@ export class GeminiProvider implements LlmProvider {
         if (error instanceof ProviderUnavailableError) {
           if (error.reason === 'auth') throw error;
 
-          // 붐빔은 영구 배제하지 않습니다. 다음 모델로만 넘어갑니다.
-          if (error.reason !== 'busy') this.exhausted.add(model);
+          if (error.reason === 'busy') {
+            // 붐빔은 잠시 뒤면 풀리므로 영구 배제하지 않습니다.
+            // 다만 쿨다운을 걸지 않으면 항목마다 같은 모델을 다시 두들깁니다.
+            this.cooldownUntil.set(model, Date.now() + BUSY_COOLDOWN_MS);
+          } else {
+            this.exhausted.add(model);
+          }
 
           failures.push(`${model}: ${error.message}`);
           this.log(`${model} 사용 불가 (${error.reason}) — 다음 모델로 넘어갑니다.`);

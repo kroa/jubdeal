@@ -452,3 +452,147 @@ describe('createProvider — gemini 포함', () => {
     expect(chain.providers.map((p) => p.name)).toEqual(['claude-cli', 'gemini', 'openrouter']);
   });
 });
+
+describe('붐빔 쿨다운', () => {
+  /*
+    붐빈 모델을 건너뛰기만 하고 쿨다운을 걸지 않아, **항목마다** 같은 모델을
+    다시 두들기고 있었습니다. 실측 로그에서 gemini-3.8-flash 와 3.7-flash 가
+    종일 붐비는데도 매번 앞에서부터 재시도해 건당 몇 초씩 버렸습니다.
+  */
+  function geminiBusy() {
+    return new Response(
+      JSON.stringify({
+        error: { code: 503, message: 'This model is currently experiencing high demand.' },
+      }),
+      { status: 503 },
+    );
+  }
+
+  /** 호출 URL 에서 모델 이름만 뽑습니다. Gemini 는 모델이 경로에 있습니다. */
+  function modelsFrom(calls: Array<{ url: string }>): string[] {
+    return calls
+      .map((call) => /\/models\/([^:]+):generateContent/.exec(call.url)?.[1])
+      .filter((model): model is string => Boolean(model));
+  }
+
+  it('붐빈 모델은 다음 항목에서 건너뛴다', async () => {
+    let goodCalls = 0;
+    const { impl, calls } = makeFetch((url) => {
+      if (!url.includes('/models/good')) return geminiBusy();
+      goodCalls += 1;
+      // 첫 항목만 성공시켜 두 번째 항목에서 목록을 다시 훑게 만듭니다.
+      return goodCalls === 1 ? geminiOk({ title: 'x', price: 1 }) : geminiBusy();
+    });
+
+    const provider = new GeminiProvider({
+      apiKey: 'k',
+      models: ['busy-a', 'busy-b', 'good'],
+      fetchImpl: impl,
+    });
+
+    await provider.complete(REQUEST);
+    expect(modelsFrom(calls)).toEqual(['busy-a', 'busy-b', 'good']);
+
+    calls.length = 0;
+    await expect(provider.complete(REQUEST)).rejects.toMatchObject({ reason: 'quota' });
+
+    // 쿨다운이 없으면 busy-a·busy-b 를 또 두들깁니다.
+    expect(modelsFrom(calls)).toEqual(['good']);
+  });
+
+  it('쿨다운이 지나면 다시 시도한다', async () => {
+    vi.useFakeTimers();
+    try {
+      let goodCalls = 0;
+      const { impl, calls } = makeFetch((url) => {
+        if (!url.includes('/models/good')) return geminiBusy();
+        goodCalls += 1;
+        return goodCalls === 1 ? geminiOk({ title: 'x', price: 1 }) : geminiBusy();
+      });
+
+      const provider = new GeminiProvider({
+        apiKey: 'k',
+        models: ['busy-a', 'good'],
+        fetchImpl: impl,
+      });
+
+      await provider.complete(REQUEST);
+      calls.length = 0;
+
+      vi.advanceTimersByTime(21_000);
+      await expect(provider.complete(REQUEST)).rejects.toMatchObject({ reason: 'quota' });
+
+      // 20초가 지났으니 busy-a 도 다시 후보가 됩니다.
+      expect(modelsFrom(calls)).toContain('busy-a');
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
+  it('한도 초과는 쿨다운이 아니라 영구 배제다', async () => {
+    // 붐빔과 달리 한도는 그 실행 안에서 풀리지 않습니다.
+    const { impl, calls } = makeFetch((url) =>
+      url.includes('/models/over')
+        ? new Response(JSON.stringify({ error: { code: 429, message: 'quota exceeded' } }), {
+            status: 429,
+          })
+        : geminiOk({ title: 'x', price: 1 }),
+    );
+
+    const provider = new GeminiProvider({
+      apiKey: 'k',
+      models: ['over', 'good'],
+      fetchImpl: impl,
+    });
+
+    await provider.complete(REQUEST);
+    calls.length = 0;
+    await provider.complete(REQUEST);
+
+    expect(modelsFrom(calls)).toEqual(['good']);
+  });
+});
+
+describe('쿨다운은 대안이 있을 때만 적용한다', () => {
+  /*
+    쿨다운을 넣자 기존 테스트 셋이 깨졌습니다. 모두 모델이 하나뿐인 구성에서
+    "일시 오류 뒤엔 다시 쓸 수 있어야 한다"를 확인하는 것들이었습니다.
+
+    쿨다운의 목적은 붐비는 모델을 건너뛰고 **다른 모델로 가는 것**이지
+    시도를 줄이는 게 아닙니다. 대안이 없으면 쉬는 중이라도 쳐야 합니다.
+  */
+  function busy503() {
+    return new Response(JSON.stringify({ error: { message: 'experiencing high demand' } }), {
+      status: 503,
+    });
+  }
+
+  it('모델이 하나뿐이면 쿨다운 중이라도 다시 시도한다', async () => {
+    let overloaded = true;
+    const { impl } = makeFetch(() => (overloaded ? busy503() : geminiOk({ title: 'x', price: 1 })));
+
+    const provider = new GeminiProvider({ apiKey: 'k', models: ['only'], fetchImpl: impl });
+
+    await expect(provider.complete(REQUEST)).rejects.toThrow();
+
+    overloaded = false;
+    await expect(provider.complete(REQUEST)).resolves.toMatchObject({ provider: 'gemini:only' });
+  });
+
+  it('모두 쉬는 중이면 그중 하나라도 친다', async () => {
+    // 둘 다 붐벼서 쉬는 상태여도, 다음 항목에서 아예 포기하면 안 됩니다.
+    let overloaded = true;
+    const { impl, calls } = makeFetch(() =>
+      overloaded ? busy503() : geminiOk({ title: 'x', price: 1 }),
+    );
+
+    const provider = new GeminiProvider({ apiKey: 'k', models: ['a', 'b'], fetchImpl: impl });
+
+    await expect(provider.complete(REQUEST)).rejects.toThrow();
+
+    overloaded = false;
+    calls.length = 0;
+    await expect(provider.complete(REQUEST)).resolves.toBeTruthy();
+    expect(calls.length).toBeGreaterThan(0);
+  });
+});
