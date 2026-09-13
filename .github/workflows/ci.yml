@@ -35,10 +35,10 @@ jobs:
 
     steps:
       - name: 소스 체크아웃
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Node.js 설치
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
           cache: npm
@@ -61,13 +61,16 @@ jobs:
       - name: 유닛 테스트 + 커버리지
         run: npm run test:coverage
 
+      # 커버리지는 부산물이라 업로드가 실패해도 CI 를 떨어뜨리지 않습니다.
+      # (아티팩트 저장 용량이 차서 업로드가 실패한 적이 있습니다.)
       - name: 커버리지 리포트 업로드
         if: always()
-        uses: actions/upload-artifact@v4
+        continue-on-error: true
+        uses: actions/upload-artifact@v7
         with:
           name: coverage-report
           path: coverage/
-          retention-days: 7
+          retention-days: 3
           if-no-files-found: ignore
 
   # ==========================================================================
@@ -80,12 +83,12 @@ jobs:
 
     steps:
       - name: 소스 체크아웃
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
       - name: Node.js 설치
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
           cache: npm
@@ -162,10 +165,10 @@ jobs:
 
     steps:
       - name: 소스 체크아웃
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Node.js 설치
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
           cache: npm
@@ -200,12 +203,14 @@ jobs:
 
           echo "✅ 빌드 산출물 확인 ($(find dist -type f | wc -l) 개 파일)"
 
+      # 같은 실행의 배포 단계가 바로 내려받으므로 하루면 충분합니다.
+      # 배포가 이 산출물에 의존하므로 continue-on-error 는 넣지 않습니다.
       - name: 빌드 결과 업로드
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: dist
           path: dist/
-          retention-days: 7
+          retention-days: 1
 
   # ==========================================================================
   #  4) 배포 — main 브랜치 푸시에서만, 빌드 성공 시에만 실행됩니다.
@@ -272,7 +277,7 @@ jobs:
 
       - name: 빌드 결과 내려받기
         if: steps.creds.outputs.configured == 'true'
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: dist
           path: dist

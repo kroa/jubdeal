@@ -40,10 +40,10 @@ jobs:
 
     steps:
       - name: 소스 체크아웃
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Node.js 설치
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
           cache: npm
@@ -51,10 +51,13 @@ jobs:
       - name: 의존성 설치
         run: npm ci
 
-      - name: 브라우저 설치
-        # browser 어댑터가 쓰는 Chromium 입니다. npm ci 로는 바이너리가 오지 않습니다.
-        # --with-deps 는 리눅스 러너에 필요한 시스템 라이브러리까지 함께 깝니다.
-        run: npx playwright install --with-deps chromium
+      # browser 어댑터(Playwright)를 쓰는 소스가 지금은 없어 Chromium 설치를 뺐습니다.
+      # 설치에 매 실행 수 분이 걸리는데 아무도 쓰지 않고 있었습니다.
+      #
+      # ⚠ sources.json 에서 kind: browser 인 소스를 다시 켠다면 이 단계를 되살리세요:
+      #     - name: 브라우저 설치
+      #       run: npx playwright install --with-deps chromium
+      #   없으면 그 소스만 수집 실패로 남습니다(다른 소스는 정상 진행).
 
       - name: 입력값 검증
         id: params
@@ -137,13 +140,23 @@ jobs:
           } > summary.md
           cat summary.md >> "$GITHUB_STEP_SUMMARY"
 
+      # 검수 큐는 "있으면 좋은" 부산물입니다. 이것 때문에 수집 결과를 잃으면 안 됩니다.
+      #
+      # 실제로 그런 일이 있었습니다. 아티팩트 저장 용량이 차서 업로드가 실패했고,
+      # 이 단계에 continue-on-error 가 없어 잡 전체가 실패로 끝났습니다. 그러면
+      # 뒤의 "변경 여부 확인"부터 PR 생성까지 전부 건너뛰어져,
+      # **그날 수집한 신규 12건이 커밋되지 못한 채 버려졌습니다.**
+      #
+      # 보관 기간도 14일은 깁니다. 검수 큐는 그날 보고 끝내는 자료이고,
+      # 매일 쌓이면 용량 한도를 다시 채웁니다.
       - name: 검수 큐 업로드
         if: always()
-        uses: actions/upload-artifact@v4
+        continue-on-error: true
+        uses: actions/upload-artifact@v7
         with:
           name: review-queue
           path: scripts/pipeline/review/
-          retention-days: 14
+          retention-days: 3
           if-no-files-found: ignore
 
       - name: 변경 여부 확인
