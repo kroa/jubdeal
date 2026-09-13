@@ -391,3 +391,67 @@ describe('꺼진 소스 정리', () => {
     expect(sourceIdFromDealId('dl_x_abc')).toBeNull();
   });
 });
+
+describe('소스에 아직 있으면 LLM 을 안 탔어도 남긴다', () => {
+  /*
+    보호 기준이 `incoming`(= LLM 을 태운 것)이었습니다. 그런데 살아 있다는
+    증거는 "수집 목록에 보였다"에 있지 "우리가 LLM 을 썼다"에 있지 않습니다.
+
+    CI 는 비용 때문에 --max-items 20 으로 도는데 124건을 수집합니다.
+    나머지 104건이 소스에 멀쩡히 있는데도 보호를 못 받아, 한 번에 57건이
+    사라져 93건이 48건이 됐습니다(56건이 "마감미상 + 수집 7일 초과").
+  */
+  const 오래전수집 = makeDeal({
+    id: 'dl_ppomppu-hot_1111111111111111',
+    slug: 'old',
+    period: { startAt: '2026-07-01T00:00:00+09:00', endAt: null, deadlineUnknown: true },
+    source: {
+      name: '뽐뿌 핫딜',
+      url: 'https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=1',
+      collectedAt: '2026-08-01T00:00:00.000Z',
+      method: 'llm',
+      confidence: 0.9,
+    },
+  });
+
+  it('수집 목록에 있으면 나이와 무관하게 남는다', () => {
+    const result = mergeDeals(makeFile([오래전수집]), [], {
+      now: NOW,
+      pruneAfterDays: 7,
+      seenOnSourceIds: ['dl_ppomppu-hot_1111111111111111'],
+    });
+
+    expect(result.file.deals).toHaveLength(1);
+    expect(result.pruned).toEqual([]);
+  });
+
+  it('수집 목록에도 없으면 종전대로 내려간다', () => {
+    // 소스에서 사라진 지 오래된 것은 계속 내려야 합니다.
+    const result = mergeDeals(makeFile([오래전수집]), [], { now: NOW, pruneAfterDays: 7 });
+
+    expect(result.file.deals).toHaveLength(0);
+    expect(result.pruned).toHaveLength(1);
+  });
+
+  it('id 체계가 어긋나도 원문 주소가 같으면 보호한다', () => {
+    const result = mergeDeals(makeFile([오래전수집]), [], {
+      now: NOW,
+      pruneAfterDays: 7,
+      seenOnSourceLinks: ['https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=1'],
+    });
+
+    expect(result.file.deals).toHaveLength(1);
+  });
+
+  it('추적 파라미터가 붙어도 같은 주소로 본다', () => {
+    const result = mergeDeals(makeFile([오래전수집]), [], {
+      now: NOW,
+      pruneAfterDays: 7,
+      seenOnSourceLinks: [
+        'https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=1&utm_source=kakao',
+      ],
+    });
+
+    expect(result.file.deals).toHaveLength(1);
+  });
+});

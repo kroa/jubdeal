@@ -195,6 +195,13 @@ export async function runPipeline(options: RunOptions): Promise<PipelineReport> 
     now: options.now,
     pruneAfterDays: options.pruneAfterDays,
     /*
+      비용 상한 때문에 수집분의 일부만 LLM 을 탑니다. 하지만 "아직 소스에
+      올라와 있다"는 증거는 수집된 것 **전부**에 있습니다. 이걸 넘기지 않으면
+      처리되지 않은 항목이 살아 있는데도 나이만으로 잘려 나갑니다.
+    */
+    seenOnSourceIds: rawItems.map((item) => makeStableId(item.sourceId, item.url)),
+    seenOnSourceLinks: rawItems.map((item) => canonicalizeUrl(item.url)),
+    /*
       한 소스만 돌릴 때는 주지 않습니다. 그때는 나머지 소스를 아예 돌지 않으므로
       "지금 켜져 있는 소스"를 판단할 근거가 없고, 넘기면 나머지가 통째로 지워집니다.
     */

@@ -35,6 +35,22 @@ export interface MergeOptions {
    * 한 소스만 돌릴 때(`--source`)는 주지 마세요. 나머지가 통째로 지워집니다.
    */
   activeSourceIds?: readonly string[];
+  /**
+   * 이번 실행에서 **소스 목록에 여전히 올라와 있던** 항목.
+   *
+   * `incoming` 은 LLM 을 태운 것만 담습니다. 그런데 살아 있다는 증거는
+   * "수집 목록에 보였다"는 사실에 있지 "우리가 LLM 을 썼다"에 있지 않습니다.
+   *
+   * CI 는 비용 때문에 `--max-items 20` 으로 돕니다. 124건을 수집하고 20건만
+   * 처리하니, 나머지 104건은 소스에 멀쩡히 있는데도 보호를 못 받아 나이만으로
+   * 잘려 나갔습니다. 실제로 한 번에 57건이 사라져 93건이 48건이 됐습니다
+   * (56건이 "마감미상 + 수집 7일 초과").
+   *
+   * 그래서 LLM 처리 여부와 무관하게, 이번에 수집된 것 전부를 여기로 받습니다.
+   */
+  seenOnSourceIds?: readonly string[];
+  /** 같은 목적. id 체계가 어긋난 예전 항목을 위해 원문 주소로도 봅니다. */
+  seenOnSourceLinks?: readonly string[];
 }
 
 export interface MergeResult {
@@ -147,13 +163,27 @@ export function mergeDeals(
       소스에 멀쩡히 있는 혜택이 오래됐다는 이유로 지워집니다.
       다음 실행에서 다시 추가되고 또 지워지기를 반복하게 됩니다.
     */
-    const seenNow = new Set(incoming.map((deal) => deal.id));
+    /*
+      LLM 을 태운 것(`incoming`)만이 아니라 **수집 목록에 보인 것 전부**를
+      살아 있다고 봅니다. 비용 상한(`--max-items`) 때문에 수집분의 일부만
+      LLM 을 타는데, 나머지도 소스에는 멀쩡히 올라와 있기 때문입니다.
+    */
+    const seenNow = new Set([
+      ...incoming.map((deal) => deal.id),
+      ...(options.seenOnSourceIds ?? []),
+    ]);
+    const seenLinks = new Set(
+      (options.seenOnSourceLinks ?? []).map((link) => canonicalizeUrl(link)),
+    );
 
     deals = deals.filter((deal) => {
       // 사람이 검수한 항목은 자동으로 지우지 않습니다.
       // 큐레이션한 데이터가 소리 없이 사라지면 복구할 방법이 없습니다.
       if (deal.meta.verified) return true;
       if (seenNow.has(deal.id)) return true;
+      // 원문 주소는 선택 필드라 없을 수 있습니다.
+      const sourceUrl = deal.source.url;
+      if (sourceUrl !== undefined && seenLinks.has(canonicalizeUrl(sourceUrl))) return true;
 
       /*
         마감일이 없는 항목은 두 종류입니다.
