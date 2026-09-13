@@ -111,6 +111,24 @@ export function looksLikeAuthError(text: string): boolean {
   );
 }
 
+/**
+ * **계정·키 자체가 잘못된** 경우만 가려냅니다.
+ *
+ * `looksLikeAuthError` 는 `forbidden` 과 맨 숫자 `403` 까지 잡습니다. 그 판정을
+ * 그대로 쓰면 "이 모델만 막힘"과 "키가 죽음"을 구분할 수 없습니다.
+ * OpenRouter 에서 403 은 대개 앞쪽입니다 — 데이터 정책 미동의, 모델 게이팅,
+ * 지역 제한처럼 **그 모델에만** 해당하는 사유입니다.
+ *
+ * 실제로 로그에 `openrouter 사용 불가 (auth) — 이번 실행에서 제외합니다` 가
+ * 찍혔는데, 같은 키로 곧바로 요청해 보니 HTTP 200 이 돌아왔습니다.
+ * 모델 하나가 막혔다고 프로바이더를 통째로 버리고 있었던 것입니다.
+ */
+export function looksLikeAccountAuthError(text: string): boolean {
+  return /invalid.{0,10}(api )?key|no auth credentials|not logged in|unauthorized|authentication (failed|error)|expired.{0,10}key/i.test(
+    text,
+  );
+}
+
 export const EMPTY_USAGE: LlmUsage = {
   inputTokens: 0,
   outputTokens: 0,

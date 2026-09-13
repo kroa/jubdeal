@@ -13,7 +13,7 @@ import {
   modelFromProviderLabel,
   titleGroundingRatio,
 } from '@pipeline/extract/extract';
-import type { LlmRequest } from '@pipeline/extract/providers/types';
+import { looksLikeAccountAuthError, type LlmRequest } from '@pipeline/extract/providers/types';
 
 const REQUEST: LlmRequest = {
   system: '너는 추출기다.',
@@ -907,5 +907,83 @@ describe('한자를 섞는 모델 배제', () => {
     const second = await provider.complete(REQUEST);
     expect(chatModels(calls)).not.toContain('bad:free');
     expect(second.provider).toBe('openrouter:good:free');
+  });
+});
+
+describe('403 은 모델 문제이지 키 문제가 아니다', () => {
+  /*
+    로그에 `openrouter 사용 불가 (auth) — 이번 실행에서 제외합니다` 가 찍혔는데,
+    같은 키로 곧바로 요청하니 HTTP 200 이 돌아왔습니다. 모델 하나가 막혔다고
+    프로바이더를 통째로 버리고 있었던 것입니다.
+
+    `auth` 는 모델 루프에서 곧바로 빠져나가고 체인은 영구 배제로 처리하므로,
+    OpenRouter 가 그 실행 내내 죽습니다.
+  */
+  it('403 이면 그 모델만 건너뛰고 다음 모델로 간다', async () => {
+    const { impl, calls } = makeFetch((_url, body) =>
+      body?.model === 'a:free'
+        ? new Response(
+            '{"error":{"message":"Data policy not accepted for this model","code":403}}',
+            { status: 403 },
+          )
+        : chatOk({ value: 1 }),
+    );
+
+    const provider = new OpenRouterProvider({
+      apiKey: 'k',
+      freeModels: ['a:free', 'b:free'],
+      fetchImpl: impl,
+    });
+
+    const response = await provider.complete(REQUEST);
+
+    expect(response.provider).toBe('openrouter:b:free');
+    expect(chatModels(calls)).toEqual(['a:free', 'b:free']);
+  });
+
+  it('401 은 키 문제라 다음 모델을 시도하지 않는다', async () => {
+    const { impl, calls } = makeFetch(
+      () => new Response('{"error":{"message":"No auth credentials found"}}', { status: 401 }),
+    );
+
+    const provider = new OpenRouterProvider({
+      apiKey: 'k',
+      freeModels: ['a:free', 'b:free'],
+      fetchImpl: impl,
+    });
+
+    await expect(provider.complete(REQUEST)).rejects.toMatchObject({ reason: 'auth' });
+    expect(chatModels(calls)).toEqual(['a:free']);
+  });
+
+  it('403 이라도 키가 잘못됐다고 말하면 인증 실패로 본다', async () => {
+    const { impl, calls } = makeFetch(
+      () => new Response('{"error":{"message":"Invalid API key provided"}}', { status: 403 }),
+    );
+
+    const provider = new OpenRouterProvider({
+      apiKey: 'k',
+      freeModels: ['a:free', 'b:free'],
+      fetchImpl: impl,
+    });
+
+    await expect(provider.complete(REQUEST)).rejects.toMatchObject({ reason: 'auth' });
+    expect(chatModels(calls)).toEqual(['a:free']);
+  });
+});
+
+describe('계정 인증 실패 판별', () => {
+  it('키·자격증명 문제만 잡는다', () => {
+    expect(looksLikeAccountAuthError('No auth credentials found')).toBe(true);
+    expect(looksLikeAccountAuthError('Invalid API key provided')).toBe(true);
+    expect(looksLikeAccountAuthError('Unauthorized')).toBe(true);
+  });
+
+  it('모델 단위 사유는 인증 실패가 아니다', () => {
+    // 이것들을 인증 실패로 보면 프로바이더가 통째로 죽습니다.
+    expect(looksLikeAccountAuthError('Data policy not accepted for this model')).toBe(false);
+    expect(looksLikeAccountAuthError('Forbidden')).toBe(false);
+    expect(looksLikeAccountAuthError('403')).toBe(false);
+    expect(looksLikeAccountAuthError('This model is not available in your region')).toBe(false);
   });
 });

@@ -2,7 +2,7 @@ import {
   EMPTY_USAGE,
   LlmRequestError,
   ProviderUnavailableError,
-  looksLikeAuthError,
+  looksLikeAccountAuthError,
   looksLikeQuotaError,
   looksLikeTransientError,
   type LlmProvider,
@@ -429,8 +429,27 @@ export class OpenRouterProvider implements LlmProvider {
     if (!response.ok) {
       if (looksLikeUnsupportedSchema(bodyText)) throw new UnsupportedStructuredOutputError(model);
 
-      if (response.status === 401 || response.status === 403 || looksLikeAuthError(bodyText)) {
+      if (response.status === 401 || looksLikeAccountAuthError(bodyText)) {
         throw new ProviderUnavailableError(this.name, 'auth', `인증 실패 (${response.status})`);
+      }
+
+      /*
+        403 은 키가 죽은 것이 아니라 **그 모델만** 막힌 경우가 대부분입니다.
+        데이터 정책 미동의, 모델 게이팅, 지역 제한 같은 것들입니다.
+
+        전에는 이것도 `auth` 로 던졌는데, `auth` 는 모델 루프에서 곧바로
+        빠져나가고 체인은 영구 배제로 처리합니다. 그래서 모델 하나가 막히면
+        **OpenRouter 전체가 그 실행 내내 죽었습니다.** 로그에 인증 실패가
+        찍힌 뒤 같은 키로 요청해 보니 HTTP 200 이 돌아왔습니다.
+
+        모델 단위 사유로 던져 다음 모델로 넘어가게 합니다.
+      */
+      if (response.status === 403) {
+        throw new ProviderUnavailableError(
+          this.name,
+          'unavailable',
+          `이 모델은 지금 쓸 수 없습니다 (403). 데이터 정책·모델 게이팅·지역 제한일 수 있습니다.`,
+        );
       }
       if (response.status === 402 || response.status === 429 || looksLikeQuotaError(bodyText)) {
         // 무료 모델의 429 는 대개 "공용 풀이 잠깐 붐빔"입니다.
