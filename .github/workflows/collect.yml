@@ -29,18 +29,22 @@ env:
 
 jobs:
   collect:
-    name: 수집 · 정규화 · PR 생성
+    name: 수집 · 정규화 · 배포
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
-    # PR 을 열기 위해 필요한 최소 권한
+    # main 에 직접 커밋하므로 contents 쓰기만 있으면 됩니다.
     permissions:
       contents: write
-      pull-requests: write
 
     steps:
       - name: 소스 체크아웃
         uses: actions/checkout@v7
+        with:
+          # main 에 직접 커밋하고, 밀리면 리베이스합니다.
+          # 기본값(fetch-depth: 1)은 얕은 클론이라 리베이스가 공통 조상을
+          # 찾지 못합니다. 작은 저장소이니 전체 이력을 받습니다.
+          fetch-depth: 0
 
       - name: Node.js 설치
         uses: actions/setup-node@v7
@@ -172,9 +176,10 @@ jobs:
       # ----------------------------------------------------------------------
       #  품질 게이트를 여기서 직접 돌립니다.
       #
-      #  GITHUB_TOKEN 으로 만든 push/PR 은 다른 워크플로우를 트리거하지 않습니다.
-      #  그래서 ci.yml 이 이 PR 에서는 돌지 않고, 게이트를 통째로 우회하게 됩니다.
-      #  자동 생성 데이터야말로 검증이 필요하므로 같은 검사를 인라인으로 수행합니다.
+      #  GITHUB_TOKEN 으로 만든 push 는 다른 워크플로를 트리거하지 않습니다.
+      #  그래서 이 잡이 main 에 밀어 넣어도 ci.yml 은 돌지 않고, 게이트를
+      #  통째로 우회하게 됩니다. 자동 생성 데이터야말로 검증이 필요하므로
+      #  같은 검사를 인라인으로 수행합니다.
       # ----------------------------------------------------------------------
       - name: 생성된 데이터 검증
         if: steps.diff.outputs.changed == 'true'
@@ -184,18 +189,36 @@ jobs:
 
           npm run typecheck
           npm run test
-          npm run build
 
-      - name: 변경 사항 PR 생성
-        if: steps.diff.outputs.changed == 'true' && inputs.dry-run != true
+      # 빌드를 검증에서 떼어낸 이유:
+      #   여기서 만든 dist 를 그대로 배포하므로 ci.yml 과 **같은 환경변수**를
+      #   줘야 합니다. 검증 단계에 NODE_ENV=production 을 통째로 걸면
+      #   typecheck·test 의 동작까지 바뀌므로 빌드만 따로 둡니다.
+      #   이 값이 없으면 <title> 과 og:site_name 이 빈 채로 배포됩니다.
+      - name: 배포용 빌드
+        if: steps.diff.outputs.changed == 'true'
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          BRANCH="collect/$(date +%Y%m%d-%H%M%S)"
+          NODE_ENV: production
+          PUBLIC_SITE_URL: ${{ vars.PUBLIC_SITE_URL || 'https://jubdeal.pages.dev' }}
+          PUBLIC_SITE_NAME: ${{ vars.PUBLIC_SITE_NAME || '줍딜' }}
+        run: npm run build
 
+      # ----------------------------------------------------------------------
+      #  main 에 직접 반영합니다.
+      #
+      #  전에는 브랜치를 만들어 PR 을 열었습니다. 그런데 `gh pr create` 가
+      #  계속 실패해 PR 이 만들어지지 않았고, 수집 브랜치만 매일 쌓였습니다.
+      #  11일 동안 여섯 개가 아무도 건드리지 않은 채 남아 사이트가 그대로
+      #  멈춰 있었습니다. 검증은 어차피 이 잡 안에서 끝내므로(typecheck·test·
+      #  build) PR 을 거치지 않아도 품질 게이트는 같습니다.
+      #
+      #  자동 수집분은 meta.verified=false 로 남으므로 나중에 구분할 수 있습니다.
+      # ----------------------------------------------------------------------
+      - name: main 에 반영
+        if: steps.diff.outputs.changed == 'true' && inputs.dry-run != true
+        run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -b "$BRANCH"
           git add src/data/deals.json
 
           # 여러 줄 메시지를 -m 인라인으로 쓰면 YAML 블록 스칼라를 벗어납니다.
@@ -204,37 +227,44 @@ jobs:
             echo
             sed -n '/파이프라인 실행 결과/,$p' run.log | head -40
             echo
-            echo "자동 수집분은 meta.verified=false 입니다. 머지 전에 링크와 기간을 확인하세요."
+            echo "자동 수집분은 meta.verified=false 입니다."
           } > commit-message.txt
 
           git commit -F commit-message.txt
-          git push origin "$BRANCH"
 
-          # 여기까지 왔으면 수집 결과는 원격 브랜치에 안전하게 올라가 있습니다.
-          #
-          # PR 생성만 따로 실패하는 일이 있는데(대개 저장소 설정), 그냥 두면
-          # "exit code 1" 한 줄만 남아 무엇이 문제인지 알 수 없습니다.
-          # 실제로 그래서 한 번 헤맸습니다. 원인과 복구 방법을 남깁니다.
-          #
-          # 라벨이 저장소에 없으면 --label 은 PR 생성을 실패시킵니다.
-          # 라벨 없이 먼저 만들고, 라벨은 있으면 붙이는 식으로 분리합니다.
-          if ! gh pr create \
-            --title "chore(data): 자동 수집 결과 반영 ($(date +%Y-%m-%d))" \
-            --body-file summary.md \
-            --base main \
-            --head "$BRANCH" 2>gh-error.txt; then
+          # 수집에 15분 넘게 걸리기도 해서 그 사이 main 이 움직였을 수 있습니다.
+          git pull --rebase origin main
+          git push origin HEAD:main
 
-            cat gh-error.txt
-
-            if grep -qi "not permitted to create or approve pull requests" gh-error.txt; then
-              echo "::error::GitHub Actions 에 PR 생성 권한이 없습니다. Settings → Actions → General → Workflow permissions 에서 'Allow GitHub Actions to create and approve pull requests' 를 켜 주세요."
-            else
-              echo "::error::PR 생성에 실패했습니다. 위 gh 오류를 확인하세요."
-            fi
-
-            echo "::notice::수집 결과는 브랜치 ${BRANCH} 에 이미 올라가 있습니다. 잃어버린 것은 없으며, 그 브랜치로 PR 을 직접 열면 됩니다."
-            exit 1
+      # ----------------------------------------------------------------------
+      #  배포도 여기서 합니다.
+      #
+      #  GITHUB_TOKEN 으로 만든 push 는 다른 워크플로를 트리거하지 않습니다.
+      #  그래서 main 에 밀어 넣어도 ci.yml 의 배포 잡이 돌지 않습니다.
+      #  전에는 사람이 PR 을 머지했기 때문에 그 머지가 ci.yml 을 깨웠습니다.
+      #  직접 푸시로 바꾼 이상 배포를 여기서 하지 않으면 사이트가 영영
+      #  갱신되지 않습니다.
+      #
+      #  Pages 프로젝트 생성은 ci.yml 이 맡습니다. 여기서는 이미 있는 것으로 봅니다.
+      # ----------------------------------------------------------------------
+      - name: 배포 자격증명 확인
+        id: creds
+        if: steps.diff.outputs.changed == 'true' && inputs.dry-run != true
+        env:
+          CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -n "$CF_API_TOKEN" ] && [ -n "$CF_ACCOUNT_ID" ]; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::Cloudflare 시크릿이 없어 배포를 건너뜁니다. 데이터는 main 에 반영됐습니다."
           fi
 
-          gh pr edit "$BRANCH" --add-label automated \
-            || echo "::notice::'automated' 라벨이 없어 건너뜁니다."
+      - name: Cloudflare Pages 로 배포
+        if: steps.creds.outputs.configured == 'true'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist --project-name=jubdeal --branch=main
