@@ -158,10 +158,14 @@ jobs:
   #  3) 빌드 — 품질 게이트와 보안 검사를 모두 통과해야 실행됩니다.
   # ==========================================================================
   build:
-    name: 빌드
+    name: 빌드 · 배포
     needs: [quality, security]
     runs-on: ubuntu-latest
     timeout-minutes: 15
+
+    permissions:
+      contents: read
+      deployments: write
 
     steps:
       - name: 소스 체크아웃
@@ -203,39 +207,26 @@ jobs:
 
           echo "✅ 빌드 산출물 확인 ($(find dist -type f | wc -l) 개 파일)"
 
-      # 같은 실행의 배포 단계가 바로 내려받으므로 하루면 충분합니다.
-      # 배포가 이 산출물에 의존하므로 continue-on-error 는 넣지 않습니다.
-      - name: 빌드 결과 업로드
-        uses: actions/upload-artifact@v7
-        with:
-          name: dist
-          path: dist/
-          retention-days: 1
-
-  # ==========================================================================
-  #  4) 배포 — main 브랜치 푸시에서만, 빌드 성공 시에만 실행됩니다.
-  #
-  #  Cloudflare Pages "Git 연동" 방식을 쓰는 경우 이 잡은 자동으로 건너뜁니다
-  #  (시크릿 미설정 시 skip). Direct Upload 방식으로 테스트 통과분만
-  #  배포하려면 아래 시크릿을 등록하세요:
-  #    - CLOUDFLARE_API_TOKEN
-  #    - CLOUDFLARE_ACCOUNT_ID
-  #  자세한 내용은 README 의 "배포" 섹션을 참고하세요.
-  # ==========================================================================
-  deploy:
-    name: Cloudflare Pages 배포
-    needs: [build]
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-
-    permissions:
-      contents: read
-      deployments: write
-
-    steps:
+      # ----------------------------------------------------------------------
+      #  배포 — main 브랜치 푸시에서만.
+      #
+      #  전에는 빌드와 배포를 다른 잡으로 나누고 dist 를 아티팩트로 주고받았습니다.
+      #  그런데 아티팩트 저장 용량이 차자 업로드가 실패하면서 빌드 잡이 죽었고,
+      #  deploy 잡은 needs 조건 때문에 통째로 건너뛰어졌습니다. 그 바람에
+      #  **9월 9일 이후 배포가 한 번도 되지 않았습니다.** main 에 커밋을 여러 번
+      #  올렸는데도 사이트는 그대로였고, 한참 뒤에야 알아챘습니다.
+      #
+      #  같은 잡에서 빌드하고 그대로 올리면 아티팩트가 아예 필요 없습니다.
+      #  주고받을 것이 없으면 끊길 고리도 없습니다.
+      #
+      #  Cloudflare Pages "Git 연동" 방식을 쓰는 경우 시크릿이 없으므로
+      #  이 단계들은 자동으로 건너뜁니다.
+      #    - CLOUDFLARE_API_TOKEN
+      #    - CLOUDFLARE_ACCOUNT_ID
+      # ----------------------------------------------------------------------
       - name: 배포 자격증명 확인
         id: creds
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         env:
           CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CF_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -274,13 +265,6 @@ jobs:
             echo "::error::Pages 프로젝트 생성 실패 (HTTP $create). API 토큰에 'Cloudflare Pages 편집' 권한이 있는지 확인하세요."
             exit 1
           fi
-
-      - name: 빌드 결과 내려받기
-        if: steps.creds.outputs.configured == 'true'
-        uses: actions/download-artifact@v8
-        with:
-          name: dist
-          path: dist
 
       - name: Cloudflare Pages 로 배포
         if: steps.creds.outputs.configured == 'true'
