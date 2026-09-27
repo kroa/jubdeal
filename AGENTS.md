@@ -104,8 +104,16 @@ npm run pipeline -- --write --max-items 40 --prune-after 7        # 실제 수�
 ### 4-2. LLM 프로바이더 체인
 
 `LLM_PROVIDER` 로 순서를 정합니다. **CI 와 로컬 모두 `gemini,openrouter` 입니다.**
-`claude-cli`(VSCode 구독 인증)는 체인에 넣지 않습니다 — CI 에는 그 인증이 없고,
-자동화에서 쓸 수 없습니다. `auto` 로 두면 `claude-cli` 가 1순위로 들어가니 쓰지 마세요.
+
+비워 두거나 `auto` 로 두면 `claude-cli → gemini → openrouter` 순이 됩니다.
+`claude-cli` 는 VSCode 에 설치된 Claude Code 바이너리(구독 인증)를 씁니다.
+
+- **CI 에서는 무해합니다.** 바이너리가 없으니 `not_configured` 로 떨어지고,
+  그 사유는 영구 쿨다운이라 그 실행에서 한 번만 확인하고 빠집니다.
+- **로컬에서는 의미가 있습니다.** 바이너리가 있으면 1순위로 쓰여 구독 분량을
+  소모합니다. 그걸 원하지 않아서 `gemini,openrouter` 로 고정해 두었습니다.
+
+바꾸지 않는 한 신경 쓸 일이 없습니다. 굳이 `auto` 로 되돌릴 이유도 없습니다.
 
 **Gemini 무료 한도는 모델마다 따로 걸립니다(프로젝트 단위).** 그래서 모델을 많이
 나열할수록 하루 처리량이 늘어납니다. 현재 11개를 씁니다.
