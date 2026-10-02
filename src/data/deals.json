@@ -1,6 +1,6 @@
 {
   "schemaVersion": 4,
-  "generatedAt": "2026-10-01T00:19:33.220Z",
+  "generatedAt": "2026-10-02T00:29:56.641Z",
   "deals": [
     {
       "id": "dl_ajd-card-event_3c0d80aed1f556c7",
@@ -676,6 +676,52 @@
       }
     },
     {
+      "id": "dl_clien-jirum_972f8bff4883433e",
+      "slug": "clien-jirum-board-jirum-239442ed",
+      "title": "[macOS] 디스크 공간 분석 앱 Anillo 일시 무료",
+      "summary": "평소 $5.99에 판매되는 맥용 디스크 공간 분석 앱 'Anillo' 한시적 무료 배포",
+      "description": "Anillo는 인터랙티브 원형 차트를 사용하여 맥 부팅 디스크의 전체 구조를 보여주는 디스크 공간 분석 앱입니다. 평소 5.99달러에 판매되던 앱이 현재 한시적으로 무료 배포 중입니다. macOS 15 이상에서 사용 가능합니다.",
+      "brand": {
+        "name": "Anillo"
+      },
+      "category": "etc",
+      "dealType": "free",
+      "difficulty": "easy",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-10-02T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://apps.apple.com/kr/app/anillo-disk-space-analyzer/id6813778124",
+        "label": "App Store에서 다운로드"
+      },
+      "howTo": ["App Store 링크로 이동합니다.", "가격이 무료(0원)인지 확인한 후 다운로드합니다."],
+      "caution": [
+        "macOS 15 이상 버전이 필요합니다.",
+        "개발사 사정에 따라 예고 없이 유료로 전환될 수 있으므로 결제 전 반드시 가격을 확인하세요."
+      ],
+      "tags": ["macOS", "맥앱", "일시무료", "디스크분석", "Anillo", "무료앱"],
+      "source": {
+        "name": "클리앙 알뜰구매",
+        "url": "https://www.clien.net/service/board/jirum/19272496",
+        "collectedAt": "2026-10-02T00:29:56.641Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-10-02T00:29:56.641Z"
+      }
+    },
+    {
       "id": "dl_clien-jirum_a31f418ee5b54ec3",
       "slug": "clien-jirum-board-jirum-7714afd3",
       "title": "AstraTime Autumn Frame 워치 페이스 일시무료",
@@ -831,6 +877,65 @@
       }
     },
     {
+      "id": "dl_clien-jirum_e459a60398ef3b95",
+      "slug": "clien-jirum-board-jirum-8a3d520c",
+      "title": "[에픽게임즈] 베리드스타즈 및 브릿지 컨스트럭터 스튜디오 무료 배포",
+      "summary": "에픽게임즈 스토어에서 베리드스타즈와 브릿지 컨스트럭터 스튜디오를 무료로 받을 수 있습니다.",
+      "description": "에픽게임즈 스토어에서 인기 게임 '베리드스타즈'와 '브릿지 컨스트럭터 스튜디오(안드로이드/iOS)'를 무료로 배포하고 있습니다. 기간 내 라이브러리에 추가하면 영구 소장이 가능합니다.",
+      "brand": {
+        "name": "에픽게임즈"
+      },
+      "category": "culture",
+      "dealType": "free",
+      "difficulty": "easy",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false,
+        "perPersonLimit": 1
+      },
+      "period": {
+        "startAt": "2026-10-02T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://store.epicgames.com/p/buried-stars-d7c88c",
+        "label": "게임 받으러 가기"
+      },
+      "howTo": [
+        "에픽게임즈 스토어 로그인",
+        "각 게임 상세 페이지 접속",
+        "'받기' 버튼 클릭하여 라이브러리에 추가"
+      ],
+      "caution": [
+        "에픽게임즈 계정이 필요합니다.",
+        "배포 기간 내에 등록해야 영구 소장이 가능합니다."
+      ],
+      "tags": [
+        "에픽게임즈",
+        "무료게임",
+        "베리드스타즈",
+        "브릿지컨스트럭터",
+        "게임배포",
+        "PC게임",
+        "모바일게임"
+      ],
+      "source": {
+        "name": "클리앙 알뜰구매",
+        "url": "https://www.clien.net/service/board/jirum/19272486",
+        "collectedAt": "2026-10-02T00:29:56.641Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-10-02T00:29:56.641Z"
+      }
+    },
+    {
       "id": "dl_clien-jirum_ee5dabe4944f3426",
       "slug": "clien-jirum-board-jirum-4e895d75",
       "title": "캐슬바니아 40주년 기념 초대 악마성 드라큘라 모바일 게임 무료 배포",
@@ -877,6 +982,59 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-09-26T10:53:45.498Z"
+      }
+    },
+    {
+      "id": "dl_culture-portal-free_23768ddb25051dbc",
+      "slug": "culture-portal-free-onecltinfo-onecltinfoview-do-b67d7081",
+      "title": "우란문화재단 섬유기획전 《안식의 결》 무료 관람",
+      "summary": "성수동 우란문화재단에서 진행되는 섬유기획전 《안식의 결》을 무료로 관람할 수 있습니다.",
+      "description": "우란문화재단에서 개최하는 섬유기획전 《안식의 결 Texture of Rest》 전시입니다. 별도의 예매 없이 무료로 관람 가능합니다.",
+      "brand": {
+        "name": "우란문화재단"
+      },
+      "category": "culture",
+      "dealType": "free",
+      "difficulty": "easy",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-07-24T00:00:00+09:00",
+        "endAt": "2026-10-02T23:59:59+09:00"
+      },
+      "link": {
+        "url": "https://www.culture.go.kr/portal/cltInfo/oneCltInfo/oneCltInfoView.do?pblprfrSn=393371&menuNo=200010&pageIndex=1",
+        "label": "상세 정보 보기"
+      },
+      "howTo": ["운영 시간(월-토 11:00-19:00) 내에 서울 성동구 우란문화재단 전시장 방문"],
+      "caution": [
+        "매주 일요일 및 공휴일은 휴관입니다.",
+        "전시 일정은 운영사에 따라 변경될 수 있으니 사전 확인을 권장합니다."
+      ],
+      "tags": [
+        "무료전시",
+        "우란문화재단",
+        "안식의결",
+        "섬유기획전",
+        "성수동전시",
+        "문화생활",
+        "무료관람"
+      ],
+      "source": {
+        "name": "문화포털 문화정보",
+        "url": "https://www.culture.go.kr/portal/cltInfo/oneCltInfo/oneCltInfoView.do?pblprfrSn=393371&menuNo=200010&pageIndex=1",
+        "collectedAt": "2026-10-02T00:29:56.641Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-10-02T00:29:56.641Z"
       }
     },
     {
@@ -1289,9 +1447,9 @@
     {
       "id": "dl_dealbada-free_f75a774532763fc7",
       "slug": "dealbada-free-bbs-board-php-19fdc0b6",
-      "title": "경북도청 천년숲 안아드림 페스티벌 어린이 안전체험 무료 행사",
-      "summary": "10월 2~3일 경북도청 천년숲에서 70여 개 어린이 안전체험 프로그램을 무료로 운영합니다.",
-      "description": "경북소방본부가 주최하는 경북 최대 규모 어린이 안전 행사입니다. 화재, 교통, 생활 안전, 응급처치, 자연재해 등 5개 분야에서 70여 개의 직접 체험형 프로그램이 운영됩니다.",
+      "title": "2026 안아드림 페스티벌 어린이 안전체험 행사 무료 진행",
+      "summary": "경북도청 천년숲에서 10월 2일~3일 이틀간 70여 개 어린이 안전체험 프로그램을 무료로 운영합니다.",
+      "description": "경북소방본부가 주최하는 안아드림 페스티벌이 경북도청 천년숲에서 열립니다. 화재, 교통, 생활 안전, 응급처치, 자연재해 등 5개 분야 70여 개 체험 프로그램이 오전 10시부터 오후 5시까지 전액 무료로 진행됩니다.",
       "brand": {
         "name": "경북소방본부"
       },
@@ -1310,38 +1468,81 @@
         "endAt": "2026-10-03T17:00:00+09:00"
       },
       "link": {
-        "url": "https://www.dealbada.com/bbs/board.php?bo_table=event_free&amp;wr_id=28406",
-        "label": "행사 정보 확인하기"
+        "url": "https://www.dealbada.com/bbs/board.php?bo_table=event_free&amp;wr_id=28406"
       },
       "howTo": [
-        "2026년 10월 2일 또는 3일 경상북도청 천년숲 방문",
-        "오전 10시부터 오후 5시 사이에 운영되는 안전체험 프로그램 참여"
+        "행사 기간(10월 2일~3일 10:00~17:00) 중 경상북도청 천년숲 현장 방문",
+        "원하는 안전체험 프로그램에 참여"
       ],
       "caution": [
-        "인기 프로그램은 대기 시간이 발생할 수 있으므로 이른 방문을 권장합니다.",
-        "행사 운영 시간은 오후 5시까지입니다.",
-        "야외 행사이므로 날씨에 맞는 복장을 권장합니다."
+        "인기 프로그램은 현장 대기가 발생할 수 있습니다.",
+        "운영 시간은 오후 5시까지입니다."
       ],
       "tags": [
         "안아드림페스티벌",
-        "어린이안전체험",
         "경북도청",
         "천년숲",
-        "무료행사",
-        "가족나들이",
-        "경북소방본부",
-        "안동"
+        "어린이체험",
+        "무료체험",
+        "안전체험",
+        "경북소방본부"
       ],
       "source": {
         "name": "딜바다 무료이벤트",
         "url": "https://www.dealbada.com/bbs/board.php?bo_table=event_free&amp;wr_id=28406",
-        "collectedAt": "2026-10-01T00:19:33.220Z",
+        "collectedAt": "2026-10-02T00:29:56.641Z",
         "method": "llm",
-        "confidence": 1
+        "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-10-01T00:19:33.220Z"
+        "updatedAt": "2026-10-02T00:29:56.641Z"
+      }
+    },
+    {
+      "id": "dl_dealbada-hotdeal_0c301dc7d5e31e3e",
+      "slug": "dealbada-hotdeal-bbs-board-php-20432f09",
+      "title": "[옥션] 고함량 슈퍼 비타민C 3000 100포 x 3박스 (총 300포)",
+      "summary": "메가도스용 고함량 비타민C 3000mg 300포(10개월분)를 21,560원 무료배송으로 판매합니다.",
+      "description": "비타민C 3,000mg 고함량 제품으로 메가도스 요법에 적합합니다. 100포 들이 3박스 구성으로 총 10개월 분량이며, 성분 대비 가격이 저렴한 가성비 제품입니다.",
+      "brand": {
+        "name": "옥션"
+      },
+      "category": "shopping",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "final": 21560,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-10-02T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://www.dealbada.com/bbs/board.php?bo_table=deal_domestic&wr_id=572052&page=1",
+        "label": "상세 정보 확인"
+      },
+      "howTo": ["옥션 판매 페이지에 접속합니다.", "21,560원 가격을 확인하고 구매를 진행합니다."],
+      "caution": [
+        "판매 상황에 따라 가격이 변동되거나 조기 품절될 수 있습니다.",
+        "무료 배송 혜택이 포함되어 있습니다."
+      ],
+      "tags": ["비타민C", "메가도스", "영양제", "옥션", "가성비", "건강기능식품", "무료배송"],
+      "source": {
+        "name": "딜바다 국내핫딜",
+        "url": "https://www.dealbada.com/bbs/board.php?bo_table=deal_domestic&wr_id=572052&page=1",
+        "collectedAt": "2026-10-02T00:29:56.641Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-10-02T00:29:56.641Z"
       }
     },
     {
@@ -1814,6 +2015,68 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-09-30T00:02:38.444Z"
+      }
+    },
+    {
+      "id": "dl_hana-event_29c7933fb53dff6d",
+      "slug": "hana-event-event01-1528928-152465-jsp-0cbda3ca",
+      "title": "[하나은행] 10월 출석체크 이벤트 맥도날드 스낵랩 증정",
+      "summary": "하나원큐 놀이터에서 출석체크 도장을 찍으면 추첨을 통해 500명에게 맥도날드 스낵랩을 드립니다.",
+      "description": "하나원큐 앱 내 놀이터에서 매일 출석체크 도장을 찍어 응모하는 이벤트입니다. 11일과 21일에는 추가 도장을 받을 수 있으며, 도장이 많을수록 당첨 확률이 높아집니다.",
+      "brand": {
+        "name": "하나은행"
+      },
+      "category": "finance",
+      "dealType": "giveaway",
+      "difficulty": "easy",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false,
+        "quantity": 500,
+        "perPersonLimit": 1
+      },
+      "period": {
+        "startAt": "2026-10-01T00:00:00+09:00",
+        "endAt": "2026-10-31T23:59:59+09:00"
+      },
+      "link": {
+        "url": "https://m.kebhana.com/cont/event/new/event01/1528928_152465.jsp",
+        "label": "하나원큐에서 별도장 찍기"
+      },
+      "howTo": [
+        "하나원큐 앱 접속 후 놀이터 메뉴 이동",
+        "오늘의 도장 찍기 버튼을 3초간 길게 누르기",
+        "별도장이 찍히면 참여 완료"
+      ],
+      "caution": [
+        "만 14세 이상 하나원큐 손님 및 놀이터 구독자 대상",
+        "당첨자는 2026년 11월 16일까지 개별 안내 및 쿠폰함 지급",
+        "11일, 21일에는 추가 별도장 지급",
+        "지급 시점에 하나원큐 미가입 또는 탈회 시 경품 지급 불가"
+      ],
+      "tags": [
+        "하나은행",
+        "하나원큐",
+        "출석체크",
+        "맥도날드",
+        "스낵랩",
+        "경품응모",
+        "이벤트",
+        "금융"
+      ],
+      "source": {
+        "name": "하나은행 이벤트",
+        "url": "https://m.kebhana.com/cont/event/new/event01/1528928_152465.jsp",
+        "collectedAt": "2026-10-02T00:29:56.641Z",
+        "method": "llm",
+        "confidence": 1
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-10-02T00:29:56.641Z"
       }
     },
     {
@@ -2366,9 +2629,9 @@
     {
       "id": "dl_kakamuka-nearexpiry_202e3ef24a14ee83",
       "slug": "kakamuka-nearexpiry-category-display-fdf1cde8",
-      "title": "(세일) 서주 프로킷 와플 시나몬맛 55g",
-      "summary": "정가 1,700원 프로틴 와플 과자를 76% 할인된 400원에 판매합니다.",
-      "description": "서주에서 출시한 프로킷 와플 시나몬맛(55g) 프로틴 과자입니다. 소비기한 임박(2026년 10월 14일)으로 인해 특가 판매 중입니다.",
+      "title": "서주 프로킷 와플 시나몬맛 55g",
+      "summary": "소비기한 임박 서주 프로킷 와플 시나몬맛 55g 특가 판매 (1,700원 -> 400원)",
+      "description": "소비기한이 2026년 10월 14일까지인 서주 프로킷 와플 시나몬맛 55g 단백질 과자를 400원에 할인 판매합니다.",
       "brand": {
         "name": "서주"
       },
@@ -2381,11 +2644,12 @@
         "currency": "KRW"
       },
       "limit": {
-        "firstComeFirstServed": true
+        "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-10-01T00:00:00+09:00",
-        "endAt": "2026-10-14T23:59:59+09:00"
+        "startAt": "2026-10-02T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
       },
       "benefit": {
         "amount": 1300,
@@ -2393,33 +2657,24 @@
       },
       "link": {
         "url": "https://kakamuka.com/product/%EC%84%B8%EC%9D%BC-%EC%84%9C%EC%A3%BC-%ED%94%84%EB%A1%9C%ED%82%B7-%EC%99%80%ED%94%8C-%EC%8B%9C%EB%82%98%EB%AA%AC%EB%A7%9B-55g-%ED%94%84%EB%A1%9C%ED%8B%B4%EA%B3%BC%EC%9E%90-%EB%8B%A8%EB%B0%B1%EC%A7%88%EA%B3%BC%EC%9E%90-%EC%86%8C%EB%B9%84%EA%B8%B0%ED%95%9C-261014/15376/category/28/display/1/",
-        "label": "구매하기"
+        "label": "구매하러 가기"
       },
-      "howTo": ["판매 페이지에 접속합니다.", "상품을 장바구니에 담고 결제를 진행합니다."],
+      "howTo": ["원문 링크로 이동합니다.", "상품을 장바구니에 담고 결제를 진행합니다."],
       "caution": [
-        "소비기한이 2026년 10월 14일까지인 상품입니다.",
-        "재고 소진 시 예고 없이 종료될 수 있습니다."
+        "소비기한이 2026년 10월 14일까지인 임박 상품입니다.",
+        "재고 소진 시 조기 종료될 수 있습니다."
       ],
-      "tags": [
-        "서주",
-        "프로틴과자",
-        "단백질과자",
-        "와플",
-        "시나몬맛",
-        "임박세일",
-        "가성비",
-        "까까무카"
-      ],
+      "tags": ["서주", "프로킷와플", "단백질과자", "프로틴과자", "임박세일", "까까무카", "와플"],
       "source": {
         "name": "까까무카 소비기한 임박",
         "url": "https://kakamuka.com/product/%EC%84%B8%EC%9D%BC-%EC%84%9C%EC%A3%BC-%ED%94%84%EB%A1%9C%ED%82%B7-%EC%99%80%ED%94%8C-%EC%8B%9C%EB%82%98%EB%AA%AC%EB%A7%9B-55g-%ED%94%84%EB%A1%9C%ED%8B%B4%EA%B3%BC%EC%9E%90-%EB%8B%A8%EB%B0%B1%EC%A7%88%EA%B3%BC%EC%9E%90-%EC%86%8C%EB%B9%84%EA%B8%B0%ED%95%9C-261014/15376/category/28/display/1/",
-        "collectedAt": "2026-10-01T00:19:33.220Z",
+        "collectedAt": "2026-10-02T00:29:56.641Z",
         "method": "llm",
-        "confidence": 1
+        "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-10-01T00:19:33.220Z"
+        "updatedAt": "2026-10-02T00:29:56.641Z"
       }
     },
     {
@@ -2566,11 +2821,10 @@
     {
       "id": "dl_megagtv-refurb_d170a039d426fa62",
       "slug": "megagtv-refurb-product-detail-html-c7ae3f37",
-      "title": "삼성 50인치 4K UHD 스마트 TV (50TU7000) 할인",
-      "summary": "삼성 50인치 4K UHD 스마트 TV를 정가 대비 약 49% 할인된 600,000원에 판매합니다.",
-      "description": "삼성전자의 50인치 4K UHD 스마트 TV 모델(50TU7000)입니다. 스탠드 또는 벽걸이 설치가 가능한 제품입니다.",
+      "title": "삼성 50인치 4K UHD 스마트 TV (50TU7000) 할인 판매",
+      "summary": "소비자가 118만 원 상당의 삼성 50인치 스마트 TV를 60만 원에 할인 판매합니다.",
       "brand": {
-        "name": "삼성전자"
+        "name": "삼성"
       },
       "category": "shopping",
       "dealType": "discount",
@@ -2584,7 +2838,7 @@
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-10-01T00:00:00+09:00",
+        "startAt": "2026-10-02T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
       },
@@ -2594,24 +2848,26 @@
       },
       "link": {
         "url": "https://megagtv.com/product/detail.html?product_no=36&cate_no=23&display_group=1",
-        "label": "구매하기"
+        "label": "구매하러 가기"
       },
-      "howTo": ["상세 페이지 접속", "스탠드 또는 벽걸이 설치 옵션 확인", "구매하기 버튼 클릭"],
-      "caution": [
-        "리퍼브 상품일 수 있으므로 상세 정보를 확인하시기 바랍니다.",
-        "설치 환경에 따라 추가 비용이 발생할 수 있습니다."
+      "howTo": [
+        "링크된 메가몰 상품 페이지에 접속합니다.",
+        "스탠드 또는 벽걸이 설치 옵션을 선택한 후 구매를 진행합니다."
       ],
-      "tags": ["삼성TV", "50인치TV", "4K", "UHD", "스마트TV", "가전할인", "리퍼TV", "메가몰"],
+      "caution": [
+        "출처가 리퍼 TV 쇼핑몰이므로 리퍼브 상품일 가능성이 있습니다. 구매 전 상품 상태를 확인하시기 바랍니다."
+      ],
+      "tags": ["삼성TV", "50인치TV", "스마트TV", "4K", "UHD", "가전할인", "리퍼TV"],
       "source": {
         "name": "메가몰 리퍼 TV",
         "url": "https://megagtv.com/product/detail.html?product_no=36&cate_no=23&display_group=1",
-        "collectedAt": "2026-10-01T00:19:33.220Z",
+        "collectedAt": "2026-10-02T00:29:56.641Z",
         "method": "llm",
         "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-10-01T00:19:33.220Z"
+        "updatedAt": "2026-10-02T00:29:56.641Z"
       }
     },
     {
@@ -2753,9 +3009,9 @@
     {
       "id": "dl_museum-culture-free_aa1ab26a935a2f78",
       "slug": "museum-culture-free-contents-m0403010000-do-d08d4ed3",
-      "title": "2026년 국립중앙박물관 박물관문화향연 무료 공연",
-      "summary": "국립중앙박물관 열린마당 및 대강당에서 펼쳐지는 2026년 박물관문화향연 무료 공연",
-      "description": "국립중앙박물관에서 열리는 2026년 박물관문화향연 행사로, 열린마당과 대강당에서 무료로 공연을 관람할 수 있습니다.",
+      "title": "국립중앙박물관 2026년 박물관문화향연 무료 공연",
+      "summary": "국립중앙박물관 열린마당 및 대강당에서 열리는 2026년 박물관문화향연 무료 공연",
+      "description": "국립중앙박물관에서 진행되는 2026년 박물관문화향연 행사입니다. 입장료는 무료이며, 공연별로 시간이 상이합니다.",
       "brand": {
         "name": "국립중앙박물관"
       },
@@ -2775,29 +3031,21 @@
       },
       "link": {
         "url": "https://www.museum.go.kr/MUSEUM/contents/M0403010000.do?schM=view&type=type1&typeCode=culture&showId=3488404",
-        "label": "상세보기"
+        "label": "행사 상세 보기"
       },
-      "howTo": ["국립중앙박물관 열린마당 또는 대강당에 방문하여 관람"],
-      "caution": ["공연별 진행 시간 및 스케줄이 다를 수 있습니다."],
-      "tags": [
-        "국립중앙박물관",
-        "박물관문화향연",
-        "무료공연",
-        "문화행사",
-        "열린마당",
-        "대강당",
-        "무료관람"
-      ],
+      "howTo": ["국립중앙박물관 열린마당 또는 대강당 방문"],
+      "caution": ["공연별 상세 일정 및 시간이 다를 수 있습니다."],
+      "tags": ["국립중앙박물관", "박물관문화향연", "무료공연", "문화행사", "무료관람"],
       "source": {
         "name": "국립중앙박물관 공연·행사",
         "url": "https://www.museum.go.kr/MUSEUM/contents/M0403010000.do?schM=view&type=type1&typeCode=culture&showId=3488404",
-        "collectedAt": "2026-10-01T00:19:33.220Z",
+        "collectedAt": "2026-10-02T00:29:56.641Z",
         "method": "llm",
         "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-10-01T00:19:33.220Z"
+        "updatedAt": "2026-10-02T00:29:56.641Z"
       }
     },
     {
@@ -2908,6 +3156,53 @@
       }
     },
     {
+      "id": "dl_ppomppu-coupon_d2353c698906f14c",
+      "slug": "ppomppu-coupon-zboard-view-php-33396b60",
+      "title": "[카카오뱅크] AI 퀴즈 정답 공유 (버스정류장)",
+      "summary": "카카오뱅크 앱에서 AI 퀴즈 정답 '버스정류장'을 입력하고 혜택을 받으세요.",
+      "description": "카카오뱅크에서 진행하는 AI 퀴즈 이벤트입니다. 본문에 공유된 정답을 입력하여 참여할 수 있습니다.",
+      "brand": {
+        "name": "카카오뱅크"
+      },
+      "category": "finance",
+      "dealType": "point",
+      "difficulty": "easy",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false,
+        "perPersonLimit": 1
+      },
+      "period": {
+        "startAt": "2026-10-02T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://kakaobank.onelink.me/ch/0qMi/jcwk0sbz",
+        "label": "퀴즈 참여하기"
+      },
+      "howTo": [
+        "제공된 링크를 통해 카카오뱅크 앱 실행",
+        "AI 퀴즈 이벤트 페이지 접속",
+        "정답 칸에 '버스정류장' 입력 후 제출"
+      ],
+      "tags": ["카카오뱅크", "AI퀴즈", "퀴즈정답", "앱테크", "금융", "포인트"],
+      "source": {
+        "name": "뽐뿌 쿠폰게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=119189",
+        "collectedAt": "2026-10-02T00:29:56.641Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-10-02T00:29:56.641Z"
+      }
+    },
+    {
       "id": "dl_ppomppu-hot_2e43c26487c145e1",
       "slug": "ppomppu-hot-zboard-view-php-9a683f1f",
       "title": "지마켓 하루 한줌 견과 실속형 파란하루N 50봉 외",
@@ -2947,6 +3242,47 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-09-29T00:48:06.629Z"
+      }
+    },
+    {
+      "id": "dl_ppomppu-hot_493f7946ad23342c",
+      "slug": "ppomppu-hot-zboard-view-php-53cc925d",
+      "title": "[G마켓] 서문시장 대왕 땅콩빵 2팩 180개 (18,900원/무료)",
+      "summary": "서문시장 수제 대왕 땅콩빵 2팩(총 180개)을 무료배송 18,900원에 판매합니다.",
+      "brand": {
+        "name": "G마켓"
+      },
+      "category": "food",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "final": 18900,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-10-02T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=737635",
+        "label": "구매하러 가기"
+      },
+      "howTo": ["페이지에 접속하여 서문시장 대왕 땅콩빵 2팩을 주문합니다."],
+      "tags": ["G마켓", "땅콩빵", "서문시장", "간식", "특가"],
+      "source": {
+        "name": "뽐뿌 뽐뿌게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=737635",
+        "collectedAt": "2026-10-02T00:29:56.641Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-10-02T00:29:56.641Z"
       }
     },
     {
@@ -3484,6 +3820,48 @@
       }
     },
     {
+      "id": "dl_ppomppu-hot_fe4b07bc0a9b6b71",
+      "slug": "ppomppu-hot-zboard-view-php-5da17ecf",
+      "title": "[GS SHOP] 센토 프라임 고불소 구취/잇몸 치약 120g 8개",
+      "summary": "센토 프라임 고불소 치약 8개 세트 15,800원 무료배송 특가",
+      "description": "고불소(1450ppm) 함유로 구취 및 잇몸 관리에 효과적인 센토 프라임 치약 8개(4+4) 구성입니다.",
+      "brand": {
+        "name": "센토"
+      },
+      "category": "shopping",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "final": 15800,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-10-02T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=737639",
+        "label": "구매하러 가기"
+      },
+      "howTo": ["GS SHOP 판매 페이지 접속", "센토 프라임 고불소 치약 8개 구성 확인 후 구매"],
+      "tags": ["치약", "고불소치약", "센토", "GSSHOP", "생활용품", "구취제거", "잇몸관리"],
+      "source": {
+        "name": "뽐뿌 뽐뿌게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=737639",
+        "collectedAt": "2026-10-02T00:29:56.641Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-10-02T00:29:56.641Z"
+      }
+    },
+    {
       "id": "dl_ruliweb-market_01d708dfe391ecc8",
       "slug": "ruliweb-market-board-read-64b38af0",
       "title": "[롯데온] 아몬드브리즈 오리지널 190ml 24개 외",
@@ -3908,6 +4286,55 @@
       }
     },
     {
+      "id": "dl_ruliweb-market_c0b201f01c2c72fd",
+      "slug": "ruliweb-market-board-read-9c86983a",
+      "title": "[스팀] 2026 가을 할인 스티커 3종 무료 증정",
+      "summary": "스팀 맞춤 대기열을 둘러보고 가을 할인 기념 스티커 3종을 무료로 받으세요",
+      "description": "스팀 커뮤니티 아이템 컬렉션 페이지에서 '맞춤 대기열 둘러보기'를 완료하면 가을 할인 기념 스티커 3종을 획득할 수 있습니다.",
+      "brand": {
+        "name": "스팀 (Steam)"
+      },
+      "category": "culture",
+      "dealType": "free",
+      "difficulty": "easy",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false,
+        "perPersonLimit": 1
+      },
+      "period": {
+        "startAt": "2026-10-02T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://steamcommunity.com/my/itemcollection",
+        "label": "스티커 받으러 가기"
+      },
+      "howTo": [
+        "제공된 스팀 커뮤니티 링크에 접속합니다.",
+        "'맞춤 대기열 둘러보기' 버튼을 클릭합니다.",
+        "대기열 배너를 끝까지 넘깁니다.",
+        "스티커 3종을 수령합니다."
+      ],
+      "caution": ["스팀 계정 로그인이 필요합니다."],
+      "tags": ["스팀", "Steam", "가을할인", "무료증정", "스티커", "게임아이템", "디지털굿즈"],
+      "source": {
+        "name": "루리웹 예판·핫딜",
+        "url": "https://bbs.ruliweb.com/market/board/1020/read/107710",
+        "collectedAt": "2026-10-02T00:29:56.641Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-10-02T00:29:56.641Z"
+      }
+    },
+    {
       "id": "dl_ruliweb-market_c98ffcee7f885cfc",
       "slug": "ruliweb-market-board-read-3964e179",
       "title": "네이버쇼핑 구글플레이 기프트카드 10만원권 할인",
@@ -3959,6 +4386,51 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-09-26T10:53:45.498Z"
+      }
+    },
+    {
+      "id": "dl_ruliweb-market_e9bb4aecf51d43a7",
+      "slug": "ruliweb-market-board-read-e08ce529",
+      "title": "[지마켓] 오리온 초코파이 48P",
+      "summary": "롯데/비씨/하나 카드 결제 시 오리온 초코파이 48P를 11,360원 무료배송에 구매할 수 있습니다.",
+      "brand": {
+        "name": "지마켓"
+      },
+      "category": "food",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "final": 11360,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-10-02T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://bbs.ruliweb.com/market/board/1020/read/107716",
+        "label": "딜 확인하기"
+      },
+      "howTo": [
+        "지마켓 상품 페이지에 접속합니다.",
+        "결제 시 롯데, 비씨, 또는 하나 카드를 선택하여 할인된 가격인 11,360원에 구매합니다."
+      ],
+      "caution": ["롯데/비씨/하나 카드 결제 시에만 해당 가격이 적용됩니다."],
+      "tags": ["지마켓", "오리온", "초코파이", "식품", "과자", "카드할인", "무료배송"],
+      "source": {
+        "name": "루리웹 예판·핫딜",
+        "url": "https://bbs.ruliweb.com/market/board/1020/read/107716",
+        "collectedAt": "2026-10-02T00:29:56.641Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-10-02T00:29:56.641Z"
       }
     },
     {
@@ -4363,6 +4835,53 @@
       }
     },
     {
+      "id": "dl_steam-specials_55f3c8fd6c9cc9ca",
+      "slug": "steam-specials-app-warhammer-40000-space-marine-2-31394b58",
+      "title": "스팀 Warhammer 40,000: Space Marine 2 75% 할인",
+      "summary": "Warhammer 40,000: Space Marine 2를 75% 할인된 17,450원에 구매할 수 있습니다.",
+      "brand": {
+        "name": "스팀 (Steam)"
+      },
+      "category": "culture",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "original": 69800,
+        "final": 17450,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-10-02T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "benefit": {
+        "amount": 52350,
+        "isMax": false
+      },
+      "link": {
+        "url": "https://store.steampowered.com/app/2183900/Warhammer_40000_Space_Marine_2/?snr=1_7_7_2300_150_1",
+        "label": "스팀에서 보기"
+      },
+      "howTo": ["스팀 상점 페이지에 접속합니다.", "장바구니에 담고 결제를 진행합니다."],
+      "caution": ["할인 기간은 스팀 상점 사정에 따라 예고 없이 종료될 수 있습니다."],
+      "tags": ["스팀", "Steam", "워해머", "스페이스마린2", "게임할인", "스팀할인"],
+      "source": {
+        "name": "Steam 특별 할인",
+        "url": "https://store.steampowered.com/app/2183900/Warhammer_40000_Space_Marine_2/?snr=1_7_7_2300_150_1",
+        "collectedAt": "2026-10-02T00:29:56.641Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-10-02T00:29:56.641Z"
+      }
+    },
+    {
       "id": "dl_steam-specials_a0623031f798e819",
       "slug": "steam-specials-app-the-witcher-3-wild-hunt-remastered-deac50ee",
       "title": "The Witcher 3: Wild Hunt — Remastered 50% 할인",
@@ -4453,6 +4972,61 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-09-28T09:04:59.309Z"
+      }
+    },
+    {
+      "id": "dl_steam-specials_d484d4f96dd6f05d",
+      "slug": "steam-specials-app-cyberpunk-2077-13c2231b",
+      "title": "사이버펑크 2077 70% 할인",
+      "summary": "스팀에서 사이버펑크 2077을 70% 할인된 19,800원에 구매할 수 있습니다.",
+      "description": "오픈 월드 액션 어드벤처 RPG 사이버펑크 2077을 70% 할인된 가격에 만나보세요.",
+      "brand": {
+        "name": "Steam"
+      },
+      "category": "culture",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "original": 66000,
+        "final": 19800,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-10-02T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "benefit": {
+        "amount": 46200,
+        "isMax": false
+      },
+      "link": {
+        "url": "https://store.steampowered.com/app/1091500/Cyberpunk_2077/?snr=1_7_7_2300_150_1",
+        "label": "스팀에서 구매하기"
+      },
+      "howTo": [
+        "제공된 링크를 통해 스팀 상점 페이지에 접속합니다.",
+        "로그인 후 장바구니에 추가합니다.",
+        "결제를 완료하여 라이브러리에 등록합니다."
+      ],
+      "caution": [
+        "스팀 계정이 필요합니다.",
+        "할인 종료 시점은 스팀 상점 페이지에서 확인 가능합니다."
+      ],
+      "tags": ["스팀", "게임", "사이버펑크2077", "할인", "PC게임", "RPG", "오픈월드"],
+      "source": {
+        "name": "Steam 특별 할인",
+        "url": "https://store.steampowered.com/app/1091500/Cyberpunk_2077/?snr=1_7_7_2300_150_1",
+        "collectedAt": "2026-10-02T00:29:56.641Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-10-02T00:29:56.641Z"
       }
     },
     {
