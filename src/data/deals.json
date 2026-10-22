@@ -1,6 +1,6 @@
 {
   "schemaVersion": 4,
-  "generatedAt": "2026-10-20T23:36:00.771Z",
+  "generatedAt": "2026-10-21T23:53:15.000Z",
   "deals": [
     {
       "id": "dl_ajd-card-event_8f352758faf3037b",
@@ -333,61 +333,63 @@
       }
     },
     {
-      "id": "dl_clien-jirum_691112646c62be32",
-      "slug": "clien-jirum-board-jirum-38b12d3c",
-      "title": "[WearOS] 유료 워치 페이스 8종 일시 무료 배포",
-      "summary": "Puzzle: Watch Face 등 WearOS용 유료 워치 페이스 8종을 한시적으로 무료로 다운로드할 수 있습니다.",
-      "description": "WearOS 스마트워치에서 사용할 수 있는 유료 워치 페이스들이 구글 플레이 스토어에서 일시적으로 무료 배포 중입니다. Puzzle, Big Warm Fusion, Minimal Weather 등 다양한 스타일의 워치 페이스 8종이 포함되어 있습니다.",
+      "id": "dl_clien-jirum_593f8adf728401dd",
+      "slug": "clien-jirum-board-jirum-0f8835f0",
+      "title": "[DigiArty] 디어몹 아이폰 매니저(DearMob iPhone Manager) 일시 무료 배포",
+      "summary": "아이폰 데이터 관리 툴인 디어몹 아이폰 매니저를 10월 30일까지 무료로 배포합니다. (정가 68유로 상당)",
+      "description": "맥 및 PC용 아이폰 관리 프로그램인 DearMob iPhone Manager의 v6.20 라이선스를 무료로 제공합니다. 사진, 동영상 전송, 백업, 파일 변환 등의 기능을 지원합니다.",
       "brand": {
-        "name": "Google Play Store"
+        "name": "DigiArty"
       },
       "category": "app",
       "dealType": "free",
-      "difficulty": "easy",
+      "difficulty": "normal",
       "price": {
         "final": 0,
         "currency": "KRW"
       },
       "limit": {
-        "firstComeFirstServed": false
+        "firstComeFirstServed": false,
+        "perPersonLimit": 1
       },
       "period": {
-        "startAt": "2026-10-14T00:00:00+09:00",
-        "endAt": null,
-        "deadlineUnknown": true
+        "startAt": "2026-10-22T00:00:00+09:00",
+        "endAt": "2026-10-30T23:59:59+09:00"
       },
       "link": {
-        "url": "https://play.google.com/store/apps/details?id=com.yeeiwatchface.puzzle",
-        "label": "구글 플레이 스토어에서 보기"
+        "url": "https://www.5kplayer.com/iphone-manager/giveaway.htm",
+        "label": "무료 라이선스 받기"
       },
       "howTo": [
-        "제공된 구글 플레이 스토어 링크에 접속합니다.",
-        "가격이 0원(무료)으로 표시되는지 확인합니다.",
-        "설치 또는 구매 버튼을 눌러 라이브러리에 추가합니다."
+        "이벤트 페이지에 접속합니다.",
+        "이메일 주소를 입력하고 제출 버튼을 클릭합니다.",
+        "입력한 이메일로 발송된 다운로드 링크와 무료 라이선스 코드를 확인합니다.",
+        "프로그램을 설치한 후 10월 30일까지 라이선스 코드를 입력하여 활성화합니다."
       ],
       "caution": [
-        "한시적 무료 배포이므로 예고 없이 다시 유료로 전환될 수 있습니다.",
-        "WearOS 운영체제를 사용하는 스마트워치에서만 사용 가능합니다."
+        "무료 라이선스는 버전 6.20에만 유효하며, 업데이트 시 라이선스가 사라질 수 있습니다.",
+        "라이선스 코드는 반드시 10월 30일까지 활성화해야 합니다."
       ],
       "tags": [
-        "WearOS",
-        "워치페이스",
-        "스마트워치",
-        "구글플레이",
-        "일시무료",
-        "안드로이드",
-        "갤럭시워치"
+        "아이폰관리",
+        "백업",
+        "파일전송",
+        "무료배포",
+        "소프트웨어",
+        "DigiArty",
+        "DearMob",
+        "아이폰매니저"
       ],
       "source": {
         "name": "클리앙 알뜰구매",
-        "url": "https://www.clien.net/service/board/jirum/19276830",
-        "collectedAt": "2026-10-14T00:06:27.745Z",
+        "url": "https://www.clien.net/service/board/jirum/19280983",
+        "collectedAt": "2026-10-21T23:53:15.000Z",
         "method": "llm",
-        "confidence": 0.9
+        "confidence": 1
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-10-14T00:06:27.745Z"
+        "updatedAt": "2026-10-21T23:53:15.000Z"
       }
     },
     {
@@ -726,6 +728,55 @@
       }
     },
     {
+      "id": "dl_clien-jirum_f601bfa57acc737a",
+      "slug": "clien-jirum-board-jirum-badfc29a",
+      "title": "안드로이드 공학용 계산기 앱 Scalar 일시 무료 다운로드",
+      "summary": "평소 3,800원에 판매되는 Scientific Calculator Scalar 앱이 11월 1일 09시까지 무료 배포됩니다.",
+      "description": "안드로이드용 공학용 계산기 앱 'Scientific Calculator Scalar'가 일시 무료 배포 중입니다. 구글 플레이스토어에서 무료로 설치하실 수 있습니다.",
+      "brand": {
+        "name": "Scalar"
+      },
+      "category": "app",
+      "dealType": "free",
+      "difficulty": "easy",
+      "price": {
+        "original": 3800,
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-10-22T00:00:00+09:00",
+        "endAt": "2026-11-01T09:00:00+09:00"
+      },
+      "benefit": {
+        "amount": 3800,
+        "isMax": false
+      },
+      "link": {
+        "url": "https://play.google.com/store/apps/details?id=org.mathparser.scalar.pro",
+        "label": "구글 플레이스토어 바로가기"
+      },
+      "howTo": [
+        "구글 플레이스토어 다운로드 링크에 접속합니다.",
+        "'설치' 또는 '무료 다운로드' 버튼을 눌러 앱을 받습니다."
+      ],
+      "tags": ["안드로이드", "계산기", "일시무료", "앱", "구글플레이"],
+      "source": {
+        "name": "클리앙 알뜰구매",
+        "url": "https://www.clien.net/service/board/jirum/19280743",
+        "collectedAt": "2026-10-21T23:53:15.000Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-10-21T23:53:15.000Z"
+      }
+    },
+    {
       "id": "dl_culture-portal-free_16f0c0f36188596a",
       "slug": "culture-portal-free-onecltinfo-onecltinfoview-do-8d054698",
       "title": "[부산] 무민가족의 모험전 무료 전시",
@@ -832,6 +883,54 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-10-20T00:05:14.032Z"
+      }
+    },
+    {
+      "id": "dl_culture-portal-free_5e6bfd2c2dac6791",
+      "slug": "culture-portal-free-onecltinfo-onecltinfoview-do-df480f60",
+      "title": "무안군오승우미술관 무료 전시 '여름 숲속의 기억 - 나무 그늘 아래'",
+      "summary": "무안군오승우미술관에서 진행되는 '여름 숲속의 기억 - 나무 그늘 아래' 전시를 무료로 관람할 수 있습니다.",
+      "description": "무안군오승우미술관에서 열리는 '여름 숲속의 기억 - 나무 그늘 아래' 전시회입니다. 관람료는 무료이며, 자유 관람으로 운영됩니다.",
+      "brand": {
+        "name": "무안군오승우미술관"
+      },
+      "category": "culture",
+      "dealType": "free",
+      "difficulty": "easy",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-11T00:00:00+09:00",
+        "endAt": "2026-10-22T23:59:59+09:00"
+      },
+      "link": {
+        "url": "https://www.culture.go.kr/portal/cltInfo/oneCltInfo/oneCltInfoView.do?pblprfrSn=394110&menuNo=200010&pageIndex=1",
+        "label": "상세 정보 보기"
+      },
+      "howTo": [
+        "운영 시간(09:00 ~ 17:30) 내 무안군오승우미술관 방문",
+        "자유 관람 진행 (매주 월요일 휴무)"
+      ],
+      "caution": [
+        "매주 월요일은 휴무입니다.",
+        "공연 및 전시 일정은 운영사에 따라 변경될 수 있습니다."
+      ],
+      "tags": ["무료전시", "전시회", "무안군오승우미술관", "문화생활", "무료관람", "광주전시"],
+      "source": {
+        "name": "문화포털 문화정보",
+        "url": "https://www.culture.go.kr/portal/cltInfo/oneCltInfo/oneCltInfoView.do?pblprfrSn=394110&menuNo=200010&pageIndex=1",
+        "collectedAt": "2026-10-21T23:53:15.000Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-10-21T23:53:15.000Z"
       }
     },
     {
@@ -982,52 +1081,6 @@
       }
     },
     {
-      "id": "dl_culture-portal-free_ba466b6ef2a43989",
-      "slug": "culture-portal-free-onecltinfo-onecltinfoview-do-32682b2c",
-      "title": "갤러리 다선 '기하학적 공생 : 연결' 무료 전시 관람",
-      "summary": "경기 과천 갤러리 다선에서 열리는 '기하학적 공생 : 연결' 전시를 무료로 관람할 수 있습니다.",
-      "brand": {
-        "name": "갤러리 다선"
-      },
-      "category": "culture",
-      "dealType": "free",
-      "difficulty": "easy",
-      "price": {
-        "original": 0,
-        "final": 0,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": false
-      },
-      "period": {
-        "startAt": "2026-09-09T00:00:00+09:00",
-        "endAt": "2026-10-14T23:59:59+09:00"
-      },
-      "link": {
-        "url": "https://www.culture.go.kr/portal/cltInfo/oneCltInfo/oneCltInfoView.do?pblprfrSn=397952&menuNo=200010&pageIndex=1",
-        "label": "상세정보 확인"
-      },
-      "howTo": [
-        "전시 기간(2026-09-09 ~ 2026-10-14) 동안 갤러리 다선(경기 과천시 양지마을4로 44-18) 방문 후 무료 관람"
-      ],
-      "caution": [
-        "전시 일정은 운영사 사정에 따라 변경될 수 있으니 방문 전 사전 확인을 권장합니다."
-      ],
-      "tags": ["갤러리다선", "무료전시", "전시회", "과천", "문화생활", "무료관람"],
-      "source": {
-        "name": "문화포털 문화정보",
-        "url": "https://www.culture.go.kr/portal/cltInfo/oneCltInfo/oneCltInfoView.do?pblprfrSn=397952&menuNo=200010&pageIndex=1",
-        "collectedAt": "2026-10-14T00:06:27.745Z",
-        "method": "llm",
-        "confidence": 0.95
-      },
-      "meta": {
-        "verified": false,
-        "updatedAt": "2026-10-14T00:06:27.745Z"
-      }
-    },
-    {
       "id": "dl_culture-portal-free_bb007467a941ff45",
       "slug": "culture-portal-free-onecltinfo-onecltinfoview-do-376e6ada",
       "title": "우리가 품은 무게에 대하여 전시",
@@ -1173,8 +1226,8 @@
       "id": "dl_ggcf-culture_0cbd400dd855db49",
       "slug": "ggcf-culture-view-6ad5c15cd179b47f6621735f-4b196c57",
       "title": "부천아트벙커B39 미디어아트전 《스펙트럴 크로싱스》 무료 관람",
-      "summary": "부천아트벙커B39에서 열리는 더스웨이 작가의 미디어아트 기획전시를 무료로 관람할 수 있습니다.",
-      "description": "부천아트벙커B39 소각동 2층 전기실에서 진행되는 미디어아트 기획전시 《스펙트럴 크로싱스》입니다. 참여 작가 더스웨이(The Sway)의 작품을 만나보실 수 있습니다.",
+      "summary": "부천아트벙커B39에서 더스웨이 작가의 미디어아트전 《스펙트럴 크로싱스》를 무료로 관람할 수 있습니다.",
+      "description": "부천아트벙커B39 소각동 2층 전기실에서 기획전시 미디어아트전 《스펙트럴 크로싱스》가 개최됩니다. 관람료는 무료이며 10시부터 17시까지 관람 가능합니다.",
       "brand": {
         "name": "부천아트벙커B39"
       },
@@ -1194,33 +1247,20 @@
       },
       "link": {
         "url": "https://www.artbunkerb39.org/ko/sub/sub06.html?type=view&bsNo=735&page=1",
-        "label": "상세 정보 보기"
+        "label": "자세히 보기"
       },
-      "howTo": [
-        "전시 기간 내 부천아트벙커B39 소각동 2층 전기실 방문",
-        "관람 시간(10:00-17:00) 확인 후 무료 관람"
-      ],
-      "caution": ["문의 사항은 부천아트벙커B39 담당자(032-625-9483)에게 연락 바랍니다."],
-      "tags": [
-        "무료전시",
-        "미디어아트",
-        "부천아트벙커B39",
-        "스펙트럴크로싱스",
-        "더스웨이",
-        "부천가볼만한곳",
-        "기획전시",
-        "문화생활"
-      ],
+      "howTo": ["전시 기간 동안 부천아트벙커B39 소각동 2층 전기실 방문 (운영시간 10:00~17:00)"],
+      "tags": ["전시", "미디어아트", "무료전시", "부천아트벙커B39", "스펙트럴크로싱스", "문화행사"],
       "source": {
         "name": "경기문화재단 문화행사",
         "url": "https://ggc.ggcf.kr/cultureEvents/view/6ad5c15cd179b47f6621735f",
-        "collectedAt": "2026-10-20T23:36:00.771Z",
+        "collectedAt": "2026-10-21T23:53:15.000Z",
         "method": "llm",
-        "confidence": 1
+        "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-10-20T23:36:00.771Z"
+        "updatedAt": "2026-10-21T23:53:15.000Z"
       }
     },
     {
@@ -1886,8 +1926,9 @@
     {
       "id": "dl_kakamuka-nearexpiry_8c7be8e6d7184b63",
       "slug": "kakamuka-nearexpiry-category-display-ab7ee6f4",
-      "title": "(세일) 오리온 찍먹 나쵸 치폴레마요 소스맛 168g (소비기한 26.11.07)",
-      "summary": "오리온 찍먹 나쵸 치폴레마요 소스맛 168g 57% 할인",
+      "title": "오리온 찍먹 나쵸 치폴레마요 소스맛 168g",
+      "summary": "소비기한 임박 오리온 찍먹 나쵸 치폴레마요 소스맛 168g 할인 판매",
+      "description": "까까무카에서 오리온 찍먹 나쵸 치폴레마요 소스맛 168g(소비기한 2026년 11월 7일)을 정가 3,500원에서 1,500원에 할인 판매합니다.",
       "brand": {
         "name": "오리온"
       },
@@ -1903,7 +1944,7 @@
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-10-21T00:00:00+09:00",
+        "startAt": "2026-10-22T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
       },
@@ -1912,29 +1953,30 @@
         "isMax": false
       },
       "link": {
-        "url": "https://kakamuka.com/product/%EC%84%B8%EC%9D%BC-%EC%98%A4%EB%A6%AC%EC%98%A8-%EC%B0%8D%EB%A8%B9-%EB%82%98%EC%B5%B8-%EC%B9%98%ED%8F%B4%EB%A0%88%EB%A7%88%EC%9A%94-%EC%86%8C%EC%8A%A4%EB%A7%9B-168g-%EC%86%8C%EB%B9%84%EA%B8%B0%ED%95%9C-261107/15781/category/28/display/1/"
+        "url": "https://kakamuka.com/product/%EC%84%B8%EC%9D%BC-%EC%98%A4%EB%A6%AC%EC%98%A8-%EC%B0%8D%EB%A8%B9-%EB%82%98%EC%B5%B8-%EC%B9%98%ED%8F%B4%EB%A0%88%EB%A7%88%EC%9A%94-%EC%86%8C%EC%8A%A4%EB%A7%9B-168g-%EC%86%8C%EB%B9%84%EA%B8%B0%ED%95%9C-261107/15781/category/28/display/1/",
+        "label": "구매하기"
       },
-      "howTo": ["상품 페이지에서 구매"],
-      "caution": ["소비기한 2026년 11월 7일까지"],
-      "tags": ["오리온", "나쵸", "과자", "할인", "식품", "소비기한임박"],
+      "howTo": ["구매 링크에 접속하여 상품을 주문합니다."],
+      "caution": ["소비기한이 2026년 11월 7일까지인 소비기한 임박 상품입니다."],
+      "tags": ["오리온", "찍먹나쵸", "나쵸", "과자", "소비기한임박", "까까무카", "할인"],
       "source": {
         "name": "까까무카 소비기한 임박",
         "url": "https://kakamuka.com/product/%EC%84%B8%EC%9D%BC-%EC%98%A4%EB%A6%AC%EC%98%A8-%EC%B0%8D%EB%A8%B9-%EB%82%98%EC%B5%B8-%EC%B9%98%ED%8F%B4%EB%A0%88%EB%A7%88%EC%9A%94-%EC%86%8C%EC%8A%A4%EB%A7%9B-168g-%EC%86%8C%EB%B9%84%EA%B8%B0%ED%95%9C-261107/15781/category/28/display/1/",
-        "collectedAt": "2026-10-20T23:36:00.771Z",
+        "collectedAt": "2026-10-21T23:53:15.000Z",
         "method": "llm",
-        "confidence": 0.9
+        "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-10-20T23:36:00.771Z"
+        "updatedAt": "2026-10-21T23:53:15.000Z"
       }
     },
     {
       "id": "dl_kakamuka-nearexpiry_a7f7fc4d0d8ffb51",
       "slug": "kakamuka-nearexpiry-category-display-2ae4529e",
-      "title": "과자마을 삼각 누룽지 현미 스낵 160g 특가",
-      "summary": "소비자가 4,000원 상당의 과자마을 삼각 누룽지 현미 스낵 160g을 1,000원에 할인 판매합니다.",
-      "description": "과자마을 삼각 누룽지 현미 스낵 160g(소비기한 2026년 10월 27일)을 1,000원에 할인 판매합니다.",
+      "title": "과자마을 삼각 누룽지 현미 스낵 160g",
+      "summary": "소비기한 임박으로 정가 4,000원 상품을 1,000원에 할인 판매",
+      "description": "소비기한이 2026년 10월 27일까지인 과자마을 삼각 누룽지 현미 스낵 160g 상품을 75% 할인된 가격에 구매할 수 있습니다.",
       "brand": {
         "name": "과자마을"
       },
@@ -1947,12 +1989,11 @@
         "currency": "KRW"
       },
       "limit": {
-        "firstComeFirstServed": false
+        "firstComeFirstServed": true
       },
       "period": {
-        "startAt": "2026-10-21T00:00:00+09:00",
-        "endAt": null,
-        "deadlineUnknown": true
+        "startAt": "2026-10-22T00:00:00+09:00",
+        "endAt": "2026-10-27T23:59:59+09:00"
       },
       "benefit": {
         "amount": 3000,
@@ -1962,22 +2003,22 @@
         "url": "https://kakamuka.com/product/%EC%84%B8%EC%9D%BC-%EA%B3%BC%EC%9E%90%EB%A7%88%EC%9D%84-%EC%82%BC%EA%B0%81-%EB%88%84%EB%A3%BD%EC%A7%80-%ED%98%84%EB%AF%B8-%EC%8A%A4%EB%82%B5-160g-%EC%86%8C%EB%B9%84%EA%B8%B0%ED%95%9C-261027-%EC%B6%94%EC%96%B5%EC%9D%98-%EA%B3%BC%EC%9E%90/15420/category/28/display/1/",
         "label": "구매하기"
       },
-      "howTo": ["링크 페이지로 이동하여 상품을 구매합니다."],
+      "howTo": ["상세 페이지 접속 후 구매하기 버튼 클릭", "결제 진행"],
       "caution": [
-        "소비기한이 2026년 10월 27일까지인 임박 특가 상품입니다.",
-        "재고 소진 시 조기 종료될 수 있습니다."
+        "소비기한이 2026년 10월 27일까지인 상품입니다.",
+        "재고 소진 시 판매가 종료될 수 있습니다."
       ],
-      "tags": ["까까무카", "과자마을", "누룽지스낵", "현미스낵", "과자할인", "임박특가", "간식"],
+      "tags": ["누룽지", "현미스낵", "과자", "임박세일", "가성비", "간식", "세일"],
       "source": {
         "name": "까까무카 소비기한 임박",
         "url": "https://kakamuka.com/product/%EC%84%B8%EC%9D%BC-%EA%B3%BC%EC%9E%90%EB%A7%88%EC%9D%84-%EC%82%BC%EA%B0%81-%EB%88%84%EB%A3%BD%EC%A7%80-%ED%98%84%EB%AF%B8-%EC%8A%A4%EB%82%B5-160g-%EC%86%8C%EB%B9%84%EA%B8%B0%ED%95%9C-261027-%EC%B6%94%EC%96%B5%EC%9D%98-%EA%B3%BC%EC%9E%90/15420/category/28/display/1/",
-        "collectedAt": "2026-10-20T23:36:00.771Z",
+        "collectedAt": "2026-10-21T23:53:15.000Z",
         "method": "llm",
-        "confidence": 0.95
+        "confidence": 1
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-10-20T23:36:00.771Z"
+        "updatedAt": "2026-10-21T23:53:15.000Z"
       }
     },
     {
@@ -2082,8 +2123,9 @@
     {
       "id": "dl_megagtv-refurb_d170a039d426fa62",
       "slug": "megagtv-refurb-product-detail-html-c7ae3f37",
-      "title": "삼성 50인치 4K UHD 스마트TV (50TU7000) 할인",
-      "summary": "삼성 50인치 4K UHD 스마트TV(50TU7000)를 정가 1,180,000원에서 할인된 600,000원에 구매할 수 있습니다.",
+      "title": "삼성 50인치 4K UHD 스마트 TV (50TU7000) 할인",
+      "summary": "삼성 50인치 4K UHD 스마트 TV를 정가 대비 약 49% 할인된 600,000원에 판매합니다.",
+      "description": "삼성전자의 50인치 4K UHD 스마트 TV 모델(50TU7000)입니다. 스탠드형 또는 벽걸이형으로 설치가 가능합니다.",
       "brand": {
         "name": "삼성전자"
       },
@@ -2099,7 +2141,7 @@
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-10-21T00:00:00+09:00",
+        "startAt": "2026-10-22T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
       },
@@ -2111,28 +2153,35 @@
         "url": "https://megagtv.com/product/detail.html?product_no=36&cate_no=23&display_group=1",
         "label": "구매하러 가기"
       },
-      "howTo": ["링크 페이지에 접속하여 상품 옵션(스탠드/벽걸이 등)을 선택 후 구매합니다."],
-      "caution": ["리퍼브 상품 여부 및 설치비/배송비 조건을 상세 페이지에서 확인하세요."],
-      "tags": ["삼성전자", "스마트TV", "50인치TV", "4KTV", "리퍼TV", "가전", "할인"],
+      "howTo": [
+        "상세 페이지 접속",
+        "스탠드 또는 벽걸이 설치 옵션 선택",
+        "구매하기 버튼 클릭 및 결제"
+      ],
+      "caution": [
+        "설치 방식에 따라 추가 비용이 발생할 수 있습니다.",
+        "재고 소진 시 조기 종료될 수 있습니다."
+      ],
+      "tags": ["삼성TV", "50인치TV", "4K", "UHD", "스마트TV", "가전할인", "TV특가"],
       "source": {
         "name": "메가몰 리퍼 TV",
         "url": "https://megagtv.com/product/detail.html?product_no=36&cate_no=23&display_group=1",
-        "collectedAt": "2026-10-20T23:36:00.771Z",
+        "collectedAt": "2026-10-21T23:53:15.000Z",
         "method": "llm",
-        "confidence": 0.9
+        "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-10-20T23:36:00.771Z"
+        "updatedAt": "2026-10-21T23:53:15.000Z"
       }
     },
     {
       "id": "dl_megagtv-refurb_f1c28e854a8aaf56",
       "slug": "megagtv-refurb-product-detail-html-2460fcef",
-      "title": "삼성TV 75TU690T 75인치 4K UHD 스마트TV 할인",
-      "summary": "삼성 75인치 4K UHD 스마트TV를 865,000원에 구매하세요.",
+      "title": "삼성 75인치 4K UHD 스마트TV (75TU690T)",
+      "summary": "소비자가 239만원의 삼성 75인치 4K UHD 스마트TV를 86만 5천원에 판매합니다.",
       "brand": {
-        "name": "삼성"
+        "name": "삼성전자"
       },
       "category": "shopping",
       "dealType": "discount",
@@ -2146,7 +2195,7 @@
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-10-21T00:00:00+09:00",
+        "startAt": "2026-10-22T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
       },
@@ -2156,20 +2205,20 @@
       },
       "link": {
         "url": "https://megagtv.com/product/detail.html?product_no=467&cate_no=23&display_group=1",
-        "label": "구매하기"
+        "label": "구매하러 가기"
       },
-      "howTo": ["웹페이지에서 구매"],
-      "tags": ["삼성", "TV", "스마트TV", "4K", "UHD", "75인치", "할인"],
+      "howTo": ["링크 페이지에 접속하여 상품 구매"],
+      "tags": ["삼성TV", "75인치TV", "스마트TV", "4KTV", "리퍼TV", "메가몰", "TV할인"],
       "source": {
         "name": "메가몰 리퍼 TV",
         "url": "https://megagtv.com/product/detail.html?product_no=467&cate_no=23&display_group=1",
-        "collectedAt": "2026-10-20T23:36:00.771Z",
+        "collectedAt": "2026-10-21T23:53:15.000Z",
         "method": "llm",
         "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-10-20T23:36:00.771Z"
+        "updatedAt": "2026-10-21T23:53:15.000Z"
       }
     },
     {
@@ -2222,10 +2271,11 @@
     {
       "id": "dl_museum-culture-free_8dee0d8a3c76bf4f",
       "slug": "museum-culture-free-contents-m0403010000-do-543b633a",
-      "title": "지역 국립박물관 문화향연 <나의 박물관(MYSEUM) : 타악>",
-      "summary": "지역 국립박물관에서 무료 타악 공연이 진행됩니다.",
+      "title": "2026년 지역 국립박물관 문화향연 <나의 박물관(MYSEUM) : 타악>",
+      "summary": "지역 국립박물관에서 진행되는 무료 타악 공연 행사",
+      "description": "지역 국립박물관에서 진행되는 2026년 문화향연 <나의 박물관(MYSEUM) : 타악> 무료 공연입니다.",
       "brand": {
-        "name": "지역 국립박물관"
+        "name": "국립중앙박물관"
       },
       "category": "culture",
       "dealType": "free",
@@ -2243,28 +2293,28 @@
       },
       "link": {
         "url": "https://www.museum.go.kr/MUSEUM/contents/M0403010000.do?schM=view&type=type1&typeCode=culture&showId=3488405",
-        "label": "공연 정보"
+        "label": "행사 상세 보기"
       },
-      "howTo": ["공연 시간에 맞춰 지역 국립박물관 방문"],
-      "tags": ["국립박물관", "문화향연", "타악", "공연", "무료", "전시"],
+      "howTo": ["오후 3시 행사 시간에 맞춰 지역 국립박물관 방문"],
+      "tags": ["국립박물관", "무료공연", "문화향연", "타악", "박물관행사"],
       "source": {
         "name": "국립중앙박물관 공연·행사",
         "url": "https://www.museum.go.kr/MUSEUM/contents/M0403010000.do?schM=view&type=type1&typeCode=culture&showId=3488405",
-        "collectedAt": "2026-10-20T23:36:00.771Z",
+        "collectedAt": "2026-10-21T23:53:15.000Z",
         "method": "llm",
-        "confidence": 0.9
+        "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-10-20T23:36:00.771Z"
+        "updatedAt": "2026-10-21T23:53:15.000Z"
       }
     },
     {
       "id": "dl_museum-culture-free_aa1ab26a935a2f78",
       "slug": "museum-culture-free-contents-m0403010000-do-d08d4ed3",
-      "title": "국립중앙박물관 2026 박물관문화향연 무료 공연",
-      "summary": "국립중앙박물관 열린마당 및 대강당에서 진행되는 박물관문화향연 무료 관람 안내",
-      "description": "국립중앙박물관에서 2026년 4월 18일부터 10월 31일까지 열린마당과 대강당에서 진행되는 '2026년 박물관문화향연' 공연을 무료로 관람할 수 있습니다.",
+      "title": "2026 국립중앙박물관 박물관문화향연 무료 공연",
+      "summary": "국립중앙박물관에서 열리는 다양한 문화 공연을 무료로 관람하세요.",
+      "description": "국립중앙박물관 열린마당과 대강당에서 진행되는 2026년 박물관문화향연 행사입니다. 다양한 장르의 공연을 무료로 즐길 수 있습니다.",
       "brand": {
         "name": "국립중앙박물관"
       },
@@ -2284,21 +2334,32 @@
       },
       "link": {
         "url": "https://www.museum.go.kr/MUSEUM/contents/M0403010000.do?schM=view&type=type1&typeCode=culture&showId=3488404",
-        "label": "공연 정보 보기"
+        "label": "상세 정보 보기"
       },
-      "howTo": ["국립중앙박물관 열린마당 또는 대강당 현장 방문"],
-      "caution": ["공연별 진행 시간이 상이하므로 상세 일정을 확인 후 방문하시기 바랍니다."],
-      "tags": ["국립중앙박물관", "박물관문화향연", "무료공연", "문화행사", "무료관람"],
+      "howTo": ["국립중앙박물관 열린마당 또는 대강당 방문", "공연별 상세 시간 확인 후 자유 관람"],
+      "caution": [
+        "공연별로 시작 시간이 상이하므로 방문 전 확인이 필요합니다.",
+        "장소는 공연에 따라 열린마당 또는 대강당에서 진행됩니다."
+      ],
+      "tags": [
+        "국립중앙박물관",
+        "박물관문화향연",
+        "무료공연",
+        "문화행사",
+        "주말나들이",
+        "가족공연",
+        "무료관람"
+      ],
       "source": {
         "name": "국립중앙박물관 공연·행사",
         "url": "https://www.museum.go.kr/MUSEUM/contents/M0403010000.do?schM=view&type=type1&typeCode=culture&showId=3488404",
-        "collectedAt": "2026-10-20T23:36:00.771Z",
+        "collectedAt": "2026-10-21T23:53:15.000Z",
         "method": "llm",
-        "confidence": 0.95
+        "confidence": 1
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-10-20T23:36:00.771Z"
+        "updatedAt": "2026-10-21T23:53:15.000Z"
       }
     },
     {
@@ -2607,46 +2668,43 @@
       }
     },
     {
-      "id": "dl_ppomppu-hot_718995bc81cf4620",
-      "slug": "ppomppu-hot-zboard-view-php-800b0b09",
-      "title": "[지마켓] 아이러브베베 시그니앙75 오션 물티슈 70매 20팩 (17,990원/무료배송)",
-      "summary": "아이러브베베 시그니앙75 오션 물티슈 70매 20팩을 무료배송 17,990원에 판매합니다.",
-      "description": "75g 평량의 아이러브베베 시그니앙75 오션 70매 20팩 세트 특가 정보입니다.",
+      "id": "dl_ppomppu-hot_4f80a18bcdc73edd",
+      "slug": "ppomppu-hot-zboard-view-php-bdaf67bb",
+      "title": "오늘의집 필터없는 초방수 자동세척 비데 DDS-S100ASIPX",
+      "summary": "토스페이 5% 할인 적용 시 필터없는 초방수 자동세척 비데를 146,300원에 무료배송 특가로 구매할 수 있습니다.",
       "brand": {
-        "name": "지마켓"
+        "name": "오늘의집"
       },
       "category": "shopping",
       "dealType": "discount",
       "difficulty": "easy",
       "price": {
-        "final": 17990,
+        "final": 146300,
         "currency": "KRW"
       },
       "limit": {
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-10-14T00:00:00+09:00",
-        "endAt": null,
-        "deadlineUnknown": true
+        "startAt": "2026-10-22T00:00:00+09:00",
+        "endAt": "2026-10-22T23:59:59+09:00"
       },
       "link": {
-        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=739988",
-        "label": "지마켓 특가 확인하기"
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=742104",
+        "label": "보러가기"
       },
-      "howTo": ["지마켓 해당 상품 페이지에서 17,990원에 구매"],
-      "caution": ["가격 및 재고는 판매처 사정에 따라 변동될 수 있습니다."],
-      "tags": ["지마켓", "물티슈", "아이러브베베", "시그니앙75", "생활용품", "특가"],
+      "howTo": ["오늘의집 해당 상품 페이지 접속", "결제 시 토스페이를 선택하여 5% 할인 적용"],
+      "tags": ["오늘의집", "비데", "가전", "토스페이", "특가"],
       "source": {
         "name": "뽐뿌 뽐뿌게시판",
-        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=739988",
-        "collectedAt": "2026-10-14T00:06:27.745Z",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=742104",
+        "collectedAt": "2026-10-21T23:53:15.000Z",
         "method": "llm",
-        "confidence": 0.9
+        "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-10-14T00:06:27.745Z"
+        "updatedAt": "2026-10-21T23:53:15.000Z"
       }
     },
     {
@@ -2701,55 +2759,6 @@
       }
     },
     {
-      "id": "dl_ppomppu-hot_84495634acb532e4",
-      "slug": "ppomppu-hot-zboard-view-php-de080218",
-      "title": "[카카오] 갤럭시 Z 폴드8 256GB 학생 특가 (+신세계상품권 12만원)",
-      "summary": "카카오 톡학생증 인증 시 갤럭시 Z 폴드8 256GB 모델을 1,987,977원에 구매하고 신세계상품권 12만원을 증정받아 체감가 186만원대에 구매할 수 있습니다.",
-      "description": "카카오 톡학생증 인증자를 대상으로 한 삼성전자 갤럭시 Z 폴드8 256GB 특가 혜택입니다. 신세계상품권 12만원이 포함되어 체감가 약 186만원에 구매 가능합니다.",
-      "brand": {
-        "name": "삼성전자"
-      },
-      "category": "shopping",
-      "dealType": "discount",
-      "difficulty": "normal",
-      "price": {
-        "final": 1987977,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": false
-      },
-      "period": {
-        "startAt": "2026-10-15T00:00:00+09:00",
-        "endAt": null,
-        "deadlineUnknown": true
-      },
-      "link": {
-        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=740291",
-        "label": "혜택 확인하기"
-      },
-      "howTo": [
-        "카카오 톡학생증 인증 진행",
-        "해당 카카오 학생증딜 페이지에서 갤럭시 Z 폴드8 256GB 구매"
-      ],
-      "caution": [
-        "카카오 톡학생증 인증이 필요합니다.",
-        "재고 소진 시 가격이 변동되거나 종료될 수 있습니다."
-      ],
-      "tags": ["삼성전자", "갤럭시폴드8", "카카오톡학생증", "학생할인", "신세계상품권", "스마트폰"],
-      "source": {
-        "name": "뽐뿌 뽐뿌게시판",
-        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=740291",
-        "collectedAt": "2026-10-14T23:38:18.771Z",
-        "method": "llm",
-        "confidence": 0.85
-      },
-      "meta": {
-        "verified": false,
-        "updatedAt": "2026-10-14T23:38:18.771Z"
-      }
-    },
-    {
       "id": "dl_ppomppu-hot_84f4c8b448d111a6",
       "slug": "ppomppu-hot-zboard-view-php-31ada8ee",
       "title": "[옥션] 샤오미 미지아 자동 거품 손세정기 1S 1+1",
@@ -2792,56 +2801,6 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-10-16T23:13:43.644Z"
-      }
-    },
-    {
-      "id": "dl_ppomppu-hot_883c6b145a3fd43d",
-      "slug": "ppomppu-hot-zboard-view-php-15274b3c",
-      "title": "[카카오톡] 아이스크림바 50개 18,360원 및 구구홈/오리훈제 특가",
-      "summary": "아이스크림바 50개 18,360원(개당 367원), 구구홈 5개 18,360원 등 카카오톡 쇼핑하기 할인",
-      "description": "카카오톡 쇼핑하기에서 진행되는 식품 특가입니다. 아이스크림바 50개 세트와 구구 크러스터 홈 5개 세트를 쿠폰 적용가 18,360원에 판매하며, 목우촌 오리훈제 슬라이스 등 다양한 상품이 포함되어 있습니다.",
-      "brand": {
-        "name": "카카오톡 쇼핑하기"
-      },
-      "category": "food",
-      "dealType": "discount",
-      "difficulty": "easy",
-      "price": {
-        "final": 18360,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": false
-      },
-      "period": {
-        "startAt": "2026-10-14T00:00:00+09:00",
-        "endAt": null,
-        "deadlineUnknown": true
-      },
-      "link": {
-        "url": "https://kko.to/l2lhOPhmXp",
-        "label": "카카오톡 쇼핑하기에서 구매하기"
-      },
-      "howTo": [
-        "제공된 카카오톡 쇼핑하기 링크로 접속합니다.",
-        "상품 페이지에서 쿠폰을 다운로드하여 적용합니다.",
-        "할인된 가격으로 결제를 진행합니다."
-      ],
-      "caution": [
-        "쿠폰 적용 시의 가격이므로 반드시 쿠폰을 확인하세요.",
-        "재고 소진 시 조기 종료될 수 있습니다."
-      ],
-      "tags": ["카카오톡", "쇼핑하기", "아이스크림", "구구홈", "오리훈제", "특가", "할인", "식품"],
-      "source": {
-        "name": "뽐뿌 뽐뿌게시판",
-        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=739979",
-        "collectedAt": "2026-10-14T00:06:27.745Z",
-        "method": "llm",
-        "confidence": 0.9
-      },
-      "meta": {
-        "verified": false,
-        "updatedAt": "2026-10-14T00:06:27.745Z"
       }
     },
     {
@@ -3070,6 +3029,49 @@
       }
     },
     {
+      "id": "dl_ppomppu-hot_f7756f38d406b9be",
+      "slug": "ppomppu-hot-zboard-view-php-3837658e",
+      "title": "[카카오] 영양갈비탕 1kg x 5팩 (41,850원/무료배송)",
+      "summary": "카카오에서 영양갈비탕 1kg 5팩을 41,850원에 판매 중입니다. 3개 이상 구매 시 떡갈비를 증정합니다.",
+      "description": "3개 이상 구매 시 떡갈비 증정 혜택이 적용됩니다. 취향에 따라 대파, 당면 등을 추가하여 드시기 좋습니다.",
+      "brand": {
+        "name": "카카오"
+      },
+      "category": "food",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "final": 41850,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-10-22T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=742100",
+        "label": "구매하러 가기"
+      },
+      "howTo": ["링크 페이지에 접속하여 상품을 구매합니다."],
+      "caution": ["3개 이상 구매 시 떡갈비 사은품이 증정됩니다."],
+      "tags": ["카카오", "영양갈비탕", "갈비탕", "무료배송", "떡갈비"],
+      "source": {
+        "name": "뽐뿌 뽐뿌게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=742100",
+        "collectedAt": "2026-10-21T23:53:15.000Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-10-21T23:53:15.000Z"
+      }
+    },
+    {
       "id": "dl_ruliweb-market_0238b61bb1ca3448",
       "slug": "ruliweb-market-board-read-ed4d450c",
       "title": "쿠팡 젠하이저 HD 550 오픈형 헤드폰 와우회원 할인가",
@@ -3207,56 +3209,6 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-10-16T23:13:43.644Z"
-      }
-    },
-    {
-      "id": "dl_ruliweb-market_244f1abd33c91aa5",
-      "slug": "ruliweb-market-board-read-fd4e1bec",
-      "title": "[지마켓] 오리온 포카칩 어니언 10봉 + 오리지널 10봉",
-      "summary": "포카칩 20봉 세트 특가, 쿠폰 적용 시 20,680원 (삼성카드 결제 시 1.9만 원대)",
-      "description": "오리온 포카칩 어니언맛 10봉과 오리지널맛 10봉 총 20봉 구성입니다. 쿠폰 적용 시 봉당 약 1,000원 수준으로 구매 가능하며, 삼성카드 결제 시 추가 할인이 적용됩니다.",
-      "brand": {
-        "name": "오리온"
-      },
-      "category": "food",
-      "dealType": "discount",
-      "difficulty": "easy",
-      "price": {
-        "final": 20680,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": false
-      },
-      "period": {
-        "startAt": "2026-10-14T00:00:00+09:00",
-        "endAt": null,
-        "deadlineUnknown": true
-      },
-      "link": {
-        "url": "https://bbs.ruliweb.com/market/board/1020/read/108012",
-        "label": "지마켓에서 구매하기"
-      },
-      "howTo": [
-        "지마켓 상품 페이지 접속",
-        "사용 가능한 쿠폰 적용",
-        "삼성카드 결제 시 추가 할인 혜택 확인"
-      ],
-      "caution": [
-        "쿠폰 적용 여부에 따라 최종 구매가가 달라질 수 있습니다.",
-        "삼성카드 할인 혜택은 카드사 및 판매처 사정에 따라 조기 종료될 수 있습니다."
-      ],
-      "tags": ["오리온", "포카칩", "지마켓", "과자", "스낵", "할인", "삼성카드", "무료배송"],
-      "source": {
-        "name": "루리웹 예판·핫딜",
-        "url": "https://bbs.ruliweb.com/market/board/1020/read/108012",
-        "collectedAt": "2026-10-14T00:06:27.745Z",
-        "method": "llm",
-        "confidence": 0.9
-      },
-      "meta": {
-        "verified": false,
-        "updatedAt": "2026-10-14T00:06:27.745Z"
       }
     },
     {
@@ -3596,55 +3548,6 @@
       }
     },
     {
-      "id": "dl_ruliweb-market_bc053d2febeda974",
-      "slug": "ruliweb-market-board-read-6ce4e4f4",
-      "title": "[네이버] 농심 신라면 선물용 20입 (멤버십 쿠폰 적용가)",
-      "summary": "네이버플러스 멤버십 쿠폰 적용 시 농심 신라면 선물용 20입을 11,950원 무료배송으로 구매할 수 있습니다.",
-      "brand": {
-        "name": "농심"
-      },
-      "category": "food",
-      "dealType": "discount",
-      "difficulty": "easy",
-      "price": {
-        "final": 11950,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": false
-      },
-      "period": {
-        "startAt": "2026-10-15T00:00:00+09:00",
-        "endAt": null,
-        "deadlineUnknown": true
-      },
-      "link": {
-        "url": "https://shopping.naver.com/festa/onsale/699ceb9398f1530c6f40ef49",
-        "label": "쿠폰 받기"
-      },
-      "howTo": [
-        "링크를 통해 네이버 쇼핑 이벤트 페이지로 이동",
-        "네이버멤버십 전용 쿠폰 발급",
-        "신라면 선물용 20입 상품 결제 시 쿠폰 적용"
-      ],
-      "caution": [
-        "네이버플러스 멤버십 회원 대상 혜택입니다.",
-        "재고 소진 시 조기 종료될 수 있습니다."
-      ],
-      "tags": ["농심", "신라면", "라면", "네이버쇼핑", "네이버멤버십", "핫딜"],
-      "source": {
-        "name": "루리웹 예판·핫딜",
-        "url": "https://bbs.ruliweb.com/market/board/1020/read/108050",
-        "collectedAt": "2026-10-14T23:38:18.771Z",
-        "method": "llm",
-        "confidence": 0.9
-      },
-      "meta": {
-        "verified": false,
-        "updatedAt": "2026-10-14T23:38:18.771Z"
-      }
-    },
-    {
       "id": "dl_ruliweb-market_cf6fc10f1b0cbcea",
       "slug": "ruliweb-market-board-read-09f3d472",
       "title": "천연사이다 제로 250ml 60캔",
@@ -3780,48 +3683,6 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-10-15T23:31:24.796Z"
-      }
-    },
-    {
-      "id": "dl_ruliweb-market_f480e3223dd282e0",
-      "slug": "ruliweb-market-board-read-e1cad377",
-      "title": "토스 펩시제로슈거 24캔 1만원 (6천개 한정)",
-      "summary": "토스에서 펩시제로슈거 24캔을 1만원에 6천개 한정 판매합니다.",
-      "brand": {
-        "name": "토스"
-      },
-      "category": "shopping",
-      "dealType": "discount",
-      "difficulty": "easy",
-      "price": {
-        "final": 10000,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": true,
-        "quantity": 6000
-      },
-      "period": {
-        "startAt": "2026-10-15T00:00:00+09:00",
-        "endAt": null,
-        "deadlineUnknown": true
-      },
-      "link": {
-        "url": "https://bbs.ruliweb.com/market/board/1020/read/108046"
-      },
-      "howTo": ["토스 앱에서 펩시제로슈거 24캔 구매"],
-      "caution": ["6천개 한정 수량"],
-      "tags": ["토스", "펩시", "제로슈거", "탄산음료", "음료", "할인", "선착순"],
-      "source": {
-        "name": "루리웹 예판·핫딜",
-        "url": "https://bbs.ruliweb.com/market/board/1020/read/108046",
-        "collectedAt": "2026-10-14T23:38:18.771Z",
-        "method": "llm",
-        "confidence": 0.9
-      },
-      "meta": {
-        "verified": false,
-        "updatedAt": "2026-10-14T23:38:18.771Z"
       }
     },
     {
@@ -4181,61 +4042,6 @@
       }
     },
     {
-      "id": "dl_steam-specials_30fe0e592c36d92e",
-      "slug": "steam-specials-app-arc-raiders-6b132608",
-      "title": "ARC Raiders 스팀 50% 특별 할인",
-      "summary": "스팀에서 ARC Raiders를 정가 대비 50% 할인된 30,450원에 구매할 수 있습니다.",
-      "description": "ARC Raiders의 특별 할인 정보입니다. 정가 60,900원에서 50% 할인된 가격으로 판매 중입니다.",
-      "brand": {
-        "name": "Steam"
-      },
-      "category": "culture",
-      "dealType": "discount",
-      "difficulty": "easy",
-      "price": {
-        "original": 60900,
-        "final": 30450,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": false
-      },
-      "period": {
-        "startAt": "2026-10-14T00:00:00+09:00",
-        "endAt": null,
-        "deadlineUnknown": true
-      },
-      "benefit": {
-        "amount": 30450,
-        "isMax": false
-      },
-      "link": {
-        "url": "https://store.steampowered.com/app/1808500/ARC_Raiders/?snr=1_7_7_2300_150_1",
-        "label": "스팀에서 구매하기"
-      },
-      "howTo": [
-        "스팀 상점 페이지에 접속합니다.",
-        "장바구니에 상품을 추가합니다.",
-        "결제를 진행하여 구매를 완료합니다."
-      ],
-      "caution": [
-        "할인 종료 시점이 명시되지 않아 예고 없이 종료될 수 있습니다.",
-        "스팀 계정 로그인이 필요합니다."
-      ],
-      "tags": ["스팀", "게임", "할인", "ARC Raiders", "PC게임", "액션", "특가"],
-      "source": {
-        "name": "Steam 특별 할인",
-        "url": "https://store.steampowered.com/app/1808500/ARC_Raiders/?snr=1_7_7_2300_150_1",
-        "collectedAt": "2026-10-14T00:06:27.745Z",
-        "method": "llm",
-        "confidence": 0.9
-      },
-      "meta": {
-        "verified": false,
-        "updatedAt": "2026-10-14T00:06:27.745Z"
-      }
-    },
-    {
       "id": "dl_steam-specials_34e81d117c1ea68c",
       "slug": "steam-specials-app-red-dead-redemption-2-0a857c7e",
       "title": "스팀 레드 데드 리뎀션 2 75% 할인",
@@ -4284,9 +4090,9 @@
     {
       "id": "dl_steam-specials_39f8c4203edde409",
       "slug": "steam-specials-app-dead-by-daylight-68eaac71",
-      "title": "데드 바이 데이라이트(Dead by Daylight) 60% 할인",
-      "summary": "스팀에서 인기 공포 게임 데드 바이 데이라이트를 60% 할인된 8,600원에 판매합니다.",
-      "description": "비대칭 멀티플레이어 공포 게임인 데드 바이 데이라이트를 특별 할인가로 구매할 수 있는 기회입니다.",
+      "title": "Dead by Daylight 60% 할인",
+      "summary": "Steam에서 Dead by Daylight를 정가 21,500원에서 60% 할인된 8,600원에 판매합니다.",
+      "description": "Steam 특별 할인을 통해 Dead by Daylight 게임을 60% 할인된 8,600원에 구매할 수 있습니다.",
       "brand": {
         "name": "Steam"
       },
@@ -4302,7 +4108,7 @@
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-10-21T00:00:00+09:00",
+        "startAt": "2026-10-22T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
       },
@@ -4312,27 +4118,20 @@
       },
       "link": {
         "url": "https://store.steampowered.com/app/381210/Dead_by_Daylight/?snr=1_7_7_2300_150_1",
-        "label": "스팀에서 보기"
+        "label": "Steam에서 보기"
       },
-      "howTo": [
-        "스팀 상점 페이지에 접속합니다.",
-        "로그인 후 장바구니에 상품을 담습니다.",
-        "결제를 완료하여 라이브러리에 추가합니다."
-      ],
-      "caution": [
-        "할인 종료 시점이 명시되지 않았으므로 구매 전 가격을 반드시 확인하시기 바랍니다."
-      ],
-      "tags": ["스팀", "게임", "할인", "데드바이데이라이트", "공포게임", "멀티플레이어", "PC게임"],
+      "howTo": ["Steam 제품 페이지에 접속합니다.", "장바구니에 추가한 후 결제를 진행합니다."],
+      "tags": ["Steam", "스팀", "데드바이데이라이트", "DeadbyDaylight", "게임할인", "스팀할인"],
       "source": {
         "name": "Steam 특별 할인",
         "url": "https://store.steampowered.com/app/381210/Dead_by_Daylight/?snr=1_7_7_2300_150_1",
-        "collectedAt": "2026-10-20T23:36:00.771Z",
+        "collectedAt": "2026-10-21T23:53:15.000Z",
         "method": "llm",
         "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-10-20T23:36:00.771Z"
+        "updatedAt": "2026-10-21T23:53:15.000Z"
       }
     },
     {
@@ -4384,11 +4183,11 @@
     {
       "id": "dl_steam-specials_d484d4f96dd6f05d",
       "slug": "steam-specials-app-cyberpunk-2077-13c2231b",
-      "title": "스팀 사이버펑크 2077 70% 할인",
-      "summary": "사이버펑크 2077을 정가 66,000원에서 70% 할인된 19,800원에 판매합니다.",
-      "description": "스팀에서 Cyberpunk 2077을 정상가 66,000원에서 70% 할인된 최종 할인가 19,800원에 구매할 수 있습니다.",
+      "title": "사이버펑크 2077 (Cyberpunk 2077) 70% 할인",
+      "summary": "오픈 월드 액션 RPG 사이버펑크 2077을 70% 할인된 19,800원에 판매 중입니다.",
+      "description": "나이트 시티를 배경으로 하는 오픈 월드 액션 어드벤처 RPG 사이버펑크 2077의 스팀 특별 할인 정보입니다.",
       "brand": {
-        "name": "스팀"
+        "name": "Steam"
       },
       "category": "culture",
       "dealType": "discount",
@@ -4402,7 +4201,7 @@
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-10-21T00:00:00+09:00",
+        "startAt": "2026-10-22T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
       },
@@ -4412,20 +4211,27 @@
       },
       "link": {
         "url": "https://store.steampowered.com/app/1091500/Cyberpunk_2077/?snr=1_7_7_2300_150_1",
-        "label": "스팀에서 보기"
+        "label": "스팀에서 구매하기"
       },
-      "howTo": ["스팀 상세 페이지에서 할인 가격 확인 후 구매를 진행합니다."],
-      "tags": ["스팀", "사이버펑크2077", "PC게임", "게임할인", "특가"],
+      "howTo": [
+        "스팀 상점 페이지에 접속합니다.",
+        "장바구니에 제품을 추가합니다.",
+        "결제를 완료하여 라이브러리에 추가합니다."
+      ],
+      "caution": [
+        "할인 종료 시간이 명시되지 않았으므로 구매 시 가격을 반드시 재확인하시기 바랍니다."
+      ],
+      "tags": ["스팀", "게임", "사이버펑크2077", "할인", "RPG", "PC게임", "Steam", "특가"],
       "source": {
         "name": "Steam 특별 할인",
         "url": "https://store.steampowered.com/app/1091500/Cyberpunk_2077/?snr=1_7_7_2300_150_1",
-        "collectedAt": "2026-10-20T23:36:00.771Z",
+        "collectedAt": "2026-10-21T23:53:15.000Z",
         "method": "llm",
         "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-10-20T23:36:00.771Z"
+        "updatedAt": "2026-10-21T23:53:15.000Z"
       }
     }
   ]
