@@ -1,6 +1,6 @@
 {
   "schemaVersion": 4,
-  "generatedAt": "2026-10-21T23:53:15.000Z",
+  "generatedAt": "2026-10-22T23:51:43.246Z",
   "deals": [
     {
       "id": "dl_ajd-card-event_8f352758faf3037b",
@@ -189,6 +189,57 @@
       }
     },
     {
+      "id": "dl_clien-jirum_13751091fb765f56",
+      "slug": "clien-jirum-board-jirum-afeccfb3",
+      "title": "[iOS] Geo Tracker: GPS Tracking 앱 일시 무료",
+      "summary": "평소 7,700원인 GPS 경로 기록 앱 Geo Tracker를 한시적으로 무료 배포합니다.",
+      "description": "도보, 등산, 달리기 및 자전거 사용자에게 적합한 경로 기록 앱입니다. 실시간 경로 표시, GPX/KML 파일 저장, 애플워치 연동 기능을 제공합니다.",
+      "brand": {
+        "name": "Geo Tracker"
+      },
+      "category": "app",
+      "dealType": "free",
+      "difficulty": "easy",
+      "price": {
+        "original": 7700,
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-10-22T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "benefit": {
+        "amount": 7700,
+        "isMax": false
+      },
+      "link": {
+        "url": "https://apps.apple.com/kr/app/geo-tracker-gps-tracking/id627038315",
+        "label": "App Store에서 다운로드"
+      },
+      "howTo": ["App Store 링크에 접속합니다.", "앱을 다운로드하여 설치합니다."],
+      "caution": [
+        "한시적 무료 배포이므로 다운로드 전 가격이 0원인지 반드시 확인하시기 바랍니다.",
+        "iOS 및 애플워치 전용 앱입니다."
+      ],
+      "tags": ["iOS", "앱", "무료", "GPS", "트래킹", "등산", "자전거", "GeoTracker"],
+      "source": {
+        "name": "클리앙 알뜰구매",
+        "url": "https://www.clien.net/service/board/jirum/19281063",
+        "collectedAt": "2026-10-22T23:51:43.246Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-10-22T23:51:43.246Z"
+      }
+    },
+    {
       "id": "dl_clien-jirum_1937d5ac3415eaa5",
       "slug": "clien-jirum-board-jirum-901e782d",
       "title": "구글 플레이 안드로이드 유료 앱 2종 일시 무료 배포",
@@ -289,50 +340,6 @@
       }
     },
     {
-      "id": "dl_clien-jirum_46380dfe48a81f70",
-      "slug": "clien-jirum-board-jirum-6664affc",
-      "title": "에픽게임즈 Out of Sight 및 TerraScape 무료 배포",
-      "summary": "에픽게임즈에서 Out of Sight와 TerraScape를 10월 16일 0시까지 무료로 배포합니다.",
-      "description": "에픽게임즈 주간 무료 게임으로 공포 어드벤처 게임 Out of Sight와 도시건설 퍼즐 게임 TerraScape를 무료로 제공합니다.",
-      "brand": {
-        "name": "에픽게임즈"
-      },
-      "category": "culture",
-      "dealType": "free",
-      "difficulty": "easy",
-      "price": {
-        "final": 0,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": false
-      },
-      "period": {
-        "startAt": "2026-10-14T00:00:00+09:00",
-        "endAt": "2026-10-16T00:00:00+09:00"
-      },
-      "link": {
-        "url": "https://www.clien.net/service/board/jirum/19276693",
-        "label": "출처 확인하기"
-      },
-      "howTo": [
-        "에픽게임즈 스토어 접속",
-        "무료 배포 게임(Out of Sight, TerraScape) 라이브러리에 등록"
-      ],
-      "tags": ["에픽게임즈", "무료게임", "무료배포", "PC게임", "TerraScape", "게임"],
-      "source": {
-        "name": "클리앙 알뜰구매",
-        "url": "https://www.clien.net/service/board/jirum/19276693",
-        "collectedAt": "2026-10-14T00:06:27.745Z",
-        "method": "llm",
-        "confidence": 0.95
-      },
-      "meta": {
-        "verified": false,
-        "updatedAt": "2026-10-14T00:06:27.745Z"
-      }
-    },
-    {
       "id": "dl_clien-jirum_593f8adf728401dd",
       "slug": "clien-jirum-board-jirum-0f8835f0",
       "title": "[DigiArty] 디어몹 아이폰 매니저(DearMob iPhone Manager) 일시 무료 배포",
@@ -393,63 +400,53 @@
       }
     },
     {
-      "id": "dl_clien-jirum_6ab630676c0e1413",
-      "slug": "clien-jirum-board-jirum-7b92a047",
-      "title": "에픽게임즈 모바일 The Big Con 무료 배포",
-      "summary": "에픽게임즈 스토어 모바일에서 코믹 어드벤처 게임 'The Big Con' 무료 제공",
-      "description": "에픽게임즈 모바일 스토어에서 이번 주 무료 게임으로 선정된 The Big Con을 무료로 받을 수 있습니다. 텍스트 기반의 코믹 어드벤처 게임입니다.",
+      "id": "dl_clien-jirum_5f19fcf60e4b9a9d",
+      "slug": "clien-jirum-board-jirum-681ddfc1",
+      "title": "[itch.io] 호러 게임 'The Green Light' 일시 무료 배포",
+      "summary": "평소 9.99달러에 판매되는 1인칭 호러 게임 'The Green Light'를 10월 29일까지 무료로 소장할 수 있습니다.",
+      "description": "itch.io에서 PC용 1인칭 호러 게임 'The Green Light'를 기간 한정으로 무료 배포하고 있습니다. 평소 9.99달러 상당의 게임이며, 라이브러리에 추가 시 영구 소장이 가능합니다.",
       "brand": {
-        "name": "에픽게임즈"
+        "name": "itch.io"
       },
       "category": "culture",
       "dealType": "free",
       "difficulty": "easy",
       "price": {
-        "original": 6100,
         "final": 0,
         "currency": "KRW"
       },
       "limit": {
-        "firstComeFirstServed": false,
-        "perPersonLimit": 1
+        "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-10-15T00:00:00+09:00",
-        "endAt": "2026-10-16T00:00:00+09:00"
-      },
-      "benefit": {
-        "amount": 6100,
-        "isMax": false
+        "startAt": "2026-10-22T00:00:00+09:00",
+        "endAt": "2026-10-29T23:59:59+09:00"
       },
       "link": {
-        "url": "https://store.epicgames.com/p/thebigconmobile-android-c6c8f1",
-        "label": "에픽게임즈 스토어 바로가기"
+        "url": "https://waleedzo.itch.io/the-green-light",
+        "label": "무료로 받기"
       },
       "howTo": [
-        "에픽게임즈 스토어 모바일 페이지 접속",
-        "The Big Con 게임 페이지 이동",
-        "0원 구매 버튼을 눌러 라이브러리에 추가"
+        "제공된 itch.io 게임 페이지 링크에 접속합니다.",
+        "'Download or Claim' 버튼을 클릭합니다.",
+        "계정에 로그인하거나 비회원으로 라이브러리에 추가하여 구매를 완료합니다."
       ],
-      "caution": ["10월 16일 0시까지 한정 제공", "한국어 미지원 (영어)", "에픽게임즈 계정 필요"],
-      "tags": [
-        "에픽게임즈",
-        "무료게임",
-        "TheBigCon",
-        "모바일게임",
-        "안드로이드",
-        "iOS",
-        "어드벤처"
+      "caution": [
+        "PC용 게임입니다.",
+        "배포 기간은 2026년 10월 29일까지입니다.",
+        "itch.io 계정이 필요할 수 있습니다."
       ],
+      "tags": ["itch.io", "무료게임", "호러게임", "PC게임", "일시무료", "게임배포", "스팀한당"],
       "source": {
         "name": "클리앙 알뜰구매",
-        "url": "https://www.clien.net/service/board/jirum/19278082",
-        "collectedAt": "2026-10-15T23:31:24.796Z",
+        "url": "https://www.clien.net/service/board/jirum/19281261",
+        "collectedAt": "2026-10-22T23:51:43.246Z",
         "method": "llm",
-        "confidence": 0.95
+        "confidence": 1
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-10-15T23:31:24.796Z"
+        "updatedAt": "2026-10-22T23:51:43.246Z"
       }
     },
     {
@@ -625,57 +622,6 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-10-20T23:36:00.771Z"
-      }
-    },
-    {
-      "id": "dl_clien-jirum_cae12a4ed93627dd",
-      "slug": "clien-jirum-board-jirum-612942f8",
-      "title": "유튜브 프리미엄 1개월 무료 체험",
-      "summary": "유튜브 및 유튜브 뮤직을 광고 없이 이용할 수 있는 1개월 무료 체험 프로모션",
-      "description": "YouTube와 YouTube Music에서 광고 없는 감상, 오프라인 저장, 백그라운드 재생 기능을 1개월간 무료로 체험할 수 있습니다.",
-      "brand": {
-        "name": "유튜브"
-      },
-      "category": "culture",
-      "dealType": "free",
-      "difficulty": "normal",
-      "price": {
-        "final": 0,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": false
-      },
-      "period": {
-        "startAt": "2026-10-14T00:00:00+09:00",
-        "endAt": null,
-        "deadlineUnknown": true
-      },
-      "link": {
-        "url": "https://m.youtube.com/premium",
-        "label": "무료 체험 신청하기"
-      },
-      "howTo": [
-        "프로모션 페이지에 접속합니다.",
-        "Google 계정으로 로그인합니다.",
-        "무료 체험 신청을 완료합니다."
-      ],
-      "caution": [
-        "계정 상태 및 가입 이력에 따라 대상 여부나 무료 기간(1개월~3개월 등)이 다를 수 있습니다.",
-        "카드 유효성 검증을 위해 1,000원이 일시 결제 후 승인 취소될 수 있습니다.",
-        "무료 기간 종료 후 정기 결제로 전환될 수 있으므로 연장을 원치 않을 경우 종료 전 해지해야 합니다."
-      ],
-      "tags": ["유튜브", "유튜브프리미엄", "유튜브뮤직", "무료체험", "스트리밍", "OTT"],
-      "source": {
-        "name": "클리앙 알뜰구매",
-        "url": "https://www.clien.net/service/board/jirum/19277367",
-        "collectedAt": "2026-10-15T23:31:24.796Z",
-        "method": "llm",
-        "confidence": 0.9
-      },
-      "meta": {
-        "verified": false,
-        "updatedAt": "2026-10-15T23:31:24.796Z"
       }
     },
     {
@@ -1081,50 +1027,6 @@
       }
     },
     {
-      "id": "dl_culture-portal-free_bb007467a941ff45",
-      "slug": "culture-portal-free-onecltinfo-onecltinfoview-do-376e6ada",
-      "title": "우리가 품은 무게에 대하여 전시",
-      "summary": "부산 홍티예술촌에서 무료로 관람할 수 있는 전시",
-      "description": "부산 홍티예술촌에서 진행되는 '우리가 품은 무게에 대하여' 전시를 무료로 관람하세요.",
-      "brand": {
-        "name": "홍티예술촌"
-      },
-      "category": "culture",
-      "dealType": "free",
-      "difficulty": "easy",
-      "price": {
-        "final": 0,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": false
-      },
-      "period": {
-        "startAt": "2026-09-01T00:00:00+09:00",
-        "endAt": "2026-10-15T23:59:59+09:00"
-      },
-      "link": {
-        "url": "https://www.culture.go.kr/portal/cltInfo/oneCltInfo/oneCltInfoView.do?pblprfrSn=401515&menuNo=200010&pageIndex=1",
-        "label": "공식 홈페이지"
-      },
-      "howTo": ["홍티예술촌 방문"],
-      "caution": [
-        "공연 일정은 운영사에 따라 변경될 수 있으며, 당일 공연은 예매 사이트별 기준(전일 마감 등)에 따라 예약이 불가할 수 있으니 사전 확인을 부탁드립니다."
-      ],
-      "tags": ["전시", "무료", "부산", "홍티예술촌", "문화", "예술"],
-      "source": {
-        "name": "문화포털 문화정보",
-        "url": "https://www.culture.go.kr/portal/cltInfo/oneCltInfo/oneCltInfoView.do?pblprfrSn=401515&menuNo=200010&pageIndex=1",
-        "collectedAt": "2026-10-14T23:38:18.771Z",
-        "method": "llm",
-        "confidence": 0.9
-      },
-      "meta": {
-        "verified": false,
-        "updatedAt": "2026-10-14T23:38:18.771Z"
-      }
-    },
-    {
       "id": "dl_dealbada-hotdeal_decef55fce3c3dd5",
       "slug": "dealbada-hotdeal-bbs-board-php-d085bef2",
       "title": "[카쇼라] 스팀쿡 마스터+ 듀얼스팀 오븐 에어프라이어 20L 라이브 특가",
@@ -1226,8 +1128,8 @@
       "id": "dl_ggcf-culture_0cbd400dd855db49",
       "slug": "ggcf-culture-view-6ad5c15cd179b47f6621735f-4b196c57",
       "title": "부천아트벙커B39 미디어아트전 《스펙트럴 크로싱스》 무료 관람",
-      "summary": "부천아트벙커B39에서 더스웨이 작가의 미디어아트전 《스펙트럴 크로싱스》를 무료로 관람할 수 있습니다.",
-      "description": "부천아트벙커B39 소각동 2층 전기실에서 기획전시 미디어아트전 《스펙트럴 크로싱스》가 개최됩니다. 관람료는 무료이며 10시부터 17시까지 관람 가능합니다.",
+      "summary": "부천아트벙커B39 소각동에서 개최되는 미디어아트전 《스펙트럴 크로싱스》를 무료로 관람할 수 있습니다.",
+      "description": "부천아트벙커B39 소각동 2층 전기실에서 진행되는 더스웨이(The Sway) 작가의 미디어아트전 《스펙트럴 크로싱스》 기획전시입니다. 관람 시간은 10시부터 17시까지이며 관람료는 무료입니다.",
       "brand": {
         "name": "부천아트벙커B39"
       },
@@ -1247,20 +1149,26 @@
       },
       "link": {
         "url": "https://www.artbunkerb39.org/ko/sub/sub06.html?type=view&bsNo=735&page=1",
-        "label": "자세히 보기"
+        "label": "누리집 방문하기"
       },
-      "howTo": ["전시 기간 동안 부천아트벙커B39 소각동 2층 전기실 방문 (운영시간 10:00~17:00)"],
+      "howTo": [
+        "전시 기간(2026.10.24 ~ 2026.11.29) 내 부천아트벙커B39 소각동 2층 전기실 방문",
+        "관람시간(10:00~17:00) 확인 후 무료 관람"
+      ],
+      "caution": [
+        "상세 휴관일 정보 및 문의는 누리집 또는 담당자(032-625-9483)를 통해 확인 바랍니다."
+      ],
       "tags": ["전시", "미디어아트", "무료전시", "부천아트벙커B39", "스펙트럴크로싱스", "문화행사"],
       "source": {
         "name": "경기문화재단 문화행사",
         "url": "https://ggc.ggcf.kr/cultureEvents/view/6ad5c15cd179b47f6621735f",
-        "collectedAt": "2026-10-21T23:53:15.000Z",
+        "collectedAt": "2026-10-22T23:51:43.246Z",
         "method": "llm",
         "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-10-21T23:53:15.000Z"
+        "updatedAt": "2026-10-22T23:51:43.246Z"
       }
     },
     {
@@ -1401,15 +1309,15 @@
     {
       "id": "dl_hana-event_29c7933fb53dff6d",
       "slug": "hana-event-event01-1528928-152465-jsp-0cbda3ca",
-      "title": "[하나은행] 10월 출석체크 맥도날드 스낵랩 증정 이벤트",
-      "summary": "하나원큐 놀이터에서 매일 출석체크 도장을 찍으면 추첨을 통해 500명에게 맥도날드 상하이 치킨 스낵랩을 드립니다.",
-      "description": "하나원큐 앱 내 놀이터 서비스에서 오늘의 도장 찍기 버튼을 3초간 눌러 참여하는 출석체크 이벤트입니다. 별도장을 많이 모을수록 당첨 확률이 높아지며, 11일과 21일에는 추가 도장을 받을 수 있습니다.",
+      "title": "하나은행 놀이터 10월 출석체크 이벤트",
+      "summary": "하나원큐에서 출석 도장을 찍으면 맥도날드 상하이 치킨 스낵랩 추첨 증정(500명)",
+      "description": "하나원큐 앱 놀이터에서 '오늘의 도장 찍기' 버튼을 3초간 눌러 출석체크하면, 추첨을 통해 500명에게 맥도날드 상하이 치킨 스낵랩 모바일 쿠폰을 제공합니다.",
       "brand": {
         "name": "하나은행"
       },
       "category": "finance",
       "dealType": "giveaway",
-      "difficulty": "normal",
+      "difficulty": "easy",
       "price": {
         "final": 0,
         "currency": "KRW"
@@ -1428,37 +1336,25 @@
         "label": "하나원큐에서 별도장 찍기"
       },
       "howTo": [
-        "하나원큐 앱 접속 후 놀이터 메뉴 진입",
-        "놀이터 서비스 구독하기",
-        "[오늘의 도장 찍기] 버튼을 3초간 길게 누르기",
-        "별도장이 찍히면 참여 완료"
+        "하나원큐 앱에서 놀이터 이벤트 페이지 접속",
+        "[오늘의 도장 찍기] 버튼을 3초간 꾹 눌러 별도장 찍기"
       ],
       "caution": [
-        "만 14세 이상 하나원큐 손님만 참여 가능합니다.",
-        "혜택 제공 시점에 하나원큐 회원 및 이벤트 조건을 유지해야 합니다.",
-        "당첨자 안내는 2026년 11월 16일까지 개별 안내 및 쿠폰함으로 지급됩니다.",
-        "지급된 모바일 쿠폰은 기한 연장, 환불, 재발송이 불가합니다."
+        "만 14세 이상 하나원큐 손님 및 놀이터 구독자 대상",
+        "당첨자는 2026년 11월 16일까지 개별 안내 후 하나원큐 쿠폰함으로 쿠폰 지급",
+        "혜택 제공 시점에 하나원큐 회원 조건 유지 필요"
       ],
-      "tags": [
-        "하나은행",
-        "하나원큐",
-        "출석체크",
-        "맥도날드",
-        "스낵랩",
-        "경품응모",
-        "금융",
-        "앱테크"
-      ],
+      "tags": ["하나은행", "하나원큐", "출석체크", "맥도날드", "스낵랩", "이벤트", "앱테크"],
       "source": {
         "name": "하나은행 이벤트",
         "url": "https://m.kebhana.com/cont/event/new/event01/1528928_152465.jsp",
-        "collectedAt": "2026-10-20T23:36:00.771Z",
+        "collectedAt": "2026-10-22T23:51:43.246Z",
         "method": "llm",
-        "confidence": 1
+        "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-10-20T23:36:00.771Z"
+        "updatedAt": "2026-10-22T23:51:43.246Z"
       }
     },
     {
@@ -1974,9 +1870,9 @@
     {
       "id": "dl_kakamuka-nearexpiry_a7f7fc4d0d8ffb51",
       "slug": "kakamuka-nearexpiry-category-display-2ae4529e",
-      "title": "과자마을 삼각 누룽지 현미 스낵 160g",
-      "summary": "소비기한 임박으로 정가 4,000원 상품을 1,000원에 할인 판매",
-      "description": "소비기한이 2026년 10월 27일까지인 과자마을 삼각 누룽지 현미 스낵 160g 상품을 75% 할인된 가격에 구매할 수 있습니다.",
+      "title": "과자마을 삼각 누룽지 현미 스낵 160g 300원 특가",
+      "summary": "소비기한 임박으로 정가 4,000원 현미 스낵을 300원에 판매합니다.",
+      "description": "과자마을에서 제조한 삼각 누룽지 현미 스낵 160g 상품입니다. 소비기한이 2026년 10월 27일까지인 상품으로, 기존 판매가 대비 대폭 할인된 가격에 구매 가능합니다.",
       "brand": {
         "name": "과자마을"
       },
@@ -1985,40 +1881,40 @@
       "difficulty": "easy",
       "price": {
         "original": 4000,
-        "final": 1000,
+        "final": 300,
         "currency": "KRW"
       },
       "limit": {
         "firstComeFirstServed": true
       },
       "period": {
-        "startAt": "2026-10-22T00:00:00+09:00",
+        "startAt": "2026-10-23T00:00:00+09:00",
         "endAt": "2026-10-27T23:59:59+09:00"
       },
       "benefit": {
-        "amount": 3000,
+        "amount": 3700,
         "isMax": false
       },
       "link": {
         "url": "https://kakamuka.com/product/%EC%84%B8%EC%9D%BC-%EA%B3%BC%EC%9E%90%EB%A7%88%EC%9D%84-%EC%82%BC%EA%B0%81-%EB%88%84%EB%A3%BD%EC%A7%80-%ED%98%84%EB%AF%B8-%EC%8A%A4%EB%82%B5-160g-%EC%86%8C%EB%B9%84%EA%B8%B0%ED%95%9C-261027-%EC%B6%94%EC%96%B5%EC%9D%98-%EA%B3%BC%EC%9E%90/15420/category/28/display/1/",
-        "label": "구매하기"
+        "label": "구매하러 가기"
       },
-      "howTo": ["상세 페이지 접속 후 구매하기 버튼 클릭", "결제 진행"],
+      "howTo": ["판매 페이지에 접속합니다.", "상품을 장바구니에 담고 결제를 진행합니다."],
       "caution": [
         "소비기한이 2026년 10월 27일까지인 상품입니다.",
-        "재고 소진 시 판매가 종료될 수 있습니다."
+        "재고 소진 시 예고 없이 종료될 수 있습니다."
       ],
-      "tags": ["누룽지", "현미스낵", "과자", "임박세일", "가성비", "간식", "세일"],
+      "tags": ["과자", "누룽지", "현미스낵", "임박세일", "가성비", "간식", "까까무카"],
       "source": {
         "name": "까까무카 소비기한 임박",
         "url": "https://kakamuka.com/product/%EC%84%B8%EC%9D%BC-%EA%B3%BC%EC%9E%90%EB%A7%88%EC%9D%84-%EC%82%BC%EA%B0%81-%EB%88%84%EB%A3%BD%EC%A7%80-%ED%98%84%EB%AF%B8-%EC%8A%A4%EB%82%B5-160g-%EC%86%8C%EB%B9%84%EA%B8%B0%ED%95%9C-261027-%EC%B6%94%EC%96%B5%EC%9D%98-%EA%B3%BC%EC%9E%90/15420/category/28/display/1/",
-        "collectedAt": "2026-10-21T23:53:15.000Z",
+        "collectedAt": "2026-10-22T23:51:43.246Z",
         "method": "llm",
         "confidence": 1
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-10-21T23:53:15.000Z"
+        "updatedAt": "2026-10-22T23:51:43.246Z"
       }
     },
     {
@@ -2141,7 +2037,7 @@
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-10-22T00:00:00+09:00",
+        "startAt": "2026-10-23T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
       },
@@ -2154,32 +2050,33 @@
         "label": "구매하러 가기"
       },
       "howTo": [
-        "상세 페이지 접속",
-        "스탠드 또는 벽걸이 설치 옵션 선택",
-        "구매하기 버튼 클릭 및 결제"
+        "판매 페이지에 접속합니다.",
+        "스탠드 또는 벽걸이 설치 옵션을 확인합니다.",
+        "구매하기 버튼을 눌러 결제를 진행합니다."
       ],
       "caution": [
-        "설치 방식에 따라 추가 비용이 발생할 수 있습니다.",
-        "재고 소진 시 조기 종료될 수 있습니다."
+        "리퍼브 제품 여부를 상세 페이지에서 다시 한번 확인하시기 바랍니다.",
+        "설치 환경에 따라 추가 비용이 발생할 수 있습니다."
       ],
-      "tags": ["삼성TV", "50인치TV", "4K", "UHD", "스마트TV", "가전할인", "TV특가"],
+      "tags": ["삼성전자", "삼성TV", "50인치TV", "4K", "UHD", "스마트TV", "가전할인", "리퍼TV"],
       "source": {
         "name": "메가몰 리퍼 TV",
         "url": "https://megagtv.com/product/detail.html?product_no=36&cate_no=23&display_group=1",
-        "collectedAt": "2026-10-21T23:53:15.000Z",
+        "collectedAt": "2026-10-22T23:51:43.246Z",
         "method": "llm",
         "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-10-21T23:53:15.000Z"
+        "updatedAt": "2026-10-22T23:51:43.246Z"
       }
     },
     {
       "id": "dl_megagtv-refurb_f1c28e854a8aaf56",
       "slug": "megagtv-refurb-product-detail-html-2460fcef",
-      "title": "삼성 75인치 4K UHD 스마트TV (75TU690T)",
-      "summary": "소비자가 239만원의 삼성 75인치 4K UHD 스마트TV를 86만 5천원에 판매합니다.",
+      "title": "삼성 75인치 4K UHD 스마트TV (75TU690T) 할인",
+      "summary": "삼성 75인치 4K UHD 스마트TV를 정가 대비 약 64% 할인된 865,000원에 판매합니다.",
+      "description": "삼성전자의 75인치 4K UHD 스마트TV(모델명: 75TU690T) 리퍼브 제품 할인 판매 정보입니다.",
       "brand": {
         "name": "삼성전자"
       },
@@ -2195,7 +2092,7 @@
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-10-22T00:00:00+09:00",
+        "startAt": "2026-10-23T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
       },
@@ -2207,18 +2104,25 @@
         "url": "https://megagtv.com/product/detail.html?product_no=467&cate_no=23&display_group=1",
         "label": "구매하러 가기"
       },
-      "howTo": ["링크 페이지에 접속하여 상품 구매"],
-      "tags": ["삼성TV", "75인치TV", "스마트TV", "4KTV", "리퍼TV", "메가몰", "TV할인"],
+      "howTo": [
+        "제공된 링크를 통해 메가몰 상세 페이지로 이동합니다.",
+        "상품 옵션을 확인하고 구매를 진행합니다."
+      ],
+      "caution": [
+        "리퍼브 제품이므로 외관상 미세한 흠집이 있을 수 있습니다.",
+        "재고 소진 시 조기 종료될 수 있습니다."
+      ],
+      "tags": ["삼성TV", "75인치TV", "4K", "UHD", "스마트TV", "리퍼브", "가전할인", "메가몰"],
       "source": {
         "name": "메가몰 리퍼 TV",
         "url": "https://megagtv.com/product/detail.html?product_no=467&cate_no=23&display_group=1",
-        "collectedAt": "2026-10-21T23:53:15.000Z",
+        "collectedAt": "2026-10-22T23:51:43.246Z",
         "method": "llm",
         "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-10-21T23:53:15.000Z"
+        "updatedAt": "2026-10-22T23:51:43.246Z"
       }
     },
     {
@@ -2271,9 +2175,9 @@
     {
       "id": "dl_museum-culture-free_8dee0d8a3c76bf4f",
       "slug": "museum-culture-free-contents-m0403010000-do-543b633a",
-      "title": "2026년 지역 국립박물관 문화향연 <나의 박물관(MYSEUM) : 타악>",
-      "summary": "지역 국립박물관에서 진행되는 무료 타악 공연 행사",
-      "description": "지역 국립박물관에서 진행되는 2026년 문화향연 <나의 박물관(MYSEUM) : 타악> 무료 공연입니다.",
+      "title": "2026 지역 국립박물관 문화향연 <나의 박물관 : 타악>",
+      "summary": "전국 지역 국립박물관에서 열리는 타악 공연 무료 관람",
+      "description": "지역 국립박물관에서 진행되는 2026년 문화향연 프로그램으로, 타악 공연을 무료로 즐길 수 있습니다.",
       "brand": {
         "name": "국립중앙박물관"
       },
@@ -2293,28 +2197,29 @@
       },
       "link": {
         "url": "https://www.museum.go.kr/MUSEUM/contents/M0403010000.do?schM=view&type=type1&typeCode=culture&showId=3488405",
-        "label": "행사 상세 보기"
+        "label": "상세 정보 보기"
       },
-      "howTo": ["오후 3시 행사 시간에 맞춰 지역 국립박물관 방문"],
-      "tags": ["국립박물관", "무료공연", "문화향연", "타악", "박물관행사"],
+      "howTo": ["행사 기간 중 오후 3시에 지역 국립박물관 방문"],
+      "caution": ["공연 시간은 오후 3시입니다.", "장소는 각 지역 국립박물관입니다."],
+      "tags": ["국립박물관", "문화향연", "타악공연", "무료공연", "가족나들이", "문화생활"],
       "source": {
         "name": "국립중앙박물관 공연·행사",
         "url": "https://www.museum.go.kr/MUSEUM/contents/M0403010000.do?schM=view&type=type1&typeCode=culture&showId=3488405",
-        "collectedAt": "2026-10-21T23:53:15.000Z",
+        "collectedAt": "2026-10-22T23:51:43.246Z",
         "method": "llm",
-        "confidence": 0.95
+        "confidence": 1
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-10-21T23:53:15.000Z"
+        "updatedAt": "2026-10-22T23:51:43.246Z"
       }
     },
     {
       "id": "dl_museum-culture-free_aa1ab26a935a2f78",
       "slug": "museum-culture-free-contents-m0403010000-do-d08d4ed3",
-      "title": "2026 국립중앙박물관 박물관문화향연 무료 공연",
-      "summary": "국립중앙박물관에서 열리는 다양한 문화 공연을 무료로 관람하세요.",
-      "description": "국립중앙박물관 열린마당과 대강당에서 진행되는 2026년 박물관문화향연 행사입니다. 다양한 장르의 공연을 무료로 즐길 수 있습니다.",
+      "title": "국립중앙박물관 2026년 박물관문화향연 무료 관람",
+      "summary": "국립중앙박물관 열린마당 및 대강당에서 진행되는 박물관문화향연 공연 무료 입장 혜택입니다.",
+      "description": "국립중앙박물관 열린마당 및 대강당에서 열리는 '2026년 박물관문화향연' 행사를 무료로 관람할 수 있습니다. 공연별 상세 시간은 상이합니다.",
       "brand": {
         "name": "국립중앙박물관"
       },
@@ -2334,77 +2239,21 @@
       },
       "link": {
         "url": "https://www.museum.go.kr/MUSEUM/contents/M0403010000.do?schM=view&type=type1&typeCode=culture&showId=3488404",
-        "label": "상세 정보 보기"
+        "label": "상세보기"
       },
-      "howTo": ["국립중앙박물관 열린마당 또는 대강당 방문", "공연별 상세 시간 확인 후 자유 관람"],
-      "caution": [
-        "공연별로 시작 시간이 상이하므로 방문 전 확인이 필요합니다.",
-        "장소는 공연에 따라 열린마당 또는 대강당에서 진행됩니다."
-      ],
-      "tags": [
-        "국립중앙박물관",
-        "박물관문화향연",
-        "무료공연",
-        "문화행사",
-        "주말나들이",
-        "가족공연",
-        "무료관람"
-      ],
+      "howTo": ["국립중앙박물관 열린마당 또는 대강당 방문하여 무료 관람"],
+      "caution": ["공연별 진행 시간이 상이하므로 방문 전 상세 일정을 확인하세요."],
+      "tags": ["국립중앙박물관", "박물관문화향연", "무료공연", "문화행사", "공연"],
       "source": {
         "name": "국립중앙박물관 공연·행사",
         "url": "https://www.museum.go.kr/MUSEUM/contents/M0403010000.do?schM=view&type=type1&typeCode=culture&showId=3488404",
-        "collectedAt": "2026-10-21T23:53:15.000Z",
+        "collectedAt": "2026-10-22T23:51:43.246Z",
         "method": "llm",
-        "confidence": 1
+        "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-10-21T23:53:15.000Z"
-      }
-    },
-    {
-      "id": "dl_ppomppu-coupon_13869179e4026b45",
-      "slug": "ppomppu-coupon-zboard-view-php-e5c0d753",
-      "title": "카카오뱅크 AI 이모지 오전 퀴즈",
-      "summary": "카카오뱅크 AI 이모지 오전 퀴즈 정답(분침) 입력하고 리워드 받기",
-      "description": "카카오뱅크에서 진행하는 AI 이모지 오전 퀴즈입니다. 정답은 '분침'입니다.",
-      "brand": {
-        "name": "카카오뱅크"
-      },
-      "category": "app",
-      "dealType": "point",
-      "difficulty": "easy",
-      "price": {
-        "final": 0,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": false
-      },
-      "period": {
-        "startAt": "2026-10-16T00:00:00+09:00",
-        "endAt": null,
-        "deadlineUnknown": true
-      },
-      "link": {
-        "url": "https://kakaobank.onelink.me/0qMi/jcwk0sbz",
-        "label": "퀴즈 풀러 가기"
-      },
-      "howTo": [
-        "링크를 통해 카카오뱅크 앱으로 이동합니다.",
-        "AI 이모지 오전 퀴즈 정답란에 '분침'을 입력하고 리워드를 받습니다."
-      ],
-      "tags": ["카카오뱅크", "AI이모지", "오전퀴즈", "앱테크", "퀴즈정답"],
-      "source": {
-        "name": "뽐뿌 쿠폰게시판",
-        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=119691",
-        "collectedAt": "2026-10-15T23:31:24.796Z",
-        "method": "llm",
-        "confidence": 0.85
-      },
-      "meta": {
-        "verified": false,
-        "updatedAt": "2026-10-15T23:31:24.796Z"
+        "updatedAt": "2026-10-22T23:51:43.246Z"
       }
     },
     {
@@ -2586,85 +2435,66 @@
       }
     },
     {
-      "id": "dl_ppomppu-hot_34dc2586ef0c6ea1",
-      "slug": "ppomppu-hot-zboard-view-php-297e5f41",
-      "title": "[롯데온] 네파 26FW 남녀공용 후디 라이트 다운 자켓",
-      "summary": "네파 26FW 남녀공용 후디 라이트 다운 자켓 87,720원 무료배송",
-      "description": "오리털 80:20 충전재, L사이즈 기준 충전량 130g의 가벼운 후드 일체형 경량 다운 자켓입니다. (블랙, 슬레이트그레이)",
+      "id": "dl_ppomppu-hot_0ea3aa98ccd32903",
+      "slug": "ppomppu-hot-zboard-view-php-b520b73a",
+      "title": "[롯데온] 질레트 프로글라이드 핸들 + 면도날 12입",
+      "summary": "즉시할인, 중복 쿠폰, 카드 할인을 적용하여 질레트 면도날 세트를 33,780원에 구매 가능",
+      "description": "질레트 프로글라이드 핸들과 면도날 12입 세트 구성입니다. 스킨텍 모델도 동일 가격에 구매 가능하며, 엘포인트 2,000점 적립 혜택이 있어 체감가는 더 낮아집니다.",
       "brand": {
-        "name": "네파"
+        "name": "질레트"
       },
       "category": "shopping",
       "dealType": "discount",
-      "difficulty": "easy",
+      "difficulty": "normal",
       "price": {
-        "final": 87720,
+        "final": 33780,
         "currency": "KRW"
       },
       "limit": {
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-10-16T00:00:00+09:00",
+        "startAt": "2026-10-23T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
       },
-      "link": {
-        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=740582"
-      },
-      "howTo": ["판매 페이지(롯데온)에 접속하여 원하는 색상과 사이즈 선택 후 구매"],
-      "tags": ["롯데온", "네파", "경량다운", "패딩", "다운자켓", "의류"],
-      "source": {
-        "name": "뽐뿌 뽐뿌게시판",
-        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=740582",
-        "collectedAt": "2026-10-15T23:31:24.796Z",
-        "method": "llm",
-        "confidence": 0.95
-      },
-      "meta": {
-        "verified": false,
-        "updatedAt": "2026-10-15T23:31:24.796Z"
-      }
-    },
-    {
-      "id": "dl_ppomppu-hot_4d35a42c2698c094",
-      "slug": "ppomppu-hot-zboard-view-php-5a3bf018",
-      "title": "[그리팅몰] 26년 햅쌀 한토래 경기미 고시히카리 10kg 외 특가",
-      "summary": "그리팅몰에서 26년 햅쌀 한토래 경기미 고시히카리 등을 할인가 32,130원(토스 적립금 체감가 29,849원)에 무료배송 판매합니다.",
-      "brand": {
-        "name": "뽐뿌 뽐뿌게시판"
-      },
-      "category": "food",
-      "dealType": "discount",
-      "difficulty": "easy",
-      "price": {
-        "final": 32130,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": false
-      },
-      "period": {
-        "startAt": "2026-10-16T00:00:00+09:00",
-        "endAt": null,
-        "deadlineUnknown": true
+      "benefit": {
+        "amount": 2000,
+        "isMax": false
       },
       "link": {
-        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=740583",
-        "label": "자세히 보기"
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=742407",
+        "label": "롯데온에서 확인하기"
       },
-      "howTo": ["그리팅몰 판매 페이지에 접속하여 상품을 구매합니다."],
-      "tags": ["그리팅몰", "햅쌀", "고시히카리", "추청쌀", "수향미", "농협양곡", "무료배송"],
+      "howTo": [
+        "롯데온 상품 페이지에 접속합니다.",
+        "즉시할인 및 중복 쿠폰을 다운로드하여 적용합니다.",
+        "할인 대상 카드로 결제하여 최종 할인을 받습니다."
+      ],
+      "caution": [
+        "카드사별 할인 혜택 및 쿠폰 적용 여부에 따라 최종 결제 금액이 달라질 수 있습니다.",
+        "엘포인트 적립 조건은 상품 페이지 내 상세 내용을 확인해야 합니다."
+      ],
+      "tags": [
+        "질레트",
+        "면도날",
+        "롯데온",
+        "할인",
+        "카드할인",
+        "엘포인트",
+        "프로글라이드",
+        "스킨텍"
+      ],
       "source": {
         "name": "뽐뿌 뽐뿌게시판",
-        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=740583",
-        "collectedAt": "2026-10-15T23:31:24.796Z",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=742407",
+        "collectedAt": "2026-10-22T23:51:43.246Z",
         "method": "llm",
         "confidence": 0.9
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-10-15T23:31:24.796Z"
+        "updatedAt": "2026-10-22T23:51:43.246Z"
       }
     },
     {
@@ -3072,6 +2902,51 @@
       }
     },
     {
+      "id": "dl_ppomppu-hot_fb5008d20c65f9fa",
+      "slug": "ppomppu-hot-zboard-view-php-9e70a75f",
+      "title": "[쇼핑엔티] 송완숙 명인 돌산 갓김치 2kg + 2kg",
+      "summary": "국내산 재료로 만든 돌산 갓김치 4kg을 29,900원 무료배송으로 판매합니다.",
+      "description": "송완숙 명인의 국내산 돌산 갓김치 2kg + 2kg(총 4kg) 특가 정보입니다. kg당 7,475원 수준입니다.",
+      "brand": {
+        "name": "쇼핑엔티"
+      },
+      "category": "food",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "final": 29900,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-10-23T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=742405",
+        "label": "구매 링크 열기"
+      },
+      "howTo": [
+        "원문 링크를 통해 구매 페이지로 이동합니다.",
+        "29,900원에 무료배송으로 구매합니다."
+      ],
+      "tags": ["쇼핑엔티", "갓김치", "돌산갓김치", "송완숙명인", "김치", "특가", "무료배송"],
+      "source": {
+        "name": "뽐뿌 뽐뿌게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=742405",
+        "collectedAt": "2026-10-22T23:51:43.246Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-10-22T23:51:43.246Z"
+      }
+    },
+    {
       "id": "dl_ruliweb-market_0238b61bb1ca3448",
       "slug": "ruliweb-market-board-read-ed4d450c",
       "title": "쿠팡 젠하이저 HD 550 오픈형 헤드폰 와우회원 할인가",
@@ -3261,52 +3136,6 @@
       }
     },
     {
-      "id": "dl_ruliweb-market_3f460b1b8d744bf0",
-      "slug": "ruliweb-market-board-read-d539e7a3",
-      "title": "GS25 오모리김치찌개라면 1+1",
-      "summary": "GS25 오모리김치찌개라면 1+1, 픽업/배달 시 1,850원",
-      "brand": {
-        "name": "GS25"
-      },
-      "category": "convenience",
-      "dealType": "discount",
-      "difficulty": "normal",
-      "price": {
-        "original": 3700,
-        "final": 1850,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": false
-      },
-      "period": {
-        "startAt": "2026-10-08T00:00:00+09:00",
-        "endAt": "2026-10-15T23:59:59+09:00"
-      },
-      "benefit": {
-        "amount": 1850,
-        "isMax": false
-      },
-      "link": {
-        "url": "https://bbs.ruliweb.com/market/board/1020/read/107841",
-        "label": "자세히 보기"
-      },
-      "howTo": ["GS25 앱으로 픽업 또는 배달 주문"],
-      "caution": ["일반 배달앱은 적용되지 않을 수 있습니다."],
-      "tags": ["GS25", "오모리김치찌개라면", "1+1", "편의점", "배달", "픽업"],
-      "source": {
-        "name": "루리웹 예판·핫딜",
-        "url": "https://bbs.ruliweb.com/market/board/1020/read/107841",
-        "collectedAt": "2026-10-08T00:41:16.180Z",
-        "method": "llm",
-        "confidence": 0.95
-      },
-      "meta": {
-        "verified": false,
-        "updatedAt": "2026-10-08T00:41:16.180Z"
-      }
-    },
-    {
       "id": "dl_ruliweb-market_4f3cf2e761efa29b",
       "slug": "ruliweb-market-board-read-70422309",
       "title": "[네이버] 맥콜 제로 250ml 60캔",
@@ -3461,6 +3290,115 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-10-20T23:36:00.771Z"
+      }
+    },
+    {
+      "id": "dl_ruliweb-market_99de3dac76bac64c",
+      "slug": "ruliweb-market-board-read-758e5d59",
+      "title": "[Xbox/Android/iOS] 게임 'Brave Squad' 무료 배포",
+      "summary": "Xbox 스토어, 구글 플레이, 앱스토어에서 Brave Squad 게임을 무료로 다운로드할 수 있습니다.",
+      "description": "Orion Arcade에서 개발한 게임 'Brave Squad'가 각 플랫폼 스토어에서 무료로 제공되고 있습니다. Xbox, 안드로이드, iOS 기기에서 모두 이용 가능합니다.",
+      "brand": {
+        "name": "Orion Arcade"
+      },
+      "category": "culture",
+      "dealType": "free",
+      "difficulty": "easy",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-10-23T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://www.xbox.com/ko-KR/games/store/brave-squad/9nsc9nsc2lls",
+        "label": "Xbox 스토어에서 보기"
+      },
+      "howTo": [
+        "원하는 플랫폼(Xbox, Android, iOS)의 스토어 링크에 접속합니다.",
+        "로그인 후 게임을 라이브러리에 추가하거나 설치 버튼을 누릅니다."
+      ],
+      "caution": [
+        "무료 배포 종료 시점이 명시되지 않았으므로 서두르는 것이 좋습니다.",
+        "각 플랫폼별 계정이 필요할 수 있습니다."
+      ],
+      "tags": ["게임", "무료게임", "Xbox", "안드로이드", "iOS", "BraveSquad", "핫딜", "무료배포"],
+      "source": {
+        "name": "루리웹 예판·핫딜",
+        "url": "https://bbs.ruliweb.com/market/board/1020/read/108260",
+        "collectedAt": "2026-10-22T23:51:43.246Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-10-22T23:51:43.246Z"
+      }
+    },
+    {
+      "id": "dl_ruliweb-market_ab088c6425221c23",
+      "slug": "ruliweb-market-board-read-8525da1d",
+      "title": "[에셋스토어] Fantasy Villagers – Sidekick 캐릭터 에셋 무료 배포",
+      "summary": "Synty의 모듈형 NPC 캐릭터 에셋을 쿠폰 코드 입력 시 무료로 받을 수 있습니다.",
+      "description": "로우폴리 스타일로 유명한 Synty의 Fantasy Villagers – Sidekick 모듈형 캐릭터 에셋입니다. 게임 개발뿐만 아니라 영상 제작, 웹툰 배경 등 다양한 용도로 제한 없이 이용 가능하며, 유니티 외 타 엔진에서도 사용할 수 있습니다.",
+      "brand": {
+        "name": "유니티 에셋스토어"
+      },
+      "category": "shopping",
+      "dealType": "free",
+      "difficulty": "easy",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false,
+        "perPersonLimit": 1
+      },
+      "period": {
+        "startAt": "2026-10-23T00:00:00+09:00",
+        "endAt": "2026-10-29T23:59:59+09:00"
+      },
+      "link": {
+        "url": "https://assetstore.unity.com/packages/3d/characters/fantasy-villagers-sidekick-modular-characters-by-synty-343744",
+        "label": "에셋 받으러 가기"
+      },
+      "howTo": [
+        "유니티 에셋스토어 링크에 접속합니다.",
+        "해당 에셋을 장바구니에 담습니다.",
+        "결제 시 쿠폰 코드 SYNTYSIDEKICK 를 입력합니다.",
+        "0원으로 결제를 완료합니다."
+      ],
+      "caution": [
+        "10월 29일까지만 무료로 제공됩니다.",
+        "유니티 엔진 외 타 게임 엔진에서도 사용이 가능합니다."
+      ],
+      "tags": [
+        "유니티",
+        "에셋스토어",
+        "무료배포",
+        "Synty",
+        "3D모델링",
+        "게임개발",
+        "캐릭터에셋",
+        "무료"
+      ],
+      "source": {
+        "name": "루리웹 예판·핫딜",
+        "url": "https://bbs.ruliweb.com/market/board/1020/read/108264",
+        "collectedAt": "2026-10-22T23:51:43.246Z",
+        "method": "llm",
+        "confidence": 1
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-10-22T23:51:43.246Z"
       }
     },
     {
@@ -3634,58 +3572,6 @@
       }
     },
     {
-      "id": "dl_ruliweb-market_d97dd0ede995633f",
-      "slug": "ruliweb-market-board-read-820f929f",
-      "title": "[롯데온] PSN 기프트카드 5만원권 할인 (45,120원)",
-      "summary": "플레이스테이션 스토어 기프트카드 5만원권을 약 9.7% 할인된 가격에 판매 중입니다.",
-      "description": "롯데온에서 PSN 기프트카드 5만원권을 45,120원에 판매하고 있습니다. 1만원권과 3만원권도 선택 가능합니다.",
-      "brand": {
-        "name": "PlayStation"
-      },
-      "category": "culture",
-      "dealType": "discount",
-      "difficulty": "easy",
-      "price": {
-        "original": 50000,
-        "final": 45120,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": false
-      },
-      "period": {
-        "startAt": "2026-10-16T00:00:00+09:00",
-        "endAt": null,
-        "deadlineUnknown": true
-      },
-      "benefit": {
-        "amount": 4880,
-        "isMax": false
-      },
-      "link": {
-        "url": "https://bbs.ruliweb.com/market/board/1020/read/108069",
-        "label": "핫딜 정보 확인"
-      },
-      "howTo": [
-        "롯데온 판매 페이지 접속",
-        "PSN 기프트카드 권종(5만원/3만원/1만원) 선택",
-        "할인 적용가 확인 후 결제"
-      ],
-      "caution": ["재고 소진 시 조기 종료될 수 있습니다.", "권종별로 할인율이 다를 수 있습니다."],
-      "tags": ["PSN", "기프트카드", "플레이스테이션", "롯데온", "게임", "할인", "핫딜"],
-      "source": {
-        "name": "루리웹 예판·핫딜",
-        "url": "https://bbs.ruliweb.com/market/board/1020/read/108069",
-        "collectedAt": "2026-10-15T23:31:24.796Z",
-        "method": "llm",
-        "confidence": 0.95
-      },
-      "meta": {
-        "verified": false,
-        "updatedAt": "2026-10-15T23:31:24.796Z"
-      }
-    },
-    {
       "id": "dl_seoul-culture-free_55ad129e17099429",
       "slug": "seoul-culture-free-cultureevent-view-do-7d1b600a",
       "title": "[세종문화회관] 연극 에너미",
@@ -3787,66 +3673,6 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-10-14T23:38:18.771Z"
-      }
-    },
-    {
-      "id": "dl_seoul-culture-free_5a653890cca68ff0",
-      "slug": "seoul-culture-free-cultureevent-view-do-f67f29a5",
-      "title": "[동작문화재단] 초등 5~6학년 무료 연극 교육 '스탠바이 유, 스탠바이 큐!' 2기 모집",
-      "summary": "초등학교 5~6학년 대상 입체낭독극 제작 및 발표 교육 프로그램 (무료, 선착순 15명)",
-      "description": "국어교과서 수록 문학작품을 각색하여 입체낭독극을 제작하는 예술교육입니다. 연기, 음향 연출, 무대미술 등 다채로운 무대언어를 경험할 수 있습니다.",
-      "brand": {
-        "name": "동작문화재단"
-      },
-      "category": "culture",
-      "dealType": "free",
-      "difficulty": "normal",
-      "price": {
-        "final": 0,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": true,
-        "quantity": 15
-      },
-      "period": {
-        "startAt": "2026-10-01T14:00:00+09:00",
-        "endAt": "2026-10-15T23:59:59+09:00"
-      },
-      "link": {
-        "url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159657&menuNo=200008",
-        "label": "상세보기 및 신청"
-      },
-      "howTo": [
-        "10월 1일 오후 2시부터 동작구 통합예약시스템 접속",
-        "교육/강좌(상세) 메뉴에서 해당 프로그램 선택",
-        "선착순 접수 진행"
-      ],
-      "caution": [
-        "초등학교 5~6학년 학생만 참여 가능합니다.",
-        "교육 기간(10/24~11/28 매주 토요일) 및 발표일(11/29 일요일) 일정을 반드시 확인해야 합니다.",
-        "선착순 15명 모집으로 조기 마감될 수 있습니다."
-      ],
-      "tags": [
-        "동작문화재단",
-        "초등학생교육",
-        "무료강좌",
-        "연극교실",
-        "낭독극",
-        "동작구",
-        "선착순",
-        "문화예술"
-      ],
-      "source": {
-        "name": "서울문화포털 문화행사",
-        "url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159657&menuNo=200008",
-        "collectedAt": "2026-09-29T14:06:52.900Z",
-        "method": "llm",
-        "confidence": 1
-      },
-      "meta": {
-        "verified": false,
-        "updatedAt": "2026-09-29T14:06:52.900Z"
       }
     },
     {
@@ -4042,52 +3868,6 @@
       }
     },
     {
-      "id": "dl_steam-specials_34e81d117c1ea68c",
-      "slug": "steam-specials-app-red-dead-redemption-2-0a857c7e",
-      "title": "스팀 레드 데드 리뎀션 2 75% 할인",
-      "summary": "Red Dead Redemption 2를 정가 73,000원에서 75% 할인된 18,250원에 구매할 수 있습니다.",
-      "brand": {
-        "name": "Steam"
-      },
-      "category": "culture",
-      "dealType": "discount",
-      "difficulty": "easy",
-      "price": {
-        "original": 73000,
-        "final": 18250,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": false
-      },
-      "period": {
-        "startAt": "2026-10-16T00:00:00+09:00",
-        "endAt": null,
-        "deadlineUnknown": true
-      },
-      "benefit": {
-        "amount": 54750,
-        "isMax": false
-      },
-      "link": {
-        "url": "https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/?snr=1_7_7_2300_150_1",
-        "label": "스팀에서 보기"
-      },
-      "howTo": ["스팀 스토어 페이지에 접속하여 게임을 장바구니에 담고 할인된 가격으로 결제합니다."],
-      "tags": ["스팀", "Steam", "레드데드리뎀션2", "RDR2", "게임할인", "PC게임"],
-      "source": {
-        "name": "Steam 특별 할인",
-        "url": "https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/?snr=1_7_7_2300_150_1",
-        "collectedAt": "2026-10-15T23:31:24.796Z",
-        "method": "llm",
-        "confidence": 0.95
-      },
-      "meta": {
-        "verified": false,
-        "updatedAt": "2026-10-15T23:31:24.796Z"
-      }
-    },
-    {
       "id": "dl_steam-specials_39f8c4203edde409",
       "slug": "steam-specials-app-dead-by-daylight-68eaac71",
       "title": "Dead by Daylight 60% 할인",
@@ -4184,8 +3964,8 @@
       "id": "dl_steam-specials_d484d4f96dd6f05d",
       "slug": "steam-specials-app-cyberpunk-2077-13c2231b",
       "title": "사이버펑크 2077 (Cyberpunk 2077) 70% 할인",
-      "summary": "오픈 월드 액션 RPG 사이버펑크 2077을 70% 할인된 19,800원에 판매 중입니다.",
-      "description": "나이트 시티를 배경으로 하는 오픈 월드 액션 어드벤처 RPG 사이버펑크 2077의 스팀 특별 할인 정보입니다.",
+      "summary": "스팀에서 사이버펑크 2077을 70% 할인된 19,800원에 판매 중입니다.",
+      "description": "오픈 월드 액션 어드벤처 RPG 사이버펑크 2077을 70% 할인된 가격에 구매할 수 있습니다.",
       "brand": {
         "name": "Steam"
       },
@@ -4201,7 +3981,7 @@
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-10-22T00:00:00+09:00",
+        "startAt": "2026-10-23T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
       },
@@ -4211,27 +3991,71 @@
       },
       "link": {
         "url": "https://store.steampowered.com/app/1091500/Cyberpunk_2077/?snr=1_7_7_2300_150_1",
-        "label": "스팀에서 구매하기"
+        "label": "스팀에서 보기"
       },
-      "howTo": [
-        "스팀 상점 페이지에 접속합니다.",
-        "장바구니에 제품을 추가합니다.",
-        "결제를 완료하여 라이브러리에 추가합니다."
-      ],
-      "caution": [
-        "할인 종료 시간이 명시되지 않았으므로 구매 시 가격을 반드시 재확인하시기 바랍니다."
-      ],
-      "tags": ["스팀", "게임", "사이버펑크2077", "할인", "RPG", "PC게임", "Steam", "특가"],
+      "howTo": ["스팀 상점 페이지 접속", "장바구니에 담기", "결제 진행"],
+      "caution": ["할인 기간은 스팀 정책에 따라 예고 없이 종료될 수 있습니다."],
+      "tags": ["스팀", "게임", "사이버펑크2077", "할인", "PC게임", "RPG", "특가"],
       "source": {
         "name": "Steam 특별 할인",
         "url": "https://store.steampowered.com/app/1091500/Cyberpunk_2077/?snr=1_7_7_2300_150_1",
-        "collectedAt": "2026-10-21T23:53:15.000Z",
+        "collectedAt": "2026-10-22T23:51:43.246Z",
         "method": "llm",
-        "confidence": 0.95
+        "confidence": 0.9
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-10-21T23:53:15.000Z"
+        "updatedAt": "2026-10-22T23:51:43.246Z"
+      }
+    },
+    {
+      "id": "dl_steam-specials_ea7409de8081ba01",
+      "slug": "steam-specials-app-dead-by-daylight-b8e06379",
+      "title": "데드 바이 데이라이트(Dead by Daylight) 60% 할인",
+      "summary": "스팀에서 데드 바이 데이라이트를 60% 할인된 8,600원에 판매합니다.",
+      "description": "비대칭 멀티플레이어 공포 게임인 데드 바이 데이라이트를 특별 할인가로 구매할 수 있습니다.",
+      "brand": {
+        "name": "Steam"
+      },
+      "category": "culture",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "original": 21500,
+        "final": 8600,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-10-23T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "benefit": {
+        "amount": 12900,
+        "isMax": false
+      },
+      "link": {
+        "url": "https://store.steampowered.com/app/381210/Dead_by_Daylight/?snr=1_7_7_2300_150_3",
+        "label": "스팀에서 보기"
+      },
+      "howTo": ["스팀 상점 페이지 접속", "장바구니에 추가", "결제 진행"],
+      "caution": [
+        "할인 종료 시점이 명시되지 않았으므로 구매 전 가격을 반드시 확인하시기 바랍니다."
+      ],
+      "tags": ["스팀", "게임", "할인", "데드바이데이라이트", "공포게임", "멀티플레이어", "PC게임"],
+      "source": {
+        "name": "Steam 특별 할인",
+        "url": "https://store.steampowered.com/app/381210/Dead_by_Daylight/?snr=1_7_7_2300_150_3",
+        "collectedAt": "2026-10-22T23:51:43.246Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-10-22T23:51:43.246Z"
       }
     }
   ]
