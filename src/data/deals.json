@@ -1,6 +1,6 @@
 {
   "schemaVersion": 4,
-  "generatedAt": "2026-11-12T02:06:16.229Z",
+  "generatedAt": "2026-11-13T01:39:32.122Z",
   "deals": [
     {
       "id": "dl_ajd-card-event_8f352758faf3037b",
@@ -322,6 +322,48 @@
       }
     },
     {
+      "id": "dl_clien-jirum_d31485df469f3e3c",
+      "slug": "clien-jirum-board-jirum-456ce94d",
+      "title": "[에픽게임즈] Knightica 무료 배포",
+      "summary": "에픽게임즈에서 이번 주 무료 게임으로 Knightica(PC, iOS, Android)를 무료로 제공합니다.",
+      "description": "에픽게임즈 이번 주의 무료 게임 Knightica 배포 안내입니다. PC 및 모바일(iOS, 안드로이드) 링크를 통해 무료로 소장할 수 있습니다.",
+      "brand": {
+        "name": "에픽게임즈"
+      },
+      "category": "culture",
+      "dealType": "free",
+      "difficulty": "easy",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-11-13T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://store.epicgames.com/p/knightica-3be45c",
+        "label": "에픽게임즈 받으러 가기"
+      },
+      "howTo": ["에픽게임즈 스토어 링크 접속", "에픽게임즈 계정 로그인 후 무료 받기 클릭"],
+      "tags": ["에픽게임즈", "무료게임", "EpicGames", "Knightica", "게임무료", "무료배포"],
+      "source": {
+        "name": "클리앙 알뜰구매",
+        "url": "https://www.clien.net/service/board/jirum/19291543",
+        "collectedAt": "2026-11-13T01:39:32.122Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-11-13T01:39:32.122Z"
+      }
+    },
+    {
       "id": "dl_clien-jirum_d66649000101bb53",
       "slug": "clien-jirum-board-jirum-a5941cfb",
       "title": "[iOS] mo.Days 일기 앱 일시 무료 배포",
@@ -364,6 +406,49 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-11-02T00:12:02.906Z"
+      }
+    },
+    {
+      "id": "dl_clien-jirum_d9f046529b9cf459",
+      "slug": "clien-jirum-board-jirum-5953a630",
+      "title": "(에픽 모바일) Chants of Sennaar 무료 배포",
+      "summary": "에픽게임즈에서 퍼즐 어드벤처 게임 'Chants of Sennaar' 모바일 버전을 11월 13일 새벽 1시까지 무료로 배포합니다.",
+      "description": "에픽게임즈 스토어에서 퍼즐 어드벤처 게임인 Chants of Sennaar 모바일 버전을 무료로 제공하고 있습니다. 안드로이드 및 iOS 기기에서 이용 가능합니다.",
+      "brand": {
+        "name": "에픽게임즈"
+      },
+      "category": "culture",
+      "dealType": "free",
+      "difficulty": "easy",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false,
+        "perPersonLimit": 1
+      },
+      "period": {
+        "startAt": "2026-11-12T00:00:00+09:00",
+        "endAt": "2026-11-13T01:00:00+09:00"
+      },
+      "link": {
+        "url": "https://store.epicgames.com/p/chants-of-sennaar-android-681b80",
+        "label": "무료로 받기"
+      },
+      "howTo": ["에픽게임즈 스토어 링크 접속", "로그인 후 '받기' 버튼을 눌러 라이브러리에 추가"],
+      "caution": ["2026년 11월 13일 새벽 1시까지만 무료로 제공됩니다."],
+      "tags": ["에픽게임즈", "무료게임", "모바일게임", "퍼즐", "어드벤처", "안드로이드", "iOS"],
+      "source": {
+        "name": "클리앙 알뜰구매",
+        "url": "https://www.clien.net/service/board/jirum/19291500",
+        "collectedAt": "2026-11-13T01:39:32.122Z",
+        "method": "llm",
+        "confidence": 1
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-11-13T01:39:32.122Z"
       }
     },
     {
@@ -469,52 +554,6 @@
       }
     },
     {
-      "id": "dl_clien-jirum_f50c45e830883373",
-      "slug": "clien-jirum-board-jirum-7252a221",
-      "title": "WearOS ML2U 397b 외 워치페이스 일시 무료",
-      "summary": "구글 플레이 스토어에서 유료 WearOS 워치페이스를 한시적으로 무료 배포합니다.",
-      "description": "구글 플레이 스토어에서 ML2U 397b 등 다양한 WearOS 유료 스마트워치 페이스를 한시적으로 무료로 다운로드할 수 있습니다.",
-      "brand": {
-        "name": "Google Play"
-      },
-      "category": "app",
-      "dealType": "free",
-      "difficulty": "easy",
-      "price": {
-        "final": 0,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": false
-      },
-      "period": {
-        "startAt": "2026-11-02T00:00:00+09:00",
-        "endAt": null,
-        "deadlineUnknown": true
-      },
-      "link": {
-        "url": "https://play.google.com/store/apps/details?id=com.watchfacestudio.ml2u397b",
-        "label": "구글 플레이 바로가기"
-      },
-      "howTo": [
-        "제공된 구글 플레이 링크에 접속합니다.",
-        "무료 상태를 확인한 후 설치/구매를 진행합니다."
-      ],
-      "caution": ["한시적 무료 배포이므로 예고 없이 유료로 전환될 수 있습니다."],
-      "tags": ["WearOS", "워치페이스", "구글플레이", "일시무료", "스마트워치", "안드로이드"],
-      "source": {
-        "name": "클리앙 알뜰구매",
-        "url": "https://www.clien.net/service/board/jirum/19286272",
-        "collectedAt": "2026-11-06T01:21:12.805Z",
-        "method": "llm",
-        "confidence": 0.9
-      },
-      "meta": {
-        "verified": false,
-        "updatedAt": "2026-11-06T01:21:12.805Z"
-      }
-    },
-    {
       "id": "dl_culture-portal-free_867e7643e58b302f",
       "slug": "culture-portal-free-onecltinfo-onecltinfoview-do-5a2eda5a",
       "title": "[울산] 연극 '보물찾기' 무료 초대권 응모 이벤트",
@@ -577,6 +616,70 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-11-11T00:59:28.200Z"
+      }
+    },
+    {
+      "id": "dl_culture-portal-free_a4122f27bfdff580",
+      "slug": "culture-portal-free-onecltinfo-onecltinfoview-do-0cf24f6e",
+      "title": "[전주] 뮤지컬 '조선셰프 한상궁' 무료 초대 이벤트",
+      "summary": "기대평을 남기면 추첨을 통해 뮤지컬 '조선셰프 한상궁' 초대권을 증정합니다.",
+      "description": "전주소리문화관에서 진행되는 뮤지컬 '조선셰프 한상궁' 공연에 독자들을 초대하는 이벤트입니다. 하단 기대평 작성을 통해 응모할 수 있습니다.",
+      "brand": {
+        "name": "문화포털"
+      },
+      "category": "culture",
+      "dealType": "giveaway",
+      "difficulty": "easy",
+      "price": {
+        "original": 20000,
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-08-28T00:00:00+09:00",
+        "endAt": "2026-11-13T23:59:59+09:00"
+      },
+      "benefit": {
+        "amount": 20000,
+        "isMax": false
+      },
+      "link": {
+        "url": "https://www.culture.go.kr/portal/cltInfo/oneCltInfo/oneCltInfoView.do?pblprfrSn=397707&menuNo=200010&pageIndex=1",
+        "label": "기대평 남기고 응모하기"
+      },
+      "howTo": [
+        "문화포털 이벤트 페이지 접속",
+        "하단 '문화초대이벤트 응모하기' 섹션 확인",
+        "공연 기대평을 댓글로 입력",
+        "응모하기 버튼 클릭"
+      ],
+      "caution": [
+        "이벤트 댓글은 비공개로 등록됩니다.",
+        "당첨 확인은 마이페이지에서 가능합니다.",
+        "공연 일정은 운영사 사정에 따라 변경될 수 있습니다."
+      ],
+      "tags": [
+        "뮤지컬",
+        "전주",
+        "무료초대",
+        "공연이벤트",
+        "조선셰프한상궁",
+        "문화포털",
+        "기대평이벤트"
+      ],
+      "source": {
+        "name": "문화포털 문화정보",
+        "url": "https://www.culture.go.kr/portal/cltInfo/oneCltInfo/oneCltInfoView.do?pblprfrSn=397707&menuNo=200010&pageIndex=1",
+        "collectedAt": "2026-11-13T01:39:32.122Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-11-13T01:39:32.122Z"
       }
     },
     {
@@ -789,9 +892,9 @@
     {
       "id": "dl_dealbada-free_d4ae78ac64ccfef4",
       "slug": "dealbada-free-bbs-board-php-252c84d5",
-      "title": "SK증권 신규고객 계좌 개설 및 조건 충족 최대 201만원 혜택",
-      "summary": "SK증권 신규고객 비대면 계좌 개설 후 현금 지급 및 조건 충족 시 최대 201만원 혜택 제공",
-      "description": "SK증권 신규고객 이벤트 공유합니다. 비대면 최초 신규 계좌 개설 후 이벤트 신청 시 현금 1만원, 현금 입금·타사 주식 이전 관련 조건 충족 시 최대 200만원 추가, 계좌 개설 이벤트랑 합산해서 최대 201만원 혜택. 계좌 채우기 금액 5천만원 이상 구간부터 유지 등 조건 충족 시 국내주식 수수료 평생 우대 보너스 혜택. 주식만 옮겨야 하는 게 아니라 현금 입금이나 타사 주식 이전, 두 가지를 함께 활용하는 것도 가능.",
+      "title": "SK증권 신규 고객 계좌 개설 및 입금 이벤트 (최대 201만원)",
+      "summary": "비대면 계좌 개설 시 1만원, 입금 및 주식 이전 시 최대 200만원의 현금 혜택을 드립니다.",
+      "description": "SK증권에서 비대면 최초 신규 계좌 개설 고객을 대상으로 현금 혜택을 제공합니다. 계좌 개설 후 신청 시 1만원을 지급하며, 현금 입금이나 타사 주식 이전 조건 충족 시 최대 200만원을 추가로 지급합니다. 5천만원 이상 유지 시 국내주식 수수료 평생 우대 혜택도 제공됩니다.",
       "brand": {
         "name": "SK증권"
       },
@@ -807,7 +910,7 @@
         "perPersonLimit": 1
       },
       "period": {
-        "startAt": "2026-11-12T00:00:00+09:00",
+        "startAt": "2026-11-13T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
       },
@@ -821,25 +924,79 @@
         "label": "이벤트 참여하기"
       },
       "howTo": [
-        "비대면 최초 신규 계좌 개설",
-        "이벤트 신청 시 현금 1만원 지급",
-        "현금 입금 및 타사 주식 이전 등 조건 충족 시 최대 200만원 추가 혜택"
+        "비대면으로 SK증권 최초 신규 계좌를 개설합니다.",
+        "이벤트 페이지에서 참여 신청 버튼을 클릭합니다.",
+        "현금 입금 또는 타사 주식 이전을 통해 조건을 충족합니다.",
+        "혜택별 거래 및 잔고 유지 조건을 확인하고 유지합니다."
       ],
       "caution": [
-        "계좌 채우기 금액 및 유지 등 상세 조건 확인 필요",
-        "주식 이전에 현금 입금 등 조건을 함께 활용 가능"
+        "비대면 최초 신규 고객에 한해 참여 가능합니다.",
+        "이벤트 신청 절차가 반드시 필요합니다.",
+        "입금 및 이전 금액 구간에 따라 혜택 금액이 달라집니다.",
+        "수수료 우대 혜택은 5천만원 이상 유지 등 별도 조건이 있습니다."
       ],
-      "tags": ["SK증권", "신규고객", "계좌개설", "현금지급", "주식이전", "캐시백", "금융이벤트"],
+      "tags": [
+        "SK증권",
+        "신규가입",
+        "계좌개설",
+        "현금증정",
+        "주식이전",
+        "입금이벤트",
+        "금융혜택",
+        "수수료우대"
+      ],
       "source": {
         "name": "딜바다 무료이벤트",
         "url": "https://www.dealbada.com/bbs/board.php?bo_table=event_free&amp;wr_id=28415",
-        "collectedAt": "2026-11-12T02:06:16.229Z",
+        "collectedAt": "2026-11-13T01:39:32.122Z",
         "method": "llm",
-        "confidence": 0.9
+        "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-11-12T02:06:16.229Z"
+        "updatedAt": "2026-11-13T01:39:32.122Z"
+      }
+    },
+    {
+      "id": "dl_dealbada-hotdeal_436238467d47bca9",
+      "slug": "dealbada-hotdeal-bbs-board-php-4899bddf",
+      "title": "[지마켓] 고함량 슈퍼 비타민C 3000 300포 (10개월분)",
+      "summary": "비타민C 3,000mg 고함량 300포 대용량 세트 23,900원 특가",
+      "description": "한 포에 비타민C 3,000mg이 함유된 메가도스용 비타민C입니다. 300포(10개월분) 구성으로 1포당 약 79원꼴의 가성비 제품입니다.",
+      "brand": {
+        "name": "지마켓"
+      },
+      "category": "food",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "final": 23900,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-11-13T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://www.dealbada.com/bbs/board.php?bo_table=deal_domestic&wr_id=572697&page=1",
+        "label": "구매하러 가기"
+      },
+      "howTo": ["지마켓 판매 페이지에 접속합니다.", "23,900원 가격을 확인하고 구매를 진행합니다."],
+      "tags": ["지마켓", "비타민C", "메가도스", "영양제", "건강식품", "가성비", "대용량"],
+      "source": {
+        "name": "딜바다 국내핫딜",
+        "url": "https://www.dealbada.com/bbs/board.php?bo_table=deal_domestic&wr_id=572697&page=1",
+        "collectedAt": "2026-11-13T01:39:32.122Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-11-13T01:39:32.122Z"
       }
     },
     {
@@ -931,53 +1088,6 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-11-09T00:28:39.387Z"
-      }
-    },
-    {
-      "id": "dl_dealbada-hotdeal_64d9acf34350d2cd",
-      "slug": "dealbada-hotdeal-bbs-board-php-08d901b5",
-      "title": "[알뜰폰] 비즈인 100GB+5Mbps 요금제 7개월간 월 3,000원 (네이버페이 혜택)",
-      "summary": "비즈인 알뜰폰 100GB+5Mbps 요금제를 7개월간 월 3,000원(네이버페이 5천원 지급)에 이용하고, 바로유심 개통 시 2만원 추가 혜택을 받으세요.",
-      "description": "비즈인 100GB 요금제는 월 8,000원에 데이터 100GB 소진 후 5Mbps 속도를 제공합니다. 7개월간 매월 네이버페이 5,000원이 지급되어 월 체감 요금은 3,000원입니다. 바로유심으로 개통 시 2만원 추가 혜택이 제공됩니다.",
-      "brand": {
-        "name": "비즈인"
-      },
-      "category": "finance",
-      "dealType": "cashback",
-      "difficulty": "normal",
-      "price": {
-        "original": 8000,
-        "final": 3000,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": false
-      },
-      "period": {
-        "startAt": "2026-11-06T00:00:00+09:00",
-        "endAt": null,
-        "deadlineUnknown": true
-      },
-      "benefit": {
-        "amount": 5000,
-        "isMax": false
-      },
-      "link": {
-        "url": "https://bizinm.co.kr/view/plan/phone_plan_detail.aspx?AGCD=62b782cb0aed30a68ce8b3b1c16a5c17&GDCD=100025",
-        "label": "신청 링크"
-      },
-      "howTo": ["비즈인 100GB 요금제 신청 링크를 통해 가입합니다.", "바로유심으로 개통합니다."],
-      "tags": ["알뜰폰", "비즈인", "네이버페이", "유심", "요금제", "데이터", "캐시백", "통신"],
-      "source": {
-        "name": "딜바다 국내핫딜",
-        "url": "https://www.dealbada.com/bbs/board.php?bo_table=deal_domestic&wr_id=572530&page=1",
-        "collectedAt": "2026-11-06T01:21:12.805Z",
-        "method": "llm",
-        "confidence": 0.9
-      },
-      "meta": {
-        "verified": false,
-        "updatedAt": "2026-11-06T01:21:12.805Z"
       }
     },
     {
@@ -1206,10 +1316,10 @@
       "id": "dl_ggcf-culture_193d21f9c51e276d",
       "slug": "ggcf-culture-view-6aed84898a28bda54c97e344-def59bc3",
       "title": "짐 아비뇽 특별전: 희망으로 그리는 21세기",
-      "summary": "성남큐브미술관에서 개최되는 짐 아비뇽 특별전 전시 정보",
-      "description": "세부정보 분류 기획전, 기간 2026.12.18 ~ 2027.03.21, 성남큐브미술관 기획전시실",
+      "summary": "성남큐브미술관에서 열리는 독일 팝아트 거장 짐 아비뇽의 특별 전시회",
+      "description": "독일의 팝아트 작가 짐 아비뇽의 작품을 만나볼 수 있는 기획 전시입니다. 2026년 12월 18일부터 2027년 3월 21일까지 성남큐브미술관에서 진행됩니다.",
       "brand": {
-        "name": "경기문화재단"
+        "name": "성남문화재단"
       },
       "category": "culture",
       "dealType": "discount",
@@ -1228,21 +1338,34 @@
       },
       "link": {
         "url": "https://www.snart.or.kr/main/prex/exhibit/view.do?prfr_exhb_sn=100034&search=NkNiS0pQWGdrVjRkZVFURDVxR1BTcURGSGVOVU56YXBrcGllUDRSRU5ST1d6RUh5ZzU4Wm1Cd3dLS0d5MWUvSHpBVjl4UGRUNm8yNk5ocTR5QUNaNXBobHkxZ3ZPazRrNSt2alNXM3NqQk9RK3ZiMXdGUmZrUmd4K2x5bHJVUlhMWkNzb2FUd0d1cGhGME1tZkVGQlJ3PT0=",
-        "label": "누리집 바로가기"
+        "label": "상세보기"
       },
-      "howTo": ["성남큐브미술관 기획전시실 방문"],
-      "caution": ["매주 월요일 휴관", "17:30 입장 마감"],
-      "tags": ["전시", "미술관", "성남큐브미술관", "짐아비뇽", "문화행사"],
+      "howTo": ["성남큐브미술관 기획전시실 방문", "현장 또는 온라인 예매를 통해 티켓 구입"],
+      "caution": [
+        "매주 월요일은 휴관입니다.",
+        "관람 시간은 10:00~18:00이며, 입장 마감은 17:30입니다.",
+        "36개월 미만 영유아는 증빙 서류 지참 시 무료 입장이 가능합니다."
+      ],
+      "tags": [
+        "짐아비뇽",
+        "전시회",
+        "성남큐브미술관",
+        "문화생활",
+        "팝아트",
+        "성남문화재단",
+        "미술전시",
+        "기획전"
+      ],
       "source": {
         "name": "경기문화재단 문화행사",
         "url": "https://ggc.ggcf.kr/cultureEvents/view/6aed84898a28bda54c97e344",
-        "collectedAt": "2026-11-12T02:06:16.229Z",
+        "collectedAt": "2026-11-13T01:39:32.122Z",
         "method": "llm",
-        "confidence": 0.95
+        "confidence": 0.9
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-11-12T02:06:16.229Z"
+        "updatedAt": "2026-11-13T01:39:32.122Z"
       }
     },
     {
@@ -1717,15 +1840,15 @@
     {
       "id": "dl_hana-event_ed10861063031b6e",
       "slug": "hana-event-event01-1529259-152465-jsp-3b09dc5d",
-      "title": "하나원큐 놀이터 11월 출석체크 이벤트",
-      "summary": "하나원큐 놀이터에서 출석체크하고 추첨을 통해 더벤티 미니 붕어빵 받기",
-      "description": "놀이터에서 출석체크 하고 더벤티 미니 붕어빵 먹자! 500명 추첨.",
+      "title": "[하나은행] 11월 놀이터 출석체크 이벤트 (더벤티 미니 붕어빵 추첨)",
+      "summary": "하나원큐 놀이터에서 출석체크 별도장을 찍으면 추첨을 통해 500명에게 더벤티 미니 붕어빵 쿠폰을 제공합니다.",
+      "description": "하나원큐 앱 놀이터에서 '오늘의 도장찍기' 버튼을 3초간 눌러 별도장을 찍으면 응모 완료됩니다. 11일과 21일에는 별도장을 추가 지급합니다.",
       "brand": {
         "name": "하나은행"
       },
       "category": "finance",
       "dealType": "giveaway",
-      "difficulty": "normal",
+      "difficulty": "easy",
       "price": {
         "final": 0,
         "currency": "KRW"
@@ -1743,26 +1866,35 @@
         "label": "하나원큐에서 별도장 찍기"
       },
       "howTo": [
-        "오늘의 도장찍기 버튼을 3초간 꾹 눌러주세요",
-        "종이에 별도장이 찍히면 참여 완료!",
-        "11일, 21일에는 별도장을 추가로 더 드려요"
+        "하나원큐 앱 접속 후 놀이터 출석체크 페이지 이동",
+        "'오늘의 도장찍기' 버튼을 3초간 꾹 누르기",
+        "별도장이 찍히면 참여 완료"
       ],
       "caution": [
         "만 14세 이상 하나원큐 손님 및 놀이터 구독자 대상",
-        "당첨 안내는 26년 12월 15일까지 개별 안내",
-        "모바일 쿠폰은 하나원큐 쿠폰함으로 제공"
+        "당첨자 발표 및 모바일 쿠폰 발송은 2026년 12월 15일까지 진행 (하나원큐 쿠폰함)",
+        "혜택 제공 시점에 하나원큐 회원 조건 유지 필요"
       ],
-      "tags": ["하나은행", "하나원큐", "출석체크", "이벤트", "미니붕어빵", "더벤티", "앱테크"],
+      "tags": [
+        "하나은행",
+        "하나원큐",
+        "출석체크",
+        "놀이터",
+        "더벤티",
+        "미니붕어빵",
+        "이벤트",
+        "추첨"
+      ],
       "source": {
         "name": "하나은행 이벤트",
         "url": "https://m.kebhana.com/cont/event/new/event01/1529259_152465.jsp",
-        "collectedAt": "2026-11-12T02:06:16.229Z",
+        "collectedAt": "2026-11-13T01:39:32.122Z",
         "method": "llm",
-        "confidence": 0.95
+        "confidence": 0.85
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-11-12T02:06:16.229Z"
+        "updatedAt": "2026-11-13T01:39:32.122Z"
       }
     },
     {
@@ -2010,9 +2142,9 @@
     {
       "id": "dl_kakamuka-nearexpiry_f0ece87100736f61",
       "slug": "kakamuka-nearexpiry-category-display-7d385307",
-      "title": "Snapik 말차콘 132g 소비기한 임박 특가",
-      "summary": "Snapik 말차콘 132g(소비기한 26년 11월 24일) 상품을 정가 4,200원에서 할인된 900원에 판매합니다.",
-      "description": "소비기한 임박(2026-11-24)으로 인하여 정가 4,200원 상당의 Snapik 말차콘 132g 제품을 900원에 할인 판매 중입니다.",
+      "title": "Snapik 말차콘 132g (소비기한 11/24)",
+      "summary": "정가 4,200원 말차맛 콘과자를 900원 특가에 판매합니다.",
+      "description": "소비기한이 2026년 11월 24일까지인 Snapik 말차콘 132g 상품을 약 78% 할인된 가격에 판매합니다.",
       "brand": {
         "name": "Snapik"
       },
@@ -2025,12 +2157,11 @@
         "currency": "KRW"
       },
       "limit": {
-        "firstComeFirstServed": false
+        "firstComeFirstServed": true
       },
       "period": {
-        "startAt": "2026-11-12T00:00:00+09:00",
-        "endAt": null,
-        "deadlineUnknown": true
+        "startAt": "2026-11-13T00:00:00+09:00",
+        "endAt": "2026-11-24T23:59:59+09:00"
       },
       "benefit": {
         "amount": 3300,
@@ -2040,19 +2171,22 @@
         "url": "https://kakamuka.com/product/%EC%84%B8%EC%9D%BC-snapik-%EB%A7%90%EC%B0%A8%EC%BD%98-132g-%EC%86%8C%EB%B9%84%EA%B8%B0%ED%95%9C-261124-%EB%A7%90%EC%B0%A8%EB%A7%9B-%EC%BD%98%EB%AA%A8%EC%96%91%EA%B3%BC%EC%9E%90/14039/category/28/display/1/",
         "label": "구매하러 가기"
       },
-      "howTo": ["링크 접속 후 해당 상품 구매"],
-      "caution": ["소비기한이 2026년 11월 24일까지인 임박 상품입니다."],
-      "tags": ["까까무카", "Snapik", "말차콘", "과자", "소비기한임박", "할인", "식품"],
+      "howTo": ["상세 페이지에서 상품을 장바구니에 담습니다.", "주문 및 결제를 완료합니다."],
+      "caution": [
+        "소비기한이 2026년 11월 24일까지인 임박 상품입니다.",
+        "재고 소진 시 예고 없이 종료될 수 있습니다."
+      ],
+      "tags": ["말차콘", "과자", "임박세일", "가성비", "간식", "말차맛", "까까무카"],
       "source": {
         "name": "까까무카 소비기한 임박",
         "url": "https://kakamuka.com/product/%EC%84%B8%EC%9D%BC-snapik-%EB%A7%90%EC%B0%A8%EC%BD%98-132g-%EC%86%8C%EB%B9%84%EA%B8%B0%ED%95%9C-261124-%EB%A7%90%EC%B0%A8%EB%A7%9B-%EC%BD%98%EB%AA%A8%EC%96%91%EA%B3%BC%EC%9E%90/14039/category/28/display/1/",
-        "collectedAt": "2026-11-12T02:06:16.229Z",
+        "collectedAt": "2026-11-13T01:39:32.122Z",
         "method": "llm",
-        "confidence": 0.95
+        "confidence": 1
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-11-12T02:06:16.229Z"
+        "updatedAt": "2026-11-13T01:39:32.122Z"
       }
     },
     {
@@ -2104,11 +2238,11 @@
     {
       "id": "dl_megagtv-refurb_d170a039d426fa62",
       "slug": "megagtv-refurb-product-detail-html-c7ae3f37",
-      "title": "삼성 TV 50인치 4K UHD 스마트 TV 50TU7000 리퍼 상품 할인",
-      "summary": "삼성 50인치 4K UHD 스마트 TV 리퍼 상품을 600,000원에 판매합니다.",
-      "description": "삼성TV 50TU7000 50인치TV 4K UHD 스마트TV 스탠드 벽걸이 설치 가능 리퍼 상품",
+      "title": "삼성 50인치 4K UHD 스마트TV (50TU7000) 할인",
+      "summary": "삼성 50인치 스마트TV를 정가 대비 약 49% 할인된 600,000원에 판매합니다.",
+      "description": "삼성전자의 50인치 4K UHD 스마트TV 모델(50TU7000)입니다. 스탠드형 또는 벽걸이형으로 설치가 가능합니다.",
       "brand": {
-        "name": "삼성"
+        "name": "삼성전자"
       },
       "category": "shopping",
       "dealType": "discount",
@@ -2122,7 +2256,7 @@
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-11-12T00:00:00+09:00",
+        "startAt": "2026-11-13T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
       },
@@ -2132,20 +2266,28 @@
       },
       "link": {
         "url": "https://megagtv.com/product/detail.html?product_no=36&cate_no=23&display_group=1",
-        "label": "상품 보기"
+        "label": "구매하러 가기"
       },
-      "howTo": ["메가몰 리퍼 TV 상품 페이지 접속", "상품 확인 후 구매"],
-      "tags": ["삼성TV", "50인치TV", "리퍼TV", "스마트TV", "가전할인", "쇼핑"],
+      "howTo": [
+        "상세 페이지 접속",
+        "스탠드 또는 벽걸이 설치 옵션 확인",
+        "구매하기 버튼 클릭하여 결제"
+      ],
+      "caution": [
+        "리퍼브 제품 여부를 상세 페이지에서 확인하시기 바랍니다.",
+        "설치 환경에 따라 추가 비용이 발생할 수 있습니다."
+      ],
+      "tags": ["삼성TV", "50인치TV", "4K", "UHD", "스마트TV", "가전할인", "리퍼TV"],
       "source": {
         "name": "메가몰 리퍼 TV",
         "url": "https://megagtv.com/product/detail.html?product_no=36&cate_no=23&display_group=1",
-        "collectedAt": "2026-11-12T02:06:16.229Z",
+        "collectedAt": "2026-11-13T01:39:32.122Z",
         "method": "llm",
         "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-11-12T02:06:16.229Z"
+        "updatedAt": "2026-11-13T01:39:32.122Z"
       }
     },
     {
@@ -2252,9 +2394,9 @@
     {
       "id": "dl_museum-culture-free_8dee0d8a3c76bf4f",
       "slug": "museum-culture-free-contents-m0403010000-do-543b633a",
-      "title": "2026년 지역 국립박물관 문화향연 - 나의 박물관(MYSEUM) : 타악",
-      "summary": "지역 국립박물관에서 진행하는 무료 타악 공연 행사에 참여하세요.",
-      "description": "2026년 지역 국립박물관 문화향연 <나의 박물관(MYSEUM) : 타악> 행사가 지역 국립박물관에서 진행됩니다.",
+      "title": "2026 지역 국립박물관 문화향연 <나의 박물관 : 타악>",
+      "summary": "지역 국립박물관에서 열리는 타악 공연 무료 관람",
+      "description": "2026년 지역 국립박물관 문화향연의 일환으로 진행되는 '나의 박물관(MYSEUM) : 타악' 공연입니다. 전국 지역 국립박물관에서 무료로 관람할 수 있습니다.",
       "brand": {
         "name": "국립중앙박물관"
       },
@@ -2274,20 +2416,32 @@
       },
       "link": {
         "url": "https://www.museum.go.kr/MUSEUM/contents/M0403010000.do?schM=view&type=type1&typeCode=culture&showId=3488405",
-        "label": "상세보기"
+        "label": "상세 정보 보기"
       },
-      "howTo": ["지역 국립박물관 방문"],
-      "tags": ["국립박물관", "문화향연", "공연", "타악", "무료공연"],
+      "howTo": ["공연 당일 오후 3시에 해당 지역 국립박물관을 방문하여 관람"],
+      "caution": [
+        "공연 장소는 지역 국립박물관입니다.",
+        "상세 일정 및 장소는 방문 전 박물관 홈페이지를 확인하시기 바랍니다."
+      ],
+      "tags": [
+        "국립박물관",
+        "무료공연",
+        "타악공연",
+        "문화향연",
+        "나의박물관",
+        "가족나들이",
+        "문화생활"
+      ],
       "source": {
         "name": "국립중앙박물관 공연·행사",
         "url": "https://www.museum.go.kr/MUSEUM/contents/M0403010000.do?schM=view&type=type1&typeCode=culture&showId=3488405",
-        "collectedAt": "2026-11-12T02:06:16.229Z",
+        "collectedAt": "2026-11-13T01:39:32.122Z",
         "method": "llm",
-        "confidence": 0.95
+        "confidence": 1
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-11-12T02:06:16.229Z"
+        "updatedAt": "2026-11-13T01:39:32.122Z"
       }
     },
     {
@@ -2335,47 +2489,6 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-10-30T00:33:36.566Z"
-      }
-    },
-    {
-      "id": "dl_ppomppu-coupon_d33418747421debe",
-      "slug": "ppomppu-coupon-zboard-view-php-9a19df85",
-      "title": "KB Pay 오늘의 퀴즈 (11/5)",
-      "summary": "KB Pay 오늘의 퀴즈 참여하고 정답 맞히면 포인트 증정",
-      "brand": {
-        "name": "KB Pay"
-      },
-      "category": "finance",
-      "dealType": "point",
-      "difficulty": "easy",
-      "price": {
-        "original": 0,
-        "final": 0,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": false,
-        "perPersonLimit": 1
-      },
-      "period": {
-        "startAt": "2026-11-05T00:00:00+09:00",
-        "endAt": "2026-11-05T23:59:59+09:00"
-      },
-      "link": {
-        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=120408"
-      },
-      "howTo": ["KB Pay 앱 접속", "오늘의 퀴즈 참여", "정답 '1번 첵첵 체크카드' 입력"],
-      "tags": ["KB Pay", "퀴즈", "포인트", "앱테크", "금융"],
-      "source": {
-        "name": "뽐뿌 쿠폰게시판",
-        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=120408",
-        "collectedAt": "2026-11-05T01:16:28.554Z",
-        "method": "llm",
-        "confidence": 0.8
-      },
-      "meta": {
-        "verified": false,
-        "updatedAt": "2026-11-05T01:16:28.554Z"
       }
     },
     {
@@ -2430,48 +2543,6 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-11-10T03:08:34.022Z"
-      }
-    },
-    {
-      "id": "dl_ppomppu-hot_032bf662cead33b2",
-      "slug": "ppomppu-hot-zboard-view-php-bb4b3bed",
-      "title": "[롯데온] 롤팬 NEW 오리지널 자동회전냄비 구이팬",
-      "summary": "기름 튐 없이 고기를 구워주는 자동회전 롤팬 89,280원 특가 및 무료배송",
-      "description": "고기를 구울 때 기름이 튀지 않고 자동으로 회전하며 골고루 익혀주는 롤팬 NEW 오리지널 모델입니다.",
-      "brand": {
-        "name": "롯데온"
-      },
-      "category": "shopping",
-      "dealType": "discount",
-      "difficulty": "easy",
-      "price": {
-        "final": 89280,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": false
-      },
-      "period": {
-        "startAt": "2026-11-06T00:00:00+09:00",
-        "endAt": null,
-        "deadlineUnknown": true
-      },
-      "link": {
-        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=746408",
-        "label": "구매하러 가기"
-      },
-      "howTo": ["상세 페이지 링크를 클릭하여 롯데온 접속", "할인된 가격 확인 후 구매"],
-      "tags": ["롯데온", "롤팬", "자동회전냄비", "구이팬", "주방용품", "특가", "무료배송"],
-      "source": {
-        "name": "뽐뿌 뽐뿌게시판",
-        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=746408",
-        "collectedAt": "2026-11-06T01:21:12.805Z",
-        "method": "llm",
-        "confidence": 0.9
-      },
-      "meta": {
-        "verified": false,
-        "updatedAt": "2026-11-06T01:21:12.805Z"
       }
     },
     {
@@ -2604,6 +2675,48 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-11-09T00:28:39.387Z"
+      }
+    },
+    {
+      "id": "dl_ppomppu-hot_26808520cf2e393a",
+      "slug": "ppomppu-hot-zboard-view-php-feb689d4",
+      "title": "[네이버] 노르웨이 슈페리어 생연어 딥스킨필렛 1kg",
+      "summary": "코리아 페스티벌 20% 쿠폰 적용 시 생연어 딥스킨필렛 1kg을 29,320원에 무료배송으로 구매 가능합니다.",
+      "description": "코리아 페스티벌 20% 쿠폰을 적용하여 노르웨이 슈페리어 생연어 딥스킨필렛 1kg을 할인된 가격에 구매할 수 있습니다. 구매 시 간장, 와사비, 해동지가 증정됩니다.",
+      "brand": {
+        "name": "네이버"
+      },
+      "category": "food",
+      "dealType": "coupon",
+      "difficulty": "easy",
+      "price": {
+        "final": 29320,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-11-13T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=748517",
+        "label": "구매하러 가기"
+      },
+      "howTo": ["코리아 페스티벌 20% 쿠폰을 다운로드받아 적용 후 결제합니다."],
+      "tags": ["생연어", "연어", "네이버", "쿠폰할인", "무료배송", "식품"],
+      "source": {
+        "name": "뽐뿌 뽐뿌게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=748517",
+        "collectedAt": "2026-11-13T01:39:32.122Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-11-13T01:39:32.122Z"
       }
     },
     {
@@ -3070,49 +3183,6 @@
       }
     },
     {
-      "id": "dl_ppomppu-hot_ffd08ce92cb5a506",
-      "slug": "ppomppu-hot-zboard-view-php-9e874055",
-      "title": "[네이버] 아코로얄 프리미엄 유기농 로얄젤리 에너지샷 10병",
-      "summary": "아코로얄 프리미엄 유기농 로얄젤리 에너지샷 10병을 무료배송 63,000원에 판매합니다.",
-      "description": "수험생 선물이나 컨디션 관리용 아코로얄 프리미엄 유기농 로얄젤리 에너지샷(10병) 특가 정보입니다.",
-      "brand": {
-        "name": "아코로얄"
-      },
-      "category": "shopping",
-      "dealType": "discount",
-      "difficulty": "easy",
-      "price": {
-        "final": 63000,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": false
-      },
-      "period": {
-        "startAt": "2026-11-06T00:00:00+09:00",
-        "endAt": null,
-        "deadlineUnknown": true
-      },
-      "link": {
-        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=746410",
-        "label": "뽐뿌 게시글 보기"
-      },
-      "howTo": ["게시글 본문 링크를 통해 네이버 쇼핑 판매 페이지로 이동하여 구매합니다."],
-      "caution": ["재고 소진 시 가격이 변경되거나 판매가 종료될 수 있습니다."],
-      "tags": ["네이버", "아코로얄", "로얄젤리", "에너지샷", "수험생선물", "특가", "무료배송"],
-      "source": {
-        "name": "뽐뿌 뽐뿌게시판",
-        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=746410",
-        "collectedAt": "2026-11-06T01:21:12.805Z",
-        "method": "llm",
-        "confidence": 0.75
-      },
-      "meta": {
-        "verified": false,
-        "updatedAt": "2026-11-06T01:21:12.805Z"
-      }
-    },
-    {
       "id": "dl_ruliweb-market_0f73d232893c04d3",
       "slug": "ruliweb-market-board-read-7bb3f9d0",
       "title": "도루코 페이스6 면도날 총 13입 + 쉐이빙폼 74ml",
@@ -3152,6 +3222,66 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-11-12T02:06:16.229Z"
+      }
+    },
+    {
+      "id": "dl_ruliweb-market_1660a51d2b80d910",
+      "slug": "ruliweb-market-board-read-fb78b872",
+      "title": "[유니티 에셋스토어] Screen Damage 카메라 이펙트 에셋 무료 배포",
+      "summary": "쿠폰 코드 입력 시 FPS/액션 게임용 데미지 연출 에셋 무료 증정",
+      "description": "FPS 및 액션 게임 등에서 데미지 연출을 구현하는 카메라 이펙트 에셋입니다. 게임 개발뿐만 아니라 영상 제작, 웹툰 배경 등에도 제한 없이 사용 가능하며 유니티 외 타 엔진에서도 이용할 수 있습니다.",
+      "brand": {
+        "name": "유니티 에셋스토어"
+      },
+      "category": "etc",
+      "dealType": "free",
+      "difficulty": "easy",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false,
+        "perPersonLimit": 1
+      },
+      "period": {
+        "startAt": "2026-11-13T00:00:00+09:00",
+        "endAt": "2026-11-19T23:59:59+09:00"
+      },
+      "link": {
+        "url": "https://assetstore.unity.com/packages/tools/particles-effects/screen-damage-160269",
+        "label": "에셋 받으러 가기"
+      },
+      "howTo": [
+        "제공된 에셋스토어 링크에 접속합니다.",
+        "에셋을 장바구니에 담습니다.",
+        "결제 시 쿠폰 코드 'PATHIRAL2026'를 입력합니다.",
+        "0원으로 결제가 적용된 것을 확인 후 완료합니다."
+      ],
+      "caution": [
+        "게임 개발용 에셋이나 영상 제작, 웹툰 배경 등에도 이용 가능합니다.",
+        "유니티가 아닌 타 게임 엔진에서 사용해도 무방합니다."
+      ],
+      "tags": [
+        "유니티",
+        "에셋스토어",
+        "무료배포",
+        "게임개발",
+        "카메라이펙트",
+        "ScreenDamage",
+        "쿠폰코드",
+        "개발도구"
+      ],
+      "source": {
+        "name": "루리웹 예판·핫딜",
+        "url": "https://bbs.ruliweb.com/market/board/1020/read/108985",
+        "collectedAt": "2026-11-13T01:39:32.122Z",
+        "method": "llm",
+        "confidence": 1
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-11-13T01:39:32.122Z"
       }
     },
     {
@@ -3687,53 +3817,48 @@
       }
     },
     {
-      "id": "dl_ruliweb-market_e301157575e6b1ef",
-      "slug": "ruliweb-market-board-read-920ee123",
-      "title": "[지마켓] 펩시 제로 + 사이다 제로 210ml 각 30캔 (총 60캔)",
-      "summary": "펩시 제로와 사이다 제로 210ml 총 60캔 세트를 카드 할인 시 24,000원에 구매 가능 (캔당 400원)",
-      "description": "펩시 제로 30캔과 사이다 제로 30캔으로 구성된 세트 상품입니다. 카드 할인을 적용하면 24,000원에 구매할 수 있으며, 히든 쿠폰이 있을 경우 더 저렴한 가격에 구매가 가능합니다.",
+      "id": "dl_ruliweb-market_d6a7235a1d73de70",
+      "slug": "ruliweb-market-board-read-f5c6f9e3",
+      "title": "[롯데온] 찍먹 나쵸 치폴레마요 + 포카칩 오리지널 총 20봉",
+      "summary": "찍먹 나쵸 치폴레마요와 포카칩 오리지널 20봉 세트를 20,250원에 무료배송으로 판매합니다.",
+      "description": "롯데온에서 찍먹 나쵸 치폴레마요와 포카칩 오리지널 총 20봉을 20,250원에 무료배송으로 판매 중입니다. 토스 쇼핑탭에서 2.5% 추가 할인 쿠폰을 다운받아 적용하면 더욱 저렴하게 구매할 수 있습니다.",
       "brand": {
-        "name": "지마켓"
+        "name": "롯데온"
       },
       "category": "food",
       "dealType": "discount",
       "difficulty": "easy",
       "price": {
-        "final": 24000,
+        "final": 20250,
         "currency": "KRW"
       },
       "limit": {
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-11-06T00:00:00+09:00",
+        "startAt": "2026-11-13T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
       },
       "link": {
-        "url": "https://bbs.ruliweb.com/market/board/1020/read/108754",
-        "label": "구매하러 가기"
+        "url": "https://bbs.ruliweb.com/market/board/1020/read/108995",
+        "label": "상품 보러가기"
       },
       "howTo": [
-        "지마켓 판매 페이지에 접속합니다.",
-        "카드 할인 혜택을 적용합니다.",
-        "보유 중인 히든 쿠폰이 있다면 추가로 적용하여 결제합니다."
+        "롯데온 판매 페이지에 접속합니다.",
+        "토스 쇼핑탭에서 2.5% 추가 할인 쿠폰을 적용한 뒤 구매합니다."
       ],
-      "caution": [
-        "특정 카드사 할인 조건이 적용될 수 있습니다.",
-        "재고 소진 시 가격이 변동되거나 판매가 종료될 수 있습니다."
-      ],
-      "tags": ["지마켓", "펩시제로", "사이다제로", "탄산음료", "핫딜", "제로슈거", "음료할인"],
+      "tags": ["롯데온", "포카칩", "나쵸", "과자", "무료배송", "토스"],
       "source": {
         "name": "루리웹 예판·핫딜",
-        "url": "https://bbs.ruliweb.com/market/board/1020/read/108754",
-        "collectedAt": "2026-11-06T01:21:12.805Z",
+        "url": "https://bbs.ruliweb.com/market/board/1020/read/108995",
+        "collectedAt": "2026-11-13T01:39:32.122Z",
         "method": "llm",
         "confidence": 0.9
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-11-06T01:21:12.805Z"
+        "updatedAt": "2026-11-13T01:39:32.122Z"
       }
     },
     {
@@ -3782,63 +3907,6 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-11-12T02:06:16.229Z"
-      }
-    },
-    {
-      "id": "dl_ruliweb-market_fc274c206d9f9074",
-      "slug": "ruliweb-market-board-read-10c121d0",
-      "title": "[유니티 에셋스토어] vFavorites 2 에디터 확장 에셋 무료 배포",
-      "summary": "유니티 작업 효율을 높여주는 즐겨찾기 에셋 vFavorites 2 무료 배포 (코드 입력 시 0원)",
-      "description": "Unity 에디터의 작업 효율을 높여주는 즐겨찾기 확장 에셋 vFavorites 2를 무료로 받을 수 있습니다. 장바구니에 담은 후 할인 코드를 적용하여 0원에 구매 가능합니다.",
-      "brand": {
-        "name": "Unity Asset Store"
-      },
-      "category": "shopping",
-      "dealType": "free",
-      "difficulty": "easy",
-      "price": {
-        "final": 0,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": false,
-        "perPersonLimit": 1
-      },
-      "period": {
-        "startAt": "2026-10-30T00:00:00+09:00",
-        "endAt": "2026-11-05T23:59:59+09:00"
-      },
-      "link": {
-        "url": "https://assetstore.unity.com/packages/tools/utilities/vfavorites-2-263643",
-        "label": "에셋스토어에서 받기"
-      },
-      "howTo": [
-        "유니티 에셋스토어 링크에 접속합니다.",
-        "vFavorites 2 에셋을 장바구니에 담습니다.",
-        "결제 단계에서 할인 코드 'KUBACHOLAB'을 입력합니다.",
-        "0원으로 결제를 완료합니다."
-      ],
-      "caution": ["할인 코드는 11월 5일까지만 유효합니다."],
-      "tags": [
-        "유니티",
-        "에셋스토어",
-        "vFavorites",
-        "무료배포",
-        "개발도구",
-        "Unity",
-        "에셋",
-        "무료"
-      ],
-      "source": {
-        "name": "루리웹 예판·핫딜",
-        "url": "https://bbs.ruliweb.com/market/board/1020/read/108492",
-        "collectedAt": "2026-10-30T00:33:36.566Z",
-        "method": "llm",
-        "confidence": 1
-      },
-      "meta": {
-        "verified": false,
-        "updatedAt": "2026-10-30T00:33:36.566Z"
       }
     },
     {
@@ -3928,53 +3996,6 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-09-07T08:56:22.401Z"
-      }
-    },
-    {
-      "id": "dl_steam-specials_3a50ff479840dc97",
-      "slug": "steam-specials-app-rust-ad314bf2",
-      "title": "Rust 50% 할인",
-      "summary": "Steam에서 인기 게임 Rust를 50% 할인된 21,000원에 구매하세요.",
-      "description": "정상 가격 ₩ 42,000에서 50% 할인된 최종 할인가 ₩ 21,000입니다.",
-      "brand": {
-        "name": "Steam"
-      },
-      "category": "culture",
-      "dealType": "discount",
-      "difficulty": "easy",
-      "price": {
-        "original": 42000,
-        "final": 21000,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": false
-      },
-      "period": {
-        "startAt": "2026-11-06T00:00:00+09:00",
-        "endAt": null,
-        "deadlineUnknown": true
-      },
-      "benefit": {
-        "amount": 21000,
-        "isMax": false
-      },
-      "link": {
-        "url": "https://store.steampowered.com/app/252490/Rust/?snr=1_7_7_2300_150_4",
-        "label": "구매하기"
-      },
-      "howTo": ["Steam 상점 페이지에서 Rust 구매"],
-      "tags": ["Steam", "게임", "할인", "Rust", "PC게임"],
-      "source": {
-        "name": "Steam 특별 할인",
-        "url": "https://store.steampowered.com/app/252490/Rust/?snr=1_7_7_2300_150_4",
-        "collectedAt": "2026-11-06T01:21:12.805Z",
-        "method": "llm",
-        "confidence": 0.9
-      },
-      "meta": {
-        "verified": false,
-        "updatedAt": "2026-11-06T01:21:12.805Z"
       }
     },
     {
@@ -4169,6 +4190,58 @@
       }
     },
     {
+      "id": "dl_steam-specials_bf41e8e3563cf07e",
+      "slug": "steam-specials-app-hearts-of-iron-iv-62d1c76e",
+      "title": "Hearts of Iron IV 70% 할인",
+      "summary": "전략 시뮬레이션 게임 Hearts of Iron IV를 70% 할인된 16,500원에 판매합니다.",
+      "description": "Paradox Interactive의 대표적인 2차 세계대전 전략 시뮬레이션 게임인 Hearts of Iron IV를 스팀 특별 할인가로 만나보세요.",
+      "brand": {
+        "name": "Steam"
+      },
+      "category": "culture",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "original": 55000,
+        "final": 16500,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-11-13T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "benefit": {
+        "amount": 38500,
+        "isMax": false
+      },
+      "link": {
+        "url": "https://store.steampowered.com/app/394360/Hearts_of_Iron_IV/?snr=1_7_7_2300_150_2",
+        "label": "스팀에서 보기"
+      },
+      "howTo": [
+        "스팀 상점 페이지에 접속합니다.",
+        "로그인 후 장바구니에 상품을 담습니다.",
+        "결제를 완료하여 라이브러리에 추가합니다."
+      ],
+      "caution": ["할인 기간은 스팀의 정책에 따라 예고 없이 종료될 수 있습니다."],
+      "tags": ["스팀", "게임", "할인", "전략시뮬레이션", "PC게임", "HOI4"],
+      "source": {
+        "name": "Steam 특별 할인",
+        "url": "https://store.steampowered.com/app/394360/Hearts_of_Iron_IV/?snr=1_7_7_2300_150_2",
+        "collectedAt": "2026-11-13T01:39:32.122Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-11-13T01:39:32.122Z"
+      }
+    },
+    {
       "id": "dl_steam-specials_c743ad27ac2e0497",
       "slug": "steam-specials-app-american-truck-simulator-f7a32498",
       "title": "American Truck Simulator 75% 할인",
@@ -4318,8 +4391,8 @@
       "id": "dl_steam-specials_d99c1d543f44bda6",
       "slug": "steam-specials-app-euro-truck-simulator-2-0a37d58c",
       "title": "Euro Truck Simulator 2 75% 할인",
-      "summary": "Euro Truck Simulator 2 게임을 75% 할인된 가격에 구매할 수 있습니다.",
-      "description": "정상 가격 ₩ 27,000에서 75% 할인된 최종 할인가 ₩ 6,750입니다.",
+      "summary": "Steam에서 Euro Truck Simulator 2를 정가 27,000원에서 75% 할인된 6,750원에 판매합니다.",
+      "description": "Euro Truck Simulator 2 게임을 75% 할인된 6,750원에 구매할 수 있는 스팀 할인 혜택입니다.",
       "brand": {
         "name": "Steam"
       },
@@ -4335,7 +4408,7 @@
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-11-12T00:00:00+09:00",
+        "startAt": "2026-11-13T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
       },
@@ -4345,20 +4418,20 @@
       },
       "link": {
         "url": "https://store.steampowered.com/app/227300/Euro_Truck_Simulator_2/?snr=1_7_7_2300_150_1",
-        "label": "스팀에서 확인하기"
+        "label": "Steam 구매하기"
       },
-      "howTo": ["스팀 페이지 접속", "할인가격으로 구매"],
-      "tags": ["스팀", "게임할인", "ETS2", "유로트럭2"],
+      "howTo": ["구매 페이지 접속 후 장바구니에 담아 결제합니다."],
+      "tags": ["스팀", "Steam", "유로트럭2", "게임", "할인"],
       "source": {
         "name": "Steam 특별 할인",
         "url": "https://store.steampowered.com/app/227300/Euro_Truck_Simulator_2/?snr=1_7_7_2300_150_1",
-        "collectedAt": "2026-11-12T02:06:16.229Z",
+        "collectedAt": "2026-11-13T01:39:32.122Z",
         "method": "llm",
         "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-11-12T02:06:16.229Z"
+        "updatedAt": "2026-11-13T01:39:32.122Z"
       }
     },
     {
