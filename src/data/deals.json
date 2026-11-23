@@ -1,6 +1,6 @@
 {
   "schemaVersion": 4,
-  "generatedAt": "2026-11-22T00:54:56.500Z",
+  "generatedAt": "2026-11-23T01:23:23.847Z",
   "deals": [
     {
       "id": "dl_ajd-card-event_8f352758faf3037b",
@@ -328,8 +328,8 @@
       "id": "dl_clien-jirum_a565088dd81cc04b",
       "slug": "clien-jirum-board-jirum-5f81cd55",
       "title": "[WearOS] HW Terramaster Mk III Hybrid 워치 페이스 일시 무료",
-      "summary": "유료 WearOS 워치 페이스 'HW Terramaster Mk III Hybrid'가 11월 24일 오전 9시까지 한시적 무료 배포됩니다.",
-      "description": "WearOS용 유료 워치 페이스 앱 HW Terramaster Mk III Hybrid를 구글 플레이 스토어에서 무료로 다운로드할 수 있는 이벤트입니다.",
+      "summary": "Wear OS 유료 워치 페이스 HW Terramaster Mk III Hybrid가 11월 24일 오전 9시까지 무료 배포됩니다.",
+      "description": "구글 플레이 스토어에서 유료로 판매 중인 Wear OS 전용 워치 페이스 HW Terramaster Mk III Hybrid를 한시적으로 무료로 다운로드할 수 있습니다.",
       "brand": {
         "name": "Google Play"
       },
@@ -349,23 +349,20 @@
       },
       "link": {
         "url": "https://play.google.com/store/apps/details?id=com.hanswatch.tmstr3",
-        "label": "Google Play에서 보기"
+        "label": "구글 플레이 스토어 이동"
       },
-      "howTo": [
-        "상단 링크를 통해 구글 플레이 스토어로 이동합니다.",
-        "무료로 다운로드 및 설치를 진행합니다."
-      ],
-      "tags": ["WearOS", "워치페이스", "구글플레이", "스마트워치", "무료앱", "안드로이드"],
+      "howTo": ["구글 플레이 스토어 링크에 접속합니다.", "무료로 다운로드 버튼을 눌러 설치합니다."],
+      "tags": ["WearOS", "워치페이스", "스마트워치", "일시무료", "구글플레이", "무료앱"],
       "source": {
         "name": "클리앙 알뜰구매",
         "url": "https://www.clien.net/service/board/jirum/19296755",
-        "collectedAt": "2026-11-22T00:54:56.500Z",
+        "collectedAt": "2026-11-23T01:23:23.847Z",
         "method": "llm",
         "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-11-22T00:54:56.500Z"
+        "updatedAt": "2026-11-23T01:23:23.847Z"
       }
     },
     {
@@ -408,6 +405,51 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-11-18T02:43:16.839Z"
+      }
+    },
+    {
+      "id": "dl_clien-jirum_bf0b690a590368a9",
+      "slug": "clien-jirum-board-jirum-48689999",
+      "title": "[WearOS] Zu0̸x5 Fit Digital Watch Face 일시 무료",
+      "summary": "WearOS용 유료 워치 페이스 Zu0̸x5 Fit Digital 한시적 무료 배포",
+      "description": "구글 플레이 스토어에서 WearOS 유료 워치 페이스 Zu0̸x5 Fit Digital Watch Face를 무료로 다운로드할 수 있는 이벤트입니다.",
+      "brand": {
+        "name": "Google Play"
+      },
+      "category": "app",
+      "dealType": "free",
+      "difficulty": "easy",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-11-20T00:00:00+09:00",
+        "endAt": "2026-11-21T09:00:00+09:00"
+      },
+      "link": {
+        "url": "https://play.google.com/store/apps/details?id=com.zaheer.zuox5digitalfitwatchface",
+        "label": "플레이스토어 이동"
+      },
+      "howTo": [
+        "구글 플레이 스토어 링크에 접속합니다.",
+        "무료로 전환된 워치 페이스를 다운로드합니다."
+      ],
+      "caution": ["현재 품절(이벤트 종료) 처리된 상태입니다."],
+      "tags": ["WearOS", "워치페이스", "구글플레이", "일시무료", "앱테크"],
+      "source": {
+        "name": "클리앙 알뜰구매",
+        "url": "https://www.clien.net/service/board/jirum/19296066",
+        "collectedAt": "2026-11-23T01:23:23.847Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-11-23T01:23:23.847Z"
       }
     },
     {
@@ -623,51 +665,6 @@
       }
     },
     {
-      "id": "dl_culture-portal-free_edf97ebc8a0c35c7",
-      "slug": "culture-portal-free-onecltinfo-onecltinfoview-do-2875af89",
-      "title": "해동문화예술촌 기획전시 《우리는 연결될 수밖에 없다》 무료 관람",
-      "summary": "담양 해동문화예술촌에서 진행되는 기획전시 《우리는 연결될 수밖에 없다》를 무료로 자유 관람할 수 있습니다.",
-      "description": "담양군문화재단이 주관하는 해동문화예술촌 기획전시 《우리는 연결될 수밖에 없다》 무료 관람 안내입니다.",
-      "brand": {
-        "name": "해동문화예술촌"
-      },
-      "category": "culture",
-      "dealType": "free",
-      "difficulty": "easy",
-      "price": {
-        "final": 0,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": false
-      },
-      "period": {
-        "startAt": "2026-07-25T00:00:00+09:00",
-        "endAt": "2026-11-15T23:59:59+09:00"
-      },
-      "link": {
-        "url": "https://www.culture.go.kr/portal/cltInfo/oneCltInfo/oneCltInfoView.do?pblprfrSn=398683&menuNo=200010&pageIndex=1",
-        "label": "상세보기"
-      },
-      "howTo": ["전시장(해동문화예술촌) 방문 후 자유 관람"],
-      "caution": [
-        "운영시간: 화~일 10:00~18:00 (월요일 휴관)",
-        "일정은 운영사 사정에 따라 변경될 수 있으므로 사전 확인 권장"
-      ],
-      "tags": ["담양", "해동문화예술촌", "무료전시", "전시", "기획전시", "문화생활"],
-      "source": {
-        "name": "문화포털 문화정보",
-        "url": "https://www.culture.go.kr/portal/cltInfo/oneCltInfo/oneCltInfoView.do?pblprfrSn=398683&menuNo=200010&pageIndex=1",
-        "collectedAt": "2026-11-15T00:42:04.113Z",
-        "method": "llm",
-        "confidence": 0.95
-      },
-      "meta": {
-        "verified": false,
-        "updatedAt": "2026-11-15T00:42:04.113Z"
-      }
-    },
-    {
       "id": "dl_dealbada-free_4636130413105977",
       "slug": "dealbada-free-bbs-board-php-ee31ba57",
       "title": "[필립스] 커피 무료증정 카페 이벤트",
@@ -744,6 +741,52 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-11-18T02:43:16.839Z"
+      }
+    },
+    {
+      "id": "dl_dealbada-hotdeal_031e55fc1ca37582",
+      "slug": "dealbada-hotdeal-bbs-board-php-190ab7ca",
+      "title": "[퀸잇] 지센 단독 최저가 세일 및 사은품 증정",
+      "summary": "지센 의류 최대 80% 할인(29,000원부터) 및 캐시미어 니트 구매 시 사은품 증정",
+      "description": "퀸잇에서 지센 의류 단독 최저가 할인을 진행합니다. 캐시미어 니트 구매 시 사은품으로 캐시미어 티셔츠를 10명에게 증정합니다.",
+      "brand": {
+        "name": "지센"
+      },
+      "category": "shopping",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "final": 29000,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": true
+      },
+      "period": {
+        "startAt": "2026-11-23T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://www.dealbada.com/bbs/board.php?bo_table=deal_domestic&wr_id=572912&page=1",
+        "label": "핫딜 보기"
+      },
+      "howTo": [
+        "퀸잇 앱 또는 웹페이지에 접속합니다.",
+        "지센 특가 기획전 상품을 확인 후 구매합니다."
+      ],
+      "caution": ["캐시미어 티셔츠 사은품은 캐시미어 니트 구매자 중 10명 대상입니다."],
+      "tags": ["퀸잇", "지센", "의류", "니트", "패션", "할인", "사은품"],
+      "source": {
+        "name": "딜바다 국내핫딜",
+        "url": "https://www.dealbada.com/bbs/board.php?bo_table=deal_domestic&wr_id=572912&page=1",
+        "collectedAt": "2026-11-23T01:23:23.847Z",
+        "method": "llm",
+        "confidence": 0.85
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-11-23T01:23:23.847Z"
       }
     },
     {
@@ -1074,55 +1117,6 @@
       }
     },
     {
-      "id": "dl_ggcf-culture_5abc12d1eff9c361",
-      "slug": "ggcf-culture-view-6ae94591d179b47f662173bf-744d2066",
-      "title": "푸른지대창작샘터 6기 결과보고전 〈서로의 지형을 따라〉",
-      "summary": "수원 푸른지대창작샘터에서 열리는 6기 입주작가 13인의 무료 결과보고 전시",
-      "description": "강지윤, 김민정, 룹앤테일 등 푸른지대창작샘터 6기 작가들이 참여하는 기획 전시입니다.",
-      "brand": {
-        "name": "푸른지대창작샘터"
-      },
-      "category": "culture",
-      "dealType": "free",
-      "difficulty": "easy",
-      "price": {
-        "final": 0,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": false
-      },
-      "period": {
-        "startAt": "2026-10-23T00:00:00+09:00",
-        "endAt": "2026-11-15T23:59:59+09:00"
-      },
-      "link": {
-        "url": "https://www.suwon.go.kr/culture/ingCultureView.do?ctrSeqNo=2171&listType=ing",
-        "label": "상세보기"
-      },
-      "howTo": ["전시 기간 내 푸른지대창작샘터 방문"],
-      "tags": [
-        "전시",
-        "무료전시",
-        "푸른지대창작샘터",
-        "수원문화재단",
-        "기획전",
-        "문화생활",
-        "수원시"
-      ],
-      "source": {
-        "name": "경기문화재단 문화행사",
-        "url": "https://ggc.ggcf.kr/cultureEvents/view/6ae94591d179b47f662173bf",
-        "collectedAt": "2026-11-06T01:21:12.805Z",
-        "method": "llm",
-        "confidence": 1
-      },
-      "meta": {
-        "verified": false,
-        "updatedAt": "2026-11-06T01:21:12.805Z"
-      }
-    },
-    {
       "id": "dl_ggcf-culture_6b0020903987183a",
       "slug": "ggcf-culture-view-6aebd395d179b47f662173d0-703e2c9b",
       "title": "2026 가을 북큐레이션 <그림책은 튼튼해!>",
@@ -1167,10 +1161,11 @@
     {
       "id": "dl_ggcf-culture_87eeaa37282ca943",
       "slug": "ggcf-culture-view-6afffe54a2fdae731859b465-870264ca",
-      "title": "용인어린이상상의숲 크리스마스 특별행사 <상상 아트마켓> 무료 관람",
-      "summary": "용인어린이상상의숲 예술놀이터에서 열리는 크리스마스 특별행사 '상상 아트마켓' 무료 참여",
+      "title": "용인어린이상상의숲 크리스마스 특별행사 상상 아트마켓",
+      "summary": "용인어린이상상의숲 예술놀이터에서 크리스마스 특별행사 <상상 아트마켓>이 무료로 개최됩니다.",
+      "description": "용인어린이상상의숲 예술놀이터에서 크리스마스 특별행사 <상상 아트마켓>이 진행됩니다. 관람 및 참여 가격은 무료이며, 운영시간은 10:00부터 17:00까지입니다. (12월 14일 휴관)",
       "brand": {
-        "name": "용인문화재단"
+        "name": "용인어린이상상의숲"
       },
       "category": "culture",
       "dealType": "free",
@@ -1188,28 +1183,28 @@
       },
       "link": {
         "url": "https://www.yicf.or.kr/main/show/view.do?show_type=all&month=12&year=2026&viewType=img&SHOW_IDX=17007",
-        "label": "자세히 보기"
+        "label": "상세보기"
       },
-      "howTo": ["행사 기간 내 용인어린이상상의숲 예술놀이터 방문 (운영시간 10:00 ~ 17:00)"],
-      "caution": ["2026년 12월 14일은 휴관일입니다.", "문의: 031-323-6500"],
+      "howTo": ["운영시간(10:00 ~ 17:00)에 맞춰 용인어린이상상의숲 예술놀이터 방문"],
+      "caution": ["12월 14일은 휴관일입니다."],
       "tags": [
         "용인어린이상상의숲",
+        "크리스마스",
         "상상아트마켓",
-        "크리스마스행사",
         "무료행사",
-        "어린이체험",
-        "문화행사"
+        "문화행사",
+        "어린이"
       ],
       "source": {
         "name": "경기문화재단 문화행사",
         "url": "https://ggc.ggcf.kr/cultureEvents/view/6afffe54a2fdae731859b465",
-        "collectedAt": "2026-11-22T00:54:56.500Z",
+        "collectedAt": "2026-11-23T01:23:23.847Z",
         "method": "llm",
         "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-11-22T00:54:56.500Z"
+        "updatedAt": "2026-11-23T01:23:23.847Z"
       }
     },
     {
@@ -1598,9 +1593,9 @@
     {
       "id": "dl_hana-event_ed10861063031b6e",
       "slug": "hana-event-event01-1529259-152465-jsp-3b09dc5d",
-      "title": "하나은행 놀이터 11월 출석체크 이벤트 (더벤티 미니 붕어빵 추첨)",
-      "summary": "하나원큐 앱에서 출석체크 도장을 찍으면 500명을 추첨해 더벤티 미니 붕어빵을 증정합니다.",
-      "description": "하나원큐 놀이터에서 매일 별도장을 찍어 출석체크에 참여하면 추첨을 통해 500명에게 더벤티 미니 붕어빵 모바일 쿠폰을 제공합니다. 11일과 21일에는 추가 별도장이 지급됩니다.",
+      "title": "하나은행 놀이터 11월 출석체크 이벤트",
+      "summary": "하나원큐 놀이터에서 출석체크 도장을 찍으면 추첨을 통해 500명에게 더벤티 미니 붕어빵 증정",
+      "description": "하나원큐 앱 놀이터 메뉴에서 출석체크 도장을 찍으면 500명을 추첨하여 더벤티 미니 붕어빵 모바일 쿠폰을 제공합니다. 11일과 21일에는 추가 별도장이 제공됩니다.",
       "brand": {
         "name": "하나은행"
       },
@@ -1613,7 +1608,8 @@
       },
       "limit": {
         "firstComeFirstServed": false,
-        "quantity": 500
+        "quantity": 500,
+        "perPersonLimit": 1
       },
       "period": {
         "startAt": "2026-11-02T00:00:00+09:00",
@@ -1623,25 +1619,23 @@
         "url": "https://m.kebhana.com/cont/event/new/event01/1529259_152465.jsp",
         "label": "하나원큐에서 별도장 찍기"
       },
-      "howTo": [
-        "하나원큐 앱 실행 후 놀이터 메뉴 진입",
-        "'오늘의 도장찍기' 버튼을 3초간 눌러 별도장 찍기"
-      ],
+      "howTo": ["하나원큐 앱 실행 후 놀이터 접속", "오늘의 도장찍기 버튼을 3초간 꾹 누르기"],
       "caution": [
-        "만 14세 이상 하나원큐 회원 및 놀이터 구독자 대상입니다.",
-        "당첨 경품은 2026년 12월 15일까지 하나원큐 쿠폰함으로 지급됩니다."
+        "만 14세 이상 하나원큐 손님 및 놀이터 구독자 대상",
+        "2026년 12월 15일까지 당첨자 개별 안내 및 하나원큐 쿠폰함 지급",
+        "이벤트 사정에 따라 변경되거나 조기 종료될 수 있음"
       ],
-      "tags": ["하나은행", "하나원큐", "출석체크", "더벤티", "붕어빵", "이벤트", "앱테크"],
+      "tags": ["하나은행", "하나원큐", "출석체크", "더벤티", "붕어빵", "놀이터", "이벤트", "추첨"],
       "source": {
         "name": "하나은행 이벤트",
         "url": "https://m.kebhana.com/cont/event/new/event01/1529259_152465.jsp",
-        "collectedAt": "2026-11-22T00:54:56.500Z",
+        "collectedAt": "2026-11-23T01:23:23.847Z",
         "method": "llm",
         "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-11-22T00:54:56.500Z"
+        "updatedAt": "2026-11-23T01:23:23.847Z"
       }
     },
     {
@@ -1703,11 +1697,11 @@
     {
       "id": "dl_kakamuka-nearexpiry_69e185ee0a6f47d5",
       "slug": "kakamuka-nearexpiry-category-display-35b5eb09",
-      "title": "트위젤 미니츄 애플망고맛 28g x 20개 (1통)",
-      "summary": "트위젤 미니츄 애플망고맛 28g 20개 1통을 24,000원에서 75% 할인된 6,000원에 판매합니다.",
-      "description": "까까무카에서 트위젤 미니츄 애플망고맛 28g x 20개 (1통, 소비기한 2026년 12월 5일) 상품을 6,000원에 할인 판매합니다.",
+      "title": "트위젤 미니츄 애플망고맛 28g x 20개 (1통) 소비기한 임박 세일",
+      "summary": "트위젤 미니츄 애플망고맛 20개 1통을 소비기한(2026년 12월 5일) 임박 할인으로 6,000원에 판매합니다.",
+      "description": "소비기한이 2026년 12월 5일까지인 트위젤 미니츄 애플망고맛 28g x 20개 1통 제품을 정가 24,000원에서 할인된 6,000원에 구매할 수 있습니다.",
       "brand": {
-        "name": "트위젤"
+        "name": "까까무카"
       },
       "category": "food",
       "dealType": "discount",
@@ -1721,7 +1715,7 @@
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-11-22T00:00:00+09:00",
+        "startAt": "2026-11-23T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
       },
@@ -1733,22 +1727,19 @@
         "url": "https://kakamuka.com/product/%EC%84%B8%EC%9D%BC-%ED%8A%B8%EC%9C%84%EC%A0%A4-%EB%AF%B8%EB%8B%88%EC%B8%84-%EC%95%A0%ED%94%8C%EB%A7%9D%EA%B3%A0%EB%A7%9B-28g-x-20%EA%B0%9C-1%ED%86%B5-%EC%86%8C%EB%B9%84%EA%B8%B0%ED%95%9C-261205-%EC%86%8C%ED%94%84%ED%8A%B8%EC%BA%94%EB%94%94/15694/category/28/display/1/",
         "label": "구매하러 가기"
       },
-      "howTo": ["상품 페이지에 접속하여 구매를 진행합니다."],
-      "caution": [
-        "소비기한은 2026년 12월 5일까지입니다.",
-        "재고 소진 시 별도 안내 없이 종료될 수 있습니다."
-      ],
-      "tags": ["까까무카", "트위젤", "미니츄", "애플망고", "캔디", "소비기한임박", "할인"],
+      "howTo": ["링크를 통해 상품 페이지에 접속하여 주문 및 결제합니다."],
+      "caution": ["소비기한이 2026년 12월 5일까지인 상품입니다."],
+      "tags": ["트위젤", "미니츄", "애플망고", "소프트캔디", "소비기한임박", "할인"],
       "source": {
         "name": "까까무카 소비기한 임박",
         "url": "https://kakamuka.com/product/%EC%84%B8%EC%9D%BC-%ED%8A%B8%EC%9C%84%EC%A0%A4-%EB%AF%B8%EB%8B%88%EC%B8%84-%EC%95%A0%ED%94%8C%EB%A7%9D%EA%B3%A0%EB%A7%9B-28g-x-20%EA%B0%9C-1%ED%86%B5-%EC%86%8C%EB%B9%84%EA%B8%B0%ED%95%9C-261205-%EC%86%8C%ED%94%84%ED%8A%B8%EC%BA%94%EB%94%94/15694/category/28/display/1/",
-        "collectedAt": "2026-11-22T00:54:56.500Z",
+        "collectedAt": "2026-11-23T01:23:23.847Z",
         "method": "llm",
         "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-11-22T00:54:56.500Z"
+        "updatedAt": "2026-11-23T01:23:23.847Z"
       }
     },
     {
@@ -2033,11 +2024,11 @@
     {
       "id": "dl_megagtv-refurb_d170a039d426fa62",
       "slug": "megagtv-refurb-product-detail-html-c7ae3f37",
-      "title": "삼성 50인치 4K UHD 스마트TV (50TU7000)",
-      "summary": "소비자가 1,180,000원 상당의 삼성 50인치 4K UHD 스마트TV를 600,000원에 판매",
+      "title": "삼성TV 50TU7000 50인치 4K UHD 스마트TV",
+      "summary": "소비자가 118만원 상당의 삼성 50인치 4K 스마트TV를 60만원에 판매합니다.",
       "description": "삼성 50인치 4K UHD 스마트TV(50TU7000) 스탠드/벽걸이 설치 가능 상품 할인 판매",
       "brand": {
-        "name": "삼성"
+        "name": "삼성전자"
       },
       "category": "shopping",
       "dealType": "discount",
@@ -2051,7 +2042,7 @@
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-11-22T00:00:00+09:00",
+        "startAt": "2026-11-23T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
       },
@@ -2063,18 +2054,18 @@
         "url": "https://megagtv.com/product/detail.html?product_no=36&cate_no=23&display_group=1",
         "label": "구매하러 가기"
       },
-      "howTo": ["링크에 접속하여 해당 상품 주문 및 결제를 진행합니다."],
-      "tags": ["삼성TV", "스마트TV", "50인치TV", "4KTV", "TV할인", "리퍼TV"],
+      "howTo": ["판매 페이지에 접속하여 원하는 옵션 선택 후 상품을 구매합니다."],
+      "tags": ["삼성TV", "50인치TV", "4KTV", "스마트TV", "메가몰", "TV할인"],
       "source": {
         "name": "메가몰 리퍼 TV",
         "url": "https://megagtv.com/product/detail.html?product_no=36&cate_no=23&display_group=1",
-        "collectedAt": "2026-11-22T00:54:56.500Z",
+        "collectedAt": "2026-11-23T01:23:23.847Z",
         "method": "llm",
         "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-11-22T00:54:56.500Z"
+        "updatedAt": "2026-11-23T01:23:23.847Z"
       }
     },
     {
@@ -2254,52 +2245,6 @@
       }
     },
     {
-      "id": "dl_ppomppu-coupon_bedddcb00e134594",
-      "slug": "ppomppu-coupon-zboard-view-php-9acf5095",
-      "title": "카카오뱅크 AI 키워드 퀴즈 정답",
-      "summary": "11월 15일 카카오뱅크 AI 키워드 퀴즈 정답은 '행진곡'입니다. (오전 11시 59분까지)",
-      "description": "카카오뱅크 앱에서 진행되는 AI 키워드 퀴즈입니다. 정답 '행진곡'을 입력하고 혜택을 받으세요.",
-      "brand": {
-        "name": "카카오뱅크"
-      },
-      "category": "app",
-      "dealType": "point",
-      "difficulty": "easy",
-      "price": {
-        "final": 0,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": false,
-        "perPersonLimit": 1
-      },
-      "period": {
-        "startAt": "2026-11-15T00:00:00+09:00",
-        "endAt": "2026-11-15T11:59:00+09:00"
-      },
-      "link": {
-        "url": "https://kakaobank.onelink.me/0qMi/jcwk0sbz",
-        "label": "퀴즈 참여하기"
-      },
-      "howTo": [
-        "링크를 통해 카카오뱅크 AI 키워드 퀴즈 페이지 접속",
-        "정답으로 '행진곡' 입력 후 제출"
-      ],
-      "caution": ["2026년 11월 15일 오전 11시 59분까지만 참여 가능합니다."],
-      "tags": ["카카오뱅크", "AI퀴즈", "키워드퀴즈", "퀴즈정답", "행진곡", "앱테크"],
-      "source": {
-        "name": "뽐뿌 쿠폰게시판",
-        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=coupon&no=120775",
-        "collectedAt": "2026-11-15T00:42:04.113Z",
-        "method": "llm",
-        "confidence": 0.95
-      },
-      "meta": {
-        "verified": false,
-        "updatedAt": "2026-11-15T00:42:04.113Z"
-      }
-    },
-    {
       "id": "dl_ppomppu-hot_135ba90f155f8aad",
       "slug": "ppomppu-hot-zboard-view-php-82fccfc1",
       "title": "[G마켓] 현대큐밍 딜라이트2 정수기 렌탈 (50만원 혜택)",
@@ -2353,6 +2298,52 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-11-19T02:14:35.690Z"
+      }
+    },
+    {
+      "id": "dl_ppomppu-hot_1f7e19bd8230ed99",
+      "slug": "ppomppu-hot-zboard-view-php-5c016492",
+      "title": "[무신사] 나이키 줌 보메로 5 M",
+      "summary": "20% 쿠폰 + 블프 15% 쿠폰 + 토스 1만원 할인 적용 시 111,790원 (무료배송)",
+      "description": "무신사에서 나이키 줌 보메로 5 M (그레이 포그:메탈릭 실버:코코넛 밀크:크롬) 제품 할인 진행 중입니다. 20% 쿠폰, 장바구니 블프 15% 쿠폰, 토스 1만원 할인을 중복 적용 시 111,790원에 구매할 수 있습니다.",
+      "brand": {
+        "name": "무신사"
+      },
+      "category": "shopping",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "final": 111790,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-11-23T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://www.musinsa.com/content/1572126536319487319",
+        "label": "쿠폰 받으러 가기"
+      },
+      "howTo": [
+        "이벤트 페이지 링크에 접속하여 20% 쿠폰 및 장바구니 블프 15% 쿠폰을 발급받습니다.",
+        "상품 주문 시 발급받은 쿠폰을 적용합니다.",
+        "결제 수단으로 토스 결제를 선택하여 1만원 추가 할인을 받습니다."
+      ],
+      "tags": ["무신사", "나이키", "줌보메로5", "운동화", "할인", "쿠폰", "토스"],
+      "source": {
+        "name": "뽐뿌 뽐뿌게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=750932",
+        "collectedAt": "2026-11-23T01:23:23.847Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-11-23T01:23:23.847Z"
       }
     },
     {
@@ -2632,6 +2623,54 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-11-04T01:01:56.581Z"
+      }
+    },
+    {
+      "id": "dl_ppomppu-hot_94e2150dcd2138ea",
+      "slug": "ppomppu-hot-zboard-view-php-fb649e0f",
+      "title": "삼성 비스포크 AI 김치냉장고 4도어 490L 코타 화이트",
+      "summary": "쿠폰 및 카드 할인 적용 시 1,857,600원, 포토리뷰·멤버십 적립 시 체감 171만원대",
+      "description": "삼성 비스포크 AI 김치냉장고 4도어 490L 1등급 코타 화이트 제품 할인 정보입니다. 10% 할인+중복 10%+카드할인 8% 적용 시 구매가 1,857,600원이며, 포토리뷰 작성, 라이브방송 적립, 네이버플러스 멤버십 추가 적립 등을 통해 약 14만원 상당의 추가 적립 혜택(체감가 1,71만원대)을 받을 수 있습니다.",
+      "brand": {
+        "name": "삼성전자"
+      },
+      "category": "shopping",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "final": 1857600,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-11-23T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=750928",
+        "label": "보러가기"
+      },
+      "howTo": [
+        "네이버 쇼핑 상품 페이지에서 10% 할인쿠폰 및 중복 10% 쿠폰 적용",
+        "결제 시 카드 할인 8% 적용"
+      ],
+      "caution": [
+        "추가 적립 혜택(약 14만원)은 포토리뷰 작성, 라이브방송 구매, 네이버플러스 멤버십 이용 등 조건 충족 필요"
+      ],
+      "tags": ["삼성전자", "김치냉장고", "비스포크", "가전", "네이버", "카드할인"],
+      "source": {
+        "name": "뽐뿌 뽐뿌게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=750928",
+        "collectedAt": "2026-11-23T01:23:23.847Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-11-23T01:23:23.847Z"
       }
     },
     {
@@ -2928,6 +2967,53 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-11-17T03:22:44.059Z"
+      }
+    },
+    {
+      "id": "dl_ruliweb-market_09150700f970315a",
+      "slug": "ruliweb-market-board-read-e3604934",
+      "title": "애플TV+ 구독 55% 할인 프로모션 (월 2,900원, 6개월간)",
+      "summary": "애플TV 구독 시 6개월 동안 정가 월 6,500원에서 55% 할인된 월 2,900원에 이용 가능합니다.",
+      "description": "11월 30일까지 신청 시 6개월간 월 2,900원에 애플TV를 구독할 수 있습니다. 6개월 이용 후 2027년 5월 말부터 정가 월 6,500원으로 자동 전환됩니다.",
+      "brand": {
+        "name": "애플TV"
+      },
+      "category": "culture",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "original": 6500,
+        "final": 2900,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-11-23T00:00:00+09:00",
+        "endAt": "2026-11-30T23:59:59+09:00"
+      },
+      "benefit": {
+        "amount": 3600,
+        "isMax": false
+      },
+      "link": {
+        "url": "https://bbs.ruliweb.com/market/board/1020/read/109290",
+        "label": "자세히 보기"
+      },
+      "howTo": ["11월 30일까지 프로모션 페이지를 통해 구독 신청"],
+      "caution": ["6개월 할인 기간 종료 후 2027년 5월부터는 정가 월 6,500원이 결제됩니다."],
+      "tags": ["애플TV", "AppleTV", "OTT", "구독할인", "프로모션", "월구독"],
+      "source": {
+        "name": "루리웹 예판·핫딜",
+        "url": "https://bbs.ruliweb.com/market/board/1020/read/109290",
+        "collectedAt": "2026-11-23T01:23:23.847Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-11-23T01:23:23.847Z"
       }
     },
     {
@@ -3483,6 +3569,55 @@
       }
     },
     {
+      "id": "dl_ruliweb-market_dd57c643421b8574",
+      "slug": "ruliweb-market-board-read-f7bac190",
+      "title": "[네이버] 컬쳐랜드 / 도서문화상품권 5만원권 외 할인",
+      "summary": "컬쳐랜드 및 도서문화상품권 5만원권(46,500원), 3만원권(27,900원) 할인 판매합니다.",
+      "description": "네이버 스마트스토어/브랜드스토어에서 컬쳐랜드 상품권과 도서문화상품권을 7% 할인된 가격으로 판매합니다. 1인당 2장씩 구매 가능합니다.\n\n- 컬쳐랜드 5만원권: 46,500원\n- 컬쳐랜드 3만원권: 27,900원\n- 도서문화상품권 5만원권: 46,500원\n- 도서문화상품권 3만원권: 27,900원",
+      "brand": {
+        "name": "컬쳐랜드"
+      },
+      "category": "shopping",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "original": 50000,
+        "final": 46500,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false,
+        "perPersonLimit": 2
+      },
+      "period": {
+        "startAt": "2026-11-23T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "benefit": {
+        "amount": 3500,
+        "isMax": false
+      },
+      "link": {
+        "url": "https://m.brand.naver.com/cultureland_gift/products/13883746171",
+        "label": "구매하러 가기"
+      },
+      "howTo": ["원하는 상품권 종류의 링크로 이동하여 구매"],
+      "caution": ["1인당 2장씩 구매 제한이 있습니다."],
+      "tags": ["컬쳐랜드", "도서문화상품권", "상품권", "네이버", "할인"],
+      "source": {
+        "name": "루리웹 예판·핫딜",
+        "url": "https://bbs.ruliweb.com/market/board/1020/read/109283",
+        "collectedAt": "2026-11-23T01:23:23.847Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-11-23T01:23:23.847Z"
+      }
+    },
+    {
       "id": "dl_ruliweb-market_f23a1754f64e5042",
       "slug": "ruliweb-market-board-read-2e42ca6e",
       "title": "[쿠팡] LG 그램 AI 15U50U-GR5CK (Ultra 5/8GB/256GB)",
@@ -3630,9 +3765,9 @@
     {
       "id": "dl_steam-specials_165f35013fec2458",
       "slug": "steam-specials-app-euro-truck-simulator-2-118d8aeb",
-      "title": "Euro Truck Simulator 2 75% 할인",
-      "summary": "인기 시뮬레이션 게임 Euro Truck Simulator 2를 75% 할인된 6,750원에 구매하세요.",
-      "description": "정상 가격 27,000원에서 75% 할인된 최종 할인가 6,750원입니다.",
+      "title": "Steam 유로 트럭 시뮬레이터 2 75% 할인",
+      "summary": "Steam에서 Euro Truck Simulator 2를 정가 27,000원에서 75% 할인된 6,750원에 판매합니다.",
+      "description": "Steam 특별 할인을 통해 Euro Truck Simulator 2를 75% 할인된 가격에 구매할 수 있습니다.",
       "brand": {
         "name": "Steam"
       },
@@ -3648,7 +3783,7 @@
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-11-18T00:00:00+09:00",
+        "startAt": "2026-11-23T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
       },
@@ -3658,20 +3793,20 @@
       },
       "link": {
         "url": "https://store.steampowered.com/app/227300/Euro_Truck_Simulator_2/?snr=1_7_7_2300_150_3",
-        "label": "구매 페이지"
+        "label": "Steam에서 보기"
       },
-      "howTo": ["Steam 상점 페이지에서 구매"],
-      "tags": ["Steam", "게임", "할인", "시뮬레이션", "PC게임"],
+      "howTo": ["Steam 해당 상품 페이지 접속", "장바구니 담기 후 결제 진행"],
+      "tags": ["Steam", "스팀", "게임할인", "유로트럭2", "유로트럭시뮬레이터2", "스팀할인"],
       "source": {
         "name": "Steam 특별 할인",
         "url": "https://store.steampowered.com/app/227300/Euro_Truck_Simulator_2/?snr=1_7_7_2300_150_3",
-        "collectedAt": "2026-11-18T02:43:16.839Z",
+        "collectedAt": "2026-11-23T01:23:23.847Z",
         "method": "llm",
         "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-11-18T02:43:16.839Z"
+        "updatedAt": "2026-11-23T01:23:23.847Z"
       }
     },
     {
@@ -4060,10 +4195,9 @@
       "id": "dl_steam-specials_e1fe6df8811f3184",
       "slug": "steam-specials-app-ea-sports-fc-27-1428a07a",
       "title": "EA SPORTS FC™ 27 50% 할인",
-      "summary": "EA SPORTS FC™ 27을 정가 80,000원에서 50% 할인된 40,000원에 구매할 수 있습니다.",
-      "description": "Steam에서 EA SPORTS FC™ 27을 정가 80,000원에서 50% 할인된 40,000원에 판매합니다.",
+      "summary": "Steam에서 EA SPORTS FC™ 27을 정가 80,000원에서 50% 할인된 40,000원에 구매할 수 있습니다.",
       "brand": {
-        "name": "EA SPORTS"
+        "name": "Steam"
       },
       "category": "culture",
       "dealType": "discount",
@@ -4077,7 +4211,7 @@
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-11-22T00:00:00+09:00",
+        "startAt": "2026-11-23T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
       },
@@ -4089,18 +4223,21 @@
         "url": "https://store.steampowered.com/app/4080220/EA_SPORTS_FC_27/?snr=1_7_7_2300_150_2",
         "label": "Steam에서 보기"
       },
-      "howTo": ["Steam 스토어 페이지에 접속합니다.", "할인가격 40,000원에 제품을 구매합니다."],
-      "tags": ["Steam", "스팀", "게임", "EASPORTS", "FC27", "게임할인"],
+      "howTo": [
+        "Steam 스토어 페이지 접속",
+        "상세 페이지에서 할인 가격 확인 후 장바구니 담기 및 구매"
+      ],
+      "tags": ["스팀", "Steam", "게임", "EASPORTSFC27", "할인"],
       "source": {
         "name": "Steam 특별 할인",
         "url": "https://store.steampowered.com/app/4080220/EA_SPORTS_FC_27/?snr=1_7_7_2300_150_2",
-        "collectedAt": "2026-11-22T00:54:56.500Z",
+        "collectedAt": "2026-11-23T01:23:23.847Z",
         "method": "llm",
         "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-11-22T00:54:56.500Z"
+        "updatedAt": "2026-11-23T01:23:23.847Z"
       }
     }
   ]
