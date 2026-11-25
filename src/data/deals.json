@@ -1,6 +1,6 @@
 {
   "schemaVersion": 4,
-  "generatedAt": "2026-11-24T05:07:49.434Z",
+  "generatedAt": "2026-11-25T03:56:35.687Z",
   "deals": [
     {
       "id": "dl_ajd-card-event_8f352758faf3037b",
@@ -315,7 +315,8 @@
       "id": "dl_clien-jirum_b34ff789410ee899",
       "slug": "clien-jirum-board-jirum-b8b332b7",
       "title": "[WearOS] AD TimeBar 워치페이스 일시 무료",
-      "summary": "WearOS 유료 워치페이스 AD TimeBar를 11월 26일 오전 9시까지 무료로 다운로드할 수 있습니다.",
+      "summary": "WearOS 유료 워치페이스 'AD TimeBar'가 11월 26일 오전 9시까지 무료 배포됩니다.",
+      "description": "구글 플레이스토어의 WearOS 유료 워치페이스 AD TimeBar(AD Analog 003)를 11월 26일 오전 9시까지 무료로 다운로드할 수 있습니다.",
       "brand": {
         "name": "Google Play"
       },
@@ -330,35 +331,38 @@
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-11-24T00:00:00+09:00",
+        "startAt": "2026-11-23T17:08:00+09:00",
         "endAt": "2026-11-26T09:00:00+09:00"
       },
       "link": {
         "url": "https://play.google.com/store/apps/details?id=com.albuquerquedesign.adanalog003",
-        "label": "구글 플레이에서 보기"
+        "label": "구글 플레이스토어 이동"
       },
-      "howTo": ["링크 페이지에 접속하여 구글 플레이 스토어에서 무료로 설치합니다."],
-      "tags": ["WearOS", "워치페이스", "무료앱", "구글플레이", "스마트워치"],
+      "howTo": [
+        "링크를 통해 구글 플레이스토어 페이지에 접속합니다.",
+        "계정에 로그인한 후 무료로 다운로드하여 스마트워치에 설치합니다."
+      ],
+      "tags": ["WearOS", "워치페이스", "스마트워치", "일시무료", "구글플레이", "앱테크"],
       "source": {
         "name": "클리앙 알뜰구매",
         "url": "https://www.clien.net/service/board/jirum/19297426",
-        "collectedAt": "2026-11-24T05:07:49.434Z",
+        "collectedAt": "2026-11-25T03:56:35.687Z",
         "method": "llm",
         "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-11-24T05:07:49.434Z"
+        "updatedAt": "2026-11-25T03:56:35.687Z"
       }
     },
     {
-      "id": "dl_clien-jirum_b9c0331c1a8565e7",
-      "slug": "clien-jirum-board-jirum-0b7095bf",
-      "title": "iOS Widget Project 앱 일시 무료",
-      "summary": "평소 4.99달러에 판매되던 아이폰/아이패드 위젯 앱 'Widget Project'가 한시적으로 무료 배포됩니다.",
-      "description": "Widget Project는 실시간 음악 재생, 배터리 상태, 날씨 예보, 일정, 지출 예산, 카운트다운 및 세계 시계 등 다양한 위젯을 제공하며, 사진, 파일 및 메모를 추가할 수 있습니다. 아이폰 홈 화면과 잠금 화면, 아이패드에서 레이아웃을 자유롭게 조절하여 일관된 정보 대시보드를 구축할 수 있습니다.",
+      "id": "dl_clien-jirum_b780d997540c2478",
+      "slug": "clien-jirum-board-jirum-94ab0106",
+      "title": "SamWatch Digital Shu 2 2025 WearOS 워치페이스 무료 배포",
+      "summary": "유료 WearOS 워치 페이스 'SamWatch Digital Shu 2 2025' 11월 26일 오전 9시까지 무료 배포",
+      "description": "유료 WearOS 워치 페이스가 한시적으로 구글 플레이 스토어에서 무료 배포 중입니다.",
       "brand": {
-        "name": "Widget Project"
+        "name": "SamWatch"
       },
       "category": "app",
       "dealType": "free",
@@ -371,26 +375,25 @@
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-11-16T00:00:00+09:00",
-        "endAt": null,
-        "deadlineUnknown": true
+        "startAt": "2026-11-25T11:58:00+09:00",
+        "endAt": "2026-11-26T09:00:00+09:00"
       },
       "link": {
-        "url": "https://apps.apple.com/kr/app/widget-project/id6827420455",
-        "label": "앱 다운로드"
+        "url": "https://play.google.com/store/apps/details?id=com.watchfacestudio.samwatch_digital_shu_2_2025",
+        "label": "구글 플레이에서 다운로드"
       },
-      "howTo": ["앱스토어에서 'Widget Project' 앱 다운로드"],
-      "tags": ["iOS", "앱", "위젯", "무료", "아이폰", "아이패드", "유틸리티"],
+      "howTo": ["구글 플레이 스토어 링크에 접속합니다.", "무료로 전환된 앱을 설치합니다."],
+      "tags": ["WearOS", "워치페이스", "무료앱", "스마트워치", "구글플레이", "SamWatch"],
       "source": {
         "name": "클리앙 알뜰구매",
-        "url": "https://www.clien.net/service/board/jirum/19293029",
-        "collectedAt": "2026-11-18T02:43:16.839Z",
+        "url": "https://www.clien.net/service/board/jirum/19298282",
+        "collectedAt": "2026-11-25T03:56:35.687Z",
         "method": "llm",
         "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-11-18T02:43:16.839Z"
+        "updatedAt": "2026-11-25T03:56:35.687Z"
       }
     },
     {
@@ -628,46 +631,6 @@
       }
     },
     {
-      "id": "dl_dealbada-hotdeal_00af3c2ebecfefae",
-      "slug": "dealbada-hotdeal-bbs-board-php-5c6fc7f5",
-      "title": "롯데온 푸마 바람막이 및 의류 할인",
-      "summary": "푸마 바람막이를 52,840원에 구매할 수 있으며, 후드집업, 팬츠 등 다양한 의류도 행사 중입니다.",
-      "description": "푸마 바람막이 52,840원. 디자인이 괜찮으며, 후드집업, 팬츠, 유니폼 등 다양한 푸마 의류가 행사 가격으로 판매됩니다.",
-      "brand": {
-        "name": "푸마"
-      },
-      "category": "shopping",
-      "dealType": "discount",
-      "difficulty": "easy",
-      "price": {
-        "final": 52840,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": false
-      },
-      "period": {
-        "startAt": "2026-11-18T00:00:00+09:00",
-        "endAt": null,
-        "deadlineUnknown": true
-      },
-      "link": {
-        "url": "https://www.dealbada.com/bbs/board.php?bo_table=deal_domestic&wr_id=572803&page=1"
-      },
-      "tags": ["푸마", "바람막이", "의류", "할인", "롯데온", "패션"],
-      "source": {
-        "name": "딜바다 국내핫딜",
-        "url": "https://www.dealbada.com/bbs/board.php?bo_table=deal_domestic&wr_id=572803&page=1",
-        "collectedAt": "2026-11-18T02:43:16.839Z",
-        "method": "llm",
-        "confidence": 0.8
-      },
-      "meta": {
-        "verified": false,
-        "updatedAt": "2026-11-18T02:43:16.839Z"
-      }
-    },
-    {
       "id": "dl_dealbada-hotdeal_031e55fc1ca37582",
       "slug": "dealbada-hotdeal-bbs-board-php-190ab7ca",
       "title": "[퀸잇] 지센 단독 최저가 세일 및 사은품 증정",
@@ -753,6 +716,47 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-11-22T00:54:56.500Z"
+      }
+    },
+    {
+      "id": "dl_dealbada-hotdeal_19ab2718982bf37e",
+      "slug": "dealbada-hotdeal-bbs-board-php-6d530faf",
+      "title": "[네이버] 테일러센츠 x MNH 협업 키링 테희 퍼퓸 세트",
+      "summary": "테일러센츠 x MNH 협업 키링 퍼퓸 세트 핫딜 특가 (19,900원 / 무료배송)",
+      "description": "퍼퓸과 키링이 함께 구성된 협업 세트 제품입니다.",
+      "brand": {
+        "name": "테일러센츠"
+      },
+      "category": "shopping",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "final": 19900,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-11-25T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://www.dealbada.com/bbs/board.php?bo_table=deal_domestic&wr_id=572968&page=1",
+        "label": "딜 보기"
+      },
+      "tags": ["네이버", "테일러센츠", "퍼퓸", "키링", "핫딜", "무료배송"],
+      "source": {
+        "name": "딜바다 국내핫딜",
+        "url": "https://www.dealbada.com/bbs/board.php?bo_table=deal_domestic&wr_id=572968&page=1",
+        "collectedAt": "2026-11-25T03:56:35.687Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-11-25T03:56:35.687Z"
       }
     },
     {
@@ -1038,6 +1042,50 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-11-13T01:39:32.122Z"
+      }
+    },
+    {
+      "id": "dl_ggcf-culture_2e28730e3390696a",
+      "slug": "ggcf-culture-view-6b063ee485a3b159495a237b-079759bf",
+      "title": "2026 해움·새들 입주작가 프로젝트: 양정은 《Re/Dis-sonance》 무료 전시",
+      "summary": "고양시 예술창작공간 해움에서 개최되는 양정은 작가의 기획전시 무료 관람 정보입니다.",
+      "description": "고양시 예술창작공간 해움에서 진행되는 2026 해움·새들 입주작가 프로젝트 양정은 《Re/Dis-sonance》 무료 기획전시입니다. 화~토요일 10시부터 17시까지 관람 가능합니다.",
+      "brand": {
+        "name": "고양시 예술창작공간 해움"
+      },
+      "category": "culture",
+      "dealType": "free",
+      "difficulty": "easy",
+      "price": {
+        "final": 0,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-12-04T00:00:00+09:00",
+        "endAt": "2026-12-19T23:59:59+09:00"
+      },
+      "link": {
+        "url": "https://ggc.ggcf.kr/cultureEvents/view/6b063ee485a3b159495a237b",
+        "label": "행사 상세 보기"
+      },
+      "howTo": [
+        "전시 기간(2026.12.04~2026.12.19) 중 운영시간(화~토 10:00~17:00)에 고양시 예술창작공간 해움 방문"
+      ],
+      "caution": ["일요일 및 월요일은 휴관입니다."],
+      "tags": ["전시", "무료전시", "문화행사", "경기문화재단", "해움", "고양시"],
+      "source": {
+        "name": "경기문화재단 문화행사",
+        "url": "https://ggc.ggcf.kr/cultureEvents/view/6b063ee485a3b159495a237b",
+        "collectedAt": "2026-11-25T03:56:35.687Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-11-25T03:56:35.687Z"
       }
     },
     {
@@ -1518,8 +1566,8 @@
       "id": "dl_hana-event_ed10861063031b6e",
       "slug": "hana-event-event01-1529259-152465-jsp-3b09dc5d",
       "title": "하나은행 놀이터 11월 출석체크 이벤트",
-      "summary": "하나원큐 앱에서 출석체크 참여 시 추첨을 통해 500명에게 더벤티 미니 붕어빵 증정",
-      "description": "하나원큐 놀이터에서 매일 별도장을 찍고 출석체크하면 더벤티 미니 붕어빵 모바일 쿠폰 추첨에 응모됩니다. 11일과 21일에는 별도장을 추가 지급합니다.",
+      "summary": "하나원큐 앱 놀이터에서 출석체크 시 더벤티 미니 붕어빵 추첨 증정 (500명)",
+      "description": "하나원큐 앱 놀이터 메뉴에서 매일 출석 도장을 찍으면 추첨을 통해 더벤티 미니 붕어빵 모바일 쿠폰을 제공하는 이벤트입니다.",
       "brand": {
         "name": "하나은행"
       },
@@ -1532,8 +1580,7 @@
       },
       "limit": {
         "firstComeFirstServed": false,
-        "quantity": 500,
-        "perPersonLimit": 1
+        "quantity": 500
       },
       "period": {
         "startAt": "2026-11-02T00:00:00+09:00",
@@ -1541,28 +1588,38 @@
       },
       "link": {
         "url": "https://m.kebhana.com/cont/event/new/event01/1529259_152465.jsp",
-        "label": "하나원큐에서 별도장 찍기"
+        "label": "하나원큐에서 참여하기"
       },
       "howTo": [
-        "하나원큐 앱 접속 후 놀이터 출석체크 이벤트 페이지 이동",
-        "'오늘의 도장찍기' 버튼을 3초간 꾹 눌러 참여"
+        "하나원큐 앱 접속 및 놀이터 메뉴 이동",
+        "'오늘의 도장찍기' 버튼을 3초간 꾹 누르기",
+        "종이에 별도장이 찍히면 참여 완료 (11일, 21일 추가 별도장 지급)"
       ],
       "caution": [
-        "만 14세 이상 하나원큐 회원 및 놀이터 구독자 대상",
-        "당첨자는 2026년 12월 15일까지 하나원큐 쿠폰함으로 개별 안내 및 쿠폰 지급",
-        "지급된 모바일 쿠폰은 기한 연장, 환불, 재발송 불가"
+        "만 14세 이상 하나원큐 손님 및 놀이터 구독자 대상",
+        "당첨 발표는 2026년 12월 15일까지 개별 안내 (하나원큐 쿠폰함으로 발송)",
+        "모바일 쿠폰은 기한 연장, 환불, 재발송 불가"
       ],
-      "tags": ["하나은행", "하나원큐", "출석체크", "더벤티", "붕어빵", "무료증정", "추첨"],
+      "tags": [
+        "하나은행",
+        "하나원큐",
+        "출석체크",
+        "더벤티",
+        "붕어빵",
+        "기프티콘",
+        "이벤트",
+        "추첨"
+      ],
       "source": {
         "name": "하나은행 이벤트",
         "url": "https://m.kebhana.com/cont/event/new/event01/1529259_152465.jsp",
-        "collectedAt": "2026-11-24T05:07:49.434Z",
+        "collectedAt": "2026-11-25T03:56:35.687Z",
         "method": "llm",
         "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-11-24T05:07:49.434Z"
+        "updatedAt": "2026-11-25T03:56:35.687Z"
       }
     },
     {
@@ -1624,11 +1681,11 @@
     {
       "id": "dl_kakamuka-nearexpiry_69e185ee0a6f47d5",
       "slug": "kakamuka-nearexpiry-category-display-35b5eb09",
-      "title": "(세일) 트위젤 미니츄 애플망고맛 28g x 20개 (1통)",
-      "summary": "소비기한 임박 트위젤 미니츄 애플망고맛 1통(20개입) 87% 할인 특가",
-      "description": "소비기한이 2026년 12월 5일까지인 트위젤 미니츄 애플망고맛 20개입 1통을 정가 24,000원에서 3,000원으로 할인하여 판매합니다.",
+      "title": "트위젤 미니츄 애플망고맛 28g x 20개 (1통) 소비기한 임박 할인",
+      "summary": "소비자가 24,000원에서 할인된 3,000원에 트위젤 미니츄 애플망고맛 1통(20개)을 구매할 수 있습니다.",
+      "description": "소비기한(2026년 12월 5일)이 임박한 트위젤 미니츄 애플망고맛 소프트캔디 28g x 20개 1통 제품 할인 판매 정보입니다.",
       "brand": {
-        "name": "까까무카"
+        "name": "트위젤"
       },
       "category": "food",
       "dealType": "discount",
@@ -1639,11 +1696,12 @@
         "currency": "KRW"
       },
       "limit": {
-        "firstComeFirstServed": true
+        "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-11-24T00:00:00+09:00",
-        "endAt": "2026-12-05T23:59:59+09:00"
+        "startAt": "2026-11-25T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
       },
       "benefit": {
         "amount": 21000,
@@ -1651,71 +1709,21 @@
       },
       "link": {
         "url": "https://kakamuka.com/product/%EC%84%B8%EC%9D%BC-%ED%8A%B8%EC%9C%84%EC%A0%A4-%EB%AF%B8%EB%8B%88%EC%B8%84-%EC%95%A0%ED%94%8C%EB%A7%9D%EA%B3%A0%EB%A7%9B-28g-x-20%EA%B0%9C-1%ED%86%B5-%EC%86%8C%EB%B9%84%EA%B8%B0%ED%95%9C-261205-%EC%86%8C%ED%94%84%ED%8A%B8%EC%BA%94%EB%94%94/15694/category/28/display/1/",
-        "label": "구매하기"
+        "label": "구매하러 가기"
       },
-      "howTo": ["상세 페이지에서 상품을 확인합니다.", "구매하기 버튼을 눌러 결제를 진행합니다."],
-      "caution": [
-        "소비기한이 2026년 12월 5일까지인 임박 상품입니다.",
-        "재고 소진 시 예고 없이 종료될 수 있습니다."
-      ],
-      "tags": ["트위젤", "미니츄", "애플망고", "소프트캔디", "임박세일", "가성비", "간식", "할인"],
+      "howTo": ["원문 링크로 이동하여 구매 절차를 진행합니다."],
+      "caution": ["소비기한이 2026년 12월 5일까지인 임박 상품입니다."],
+      "tags": ["트위젤", "미니츄", "소프트캔디", "애플망고", "소비기한임박", "할인", "까까무카"],
       "source": {
         "name": "까까무카 소비기한 임박",
         "url": "https://kakamuka.com/product/%EC%84%B8%EC%9D%BC-%ED%8A%B8%EC%9C%84%EC%A0%A4-%EB%AF%B8%EB%8B%88%EC%B8%84-%EC%95%A0%ED%94%8C%EB%A7%9D%EA%B3%A0%EB%A7%9B-28g-x-20%EA%B0%9C-1%ED%86%B5-%EC%86%8C%EB%B9%84%EA%B8%B0%ED%95%9C-261205-%EC%86%8C%ED%94%84%ED%8A%B8%EC%BA%94%EB%94%94/15694/category/28/display/1/",
-        "collectedAt": "2026-11-24T05:07:49.434Z",
-        "method": "llm",
-        "confidence": 1
-      },
-      "meta": {
-        "verified": false,
-        "updatedAt": "2026-11-24T05:07:49.434Z"
-      }
-    },
-    {
-      "id": "dl_kakamuka-nearexpiry_72203181639ae5da",
-      "slug": "kakamuka-nearexpiry-category-display-604e0ba8",
-      "title": "롯데 100% 우리 쌀 누룽지 500g (소비기한 임박)",
-      "summary": "정가 7,000원 롯데 우리 쌀 누룽지 500g 상품을 1,000원에 할인 판매합니다.",
-      "description": "까까무카에서 소비기한이 2026년 11월 17일까지인 롯데 100% 우리 쌀 누룽지 500g 상품을 정가 7,000원에서 할인된 1,000원에 판매합니다.",
-      "brand": {
-        "name": "롯데"
-      },
-      "category": "food",
-      "dealType": "discount",
-      "difficulty": "easy",
-      "price": {
-        "original": 7000,
-        "final": 1000,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": false
-      },
-      "period": {
-        "startAt": "2026-11-05T00:00:00+09:00",
-        "endAt": "2026-11-17T23:59:59+09:00"
-      },
-      "benefit": {
-        "amount": 6000,
-        "isMax": false
-      },
-      "link": {
-        "url": "https://kakamuka.com/product/%EC%84%B8%EC%9D%BC-%EB%A1%AF%EB%8D%B0-100-%EC%9A%B0%EB%A6%AC-%EC%8C%80-%EB%88%84%EB%A3%BD%EC%A7%80-500g-%EC%86%8C%EB%B9%84%EA%B8%B0%ED%95%9C-261117/15505/category/28/display/1/",
-        "label": "구매하러 가기"
-      },
-      "howTo": ["링크 페이지에 접속하여 상품을 구매합니다."],
-      "caution": ["소비기한이 2026년 11월 17일까지인 임박 상품입니다."],
-      "tags": ["롯데", "누룽지", "소비기한임박", "할인", "까까무카", "식품"],
-      "source": {
-        "name": "까까무카 소비기한 임박",
-        "url": "https://kakamuka.com/product/%EC%84%B8%EC%9D%BC-%EB%A1%AF%EB%8D%B0-100-%EC%9A%B0%EB%A6%AC-%EC%8C%80-%EB%88%84%EB%A3%BD%EC%A7%80-500g-%EC%86%8C%EB%B9%84%EA%B8%B0%ED%95%9C-261117/15505/category/28/display/1/",
-        "collectedAt": "2026-11-05T01:16:28.554Z",
+        "collectedAt": "2026-11-25T03:56:35.687Z",
         "method": "llm",
         "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-11-05T01:16:28.554Z"
+        "updatedAt": "2026-11-25T03:56:35.687Z"
       }
     },
     {
@@ -1953,11 +1961,11 @@
     {
       "id": "dl_megagtv-refurb_d170a039d426fa62",
       "slug": "megagtv-refurb-product-detail-html-c7ae3f37",
-      "title": "삼성 50인치 4K UHD 스마트TV 50TU7000 특가",
-      "summary": "삼성 50인치 4K UHD 스마트TV 리퍼 제품을 소비자가 대비 할인된 600,000원에 판매합니다.",
-      "description": "삼성TV 50TU7000 50인치 4K UHD 스마트TV 스탠드 및 벽걸이 설치가 가능한 상품 특가 판매입니다.",
+      "title": "삼성 50인치 4K UHD 스마트 TV (50TU7000)",
+      "summary": "소비자가 1,180,000원 상당의 삼성 50인치 스마트 TV를 600,000원에 판매합니다.",
+      "description": "삼성TV 50TU7000 50인치 4K UHD 스마트TV 스탠드 및 벽걸이 설치 가능 상품 할인 판매 중입니다.",
       "brand": {
-        "name": "삼성전자"
+        "name": "삼성"
       },
       "category": "shopping",
       "dealType": "discount",
@@ -1971,7 +1979,7 @@
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-11-24T00:00:00+09:00",
+        "startAt": "2026-11-25T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
       },
@@ -1983,18 +1991,18 @@
         "url": "https://megagtv.com/product/detail.html?product_no=36&cate_no=23&display_group=1",
         "label": "구매하러 가기"
       },
-      "howTo": ["링크를 통해 상품 페이지 방문 후 구매 등록"],
-      "tags": ["삼성TV", "스마트TV", "50인치TV", "4KTV", "리퍼TV", "가전", "쇼핑"],
+      "howTo": ["링크를 통해 메가몰 리퍼 TV 해당 상품 페이지에 접속하여 구매합니다."],
+      "tags": ["삼성TV", "스마트TV", "50인치TV", "4KUHD", "TV할인", "메가몰"],
       "source": {
         "name": "메가몰 리퍼 TV",
         "url": "https://megagtv.com/product/detail.html?product_no=36&cate_no=23&display_group=1",
-        "collectedAt": "2026-11-24T05:07:49.434Z",
+        "collectedAt": "2026-11-25T03:56:35.687Z",
         "method": "llm",
         "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-11-24T05:07:49.434Z"
+        "updatedAt": "2026-11-25T03:56:35.687Z"
       }
     },
     {
@@ -2273,51 +2281,6 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-11-23T01:23:23.847Z"
-      }
-    },
-    {
-      "id": "dl_ppomppu-hot_209e68e2a9d0776e",
-      "slug": "ppomppu-hot-zboard-view-php-c28db4fb",
-      "title": "리복 프론트짚 슈 백팩 64% 할인 특가",
-      "summary": "리복 공식 온라인 스토어에서 프론트짚 슈 백팩을 64% 할인된 46,440원에 구매하세요.",
-      "description": "용량이 커서 여행용으로 좋습니다.",
-      "brand": {
-        "name": "리복"
-      },
-      "category": "shopping",
-      "dealType": "discount",
-      "difficulty": "easy",
-      "price": {
-        "original": 129000,
-        "final": 46440,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": false
-      },
-      "period": {
-        "startAt": "2026-11-18T00:00:00+09:00",
-        "endAt": null,
-        "deadlineUnknown": true
-      },
-      "benefit": {
-        "amount": 82560,
-        "isMax": false
-      },
-      "link": {
-        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=749712"
-      },
-      "tags": ["리복", "백팩", "가방", "할인", "수요특가", "여행용"],
-      "source": {
-        "name": "뽐뿌 뽐뿌게시판",
-        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=749712",
-        "collectedAt": "2026-11-18T02:43:16.839Z",
-        "method": "llm",
-        "confidence": 0.9
-      },
-      "meta": {
-        "verified": false,
-        "updatedAt": "2026-11-18T02:43:16.839Z"
       }
     },
     {
@@ -2659,52 +2622,92 @@
       }
     },
     {
-      "id": "dl_ppomppu-hot_c89520047d151c25",
-      "slug": "ppomppu-hot-zboard-view-php-759315da",
-      "title": "[티딜] 벤딕트 자동차 배터리 점프스타터 더펄스",
-      "summary": "겨울철 대비 벤딕트 자동차 배터리 충전기 점프스타터 69,000원 특가",
-      "description": "무게 400g의 1500A 10000mAh 리튬 폴리머 배터리로 오토바이나 트럭에도 사용 가능한 점프스타터입니다.",
+      "id": "dl_ppomppu-hot_ae9e168342502f7e",
+      "slug": "ppomppu-hot-zboard-view-php-d223b749",
+      "title": "네이버 컬쳐랜드 모바일 상품권 3만원권",
+      "summary": "컬쳐랜드 3만원권을 7% 할인된 27,900원에 판매합니다.",
       "brand": {
-        "name": "벤딕트"
+        "name": "컬쳐랜드"
       },
       "category": "shopping",
       "dealType": "discount",
       "difficulty": "easy",
       "price": {
-        "final": 69000,
+        "original": 30000,
+        "final": 27900,
         "currency": "KRW"
       },
       "limit": {
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-11-18T00:00:00+09:00",
+        "startAt": "2026-11-25T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "benefit": {
+        "amount": 2100,
+        "isMax": false
+      },
+      "link": {
+        "url": "https://brand.naver.com/cultureland_gift/products/138...",
+        "label": "네이버 브랜드스토어 이동"
+      },
+      "howTo": ["링크 페이지에 접속하여 컬쳐랜드 3만원권을 27,900원에 구매합니다."],
+      "tags": ["컬쳐랜드", "상품권", "네이버", "3만원권", "할인"],
+      "source": {
+        "name": "뽐뿌 뽐뿌게시판",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=751648",
+        "collectedAt": "2026-11-25T03:56:35.687Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-11-25T03:56:35.687Z"
+      }
+    },
+    {
+      "id": "dl_ppomppu-hot_af79084b0def2b9e",
+      "slug": "ppomppu-hot-zboard-view-php-9c68cee0",
+      "title": "[11번가] 삼립 호빵네빵 12입 1박스 + 단팥호빵 1입 증정",
+      "summary": "삼립호빵 4가지 맛 12입 1박스 구매 시 단팥호빵 1입 추가 증정 (12,900원/무료배송)",
+      "description": "삼립 호빵네빵 12입(단팥, 피자, 야채 등 4가지 맛) 1박스 구매 시 단팥호빵 1입 1봉을 추가 증정합니다. 소비기한이 길지 않은 점 참고바랍니다.",
+      "brand": {
+        "name": "삼립"
+      },
+      "category": "food",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "final": 12900,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-11-25T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
       },
       "link": {
-        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=749714",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=751653",
         "label": "구매하러 가기"
       },
-      "howTo": [
-        "티딜(T-deal) 서비스 접속",
-        "벤딕트 자동차 배터리 점프스타터 상품 선택",
-        "69,000원 결제 및 구매"
-      ],
-      "caution": [
-        "티딜은 SKT 고객 전용 혜택 플랫폼일 수 있으므로 이용 가능 여부 확인이 필요합니다."
-      ],
-      "tags": ["벤딕트", "점프스타터", "자동차용품", "배터리충전기", "티딜", "특가", "무료배송"],
+      "howTo": ["링크 페이지를 통해 11번가 상품 페이지 이동 후 구매"],
+      "caution": ["소비기한이 비교적 짧은 상품입니다."],
+      "tags": ["삼립", "호빵", "삼립호빵", "11번가", "단팥호빵", "무료배송"],
       "source": {
         "name": "뽐뿌 뽐뿌게시판",
-        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=749714",
-        "collectedAt": "2026-11-18T02:43:16.839Z",
+        "url": "https://www.ppomppu.co.kr/zboard/view.php?id=ppomppu&no=751653",
+        "collectedAt": "2026-11-25T03:56:35.687Z",
         "method": "llm",
-        "confidence": 0.9
+        "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-11-18T02:43:16.839Z"
+        "updatedAt": "2026-11-25T03:56:35.687Z"
       }
     },
     {
@@ -3197,66 +3200,6 @@
       }
     },
     {
-      "id": "dl_ruliweb-market_8c3b23899b2c0bc9",
-      "slug": "ruliweb-market-board-read-6911de14",
-      "title": "[이마트] PS5 듀얼센스 컨트롤러(인디고) 오프라인 카드 할인 특가",
-      "summary": "행사 카드로 결제 시 PS5 듀얼센스 컨트롤러를 69,800원에 구매 가능",
-      "description": "이마트 및 일렉트로마트 오프라인 매장에서 행사 카드(BC, 현대, 롯데, 신한, NH농협, 수협, 광주, 삼성)로 결제 시 할인 혜택이 적용됩니다. 이마트 앱을 통해 매장별 재고를 확인할 수 있습니다.",
-      "brand": {
-        "name": "이마트"
-      },
-      "category": "shopping",
-      "dealType": "discount",
-      "difficulty": "normal",
-      "price": {
-        "final": 69800,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": true
-      },
-      "period": {
-        "startAt": "2026-11-18T00:00:00+09:00",
-        "endAt": null,
-        "deadlineUnknown": true
-      },
-      "link": {
-        "url": "https://bbs.ruliweb.com/market/board/1020/read/109127",
-        "label": "원문 보기"
-      },
-      "howTo": [
-        "이마트 앱을 설치하여 인근 매장의 재고를 확인합니다.",
-        "이마트 또는 일렉트로마트 오프라인 매장을 방문합니다.",
-        "대상 카드(BC, 현대, 롯데, 신한, NH농협, 수협, 광주, 삼성)로 결제하여 할인을 받습니다."
-      ],
-      "caution": [
-        "오프라인 매장 방문 구매 시에만 적용되는 혜택입니다.",
-        "반드시 명시된 행사 카드로 결제해야 할인가가 적용됩니다.",
-        "매장별로 재고가 상이하거나 조기 소진될 수 있습니다."
-      ],
-      "tags": [
-        "이마트",
-        "일렉트로마트",
-        "PS5",
-        "듀얼센스",
-        "컨트롤러",
-        "게임",
-        "카드할인",
-        "오프라인"
-      ],
-      "source": {
-        "name": "루리웹 예판·핫딜",
-        "url": "https://bbs.ruliweb.com/market/board/1020/read/109127",
-        "collectedAt": "2026-11-18T02:43:16.839Z",
-        "method": "llm",
-        "confidence": 0.9
-      },
-      "meta": {
-        "verified": false,
-        "updatedAt": "2026-11-18T02:43:16.839Z"
-      }
-    },
-    {
       "id": "dl_ruliweb-market_8cbcdea467d6c019",
       "slug": "ruliweb-market-board-read-76f91cdc",
       "title": "[쿠팡] 스프라이트 제로 with TEA 350ml 24개",
@@ -3297,6 +3240,51 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-11-22T00:54:56.500Z"
+      }
+    },
+    {
+      "id": "dl_ruliweb-market_a02ff9452e21de73",
+      "slug": "ruliweb-market-board-read-1efa34a0",
+      "title": "[GS샵] 센소다인 치약 100g 4개 (토스 결제 시 9,520원 / 무료배송)",
+      "summary": "GS샵 2천원 쿠폰과 토스페이 20% 할인 쿠폰을 함께 적용하면 센소다인 치약 100g 4개를 9,520원(개당 2,380원)에 구매할 수 있습니다.",
+      "brand": {
+        "name": "센소다인"
+      },
+      "category": "shopping",
+      "dealType": "discount",
+      "difficulty": "normal",
+      "price": {
+        "final": 9520,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-11-25T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://m.gsshop.com/plan/shop/detail.gs?planseq=199078",
+        "label": "GS샵 이벤트 페이지 바로가기"
+      },
+      "howTo": [
+        "링크 페이지에서 2천원 할인쿠폰을 발급받습니다.",
+        "토스 앱 > 쇼핑 > GS 검색 후 토스페이 20% 할인쿠폰을 받습니다.",
+        "센소다인 치약 100g 4개 상품 구매 시 발급받은 쿠폰들을 적용하여 결제합니다."
+      ],
+      "tags": ["GS샵", "센소다인", "치약", "토스페이", "할인쿠폰"],
+      "source": {
+        "name": "루리웹 예판·핫딜",
+        "url": "https://bbs.ruliweb.com/market/board/1020/read/109358",
+        "collectedAt": "2026-11-25T03:56:35.687Z",
+        "method": "llm",
+        "confidence": 0.9
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-11-25T03:56:35.687Z"
       }
     },
     {
@@ -3383,6 +3371,48 @@
       "meta": {
         "verified": false,
         "updatedAt": "2026-09-01T15:23:37.310Z"
+      }
+    },
+    {
+      "id": "dl_ruliweb-market_b7047f3208ab46ed",
+      "slug": "ruliweb-market-board-read-41677ced",
+      "title": "[롯데온] 프링글스 110g 7종 2+2+2 총 6캔",
+      "summary": "프링글스 110g 총 6캔 구성 9,900원 무료배송 (개당 1,650원)",
+      "description": "맛 선택 2개씩 총 6캔 구성입니다. 라자냐맛, 텍사스식 바비큐맛 등 선택 가능합니다.",
+      "brand": {
+        "name": "롯데온"
+      },
+      "category": "food",
+      "dealType": "discount",
+      "difficulty": "easy",
+      "price": {
+        "final": 9900,
+        "currency": "KRW"
+      },
+      "limit": {
+        "firstComeFirstServed": false
+      },
+      "period": {
+        "startAt": "2026-11-25T00:00:00+09:00",
+        "endAt": null,
+        "deadlineUnknown": true
+      },
+      "link": {
+        "url": "https://bbs.ruliweb.com/market/board/1020/read/109356",
+        "label": "구매하기"
+      },
+      "howTo": ["링크를 통해 롯데온 페이지 이동 후 상품 구매"],
+      "tags": ["롯데온", "프링글스", "과자", "스낵", "무료배송", "핫딜"],
+      "source": {
+        "name": "루리웹 예판·핫딜",
+        "url": "https://bbs.ruliweb.com/market/board/1020/read/109356",
+        "collectedAt": "2026-11-25T03:56:35.687Z",
+        "method": "llm",
+        "confidence": 0.95
+      },
+      "meta": {
+        "verified": false,
+        "updatedAt": "2026-11-25T03:56:35.687Z"
       }
     },
     {
@@ -3784,9 +3814,9 @@
     {
       "id": "dl_steam-specials_34e81d117c1ea68c",
       "slug": "steam-specials-app-red-dead-redemption-2-0a857c7e",
-      "title": "Red Dead Redemption 2 75% 할인",
+      "title": "Steam Red Dead Redemption 2 75% 할인",
       "summary": "Steam에서 Red Dead Redemption 2를 정가 73,000원에서 75% 할인된 18,250원에 판매합니다.",
-      "description": "Red Dead Redemption 2를 75% 할인된 가격인 18,250원에 구매할 수 있는 특가 혜택입니다.",
+      "description": "Red Dead Redemption 2를 Steam 특별 할인가로 구매할 수 있습니다. 정가 73,000원에서 75% 할인된 18,250원에 구매 가능합니다.",
       "brand": {
         "name": "Steam"
       },
@@ -3802,7 +3832,7 @@
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2026-11-24T00:00:00+09:00",
+        "startAt": "2026-11-25T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
       },
@@ -3812,75 +3842,20 @@
       },
       "link": {
         "url": "https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/?snr=1_7_7_2300_150_1",
-        "label": "Steam에서 구매하기"
+        "label": "Steam에서 보기"
       },
-      "howTo": ["Steam 제품 페이지 접속", "상점 장바구니에 담기 후 결제 진행"],
-      "tags": ["스팀", "Steam", "레데리2", "RedDeadRedemption2", "게임할인", "스팀할인"],
+      "howTo": ["Steam 해당 상품 페이지로 이동하여 구매합니다."],
+      "tags": ["Steam", "스팀", "레드데드리뎀션2", "RDR2", "게임", "할인"],
       "source": {
         "name": "Steam 특별 할인",
         "url": "https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/?snr=1_7_7_2300_150_1",
-        "collectedAt": "2026-11-24T05:07:49.434Z",
+        "collectedAt": "2026-11-25T03:56:35.687Z",
         "method": "llm",
         "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-11-24T05:07:49.434Z"
-      }
-    },
-    {
-      "id": "dl_steam-specials_72374bf60aa26bf7",
-      "slug": "steam-specials-app-kingdom-come-deliverance-ii-407f6b42",
-      "title": "킹덤 컴: 딜리버런스 2 (Kingdom Come: Deliverance II) 67% 할인",
-      "summary": "정가 60,800원에서 67% 할인된 20,060원에 구매할 수 있습니다.",
-      "description": "스팀(Steam)에서 제공하는 Kingdom Come: Deliverance II의 특별 할인 정보입니다.",
-      "brand": {
-        "name": "Steam"
-      },
-      "category": "culture",
-      "dealType": "discount",
-      "difficulty": "easy",
-      "price": {
-        "original": 60800,
-        "final": 20060,
-        "currency": "KRW"
-      },
-      "limit": {
-        "firstComeFirstServed": false
-      },
-      "period": {
-        "startAt": "2026-11-18T00:00:00+09:00",
-        "endAt": null,
-        "deadlineUnknown": true
-      },
-      "benefit": {
-        "amount": 40740,
-        "isMax": false
-      },
-      "link": {
-        "url": "https://store.steampowered.com/app/1771300/Kingdom_Come_Deliverance_II/?snr=1_7_7_2300_150_1",
-        "label": "스팀에서 구매하기"
-      },
-      "howTo": [
-        "제공된 스팀 상점 링크로 접속합니다.",
-        "로그인 후 상품을 장바구니에 담습니다.",
-        "결제를 진행하여 게임을 구매합니다."
-      ],
-      "caution": [
-        "할인 종료 시점이 명시되지 않아 예고 없이 종료될 수 있습니다.",
-        "스팀 계정 및 스팀 런처 설치가 필요합니다."
-      ],
-      "tags": ["스팀", "게임", "할인", "킹덤컴", "RPG", "PC게임", "스팀할인"],
-      "source": {
-        "name": "Steam 특별 할인",
-        "url": "https://store.steampowered.com/app/1771300/Kingdom_Come_Deliverance_II/?snr=1_7_7_2300_150_1",
-        "collectedAt": "2026-11-18T02:43:16.839Z",
-        "method": "llm",
-        "confidence": 0.95
-      },
-      "meta": {
-        "verified": false,
-        "updatedAt": "2026-11-18T02:43:16.839Z"
+        "updatedAt": "2026-11-25T03:56:35.687Z"
       }
     },
     {
@@ -3934,8 +3909,8 @@
       "id": "dl_steam-specials_aed79483bbf0497d",
       "slug": "steam-specials-app-grand-theft-auto-v-6c657977",
       "title": "Grand Theft Auto V 인핸스드 56% 할인",
-      "summary": "GTA V 인핸스드 버전을 정가 대비 56% 할인된 24,200원에 구매할 수 있습니다.",
-      "description": "Grand Theft Auto V 인핸스드 에디션에 대한 스팀 특별 할인 정보입니다. 정가 55,000원에서 56% 할인된 가격으로 판매 중입니다.",
+      "summary": "Grand Theft Auto V 인핸스드 게임을 정가 55,000원에서 56% 할인된 24,200원에 구매할 수 있습니다.",
+      "description": "Steam에서 Grand Theft Auto V 인핸스드를 56% 할인된 가격으로 판매합니다.",
       "brand": {
         "name": "Steam"
       },
@@ -3951,7 +3926,7 @@
         "firstComeFirstServed": false
       },
       "period": {
-        "startAt": "2025-03-04T00:00:00+09:00",
+        "startAt": "2026-11-25T00:00:00+09:00",
         "endAt": null,
         "deadlineUnknown": true
       },
@@ -3961,21 +3936,20 @@
       },
       "link": {
         "url": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V_%EC%9D%B8%ED%95%B8%EC%8A%A4%EB%93%9C/?snr=1_7_7_2300_150_2",
-        "label": "스팀에서 확인하기"
+        "label": "Steam에서 구매하기"
       },
-      "howTo": ["상세 페이지 링크로 접속합니다.", "로그인 후 장바구니에 담아 결제를 진행합니다."],
-      "caution": ["할인 종료일이 명시되어 있지 않으므로 구매 전 가격을 반드시 확인하세요."],
-      "tags": ["GTA5", "스팀할인", "게임특가", "PC게임", "락스타게임즈", "GTA인핸스드"],
+      "howTo": ["Steam 페이지에 접속하여 해당 상품을 장바구니에 담고 결제합니다."],
+      "tags": ["Steam", "GTA5", "게임", "스팀", "할인"],
       "source": {
         "name": "Steam 특별 할인",
         "url": "https://store.steampowered.com/app/3240220/Grand_Theft_Auto_V_%EC%9D%B8%ED%95%B8%EC%8A%A4%EB%93%9C/?snr=1_7_7_2300_150_2",
-        "collectedAt": "2026-11-24T05:07:49.434Z",
+        "collectedAt": "2026-11-25T03:56:35.687Z",
         "method": "llm",
-        "confidence": 0.9
+        "confidence": 0.95
       },
       "meta": {
         "verified": false,
-        "updatedAt": "2026-11-24T05:07:49.434Z"
+        "updatedAt": "2026-11-25T03:56:35.687Z"
       }
     },
     {
